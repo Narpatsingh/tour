@@ -1,0 +1,45 @@
+.button_onoff{
+    width: 50px;
+    overflow: hidden;
+    height: 25px;
+    border-radius: 3px;
+    border: solid 1px #000;
+    position: relative;
+    background: red;
+}
+.onbutton{
+    background: green;
+    border-right: solid 5px #FFF;
+}
+.offbutton{
+    background: red;
+    border-left: solid 5px #FFF;
+}
+.onbutton, .offbutton{
+    width: 50px;
+    text-align: center;
+    height: 25px;
+    line-height: 23px;
+    color: #FFF;
+    cursor: pointer;
+}
+.button_onoff .offbutton{
+    left: 48px;
+    position: absolute;
+}
+.button_onoff.off .offbutton{
+    -moz-user-select: none;
+    left: 0;
+    position: absolute;
+    transition: left 0.35s ease 0s;
+}
+.button_onoff.off .onbutton{
+    right: 48px;
+    position: absolute;
+}
+.button_onoff .onbutton{
+    -moz-user-select: none;
+    right: 0;
+    position: absolute;
+    transition: right 0.35s ease 0s;
+}
