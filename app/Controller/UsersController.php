@@ -12,7 +12,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('getCaptcha','activateUser','dashboard','login');
+        $this->Auth->allow('getCaptcha','activateUser','dashboard','login','maintainace');
         $this->_checkLogin();
     }
 
@@ -68,7 +68,6 @@ class UsersController extends AppController {
 
     public function logout() {
         $this->loadModel('AuditLog');
-        $this->RememberMe->delete('User');
         $this->AuditLog->addUserLog('logout');
         $this->Auth->logout();
         $this->Session->destroy();
@@ -245,10 +244,22 @@ class UsersController extends AppController {
     public function dashboard($id = null) {
         $this->layout = 'tour';
         $this->loadModel('Tour');
-        $specials = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '1')));
-        $hots = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '2')));
-        $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
-        $this->set(compact('specials','hots','discounts'));
+        $this->loadModel('State');
+        //if ($this->Session->read('Auth.User.id')) {
+            $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
+            // debug($states );exit;
+            $specials = $this->Tour->find('all', array('contain' => false,'conditions' => array('Tour.type' => '1')));
+            $hots = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '2')));
+            $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
+            $this->set(compact('specials','hots','discounts','states'));
+        // }else{
+        //     return $this->redirect(array('controller'=>'users','action' => 'maintainace')); 
+        // } 
+    }
+
+    public function maintainace()
+    {
+
     }
 
     public function change_password($userId = null) {

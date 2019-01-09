@@ -23,7 +23,7 @@ class ToursController extends AppController {
     public function beforeFilter()
     {
         parent::beforeFilter();
-        $this->Auth->allow('details');
+        $this->Auth->allow('details','city_detail','state_detail','india');
         $this->_checkLogin();
     }
 
@@ -99,6 +99,43 @@ class ToursController extends AppController {
         $this->set('tour', $this->Tour->find('first', $options));
     }
 
+    public function city_detail($id = null) {
+        $this->layout = 'tour';
+        if (!empty($id)) {
+            $options = array('conditions' => array('Tour.city_id' => $id));
+            $tour = $this->Tour->find('all', $options);
+            if(!empty($tour)){
+                $this->set('tour', $tour);
+            }else{
+                $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+            }
+        }else{
+            $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+        }
+    }
+
+    public function state_detail($id = null) {
+        $this->layout = 'tour';
+        if (!empty($id)) {
+            $options = array('conditions' => array('Tour.state_id' => $id));
+            $tour = $this->Tour->find('all', $options);
+            if(!empty($tour)){
+                $this->set('tour', $tour);
+            }else{
+                $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+            }
+        }else{
+            $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+        }
+        $this->render('city_detail');
+    }
+
+    public function india() {
+        $this->layout = 'tour';
+        $this->set('tour', $this->Tour->find('all'));
+        $this->render('city_detail');
+    }
+
 /**
 * add method
 *
@@ -119,12 +156,12 @@ class ToursController extends AppController {
                 }else{
                     $type = "deals";
                 }
+                if (!empty($this->request->data['Tour']['img']['name'])){
+                    $filename = WWW_ROOT. DS . 'images'.DS. $type .DS.time().$this->data['Tour']['img']['name']; 
+                    move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
+                    $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().$this->request->data['Tour']['img']['name'];
+                } 
                 if ($this->Tour->save($this->request->data)) {
-                    if (!empty($this->request->data['Tour']['img']['name'])){
-                        $filename = WWW_ROOT. DS . 'images'.DS. $type .DS.$this->data['Tour']['img']['name']; 
-                        move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
-                        $this->data['Tour']['img'] = $this->data['Tour']['img']['name'];
-                    } 
                     $tour_id  = $this->Tour->getLastInsertID();
                     if(!empty($Highlights_data)){
                         foreach ($Highlights_data as $key => $value) {
@@ -145,6 +182,11 @@ class ToursController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
         }
+        $this->loadModel('State');
+        $states = $this->State->find('list');
+        $city = array(); 
+        $this->set('city',$city);
+        $this->set('states',$states);
         $this->set('dbOpration',"Add");
     }
 
@@ -162,6 +204,8 @@ class ToursController extends AppController {
         if (!$this->Tour->exists()) {
             $this->Message->setWarning(__('Invalid Tour'),array('action'=>'index/all'));
         }
+        $options = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $id));
+        $Tour_data=$this->Tour->find('first', $options);
         if ($this->request->is(array('post', 'put'))) {
             $type = $this->request->data['Tour']['type'];
             if($type == 1){
@@ -179,12 +223,15 @@ class ToursController extends AppController {
             if(!empty($this->request->data['Highlight']['name']['old'])){
                 $old_data=array_filter($this->request->data['Highlight']['name']['old']);
             }    
+            if (!empty($this->request->data['Tour']['img']['name'])){
+                $filename = WWW_ROOT.'images'.DS. $type .DS.time().$this->data['Tour']['img']['name']; 
+                move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
+                $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().$this->request->data['Tour']['img']['name'];
+            }else{
+                $this->request->data['Tour']['img'] = $Tour_data['Tour']['img'];
+            }
+
             if ($this->Tour->save($this->request->data)) {
-                if (!empty($this->request->data['Tour']['img']['name'])){
-                    $filename = WWW_ROOT. DS . 'images'.DS. $type .DS.$this->data['Tour']['img']['name']; 
-                    move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
-                    $this->data['Tour']['img'] = $this->data['Tour']['img']['name'];
-                } 
                 foreach ($old_data as $old_key => $old_value) {
                     $this->Highlight->id = $old_key;
                     $this->Highlight->saveField('title', $old_value);
@@ -203,13 +250,15 @@ class ToursController extends AppController {
                 $this->Message->setWarning(__('The Tour could not be updated. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $id));
-            $Tour_data=$this->Tour->find('first', $options);
-            $this->request->data = $Tour_data;
+           $this->request->data = $Tour_data;
         }
         $dbOpration = "Edit";
         $highlight_data=$this->Tour->Highlight->find('list',array('conditions' => array('Highlight.tour_id' => $id)));
-        $this->set(compact('dbOpration','highlight_data'));
+        $this->loadModel('State');
+        $states = $this->State->find('list');
+        $this->loadModel('City');
+        $city = $this->City->find('list',array('conditions'=>array('City.id' => $Tour_data['Tour']['city_id']))); 
+        $this->set(compact('dbOpration','highlight_data','states','city'));
         $this->render('add');
     }
 
@@ -221,7 +270,6 @@ class ToursController extends AppController {
 * @return void
 */
     public function delete($id = null) {
-        $id=decrypt($id);
         $this->Tour->id = $id;
         if (!$this->Tour->exists()) {
         $this->Message->setWarning(__('Invalid Tour'),array('action'=>'index/all'));

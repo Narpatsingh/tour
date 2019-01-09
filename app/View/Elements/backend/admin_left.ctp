@@ -14,6 +14,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('citys')) ?>">
                     <?php echo $this->Html->link(__('City Management'),array('controller' => 'citys', 'action' => 'index'), array('icon' => 'fa fa-building ')) ?>
                 </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('hotels')) ?>">
+                    <?php echo $this->Html->link(__('Hotel Management'),array('controller' => 'hotels', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
+                </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('tours')) ?>">
                     <?php echo $this->Html->link(__('Tour Management'),array('controller' => 'tours', 'action' => 'index'), array('icon' => 'fa fa-plane ')) ?>
                 </li>
@@ -33,7 +36,10 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                             <?php echo $this->Html->link(__('Flight Details'),array('controller' => 'flight_details', 'action' => 'index'),array('icon' => 'fa fa-fighter-jet')); ?>
                         </li>                                               
                     </ul>
-                </li>   
+                </li> 
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('enquiries')) ?>">
+                    <?php echo $this->Html->link(__('Enquiries Management'),array('controller' => 'enquiries', 'action' => 'index'), array('icon' => 'fa-pencil ')) ?>
+                </li>  
 				<li class="<?php echo $this->Html->getActiveOpenClass(array('')) ?>">
 					<?php echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
 				</li>				

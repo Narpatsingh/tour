@@ -1,10 +1,10 @@
 <?php
 $formParamter = '';
-$this->assign('pagetitle', __('Manage Tour'));
-$this->Custom->addCrumb(__('Manage Tour'));
+$this->assign('pagetitle', __('Manage Enquiry'));
+$this->Custom->addCrumb(__('Manage Enquiry'));
 $this->start('top_links');
-echo $this->Html->link(__('Add Tour'), array('controller' => $this->params['controller'], 'action' => 'add'),
-    array('icon' => 'add', 'title' => __('Add Tour'), 'class' => 'btn btn-primary', 'escape' => false));
+echo $this->Html->link(__('Add Enquiry'), array('controller' => $this->params['controller'], 'action' => 'add'),
+    array('icon' => 'add', 'title' => __('Add Enquiry'), 'class' => 'btn btn-primary', 'escape' => false));
 
 
 $this->end();
@@ -92,56 +92,71 @@ $searchPanelArray = array(
                         <?php $fieldCount = 9; ?>
 
                         <th width="5%"> <?php echo __('Sr.'); ?> </th>
-                        <th><?php echo $this->Paginator->sort('Tour.city', __('City')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.place', __('Place')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.price', __('Price')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.days', __('Days')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.nights', __('Nights')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.description', __('Description')); ?></th>
-                        <th><?php echo $this->Paginator->sort('Tour.created', __('Added On')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Customer.name', __('Name')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Customer.email', __('Email')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Customer.mobile', __('Mobile')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Customer.dob', __('DOB')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Customer.member', __('Member')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.number_of_month', __('Month')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.number_of_guest', __('Guest')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.experience', __('Experience')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.created', __('Added On')); ?></th>
                         <th><?php echo __('Actions'); ?></th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (empty($Tours)) { ?>
+                    <?php if (empty($enquiries)) { ?>
                         <tr>
                             <td colspan='<?php echo $fieldCount; ?>'
                                 class='text-warning'><?php echo __('No User found.') ?>
 							</td>
                         </tr>
                     <?php } else { ?>
-                        <?php foreach ($Tours as $tour): ?>
+                        <?php foreach ($enquiries as $enquiry): ?>
                             <tr>
                                 <td> <?php echo $startNo++; ?> </td>
-                                <td> <?php echo isset($tour['City']['name']) ? $tour['City']['name'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['place']) ? $tour['Tour']['place'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['price']) ? $tour['Tour']['price'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['days']) ? $tour['Tour']['days'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['nights']) ? $tour['Tour']['nights'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['description']) ? $tour['Tour']['description'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Tour']['created']) ? showdatetime($tour['Tour']['created']) : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Customer']['name']) ? $enquiry['Customer']['name'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Customer']['email']) ? $enquiry['Customer']['email'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Customer']['mobile']) ? $enquiry['Customer']['mobile'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Customer']['dob']) ? $enquiry['Customer']['dob'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Customer']['member']) ? $enquiry['Customer']['member'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['number_of_month']) ? $enquiry['Enquiry']['number_of_month'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['number_of_guest']) ? $enquiry['Enquiry']['number_of_guest'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['experience']) ? $enquiry['Enquiry']['experience'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['created']) ? showdatetime($enquiry['Enquiry']['created']) : ''; ?> </td>
                                 <td class="actions text-center">
                                 <span class='text-left'>
                                     <?php
-                                    echo $this->Html->link(__(''), array('action' => 'view', $tour['Tour']['id']),
+                                    echo $this->Html->link(__(''), array('action' => 'view', $enquiry['Enquiry']['id']),
                                         array(
                                             'icon' => 'view',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('view User')
+                                            'title' => __('View Customer')
                                         ));
-                                    echo $this->Html->link(__(''), array('action' => 'edit', $tour['Tour']['id']),
+                                    if(!empty($enquiry['Customer']['package_id']) && empty($enquiry['Enquiry']['is_approved'])):
+                                    echo $this->Html->link(__(''), array('action' => 'approve', $enquiry['Enquiry']['id']),
                                         array(
-                                            'icon' => 'edit',
+                                            'icon' => 'fa-check',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('Edit User')
+                                            'title' => __('Approve Customer')
+                                        ), __('Are you sure you want to approve selected Enquiry?'));
+                                    echo $this->Html->link(__(''), array('action' => 'reject', $enquiry['Enquiry']['id']),
+                                        array(
+                                            'icon' => 'fa-close',
+                                            'class' => 'no-hover-text-decoration',
+                                            'title' => __('Reject Customer')
+                                        ), __('Are you sure you want to reject selected Enquiry?'));                                    
+                                    endif;
+                                    if(!empty($enquiry['Enquiry']['is_approved']) && $enquiry['Enquiry']['is_approved']=='Yes'):
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'pdf', $enquiry['Enquiry']['id'],'file.pdf'),
+                                        array(
+                                            'icon' => 'fa-file',
+                                            'target'=>'_blank',
+                                            'class' => 'no-hover-text-decoration',
+                                            'title' => __('View File')
                                         ));
-                                    echo $this->Html->link(__(''), array('action' => 'delete', $tour['Tour']['id']),
-                                        array(
-                                            'icon' => 'delete',
-                                            'class' => 'no-hover-text-decoration',
-                                            'title' => __('Delete User')
-                                        ), __('Are you sure you want to delete selected Tour?'));
+                                    endif;
                                     ?>
                                 </span>
                                 </td>

@@ -140,4 +140,14 @@ class StatesController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    public function get_city($id = null) {
+        
+        $this->layout = false;
+        $this->render = false;
+        $this->loadModel('City');
+        $city = $this->City->find('list',array('conditions' => array('state_id'=> $id)));
+        echo json_encode($city);
+        exit;
+    }    
+
 }

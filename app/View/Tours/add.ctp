@@ -28,7 +28,9 @@ if (isset($this->request->data['Tour']['id'])) {
                     <div class="col-md-6">
                         <?php
                         echo $this->Form->input('type',array('class' => 'form-control','options'=>array('1'=>'Special Package','2'=>'Hot Package','3'=>'Deals & Discounts'),'empty' => __('Select Type'), 'div' => array('class' => 'form-group required')));
-                        echo $this->Form->input('city', array('tabindex' => 1,'placeholder' => __('City'), 'label' => __('City'),'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('name',array('class' => 'form-control','placeholder' => __('Title'),'label'=>'Title', 'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('place', array('tabindex' => 3,'placeholder' => __('Place'), 'label' => __('Place'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('description',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Description'), 'div' => array('class' => 'form-group required')));
                         ?> 
@@ -38,13 +40,14 @@ if (isset($this->request->data['Tour']['id'])) {
                         echo $this->Form->input('price', array('tabindex' => 1,'placeholder' => __('Price'), 'label' => __('Price'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('days', array('tabindex' => 1,'placeholder' => __('Days'), 'label' => __('Days'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('nights', array('tabindex' => 3,'placeholder' => __('Nights'), 'label' => __('Nights'),'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('discount', array('tabindex' => 3,'placeholder' => __('Discount'), 'label' => __('Discount'),'div' => array('class' => 'form-group')));
                         if(!empty($photo)){
                             echo $this->element('backend/logoDiv', array('id' => $id, 'photo' => $photo, 'logoTitle' => __('Tour Picture')));
                         }else { ?>
                             <label class="form-group clearBoth col-md-12 no-padding" style="margin-bottom: 10px">
                             <?php echo __('Tour Picture');  ?>
                         </label>
-                          <?php  echo $this->Form->input('photo', array('label' => false, 'type' => 'file', 'placeholder' => 'Photo', 'required' => false, 'class' => ''));
+                          <?php  echo $this->Form->input('img', array('label' => false, 'type' => 'file', 'placeholder' => 'Photo', 'required' => false, 'class' => ''));
                         }
                         ?> 
                     </div>
@@ -71,7 +74,8 @@ if (isset($this->request->data['Tour']['id'])) {
 
                                 }else{
                                     ?>
-                                    <div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][old][<?=$key?>]" value="<?php echo $tag; ?>" class="form-control col-md-11 SurveyOption" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>
+                                    <div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][old][<?=$key?>]" value="<?php echo $tag; ?>" class="form-control col-md-11 SurveyOption" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;"
+                                    value="<?=$key?>" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>
                                 <?php }
                             }
                             ?>
@@ -95,7 +99,13 @@ if (isset($this->request->data['Tour']['id'])) {
                         'title' => array(
                             'required' => 1
                         ),
-                        'city' => array(
+                        'name' => array(
+                            'required' => 1
+                        ),
+                        'city_id' => array(
+                            'required' => 1,
+                        ),
+                        'state_id' => array(
                             'required' => 1,
                         ),
                         'place' => array(
@@ -129,11 +139,18 @@ if (isset($this->request->data['Tour']['id'])) {
                         'title' => array(
                             'required' => __('Please enter title.'),
                         ),
+                        'name' => array(
+                            'required' => __('Please enter title.'),
+                        ),
+
                         'description' => array(
                             'required' => __('Please enter description.'),
                         ),
-                        'city' => array(
+                        'city_id' => array(
                             'required' => __('Please select city.'),
+                        ),
+                        'state_id' => array(
+                            'required' => __('Please select state.'),
                         ),
                         'place' => array(
                             'required' => __('Please select place.'),
@@ -193,4 +210,25 @@ if (isset($this->request->data['Tour']['id'])) {
         } 
         return false;
     }
+
+    $("#TourStateId").on('change',function() {
+        var id = $(this).val();
+        jQuery.ajax({
+            url: BaseUrl + 'states/get_city/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (html) {
+                $("#TourCityId option").remove();
+                $('#TourCityId').append($("<option></option>").attr("value","").text("Select City"));
+                $.each(html, function(key, value) {
+                    $('<option>').val('').text('select');
+                    $('<option>').val(key).text(value).appendTo($("#TourCityId"));
+                });
+            },
+            error: function (e) {
+
+            }
+        });
+    });   
+
 </script>

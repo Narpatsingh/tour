@@ -135,6 +135,7 @@ public function add() {
 * @return void
 */
 public function edit($id = null) {
+
     if (!$this->Customer->exists($id)) {
         $this->Message->setWarning(__('Invalid customer'),array('action'=>'index'));
     }
@@ -149,8 +150,11 @@ public function edit($id = null) {
         $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $id));
         $this->request->data = $this->Customer->find('first', $options);
     }
-	$this->set('edit',1);
-	$this->render('add');
+    $this->loadModel("Tour");
+    $tour_list = $this->Tour->get_list();
+    $this->set('packages',$tour_list);
+    $this->set('edit',1);
+    $this->render('add');
 }
 
 /**

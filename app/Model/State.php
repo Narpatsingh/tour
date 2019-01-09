@@ -13,6 +13,21 @@ class State extends AppModel {
  */
 	public $displayField = 'name';
 
+	public $hasMany = array(
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'state_id',
+			'conditions' => '',
+			'fields' => array('City.name','City.id'),
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 /**
  * Validation rules
  *

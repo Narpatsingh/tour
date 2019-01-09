@@ -11,7 +11,7 @@ class Tour extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'city';
+	public $displayField = 'name';
 
 	public $hasMany = array(
 		'Highlight' => array(
@@ -39,6 +39,20 @@ class Tour extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	public $belongsTo = array(
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'city_id',
+		),
+		'State' => array(
+			'className' => 'State',
+			'foreignKey' => 'state_id',
+		),
+	);
+
+	public function get_list(){
+		return $this->find('list');
+	}
 
 
 /**

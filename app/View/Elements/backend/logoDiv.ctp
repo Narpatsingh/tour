@@ -12,7 +12,7 @@
 
     ?>
     <?php
-    echo $this->Form->input('photo', array('label' => false, 'type' => 'file', 'placeholder' => 'Photo', 'required' => false, 'class' => ''));
+    echo $this->Form->input('img', array('label' => false, 'type' => 'file', 'placeholder' => 'Photo', 'required' => false, 'class' => ''));
 
     ?>
 </div>

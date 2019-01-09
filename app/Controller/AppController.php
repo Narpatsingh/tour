@@ -12,7 +12,6 @@ class AppController extends Controller
         'Paginator',
         'Message',
         'SendEmail',
-        'RememberMe',
         'AutoPaginate' => array('options' => array(10, 20, 50, 100, 250), 'defaultLimit' => 10)
     );
     public $helpers = array(
@@ -23,7 +22,6 @@ class AppController extends Controller
     public function beforeFilter()
     {
         $this->setTimezone(); // Setting Timezone from Database        
-        $this->RememberMe->check('User');
         parent::beforeFilter();
         if(!$this->Session->check('Auth.User.id')){
             $this->layout = 'login';

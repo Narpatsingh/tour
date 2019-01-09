@@ -9,12 +9,12 @@
             <span class="close_enquiry">x</span>
             
         </div>
+        <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
             <div class="inner_enquiry_section">
-                <form action="function.php" method="post" accept-charset="utf-8">
                 <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                    <input type="text" name="month" placeholder="Holidays Month" class="mr-3 mb-3" required>
-                    <input type="text" name="guest" placeholder="Number of guest " class="mb-3" required>
-                    <textarea name="experiences" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
+                    <input type="text" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
+                    <input type="text" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
+                    <textarea name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
                 </div>
                 <div class="contact_detail mt-3 mb-3 px-3 py-3">
                     <p class="font-bold">Your Contact Detail</p>
@@ -26,8 +26,9 @@
             </div>
           
          <div class="send_enquiry mt-3 mb-3 px-3 py-3">
-            <button type="submit" class="btn btn-primary btn-sm">Send Enuiry</button>
+            <?php echo $this->Form->submit(__('Send Enuiry'), array('class' => 'btn btn-primary btn-sm', 'div' => false)); ?>
          </div>
+        <?php echo $this->Form->end(); ?> 
      </div>
 
     <footer id="footer">

@@ -18,7 +18,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand page-scroll TourLogo" href="index.php">
-                            <h1>Silshine Trip</h1>
+                            <h1>SILSHINE TRIP</h1>
                         </a>
                     </div>
 
@@ -29,46 +29,105 @@
                                 <a class="page-scroll" href="#page-top">Home</a>
                             </li>
                             <li class="dropdown mega-dropdown india">
-                                <a href="Citypackage.php" target="_blank" class="dropdown-toggle" data-toggle="dropdown">India <span class="caret"></span></a>              
+                                <a href="#" target="_blank" class="dropdown-toggle" data-toggle="dropdown">India <span class="caret"></span></a>              
                                 <ul class="dropdown-menu mega-dropdown-menu">
-                                  <?php  $count = 0;
-                                    foreach ($states as $key => $value) {
-                                        if($count == 0){
-                                            echo '<li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">';
-                                            echo '<ul>';
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
-                                                echo '</li>';
-                                            }
-                                            $count++;   
-                                        }elseif($count == 2){
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
-                                                echo '</li>';     
-                                            }
-                                            echo '</li>';
-                                            echo '</ul>';
-                                            $count = 0;
-                                        }elseif($count < 2){
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
-                                                echo '</li>';       
-                                            }
-                                            $count++;
-                                        }
-                                    } ?>
+                                    <li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">
+                                        <ul>
+                                            <li class="dropdown-header">Andman & Nicobar</li>
+                                            <li><a href="#">Port blair</a></li>
+                                            <li class="dropdown-header">Goa</li>
+                                            <li class="dropdown-header">Gujarat</li>
+                                            <li><a href="#">Ahmedabad</a></li>
+                                            <li><a href="#">Bhuj</a></li>
+                                            <li><a href="#">Muli</a></li>
+                                            <li><a href="#">Ran od kuthch</a></li>
+                                            <li class="dropdown-header">Himachal & <br>Surroundings</li>
+                                            <li><a href="#">Amritsar</a></li>
+                                            <li><a href="#">Chandigarh</a></li>
+                                            <li><a href="#">Dalhousie</a></li>
+                                            <li><a href="#">Dharamshala</a></li>
+                                            <li><a href="#">Manali</a></li>
+                                            <li><a href="#">Shimla</a></li>
+                                            <li class="dropdown-header">Kashmir</li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">
+                                        <ul>
+                                            <li class="dropdown-header">Kerala</li>
+                                            <li><a href="#">Cochin</a></li>
+                                            <li><a href="#">Kumarakom</a></li>
+                                            <li><a href="#"> Kanyakumari</a></li>
+                                            <li><a href="#">Periyar</a></li>
+                                            <li><a href="#">Thiruvananthapuram</a></li>
+                                            <li class="dropdown-header">Leh Ladakh        </li>
+                                            <li><a href="#">Kargil</a></li>
+                                            <li><a href="#">Leh</a></li>
+                                            <li><a href="#">Nubra Valley</a></li>
+                                            <li class="dropdown-header">Madhya Pradesh</li>
+                                            <li><a href="#">Bhopal</a></li>
+                                            <li><a href="#">Gwalior</a></li>
+                                            <li><a href="#">Indore</a></li>
+                                            <li><a href="#">Khajuraho</a></li>
+                                            <li><a href="#">Mandu</a></li>
+                                            <li><a href="#">Pachmarhi</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">
+                                        <ul>
+                                            <li class="dropdown-header">North East</li>
+                                            <li><a href="#">Agartala</a></li>
+                                            <li><a href="#">Aizawl</a></li>
+                                            <li><a href="#">Bomdila</a></li>
+                                            <li><a href="#">Cherrapunjee</a></li>
+                                            <li><a href="#">Guwahati</a></li>
+                                            <li><a href="#">Imphal</a></li>
+                                            <li><a href="#">Kohima</a></li>
+                                            <li><a href="#">Shillong</a></li>
+                                            <li class="dropdown-header">Uttarakhand</li>
+                                            <li><a href="#">Haridwar</a></li>
+                                            <li><a href="#">Mussoorie</a></li>
+                                            <li><a href="#">Nainital</a></li>
+                                            <li><a href="#">Rishikesh</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">
+                                        <ul>
+                                            <li class="dropdown-header">North India</li>
+                                            <li><a href="#">Allahabad</a></li>
+                                            <li><a href="#">Agra</a></li>
+                                            <li><a href="#">Delhi</a></li>
+                                            <li><a href="#">Delhi</a></li>
+                                            <li><a href="#">Varanasi</a></li>
+                                            <li class="dropdown-header">Odisha</li>
+                                            <li><a href="#">Bhubaneshwar</a></li>
+                                            <li><a href="#">Puri</a></li>
+                                            <li class="dropdown-header">Rajasthan</li>
+                                            <li><a href="#">Ajmer</a></li>
+                                            <li><a href="#">Bikaner</a></li>
+                                            <li><a href="#">Jaipur</a></li>
+                                            <li><a href="#">Jaislmer</a></li>
+                                            <li><a href="#">Jodhpur</a></li>
+                                            <li><a href="#">Udaipur</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">
+                                        <ul>
+                                            <li class="dropdown-header">Sikkim Darjeeling</li>
+                                            <li><a href="#">Darjeeling</a></li>
+                                            <li><a href="#">Gangtok</a></li>
+                                            <li><a href="#">Kolkata</a></li>
+                                            <li><a href="#">Lachung</a></li>
+                                            <li class="dropdown-header">South India</li>
+                                            <li><a href="#">Bhubaneshwar</a></li>
+                                            <li><a href="#">Bijapur</a></li>
+                                            <li><a href="#">Coorg</a></li>
+                                            <li><a href="#">Hampi</a></li>
+                                            <li><a href="#">Hyderabad</a></li>
+                                            <li><a href="#">Mysore</a></li>
+                                            <li><a href="#">Ooty</a></li>
+                                            <li><a href="#">Pondicherry</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li>

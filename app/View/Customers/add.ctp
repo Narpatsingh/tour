@@ -14,9 +14,10 @@
                 	<?php
 		echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('package_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('dob',array('label'=>'Date of birth','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('dob',array('type'=>'text', 'label'=>'Date of birth','class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('emergency_mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('dob_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -55,3 +56,11 @@
             <?php echo $this->Form->end(); ?>
         </div>
     </div>
+<script type="text/javascript">
+  $( function() {
+    $( "#CustomerDob" ).datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true    	
+    });
+  });
+</script>

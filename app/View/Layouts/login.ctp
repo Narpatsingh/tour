@@ -3,7 +3,7 @@
     <head>
         <?php echo $this->Html->charset(); ?>
         <?php echo $this->Html->meta('favicon.ico', 'img/favicon.ico', array('type' => 'icon')); ?>
-        <title>Tour Admin</title>
+        <title>Silshine Tour Admin</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <?php
         echo $this->Html->css(
@@ -36,7 +36,7 @@
             <?php } ?>
         </div>
     <center class="margin-bottom20">
-        <h2 style="color: #fff;"> Logo </h2>
+        <h2 style="color: #fff;"> Silshine Trip </h2>
         <?php //echo $this->Html->link($this->Html->image(getLogo(),array('style'=>'max-width:200px !important')), '/', array('escape' => false, 'class' => 'logo')) ?>
     </center>
     <?php echo $this->fetch('content'); ?>	
