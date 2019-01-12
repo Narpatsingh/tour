@@ -70,18 +70,17 @@ class EnquiriesController extends AppController {
 * @return void
 */
     public function view($id = null) {
-        return $this->redirect(array('action' => 'index'));
+        
         if (!$this->Enquiry->exists($id)) {
             $this->Message->setWarning(__('Invalid Enquiry'),array('action'=>'index'));
         }
+        $this->loadModel("Tour");
         $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $id));
-        $this->loadModel('Itinerary');
-        $this->loadModel('Highlight');
-        $Itinerary_data=$this->Enquiry->Itinerary->find('all',array('conditions' => array('Itinerary.Enquiry_id' => $id)));
-        $Highlight_data=$this->Enquiry->Highlight->find('all',array('conditions' => array('Highlight.Enquiry_id' => $id)));
-        $this->set('Itinerary_datas', $Itinerary_data);
-        $this->set('Highlight_data', $Highlight_data);
-        $this->set('Enquiry', $this->Enquiry->find('first', $options));
+        $enquiries = $this->Enquiry->find('first', $options);
+        $tour_id = $enquiries['Customer']['package_id'];
+        $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
+        $package = $this->Tour->find('first', $toptions);
+        $this->set(compact('package','enquiries'));
     }
 
 /**
@@ -139,9 +138,10 @@ class EnquiriesController extends AppController {
         $tour_id = $enquiry['Customer']['package_id'];
         $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
         $package = $this->Tour->find('first', $toptions);
-        $this->set(compact('package','id'));
+        $this->set(compact('package','id','enquiry'));
         $this->layout = 'pdf';
         $this->render('/Pdf/generate_pdf');
+        $this->render('/Pdf/generate_receipt');
             $this->Message->setSuccess(__('The Enquiry has been approved.'));
         } else {
             $this->Message->setWarning(__('The Enquiry could not be approved. Please, try again.'));
