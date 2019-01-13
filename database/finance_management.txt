@@ -1,0 +1,15 @@
+-> system manages all financial transactions in form of receivable incomes.
+-> flexible to manage category wise account details.
+-> all incomes related to hotels, packages buses, trains and flights are managed in one page, with simplify solution. so this is a great user experience to handle whole creditable in a single view.
+-> allow to filter transactions. (based on customer, hotel, package, bus, train or flight detail)
+-> view daily incomes and outgoings in a table view.
+-> allow customer to make EMI based payment with system. system handles chunks of payments transactions and generate final bill receipt for each customer.
+-> in case of one customer has many packages, system generate package wise bill, customer EMIs report, as well grand total with brief details.
+-> allow customer to cancel payment or any package from selected.
+-> allow refund money to customer with reason for amount cancellation.
+-> display received and receivable amount for each customer in grid view.
+-> generate weekly income report. 
+-> generate monthly income report.
+-> display monthly income with a graphical view.
+-> generate yearly income report or final sheet.
+-> display yearly income with a graphical view.
