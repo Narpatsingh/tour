@@ -142,7 +142,9 @@ class EnquiriesController extends AppController {
         $this->layout = 'pdf';
         $this->render('/Pdf/generate_pdf');
         $this->render('/Pdf/generate_receipt');
+        $pdfpath = ROOT_DIR.PDF_PATH.$id.PDF_FILE;
             $this->Message->setSuccess(__('The Enquiry has been approved.'));
+            $this->sendMail($enquiry,'Quick Enquiry For Travel',$pdfpath);
         } else {
             $this->Message->setWarning(__('The Enquiry could not be approved. Please, try again.'));
         }        

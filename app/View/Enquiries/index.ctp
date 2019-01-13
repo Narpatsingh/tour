@@ -154,7 +154,14 @@ $searchPanelArray = array(
                                             'icon' => 'fa-file',
                                             'target'=>'_blank',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('View File')
+                                            'title' => __('View Invoice')
+                                        ));
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $enquiry['Enquiry']['id'],'file.pdf'),
+                                        array(
+                                            'icon' => 'fa-file-text-o',
+                                            'target'=>'_blank',
+                                            'class' => 'no-hover-text-decoration',
+                                            'title' => __('View Receipt')
                                         ));
                                     endif;
                                     ?>

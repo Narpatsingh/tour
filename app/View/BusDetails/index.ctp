@@ -34,11 +34,14 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
+                    <th><?php echo $this->Paginator->sort('customer_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('company_name'); ?></th>
                     <th><?php echo $this->Paginator->sort('bus_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('city_name'); ?></th>
                     <th><?php echo $this->Paginator->sort('price'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Source'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Destination'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
                     <th class="actions text-center"><?php echo __('Actions'); ?></th>
                 </tr>			
@@ -52,11 +55,14 @@
 
 <?php foreach ($busDetails as $busDetail): ?>
 	<tr>
+        <td><?php echo h($busDetail['Customer']['name']); ?>&nbsp;</td>
 		<td><?php echo h($busDetail['BusDetail']['company_name']); ?>&nbsp;</td>
 		<td><?php echo h($busDetail['BusDetail']['bus_no']); ?>&nbsp;</td>
 		<td><?php echo h($busDetail['BusDetail']['city_name']); ?>&nbsp;</td>
 		<td><?php echo h($busDetail['BusDetail']['price']); ?>&nbsp;</td>
-		<td><?php echo h($busDetail['BusDetail']['pnr_no']); ?>&nbsp;</td>
+        <td><?php echo h($busDetail['BusDetail']['pnr_no']); ?>&nbsp;</td>
+        <td><?php echo h($busDetail['BusDetail']['source']); ?>&nbsp;</td>
+		<td><?php echo h($busDetail['BusDetail']['destination']); ?>&nbsp;</td>
 		<td><?php echo h($busDetail['BusDetail']['created']); ?>&nbsp;</td>
 		<td class="actions text-center">
 			<?php echo $this->Html->link(__(''), array('action' => 'view', $busDetail['BusDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Bus Detail'))); ?>

@@ -1,0 +1,27 @@
+d-- phpMyAdmin SQL Dump
+-- version 4.5.1
+
+--
+-- Database: `dummy`
+--
+
+-- --------------------------------------------------------
+
+04-01-2019~Ajay
+ALTER TABLE `customers` ADD `email` VARCHAR(100) NOT NULL AFTER `name`;
+ALTER TABLE `enquiries` DROP `first_name`, DROP `last_name`, DROP `mobile`, DROP `email`;
+ALTER TABLE `enquiries` ADD `customer_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `customers` ADD PRIMARY KEY(`id`);
+ALTER TABLE `customers` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tours` ADD `name` VARCHAR(100) NOT NULL AFTER `id`;
+UPDATE `tours` SET `name` = 'Test Tour' WHERE 1
+ALTER TABLE `customers` ADD `package_id` INT NULL AFTER `id`;
+ALTER TABLE `enquiries` ADD `is_approved` VARCHAR(20) NULL AFTER `experience`;
+
+13-01-2019~Ajay
+
+ALTER TABLE `bus_details` ADD `customer_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `flight_details` ADD `customer_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `train_details` ADD `source` VARCHAR(150) NOT NULL AFTER `pnr_no`, ADD `destination` VARCHAR(150) NOT NULL AFTER `source`;
+ALTER TABLE `flight_details` ADD `source` VARCHAR(150) NOT NULL AFTER `price`, ADD `destination` VARCHAR(150) NOT NULL AFTER `source`;
+ALTER TABLE `bus_details` ADD `source` VARCHAR(150) NOT NULL AFTER `pnr_no`, ADD `destination` VARCHAR(150) NOT NULL AFTER `source`;

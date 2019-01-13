@@ -1,0 +1,44 @@
+-- --------------------------------------------------------
+
+04-01-2018~Ajay
+- tour_management\app\Controller\EnquiriesController.php
+- tour_management\app\View\Elements\tour_footer.ctp
+- tour_management\app\View\Tours\add.ctp
+- tour_management\app\Model\Tour.php
+- tour_management\app\Controller\CustomersController.php
+- G:\xampp\htdocs\tour_management\app\View\Customers\add.ctp
+- G:\xampp\htdocs\tour_management\app\View\Elements\backend\admin_left.ctp
+- G:\xampp\htdocs\tour_management\app\Model\Enquiry.php
+- G:\xampp\htdocs\tour_management\app\View\Layouts\pdf.ctp
+- G:\xampp\htdocs\tour_management\app\View\Pdf\generate_pdf.ctp
+
+12-01-2018~Ajay
+- tour_management\app\Controller\EnquiriesController.php
+- tour_management\app\View\Pdf\generate_pdf.ctp
+- tour_management\app\View\Pdf\generate_receipt.ctp
+
+ToDo List:
+
+Travel Management
+- manage customer id field.
+- source to destination.
+- generate reciept.
+- reciept.
+- send email
+
+
+git commit -m "Generate Reciept" app/Controller/EnquiriesController.php app/View/Enquiries/view.ctp app/View/Pdf/generate_pdf.ctp
+
+- G:\xampp\htdocs\tour_management\app\View\Enquiries\index.ctp
+- G:\xampp\htdocs\tour_management\app\View\Pdf\generate_receipt.ctp
+- G:\xampp\htdocs\tour_management\app\Controller\TrainDetailsController.php
+- G:\xampp\htdocs\tour_management\app\View\TrainDetails\add.ctp
+- G:\xampp\htdocs\tour_management\app\Model\TrainDetail.php
+- G:\xampp\htdocs\tour_management\app\View\TrainDetails\index.ctp
+- G:\xampp\htdocs\tour_management\app\View\BusDetails\add.ctp
+- G:\xampp\htdocs\tour_management\database\sql_log.txt
+- G:\xampp\htdocs\tour_management\app\Model\FlightDetail.php
+- G:\xampp\htdocs\tour_management\app\Controller\FlightDetailsController.php
+- G:\xampp\htdocs\tour_management\app\Config\bootstrap.php
+- G:\xampp\htdocs\tour_management\app\Controller\AppController.php
+- G:\xampp\htdocs\tour_management\app\Controller\AppController.php

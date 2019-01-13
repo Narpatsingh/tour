@@ -1,4 +1,4 @@
-    <?php
+<?php
     $type = empty($edit) ? 'Add' : 'Edit';
     	$this->assign('pagetitle', __('%s Bus Detail',$type));
 	$this->Custom->addCrumb(__('Bus Details'),array('action'=>'index'));
@@ -13,11 +13,14 @@
             <div class="box-body box-content">
                 	<?php
 		echo $this->Form->input('id',array('type'=>'hidden'));
+		echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group')));		
 		echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('bus_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('city_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 	?>
             </div>
             <div class="form-action">

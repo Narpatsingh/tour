@@ -12,5 +12,10 @@ class TrainDetail extends AppModel {
  * @var string
  */
 	public $displayField = 'customer_id';
-
+    public $belongsTo = array(
+        'Customer' => array(
+            'className' => 'Customer',
+            'foreignKey' => 'customer_id'
+        ),
+    );
 }

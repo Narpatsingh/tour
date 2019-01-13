@@ -101,6 +101,8 @@ if ($this->TrainDetail->save($this->request->data)) {
     $this->Message->setWarning(__('The train detail could not be saved. Please, try again.'));
 }
 }
+$this->loadModel("Customer");
+$this->set('customers',$this->Customer->find('list'));
 }
 
 /**
@@ -125,6 +127,9 @@ if ($this->TrainDetail->save($this->request->data)) {
 $options = array('conditions' => array('TrainDetail.' . $this->TrainDetail->primaryKey => $id));
 $this->request->data = $this->TrainDetail->find('first', $options);
 }
+$this->loadModel("Customer");
+$this->set('customers',$this->Customer->find('list'));
+
 		$this->set('edit',1);
 		$this->render('add');
 }

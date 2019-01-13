@@ -94,4 +94,10 @@ class BusDetail extends AppModel {
 			),
 		),
 	);
+    public $belongsTo = array(
+        'Customer' => array(
+            'className' => 'Customer',
+            'foreignKey' => 'customer_id'
+        ),
+    );	
 }

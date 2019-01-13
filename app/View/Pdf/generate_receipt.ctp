@@ -47,7 +47,7 @@ $html .= '</tr>';
 $html .= '<tr class="service">';
 $html .= '<td class="tableitem"><h3 class="itemtext">'.$package['Tour']['name'].'</h3></td>';
 $html .= '<td class="tableitem"><h3 class="itemtext">'.$package['Tour']['days'].'</h3></td>';
-$html .= '<td class="tableitem"><h3 class="itemtext">&#x20b9;'.$package['Tour']['price'].'</h3></td>';
+$html .= '<td class="tableitem"><h3 class="itemtext">Rs. '.$package['Tour']['price'].'</h3></td>';
 $html .= '</tr>';
 
 $html .= '<tr class="tabletitle">';
@@ -59,7 +59,7 @@ $html .= '</tr>';
 $html .= '<tr class="tabletitle">';
 $html .= '<td></td>';
 $html .= '<td class="Rate"><h2>Total</h2></td>&nbsp;&nbsp;&nbsp;';
-$html .= '<td class="payment"><h2>&#x20b9;'.$package['Tour']['price'].'</h2></td>';
+$html .= '<td class="payment"><h2>Rs. '.$package['Tour']['price'].'</h2></td>';
 $html .= '</tr>';
 
 $html .= '</table>';

@@ -93,6 +93,8 @@ Configure::write('Dispatcher.filters', array(
  * Configures default file logging options
  */
 include_once 'function.php';
+define('PDF_PATH', '/files/pdf/');
+define('PDF_FILE', '/file.pdf');
 define('LOGO_IMAGE', '/files/logo/');
 define('USER_IMAGE', '/files/user/photo/');
 define('ROOT_DIR', WWW_ROOT);

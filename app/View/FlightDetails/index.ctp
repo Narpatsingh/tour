@@ -33,10 +33,13 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
+                    <th><?php echo $this->Paginator->sort('customer_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('company_name'); ?></th>
                     <th><?php echo $this->Paginator->sort('flight_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('price'); ?></th>
+                    <th><?php echo $this->Paginator->sort('source'); ?></th>
+                    <th><?php echo $this->Paginator->sort('destination'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
                     <th class="actions text-center"><?php echo __('Actions'); ?></th>
                 </tr>			
@@ -50,10 +53,13 @@
 
                 <?php foreach ($flightDetails as $flightDetail): ?>
                 	<tr>
+                        <td><?php echo h($flightDetail['Customer']['name']); ?>&nbsp;</td>
                 		<td><?php echo h($flightDetail['FlightDetail']['company_name']); ?>&nbsp;</td>
                 		<td><?php echo h($flightDetail['FlightDetail']['flight_no']); ?>&nbsp;</td>
                 		<td><?php echo h($flightDetail['FlightDetail']['pnr_no']); ?>&nbsp;</td>
                 		<td><?php echo h($flightDetail['FlightDetail']['price']); ?>&nbsp;</td>
+                        <td><?php echo h($flightDetail['FlightDetail']['source']); ?>&nbsp;</td>
+                        <td><?php echo h($flightDetail['FlightDetail']['destination']); ?>&nbsp;</td>
                 		<td><?php echo h($flightDetail['FlightDetail']['created']); ?>&nbsp;</td>
                 		<td class="actions text-center">
                 			<?php echo $this->Html->link(__(''), array('action' => 'view', $flightDetail['FlightDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Flight Detail'))); ?>

@@ -12,5 +12,10 @@ class FlightDetail extends AppModel {
  * @var string
  */
 	public $displayField = 'company_name';
-
+    public $belongsTo = array(
+        'Customer' => array(
+            'className' => 'Customer',
+            'foreignKey' => 'customer_id'
+        ),
+    );
 }
