@@ -14,6 +14,10 @@
                 	<?php
 		echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group')));		
+		echo $this->Form->input('booking_type',array('class' => 'form-control','options' => array('single'=>'Single','whole'=>'Whole'),'empty' => 'Select Type', 'div' => array('class' => 'form-group')));		
+		echo "<div id='BusDetailMemberDiv'>";
+		echo $this->Form->input('member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo "</div>";
 		echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('bus_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('city_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -52,3 +56,16 @@
             <?php echo $this->Form->end(); ?>
         </div>
     </div>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$("#BusDetailMemberDiv").hide();
+		$("#BusDetailBookingType").on('change',function(e) {
+			var type = $(this).val();
+			if(type=='whole'){
+				$("#BusDetailMemberDiv").hide();
+			}else{
+				$("#BusDetailMemberDiv").show();
+			}
+		});
+	});
+</script>

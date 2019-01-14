@@ -16,6 +16,10 @@ class Enquiry extends AppModel {
             'className' => 'Customer',
             'foreignKey' => 'customer_id'
         ),
+        'City' => array(
+            'className' => 'City',
+            'foreignKey' => 'destination'
+        ),
         /*'Package' => array(
             'className' => 'Tour',
             'foreignKey' => false,

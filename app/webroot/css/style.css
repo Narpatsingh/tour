@@ -1973,7 +1973,7 @@ h3{
 	width: 100%;
 	border: 1px solid #800080;
 }
-.holiday_Guest input,
+.holiday_Guest input,.holiday_Guest select,
 .contact_detail input{
 	width: 45%;
 	border: none;
@@ -2310,4 +2310,7 @@ body {
     margin: 0 auto;
     display: table;
     padding-top: 25px;
+}
+.bg-white{
+background:white !important;
 }

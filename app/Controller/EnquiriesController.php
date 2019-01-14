@@ -89,6 +89,7 @@ class EnquiriesController extends AppController {
 * @return void
 */
     public function add() {
+        
         $this->layout = 'tour';
         if ($this->request->is('post')) {
 
@@ -103,6 +104,7 @@ class EnquiriesController extends AppController {
             $last_customer_id  = $this->Customer->getLastInsertID();
             $this->Enquiry->create();
             $this->request->data['customer_id'] = $last_customer_id;
+            $this->request->data['destination'] = $this->request->data['Enquiry']['city_id']; unset($this->request->data['Enquiry']);
             if ($this->Enquiry->save($this->request->data)) {
 
                 //send mail to customer & admin

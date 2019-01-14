@@ -3,33 +3,43 @@
             <button class="EnquiryBtn"><i class="fa fa-pencil mr-2" ></i> Enquiry</button>
         </div>
     </div>
-    <div class="overview_enquiry_popup  ">
-        <div class="Enquiry_header">
-            <span>Quick Enquiry </span>
-            <span class="close_enquiry">x</span>
-            
-        </div>
-        <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
-            <div class="inner_enquiry_section">
-                <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                    <input type="text" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
-                    <input type="text" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
-                    <textarea name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
-                </div>
-                <div class="contact_detail mt-3 mb-3 px-3 py-3">
-                    <p class="font-bold">Your Contact Detail</p>
-                    <input type="text" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
-                    <input type="text" name="lastname" placeholder="Last name" class="mb-3" required>
-                    <input type="number" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
-                    <input type="email" name="email" placeholder="Email" class=" mb-3" required>
-                </div>  
+
+   <div class="modal fade commonModel" id="commonModel" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-header Enquiry_header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Quick Enquiry</h4>
             </div>
-          
-         <div class="send_enquiry mt-3 mb-3 px-3 py-3">
-            <?php echo $this->Form->submit(__('Send Enuiry'), array('class' => 'btn btn-primary btn-sm', 'div' => false)); ?>
-         </div>
-        <?php echo $this->Form->end(); ?> 
-     </div>
+            <div class="modal-body bg-white">
+                    <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
+
+                            <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
+                                <input type="text" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
+                                <input type="text" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
+                                <input type="text" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3" required>
+                                <input type="text" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3" required>
+                                <?php echo $this->Form->input('city_id',array('label' => false, 'class' => 'mr-3 mb-3','empty' => __('Select City'), 'div' => false)); ?>
+                                <input type="text" name="destination" placeholder="Destination" class="mr-3 mb-3" required>
+                                <textarea name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
+                                <textarea name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements" required></textarea>
+                            </div>
+                            <div class="contact_detail mt-3 mb-3 px-3 py-3">
+                                <p class="font-bold">Your Contact Detail</p>
+                                <input type="text" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
+                                <input type="text" name="lastname" placeholder="Last name" class="mb-3" required>
+                                <input type="number" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
+                                <input type="email" name="email" placeholder="Email" class=" mb-3" required>
+                            </div>  
+                
+             </div>     
+             <div class="modal-footer bg-white">
+                 <div class="send_enquiry mt-3 mb-3 px-3 py-3">
+                    <?php echo $this->Form->submit(__('Send Enuiry'), array('class' => 'btn btn-primary btn-sm', 'div' => false)); ?>
+                 </div>                
+             </div>       
+                <?php echo $this->Form->end(); ?> 
+        </div>
+    </div>
 
     <footer id="footer">
         <div class="container">
@@ -76,6 +86,21 @@
         echo $this->fetch('script');    
 
     ?>
+<script type="text/javascript">
+       $("#time_of_travel").datepicker( {
+        format: "MM-yyyy",
+        viewMode: "months", 
+        minViewMode: "months"
+        });
+
+        jQuery('.EnquiryBtn').on('click', function (e) {
+                $('#commonModel').modal('show');
+          });
+        
+         
+   
+    
+</script>  
     
 
 </body>

@@ -245,13 +245,15 @@ class UsersController extends AppController {
         $this->layout = 'tour';
         $this->loadModel('Tour');
         $this->loadModel('State');
+        $this->loadModel('City');
         //if ($this->Session->read('Auth.User.id')) {
             $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
+            $cities = $this->City->find('list');
             // debug($states );exit;
             $specials = $this->Tour->find('all', array('contain' => false,'conditions' => array('Tour.type' => '1')));
             $hots = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '2')));
             $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
-            $this->set(compact('specials','hots','discounts','states'));
+            $this->set(compact('specials','hots','discounts','states','cities'));
         // }else{
         //     return $this->redirect(array('controller'=>'users','action' => 'maintainace')); 
         // } 

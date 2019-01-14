@@ -100,6 +100,11 @@ $searchPanelArray = array(
                         <th><?php echo $this->Paginator->sort('Enquiry.number_of_month', __('Month')); ?></th>
                         <th><?php echo $this->Paginator->sort('Enquiry.number_of_guest', __('Guest')); ?></th>
                         <th><?php echo $this->Paginator->sort('Enquiry.experience', __('Experience')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.time_of_travel', __('Time Of Travel')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.travel_duration', __('Travel Duration')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.city_of_residence', __('City Of Residence')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.destination', __('Destination')); ?></th>
+                        <th><?php echo $this->Paginator->sort('Enquiry.special_requirements', __('Special Requirements')); ?></th>
                         <th><?php echo $this->Paginator->sort('Enquiry.created', __('Added On')); ?></th>
                         <th><?php echo __('Actions'); ?></th>
 
@@ -124,6 +129,12 @@ $searchPanelArray = array(
                                 <td> <?php echo isset($enquiry['Enquiry']['number_of_month']) ? $enquiry['Enquiry']['number_of_month'] : ''; ?> </td>
                                 <td> <?php echo isset($enquiry['Enquiry']['number_of_guest']) ? $enquiry['Enquiry']['number_of_guest'] : ''; ?> </td>
                                 <td> <?php echo isset($enquiry['Enquiry']['experience']) ? $enquiry['Enquiry']['experience'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['time_of_travel']) ? $enquiry['Enquiry']['time_of_travel'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['travel_duration']) ? $enquiry['Enquiry']['travel_duration'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['city_of_residence']) ? $enquiry['Enquiry']['city_of_residence'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['City']['name']) ? $enquiry['City']['name'] : ''; ?> </td>
+                                <td> <?php echo isset($enquiry['Enquiry']['special_requirements']) ? $enquiry['Enquiry']['special_requirements'] : ''; ?> </td>
+                                
                                 <td> <?php echo isset($enquiry['Enquiry']['created']) ? showdatetime($enquiry['Enquiry']['created']) : ''; ?> </td>
                                 <td class="actions text-center">
                                 <span class='text-left'>
