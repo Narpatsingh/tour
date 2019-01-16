@@ -72,7 +72,7 @@
             'jquery.mixitup.min',
             'jquery.fancybox.pack',
             'waypoints.min',
-            'jquery.counterup',
+            'jquery.counterup.min',
             'owl.carousel.min',
             'jquery.stellar.min',
             'bootstrap-datepicker',

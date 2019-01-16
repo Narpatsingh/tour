@@ -155,11 +155,11 @@
 	$(window).on('scroll', function() {
 	
 	//JQuery to collapse the navbar on scroll
-		if ($(".navbar").offset().top > 50) {
-			$(".navbar-fixed-top").addClass("top-nav-collapse");
-		} else {
-			$(".navbar-fixed-top").removeClass("top-nav-collapse");
-		}
+		// if ($(".navbar").offset().top > 50) {
+		// 	$(".navbar-fixed-top").addClass("top-nav-collapse");
+		// } else {
+		// 	$(".navbar-fixed-top").removeClass("top-nav-collapse");
+		// }
 		
 		
 	//=================== Back to top ===========================

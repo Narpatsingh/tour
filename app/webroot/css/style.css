@@ -95,23 +95,23 @@ p{
 	transition:all 0.35s ease-in-out;
 }
 .btn.btn-primary{
-	border:1px solid #800080;
-	background:#800080;
+	border:1px solid #1B7B98;
+	background:#1B7B98;
 	color:#fff;
 }
 .btn.btn-primary:hover{
 	background:none;
-	border-color:#800080;
-	color:#800080 ;
+	border-color:#1B7B98;
+	color:#1B7B98 ;
 }
 .btn.btn-default{
-	border:1px solid #800080;
+	border:1px solid #1B7B98;
 	background:none;
-	color:#800080;
+	color:#1B7B98;
 }
 .btn.btn-default:hover{
-	background:#800080;
-	border-color:#800080;
+	background:#1B7B98;
+	border-color:#1B7B98;
 	color:#fff;;
 }
 
@@ -170,7 +170,7 @@ section{
 	margin:0;
 }
 .navbar {
-	background:	#800080;
+	background:	#1B7B98;
 	padding: 0px 0 0px 0;
 	-webkit-transition:background .5s ease-in-out,padding .5s ease-in-out;
 	-moz-transition:background .5s ease-in-out,padding .5s ease-in-out;
@@ -187,7 +187,7 @@ section{
 	-o-box-shadow:0 -7px 12px rgba(0, 0, 0, 0.5);
 	box-shadow:0 -7px 12px rgba(0, 0, 0, 0.5);
 	/*background:rgba(0,0,0,0.85);*/
-	background: #800080;
+	background: #1B7B98;
 	/* background-color: blanchedalmond; */
 }
 .navbar > .container .navbar-brand, 
@@ -347,7 +347,7 @@ section{
 }
 .control:hover{
 	background:#fff;
-	color:#800080;
+	color:#1B7B98;
 }
 .left.control{
 	left:10px;
@@ -387,7 +387,7 @@ section{
     margin: 0 0 10px;
     vertical-align: middle;
     width: 80px;
-	color:#800080;
+	color:#1B7B98;
 	background:#fff;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -399,7 +399,7 @@ section{
 	transition:all 0.4s ease-in-out;
 }
 .service-list:hover .fa{
-	background:#800080;
+	background:#1B7B98;
 	color:#fff;
 }
 
@@ -519,9 +519,18 @@ section{
 }
 .section-title h1{
 	/*font-family: 'Dancing Script', cursive;*/
-	font-family: 'Lobster', cursive;
+	/*font-family: 'Lobster', cursive;*/
+	font-family: 'Yanone Kaffeesatz', 'sans-serif';
 	margin:0 0 5px;
-	color:#800080;
+	/*color:#1B7B98;*/
+}
+
+.section-title h1.visible-title{
+	/*font-family: 'Dancing Script', cursive;*/
+	/*font-family: 'Lobster', cursive;*/
+	font-family: 'Yanone Kaffeesatz', 'sans-serif';
+	margin:0 0 5px;
+	color:#1B7B98;
 }
 
 .tour-list{
@@ -671,7 +680,7 @@ section{
 	-moz-transform:translateX(-50%);
 	-ms-transform:translateX(-50%);
 	transform:translateX(-50%);
-	background:#800080;
+	background:#1B7B98;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
@@ -709,7 +718,7 @@ section{
 	cursor:pointer;
 }
 .discount-info a:hover{
-	color:#800080;
+	color:#1B7B98;
 }
 .tour-item span .fa{
 	color:#777;
@@ -772,7 +781,7 @@ section{
 	transition:all 0.3s ease-in-out;
 }
 .count-section li:hover .fa{
-	background:#800080;
+	background:#1B7B98;
 	color:#fff;
 }
 
@@ -791,6 +800,7 @@ section{
 	text-transform:uppercase;
 	padding:7px 20px;
 	border:1px solid #777;
+	color : #777;
 	margin:0 15px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
@@ -803,9 +813,9 @@ section{
 }
 #filter-list li.active,
 #filter-list li:hover{
-	background:#800080;
+	background:#1B7B98;
 	color:#fff;
-	border-color:#800080;
+	border-color:#1B7B98;
 }
 .gallery-item{
 	width:100%;
@@ -904,7 +914,7 @@ section{
 }
 .gallery-item a:hover{
 	background:#fff;
-	color:#800080;
+	color:#1B7B98;
 }
 .gallery-item li:hover h2,
 .gallery-item li:hover a{
@@ -938,7 +948,7 @@ section{
 	transition:all 0.5s ease-in-out;
 }
 .post:hover{
-	border-color:#800080;
+	border-color:#1B7B98;
 }
 .post-thumb{
 	width:100%;
@@ -992,7 +1002,7 @@ section{
 	height:auto;
 	background:#fff;
 	left:50%;
-	color:#800080;
+	color:#1B7B98;
 	font-size:20px;
 	width:42px;
 	line-height:42px;
@@ -1024,7 +1034,7 @@ section{
 }
 .post-by a:hover,
 .post-comments a:hover{
-	color:#800080;
+	color:#1B7B98;
 }
 .post-date{
 	font-size:14px;
@@ -1033,7 +1043,7 @@ section{
 }
 .post-comments{
 	font-size:14px;
-	color:#800080;
+	color:#1B7B98;
 	margin-left:10px;
 }
 .post:hover .overlay {
@@ -1110,14 +1120,14 @@ section{
 	display:inline-block;
 	width:12px;
 	height:12px;
-	border:1px solid #800080;
+	border:1px solid #1B7B98;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
     border-radius: 50%;
 	margin:0 5px;
 }
 .owl-dot.active{
-	background:#800080 ;
+	background:#1B7B98 ;
 }
 
 /***************** Contact Section *************************/
@@ -1178,7 +1188,7 @@ section{
 	color:inherit;
 }
 .contact-left p a:hover{
-	color:#800080;
+	color:#1B7B98;
 }
 .form-control{
 	height:50px;
@@ -1189,7 +1199,7 @@ section{
 	font-weight:300;
 }
 .form-control:focus{
-	border-color:#800080;
+	border-color:#1B7B98;
 }
 .contact-right .form-control::-moz-placeholder{
 	opacity:1;
@@ -1269,7 +1279,7 @@ section{
 	text-decoration:none;
 }
 .meta > span a:hover{
-	color:#800080;
+	color:#1B7B98;
 }
 .meta > span.date{
 	border:none;
@@ -1297,7 +1307,7 @@ blockquote{
 	color:#777;
 	font-weight:300;
 	font-style:italic;
-	border-color:#800080;
+	border-color:#1B7B98;
 	background:#faf9f9;
 }
 .post_bottom{
@@ -1333,7 +1343,7 @@ blockquote{
 	text-decoration:none;
 	color:#fff;
 	line-height:18px;
-	background:#800080;
+	background:#1B7B98;
 	border:3px solid #fff;
 	-webkit-border-radius:50%;
 	-moz-border-radius:50%;
@@ -1416,7 +1426,7 @@ blockquote{
 	font-weight:300;
 }
 .comment-list .list-inline a:hover{
-	color:#800080;
+	color:#1B7B98;
 }
 .content-block .form-control{
 	border-color:#ccc;
@@ -1442,7 +1452,7 @@ blockquote{
 .sidebar-item h3{
 	padding:0 0 7px;
 	margin:0 0 15px;
-	border-bottom:1px solid #800080;
+	border-bottom:1px solid #1B7B98;
 	font-family:"Dancing Script",cursive;
 }
 .sidebar-item .form-control{
@@ -1451,7 +1461,7 @@ blockquote{
 	color:#777;
 }
 .sidebar-item .form-control:focus{
-	border-color:#800080;
+	border-color:#1B7B98;
 }
 .sidebar-item .input-group-addon{
 	padding:0;
@@ -1465,7 +1475,7 @@ blockquote{
     height: 38px;
     padding: 0 8px;
     text-transform: uppercase;
-	background:#800080;
+	background:#1B7B98;
 }
 .category-list,
 .archive-list{
@@ -1488,8 +1498,8 @@ blockquote{
 }
 .category-list li a:hover,
 .archive-list li a:hover{
-	color:#800080;
-	border-color:#800080;
+	color:#1B7B98;
+	border-color:#1B7B98;
 }
 .tag-list li{
 	width:auto;
@@ -1510,8 +1520,8 @@ blockquote{
 }
 .tag-list li a:hover{
 	color:#fff;
-	border-color:#800080;
-	background:#800080;
+	border-color:#1B7B98;
+	background:#1B7B98;
 }
 
 #booking-form .fa{
@@ -1533,7 +1543,7 @@ blockquote{
 	float:left;
 	height:auto;
 	padding:20px 0;
-	background:#800080;
+	background:#1B7B98;
 }
 #footer h2{
 	font-family:"Dancing Script",cursive;
@@ -1563,7 +1573,7 @@ blockquote{
 }
 #footer li a:hover{
 	color:#fff;
-	background:#800080;
+	background:#1B7B98;
 }
 #footer p{
 	margin:0;
@@ -1587,7 +1597,7 @@ blockquote{
 	text-align:center;
 }
 .back-top i {
-    background: #800080 none repeat scroll 0 0;
+    background: #1B7B98 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
     font-size: 24px;
@@ -1780,6 +1790,10 @@ h3{
 }
 
 @media only screen and (max-width: 991px){
+	.india.open .mega-dropdown-menu{
+		height: 600px;
+		overflow-y: scroll;
+	}
 .navbar-nav .open .dropdown-menu {
 	position: static;
 	float: none;
@@ -1855,7 +1869,7 @@ h3{
 }
 .navbar{
 	padding:9px 0;
-	background-color: #800080 none repeat scroll 0 0;
+	background-color: #1B7B98 none repeat scroll 0 0;
 }
 .navbar-default .navbar-nav > li > a, 
 .navbar-default .navbar-nav > li > a:focus{
@@ -1881,7 +1895,7 @@ h3{
 }
 .navbar-default .navbar-toggle:focus .icon-bar, 
 .navbar-default .navbar-toggle:hover .icon-bar{
-	background-color:#800080;
+	background-color:#1B7B98;
 }
 .left.control{
 	left:0;
@@ -1928,7 +1942,7 @@ h3{
 
 .TourLogo h1{
 	font-family:'Lobster', cursive;
-	/*color: #800080;*/
+	/*color: #1B7B98;*/
 	color: #fff;
 }
 
@@ -1963,7 +1977,7 @@ h3{
 }
 .detail_inner_nav .navbar .navbar-nav .nav-item a{
 	padding: 10px 20px;
-	color: #800080;
+	color: #1B7B98;
 }
 .detail_inner_nav .navbar .navbar-nav li.nav-item:hover a{
 	margin-bottom: 3px;
@@ -1971,15 +1985,15 @@ h3{
 }
 .overview_enquiry{
 	width: 100%;
-	border: 1px solid #800080;
+	border: 1px solid #1B7B98;
 }
-.holiday_Guest input,.holiday_Guest select,
+.holiday_Guest input,
 .contact_detail input{
 	width: 45%;
 	border: none;
     outline: 0;
-    border-bottom: 1px solid #800080;
-    background: blanchedalmond;
+    border-bottom: 1px solid #1B7B98;
+    color: black;
 }
 .font-bold {
   font-weight: bold;
@@ -1988,12 +2002,18 @@ h3{
 	width: 100%;
 	border: none;
     outline: 0;
-    border-bottom: 1px solid #800080;
-    background: blanchedalmond;
+    border-bottom: 1px solid #1B7B98;
+    color: black;
 }
+.holiday_Guest select{
+	border: none;
+    outline: 0;
+    border-bottom: 1px solid #1B7B98;
+    color: black;
+} 	
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 3;
 }
 .fixed-header_inner{
@@ -2005,7 +2025,7 @@ textarea::-webkit-input-placeholder {
 .send_enquiry .btn{
 	width: 46%;
     height: 34px;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 10px;
 }
 
@@ -2045,7 +2065,7 @@ textarea::-webkit-input-placeholder {
 .padding{padding: 0; }
 
 .mx-auto h2{
-	color: #800080;
+	color: #1B7B98;
 }
 
 .detail_inner_nav nav{
@@ -2086,7 +2106,7 @@ body {
 }
 .mega-dropdown-menu .dropdown-header {
   font-size: 18px;
-  color: #800080;
+  color: #1B7B98;
   padding: 5px 60px 5px 5px;
   line-height: 30px;
   font-weight: 600;
@@ -2120,7 +2140,7 @@ body {
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover{
-	background: #800080;
+	background: #1B7B98;
 	color: #fff;
  }
 
@@ -2132,7 +2152,7 @@ body {
     z-index: 999;
  }
 .Enquiry .EnquiryBtn{
- 	background-color: #800080;
+ 	background-color: #1B7B98;
     border-radius: 25px;
     text-transform: uppercase;
     font-weight: 700;
@@ -2151,13 +2171,13 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
-    color:  #800080;
+    color:  #1B7B98;
     padding: 15px 64px !important;
     line-height: 1.625rem!important;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     outline: 0!important;
-    border: 1px solid #808080;
+    border: 1px solid #1B7B98;
     z-index: 999;
 }
 .overview_enquiry_popup{
@@ -2170,7 +2190,7 @@ body {
 	/*background: #ffebcd;*/
 	background: #fff;
     border-radius: 10px;
-    border: 1px solid #808;
+    border: 1px solid #1B7B98;
     
 }
 
@@ -2199,7 +2219,7 @@ body {
 }
 .Enquiry_header{
 	padding: 22px 17px;
-    background: #808;
+    background: #1B7B98;
     color: #fff;
     font-weight: 700;
     font-size: 17px;
@@ -2215,7 +2235,7 @@ body {
 }
 
 #ex1Slider .slider-selection {
-	background: #808;
+	background: #1B7B98;
 }
 
 @media(min-width: 991px){
@@ -2298,7 +2318,7 @@ body {
     margin-bottom: 15px;
 }
 #map{
-	background: #ececec;
+	/*background: #ececec;*/
 }
 .contact_us h2{
 	color: #888 ;
@@ -2311,6 +2331,72 @@ body {
     display: table;
     padding-top: 25px;
 }
+body .contact_form p input{
+	width: 100% !important;
+	border: 0;
+    border-bottom: 2px solid #1B7B98;
+    height: 40px;
+    border-radius: 5px;
+}
+body .contact_form p textarea{
+	width: 100%;
+	height: 150px;
+	border: 0;
+    border-bottom: 2px solid #1B7B98;
+ 	border-radius: 5px;   
+}
+.contact_form .send_btn{
+	background: #1B7B98;
+	color: #FFF;
+}
+.add_detail i{
+	font-size: 23px;
+    color: #fff;
+    background: #;
+    padding: 14px 16px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.add_detail p{
+	margin-bottom: 5px;
+}
+#map .conatc_content{
+	background: #000;
+}
+#map .section-title.text-center{
+	margin-bottom: 10px;
+}
+.bg-black{
+	background: #000;
+}
+.conatc_content .section-title.text-center .text-white{
+	color: #fff;
+}
+.add_detail p{
+	color: #fff; 
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+  padding: 0 10px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+  padding: 0 10px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+  padding: 0 10px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+  padding: 0 10px;
+}
+
+section#home{
+	padding: 0;
+}
+
 .bg-white{
 background:white !important;
 }

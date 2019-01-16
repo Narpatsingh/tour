@@ -246,14 +246,15 @@ class UsersController extends AppController {
         $this->loadModel('Tour');
         $this->loadModel('State');
         $this->loadModel('City');
+        $this->loadModel('Hotel');
         //if ($this->Session->read('Auth.User.id')) {
+            $hotels = $this->Hotel->find('all');
             $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
             $cities = $this->City->find('list');
-            // debug($states );exit;
             $specials = $this->Tour->find('all', array('contain' => false,'conditions' => array('Tour.type' => '1')));
             $hots = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '2')));
             $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
-            $this->set(compact('specials','hots','discounts','states','cities'));
+            $this->set(compact('specials','hots','discounts','states','cities','hotels'));
         // }else{
         //     return $this->redirect(array('controller'=>'users','action' => 'maintainace')); 
         // } 
@@ -422,61 +423,6 @@ class UsersController extends AppController {
         return $response;
     }
 
-    public function getDashboardData()
-    {
-        $user_id = $this->Session->read('user_id') ;
-        $start_date = $this->Session->read('start_date');
-        $end_date = $this->Session->read('end_date');
-
-        $this->layout = false;
-        $this->autoRender = false;
-        //Get Data for Dashboard
-        $arrData = array();
-        $keyArray = array('Posts_Found','EPI_Offending_Accounts','DEF_Offending_Accounts','GHI_Offending_Accounts');
-        $keyDomainArray = array('DEF_Offending_Domains','GHI_Offending_Domains');
-
-        $arrData['vvip']['fake_account_found'] = $this->SocialMediaDetail->getFakeAccountsFound($user_id,$start_date,$end_date,'VVIP_Fake_Accounts');
-        $arrData['abc']['fake_account_found'] = $this->SocialMediaDetail->getFakeAccountsFound($user_id,$start_date,$end_date,'Posts_Found');
-        $arrData['epi']['fake_account_found'] = $this->SocialMediaDetail->getFakeAccountsFound($user_id,$start_date,$end_date,'EPI_Offending_Accounts');
-        $arrData['def']['fake_account_found'] = $this->SocialMediaDetail->getFakeAccountsFound($user_id,$start_date,$end_date,'DEF_Offending_Accounts');
-        $arrData['ghi']['fake_account_found'] = $this->SocialMediaDetail->getFakeAccountsFound($user_id,$start_date,$end_date,'GHI_Offending_Accounts');
-        $arrData['def']['key_posts'] = $this->KeyPost->getKeyPosts($user_id,$start_date,$end_date,'DEF_Key_Posts');
-        $arrData['ghi']['key_posts'] = $this->KeyPost->getKeyPosts($user_id,$start_date,$end_date,'GHI_Key_Posts');
-
-        $arrData['epi']['offending_domains'] = $this->OffendingDomain->getOffendingDomainByMonth($user_id,$start_date,$end_date,'EPI_Offending_Domains');
-        $arrData['def']['offending_domains'] = $this->OffendingDomain->getOffendingDomainByMonth($user_id,$start_date,$end_date,'DEF_Offending_Domains');
-        $arrData['ghi']['offending_domains'] = $this->OffendingDomain->getOffendingDomainByMonth($user_id,$start_date,$end_date,'GHI_Offending_Domains');
-
-        $arrData['abc']['domain_discovered'] = $this->DomainsDiscovered->getDomainDiscoveredByMonth($user_id,$start_date,$end_date,'Domains_Discovered');
-
-        foreach ($keyArray as $key => $value)
-        {
-           // $arrData[$value] = $this->SocialMediaDetail->getOffendingAccounts($user_id,date('Y-01-01'),date('Y-m-d'),$value);
-            $arrData[$value] = $this->SocialMediaDetail->getOffendingAccounts($user_id,date('Y-01-01'),$end_date,$value);
-        }
-
-        foreach ($keyDomainArray as $key => $value) 
-        {
-            $arrData[$value] = $this->OffendingDomain->getOffendingDomains($user_id,date('Y-01-01'),date('Y-m-d'),$value);
-        }
-        
-        $arrData['Domain_discovered'] = $this->DomainsDiscovered->getDomainDiscoveredCounts($user_id,$this->getYTD(),$this->getMTD(),$start_date,$end_date,'Domains_Discovered');
-        $arrData['Fake_Accounts_Found'] = $this->SocialMediaDetail->getTotalFakeAccountsFound($user_id,$start_date,$end_date);
-        $arrData['EPI_Offending_Domain'] = $this->OffendingDomain->getEPIOffendingDomains($user_id,$start_date,$end_date,'EPI_Offending_Domains');
-        $arrData['Keywords_Monitored'] = $this->KeywordMonitored->getKeywordsMonitored($user_id,$start_date,$end_date);
-        $arrData['Contact_Information'] = $this->ContactInformation->getContactInformation($user_id,$start_date,$end_date);
-        //$arrData['reported_shutdown'] = $this->OffendingDomain->getReportedShutdown($user_id,$start_date,$end_date,'Fake_Accounts_Reported_Shutdown');
-        $arrData['reported_shutdown'] = $this->SocialMediaDetail->getReportedShutdown($user_id,$start_date,$end_date,'VVIP_Fake_Accounts');
-        
-        $arrData['report'] = $this->Report->getReports($user_id,date('Y-01-01'),date('Y-m-d'));
-        $arrData['ticket'] = $this->Ticket->getTickets($user_id,date('Y-01-01'),date('Y-m-d'));
-        $arrData['start'] = $start_date;
-        $arrData['end'] = $end_date;
-        //echo "<pre>";print_r($arrData);exit;
-        echo json_encode($arrData, JSON_NUMERIC_CHECK);
-        exit;
-    }
-
     public function activateUser($userId = NULL)
     {
         if(!empty($userId))
@@ -498,132 +444,13 @@ class UsersController extends AppController {
         return $this->redirect($this->Auth->loginRedirect);
     }
 
-    public function getYTD(){
-        $start_date = date('Y-m-d',strtotime(date('Y-01-01')));
-        $enddate = date('Y-m-d');
-        $date['start_date'] = $start_date;
-        $date['end_date'] = $enddate;
-        return $date;
-    }
-    public function getMTD(){
-        $start_date = date('Y-m-d',strtotime(date('Y-m-01')));
-        $enddate = date('Y-m-d');
-        $date['start_date'] = $start_date;
-        $date['end_date'] = $enddate;
-        return $date;
-    }
-
-    public function setDate(){
-//        if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
-//            $this->Session->write('user_id',$this->params['pass'][0]) ;
-//        }else{
-//            $this->Message->setWarning(__('Please select user'));
-//            return $this->redirect(array('action' => 'index'));
-//        }
-        if (isset($_POST['from_date']) && !empty($_POST['from_date'])) {
-            $this->Session->write('start_date',$_POST['from_date']) ;
-        }
-        if (isset($_POST['to_date']) && !empty($_POST['to_date'])) {
-            $this->Session->write('end_date',$_POST['to_date']) ;
-        }
-        return $this->redirect(array('action' => 'dashboard'));
-    }
-
-    public function showDashboardData($table_name, $ref_type, $ref_field_name = NULL)
+    public function site_status($value='')
     {
-        $this->layout = false;
-        $this->loadModel('Monitoring');
-        $this->loadModel('Vvip');
-
-        $user_id = $this->Session->read('user_id') ;
-        $start_date = $this->Session->read('start_date');
-        $end_date = $this->Session->read('end_date');
-        $monitoringData = array();
-        $field =null;
-        $field_values =null;
-        if($ref_field_name=="ytd")
-        {
-            $start_date = date("Y-m-d", strtotime('first day of January '.date('Y') ));
-            $end_date = date("Y-m-d", strtotime('last day of December '.date('Y') ));
-            $ref_field_name = NULL;
-        }
-        if($ref_field_name=="mtd")
-        {
-            $start_date = date('Y-m-d', strtotime('first day of this month')) ;
-            $end_date = date('Y-m-d', strtotime('last day of this month')) ;
-            $ref_field_name = NULL;
-        }
-
-        if($table_name=="SocialMediaDetail" && in_array($ref_field_name,['reported','shutdown']))
-        {
-            $field ='field4';
-            $field_values =$ref_field_name;
-            $ref_field_name = NULL;
-        }
-        if($table_name=="OffendingDomain" && in_array($ref_field_name,['reported','blocked']))
-        {
-            $field ='field2';
-            $field_values =$ref_field_name;
-            $ref_field_name = NULL;
-        }
-        $reference = array(
-            'reference_type' => $ref_type,
-            'field_ref_name' => $ref_field_name,
-            'field' => $field,
-            'field_values' => $field_values
-        );
-
-        $arrData = $this->getPrimaryId($table_name,$user_id, $start_date, $end_date, $ref_type,$ref_field_name);
-        
-        if(!empty($arrData)){
-            $monitoringData = $this->Monitoring->getMonitoringData($arrData, $reference);
-        }
-       
-        $vvips = $this->Vvip->getvvipList($user_id);
-		
-		$this->set(compact('monitoringData','ref_type','vvips','ref_field_name'));
-		$this->render('monitoring_data');
-		        
-		//$htmlDataTable = $this->render('/Elements/user/process_files')->body();
-    }
-
-    function getPrimaryId($table_name, $user_id, $start_date, $end_date, $ref_type,$ref_field_name=null)
-    {
-        $ids = array();
-        $conditions = array('user_id'=>$user_id,'date >=' => $start_date,'date <=' => $end_date);
-        if($table_name!="DomainsDiscovered"){
-            $conditions['type']=$ref_type;
-        }
-        
-        $data = $this->$table_name->find('all',array('fields'=>array('id'),'conditions'=>$conditions));
-
-        if(!empty($data))
-        {
-            foreach($data as $values)
-            {
-                $ids[]= $values[$table_name]['id'];
-            }
-        }
-        return $ids;
-    }
-
-    public function showDomainTrackData($table_name, $ref_type)
-    {
-        $this->layout = false;
-        $user_id = $this->Session->read('user_id') ;
-        $start_date = $this->Session->read('start_date');
-        $end_date = $this->Session->read('end_date');
-        $conditions = array('user_id'=>$user_id,'date >=' => $start_date,'date <=' => $end_date,'type'=>$ref_type);
-		if(in_array($table_name,array('Vvip'))){
-			$conditions = array('user_id'=>$user_id);
-		}
-        
-        $domainData = $this->$table_name->find("all",array(
-            'conditions' => $conditions,'recursive'=>-1
-        ));
-		
-        $this->set(compact('domainData'));
-        $this->render('domain_track_data');
+        $this->loadModel('SiteConfig');
+        $this->SiteConfig->updateAll(array('value' => "'" . $value . "'"), array('key' => 'Site.Status'));
+        $this->Message->setSuccess(__('Site status is changed.'));
+        Cache::delete('siteConfig');
+        return $this->redirect($this->Auth->loginRedirect);
     }
 
 

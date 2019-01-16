@@ -26,7 +26,7 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active">
-                                <a class="page-scroll" href="#page-top">Home</a>
+                                <a class="page-scroll" href="#home">Home</a>
                             </li>
                             <li class="dropdown mega-dropdown india">
                                 <a href="Citypackage.php" target="_blank" class="dropdown-toggle" data-toggle="dropdown">India <span class="caret"></span></a>              
@@ -103,70 +103,46 @@
         <!-- /.container -->
     </nav>
 <!-- Banner Section -->
-    <div id="banner" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active" style="background-image:url(img/slider/1.jpg);">
-                <div class="caption-info">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                                <div class="caption-info-inner text-center">
-                                    <h1 class="animated fadeInDown">Goa</h1>
-                                    <p class="animated fadeInUp">Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                                    <a href="#packages" class="animated fadeInUp btn btn-primary page-scroll">View Packages</a>
-                                </div>
-                            </div>
-                        </div>
+    <section id="home"> 
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="img/slider/1.jpg" alt="slider">                       
+                    <div class="carousel-caption">
+                        <h2>register for our next event </h2>
+                        <h4>full event package only @$199</h4>
+                        <a href="#contact">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="item" style="background-image:url(img/slider/2.jpg);">
-                <div class="caption-info">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                                <div class="caption-info-inner text-center">
-                                    <h1 class="animated zoomIn">Kerala</h1>
-                                    <p class="animated zoomIn">Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                                    <a href="#packages"  class="animated zoomIn btn btn-primary page-scroll">View Packages</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="item">
+                    <img class="img-responsive" src="img/slider/2.jpg" alt="slider">
+                    <div class="carousel-caption">
+                        <h2>register for our next event </h2>
+                        <h4>full event package only @$199</h4>
+                        <a href="#contact">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="item" style="background-image:url(img/slider/3.jpg);">
-                <div class="caption-info">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                                <div class="caption-info-inner text-center">
-                                    <h1 class="animated fadeInLeft">Dubai</h1>
-                                    <p class="animated fadeInLeft">Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                                    <a href="#packages" class="animated fadeInLeft btn btn-primary page-scroll">View Packages</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="item">
+                    <img class="img-responsive" src="img/slider/3.jpg" alt="slider">
+                    <div class="carousel-caption">
+                        <h2>register for our next event </h2>
+                        <h4>full event package only @$199</h4>
+                        <a href="#contact" >GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
                     </div>
-                </div>
+                </div>              
             </div>
-        
-        </div><!--end carousel-inner-->
-        
-        
-        <!-- Controls -->
-        <a class="control left" href="#banner" data-slide="prev"><i class="fa fa-long-arrow-left"></i></a>
-        <a class="right control" href="#banner" data-slide="next"><i class="fa fa-long-arrow-right"></i></a>
-    </div>
+        </div>      
+    </section>
     <!--end Banner-->
     
     
     <!-- Packages Section -->
-    <section id="packages" class="inverse">
+    <section id="packages" class="inverse" style="background-image: url(images/bg_img/performar-bg.jpg);background-position: 50% 0; background-size: contain; position: relative;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -202,12 +178,12 @@
     <!-- end Packages -->
     
     <!-- Hot Deals Section -->
-    <section id="hot-deals">
+    <section id="hot-deals" >
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Hot Deals</h1>
+                        <h1 class="visible-title">Hot Deals</h1>
                     </div>
                 </div>
             </div>
@@ -239,7 +215,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Deals and Discounts</h1>
+                        <h1 class="visible-title">Deals and Discounts</h1>
                     </div>
                 </div>
             </div>
@@ -312,7 +288,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Gallery</h1>
+                        <h1 class="visible-title">Gallery</h1>
                     </div>
                 </div>
             </div>
@@ -330,14 +306,14 @@
         </div>
         
         <ul class="gallery-item">
-            <?php for ($x = 1; $x <= 3; $x++) { ?>
+            <?php foreach ($hotels as $key => $hotel) {  ?>
             <li class="gallery hotels">
                 <div class="thumb">
-                    <img src="img/gallery/1.jpg" alt="" />
+                    <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
                     <div class="gallery-overlay">
                         <div class="gallery-overlay-inner">
-                            <h2>Gallery <?php echo $x; ?></h2>
-                            <a href="img/gallery/1.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
+                            <h2><?php echo $hotel['Hotel']['name']; ?></h2>
+                            <a href="<?php echo $hotel['Hotel']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
                         </div>
                     </div>
                 </div><!--end post thumb-->
@@ -376,7 +352,7 @@
     <!-- end gallery-->
     
     <!-- Blog Section -->
-    <section id="blog" class="inverse">
+    <section id="blog" class="inverse" style="background-image: url(images/bg_img/performar-bg.jpg);background-position: 50% 0; background-size: contain; position: relative;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -526,66 +502,73 @@
     
     <!-- Testimonials Section -->
     <section id="testimonials">
-        <div class="container">
+        <div id="twitter-feed" class="carousel slide" data-interval="false">
+            <div class="twit">
+                <img class="img-responsive" src="images/bg_img/twit.png" alt="twit">
+            </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title text-center">
-                        <h1>What our clients say?</h1>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="text-center carousel-inner center-block">
+                        <div class="item active">
+                            <img src="img/no-image.png" alt="">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        </div>
+                        <div class="item">
+                            <img src="img/no-image.png" alt="">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        </div>
+                        <div class="item">
+                            <img src="img/no-image.png" alt="">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                        </div>
                     </div>
+                    <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                    <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                    <div class="owl-carousel" id="testimonial-carousel">
-                        <div class="testimonial-item text-center">
-                            <i class="fa fa-quote-left"></i>
-                            <div class="author-comments">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            </div>
-                            <div class="designation">
-                                Username - <strong>Company</strong>
-                            </div>
-                            <div class="author">
-                                <img src="img/no-image.png" alt="" />
-                            </div>
-                        </div>
-                        
-                        <div class="testimonial-item text-center">
-                            <i class="fa fa-quote-left"></i>
-                            <div class="author-comments">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            </div>
-                            <div class="designation">
-                                Username - <strong>Company</strong>
-                            </div>
-                            <div class="author">
-                                <img src="img/no-image.png" alt="" />
-                            </div>
-                        </div>
-                        
-                        <div class="testimonial-item text-center">
-                            <i class="fa fa-quote-left"></i>
-                            <div class="author-comments">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            </div>
-                            <div class="designation">
-                                Username - <strong>Company</strong>
-                            </div>
-                            <div class="author">
-                                <img src="img/no-image.png" alt="" />
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </section>
     <!--end testimonials-->
-    <section id="map" class="no-padding" style='width:100%'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <section id="map">
+        <div class="conatc_content">
+            <div class="col-md-12">
+                <div class="row mb-3"  style="background-image: url(images/bg_img/bg1.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+                    <div class="section-title text-center">
+                        <h1 class="text-white">Conact Us </h1>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="add_detail text-center">
+                            <i class="fa fa-home"></i>
+                            <p class="text-white">Shakti - 2 opp.sudarshan Bunglow  Nr.Europen catalog 
+                            Ahmedabad - 380015 </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="add_detail text-center">
+                            <i class="fa fa-phone"></i>
+                            <p class="text-white">+91 9876543210</p>
+                            <p class="text-white">+91 9513578520</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="add_detail text-center">
+                            <i class="fa fa-envelope"></i>
+                            <p class="text-white">TestABc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                
+            </div>
+        </div>
+        
+        <div  class="no-padding" style='width:100%'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
     </section>
 <script type="text/javascript">
     $(document).ready(function(){

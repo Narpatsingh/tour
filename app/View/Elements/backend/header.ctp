@@ -2,6 +2,8 @@
 <header class="header">
     <div class="setCenterText">
         <?php echo Configure::read("Site.Name");?>
+        <input id="toggle-event" type="checkbox" data-toggle="toggle" class="pull_right">
+        <input type="hidden" id="activeStatus" value='<?php echo Configure::read("Site.Status"); ?>'/></td>
     </div>
 
     <?php
@@ -70,3 +72,32 @@
         </div>
     </nav>
 </header>
+<script>
+  $(function() {
+    $('#toggle-event').change(function() {
+        console.log($(this).prop('checked'))
+        $('#console-event').html('Toggle: ' + $(this).prop('checked'));
+        var status = $(this).prop('checked');
+        alert(status);
+        jQuery.ajax({
+            url : '<?php echo Router::url(array('controller' => 'users', 'action' => 'site_status'), true);?>/' + status,
+            type: 'post',
+            success: function (response) {
+                
+            },
+            error: function (e) {
+            }
+        });
+    })
+  });
+$(document).ready(function() {
+
+    if ($('#activeStatus').val().trim() == 'true') {
+        $(".toggle-on").addClass('active');
+        $(".toggle-off").removeClass('active');
+    } else if ($('#activeStatus').val().trim() == 'false') {
+        $(".toggle-off").addClass('active');
+        $(".toggle-on").removeClass('active');
+    }
+    });  
+</script>

@@ -12,6 +12,7 @@ class AppController extends Controller
         'Paginator',
         'Message',
         'SendEmail',
+        'Siteconfig',
         'AutoPaginate' => array('options' => array(10, 20, 50, 100, 250), 'defaultLimit' => 10)
     );
     public $helpers = array(
@@ -25,7 +26,7 @@ class AppController extends Controller
         parent::beforeFilter();
         if(!$this->Session->check('Auth.User.id')){
             $this->layout = 'login';
-        }
+        }     
 		$this->set('users', ClassRegistry::init("User")->getOnlyUserList()); //Set User List
     }
 
