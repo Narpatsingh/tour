@@ -142,7 +142,7 @@
     
     
     <!-- Packages Section -->
-    <section id="packages" class="inverse" style="background-image: url(images/bg_img/performar-bg.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+    <section id="packages" class="inverse" style="background-image: url(images/bg_img/bg3.jpg);background-position: 50% 0; background-size: contain; position: relative;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -210,12 +210,12 @@
     <!--end hot-deals-->
     
     <!-- Deals and Discounts -->
-    <section id="deals-discounts" class="inverse">
+    <section id="deals-discounts" class="inverse" style="background-image: url(images/bg_img/bg4.jpg);background-position: 50% 0; background-size: contain; position: relative;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1 class="visible-title">Deals and Discounts</h1>
+                        <h1>Deals and Discounts</h1>
                     </div>
                 </div>
             </div>
@@ -352,7 +352,7 @@
     <!-- end gallery-->
     
     <!-- Blog Section -->
-    <section id="blog" class="inverse" style="background-image: url(images/bg_img/performar-bg.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+    <section id="blog" class="inverse" style="background-image: url(images/bg_img/bg5.jpg);background-position: 50% 0; background-size: contain; position: relative;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -502,42 +502,44 @@
     
     <!-- Testimonials Section -->
     <section id="testimonials">
-        <div id="twitter-feed" class="carousel slide" data-interval="false">
-            <div class="twit">
-                <img class="img-responsive" src="images/bg_img/twit.png" alt="twit">
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="text-center carousel-inner center-block">
-                        <div class="item active">
-                            <img src="img/no-image.png" alt="">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+        <div class="container">
+            <div id="twitter-feed" class="carousel slide" data-interval="false">
+                <!-- <div class="twit">
+                    <img class="img-responsive" src="images/bg_img/twit.png" alt="twit">
+                </div> -->
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="text-center carousel-inner center-block">
+                            <div class="item active">
+                                <img src="img/no-image.png" alt="">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                            </div>
+                            <div class="item">
+                                <img src="img/no-image.png" alt="">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                            </div>
+                            <div class="item">
+                                <img src="img/no-image.png" alt="">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
+                            </div>
                         </div>
-                        <div class="item">
-                            <img src="img/no-image.png" alt="">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
-                        </div>
-                        <div class="item">
-                            <img src="img/no-image.png" alt="">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
-                        </div>
+                        <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                        <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
-                    <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                    <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
-        </div>
+        </div>    
     </section>
     <!--end testimonials-->
     <section id="map">
         <div class="conatc_content">
             <div class="col-md-12">
                 <div class="row mb-3"  style="background-image: url(images/bg_img/bg1.jpg);background-position: 50% 0; background-size: contain; position: relative;">
-                    <div class="section-title text-center">
-                        <h1 class="text-white">Conact Us </h1>
+                    <div class="section-title text-center" style="padding: 15px;">
+                        <h1 class="text-white">CONTACT US</h1>
                     </div>
                     <div class="col-sm-4 col-md-4">
                         <div class="add_detail text-center">
@@ -570,7 +572,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </section>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function(){
     $(".dropdown").hover(            
       function() {
@@ -583,4 +585,4 @@
       }
       );
   });
-</script>
+</script> -->

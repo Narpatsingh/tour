@@ -28,7 +28,7 @@
                     'new_css/animate.css',
                     'new_css/responsive.css',
                     'style',
-                    // 'new_css/font-awesome.min.css',
+                    'new_css/font-awesome.min.css',
                 ), array('inline' => false)
         );
         echo $this->fetch('css');

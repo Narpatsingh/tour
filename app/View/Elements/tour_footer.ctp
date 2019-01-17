@@ -6,11 +6,13 @@
 
    <div class="modal fade commonModel" id="commonModel" tabindex="-1" role="dialog">
         <div class="modal-dialog">
+            <button type="button" class="close" data-dismiss="modal" style="padding: 10px;">&times;</button>
             <div class="modal-header Enquiry_header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
               <h4 class="modal-title">Quick Enquiry</h4>
+              <h5 class="modal-title">Can't find what you are looking for? Send us an enquiry and we will get in touch with you in 1 day.</h5>
             </div>
-            <div class="modal-body bg-white">
+            <div class="modal-body bg-white audit-scroll">
                     <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
 
                             <div class="holiday_Guest mt-3 mb-3 px-3 py-3">

@@ -104,19 +104,20 @@
 
           <div class="col-xs-12">
             <?php foreach ($tour as $key => $value) {  ?>
-              <div class="tour-item">
-                  <div class="thumb">
-                    <?php echo $this->Html->image($value['Tour']['img']); ?>
-                  </div>
-                  <div class="discount-info">
-                      <div class="price-info">
-                          <span class="sale-price">&#x20b9;<?php echo $value['Tour']['price']; ?></span>
-                      </div>
-                      <h3><?php echo $value['City']['name']; ?></h3>
-                      <p><?php echo $value['Tour']['description']; ?></p>
-                     <?php echo $this->Html->link(__('View Details'.'<i class="fa fa-long-arrow-right"></i>'), array('controller' => 'tours', 'action' => 'details',$value['Tour']['id']),array('escape' => false)); ?>
-                      <!-- <a href="tours/details/<?php echo $value['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a> -->
-                  </div>
+              <div class="col-xs-6 col-sm-4 col-md-4">
+                <div class="tour-item">
+                    <div class="thumb">
+                      <?php echo $this->Html->image($value['Tour']['img']); ?>
+                    </div>
+                    <div class="discount-info">
+                        <div class="price-info">
+                            <span class="sale-price">&#x20b9;<?php echo $value['Tour']['price']; ?></span>
+                        </div>
+                        <h3><?php echo $value['City']['name']; ?></h3>
+                        <p><?php echo $value['Tour']['description']; ?></p>
+                       <?php echo $this->Html->link(__('View Details'.'<i class="fa fa-long-arrow-right"></i>'), array('controller' => 'tours', 'action' => 'details',$value['Tour']['id']),array('escape' => false)); ?>
+                    </div>
+                </div>
               </div>
             <?php } ?> 
           </div>
@@ -125,7 +126,7 @@
       <div class="col-md-3">
         <div class="filter">
           <div class="col-md-12 col-lg-12 col-xl-12">
-            <!-- <div class="row">
+            <div class="row">
               <div class="col-md-6 pull-left">
                <span> Filter your search</span>
               </div>
@@ -154,7 +155,7 @@
                   <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                 </div>
               </div>
-            </div> -->
+            </div>
         </div>
       </div>
     </div>
