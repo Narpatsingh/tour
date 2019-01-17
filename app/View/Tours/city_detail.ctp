@@ -92,7 +92,7 @@
     <div class="row">
       <div class="col-xs-12">
        <div class="section-title text-center">
-          <h1>India</h1>
+          <h1 class="visible-title">India</h1>
       </div>
     </div>
   </div>
@@ -106,7 +106,7 @@
             <?php foreach ($tour as $key => $value) {  ?>
               <div class="tour-item">
                   <div class="thumb">
-                    <?php echo $this->Html->image('../'.$value['Tour']['img']); ?>
+                    <?php echo $this->Html->image($value['Tour']['img']); ?>
                   </div>
                   <div class="discount-info">
                       <div class="price-info">
@@ -114,7 +114,8 @@
                       </div>
                       <h3><?php echo $value['City']['name']; ?></h3>
                       <p><?php echo $value['Tour']['description']; ?></p>
-                      <a href="tours/details/<?php echo $value['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
+                     <?php echo $this->Html->link(__('View Details'.'<i class="fa fa-long-arrow-right"></i>'), array('controller' => 'tours', 'action' => 'details',$value['Tour']['id']),array('escape' => false)); ?>
+                      <!-- <a href="tours/details/<?php echo $value['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a> -->
                   </div>
               </div>
             <?php } ?> 
@@ -124,7 +125,7 @@
       <div class="col-md-3">
         <div class="filter">
           <div class="col-md-12 col-lg-12 col-xl-12">
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6 pull-left">
                <span> Filter your search</span>
               </div>
@@ -153,7 +154,7 @@
                   <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                 </div>
               </div>
-            </div>
+            </div> -->
         </div>
       </div>
     </div>

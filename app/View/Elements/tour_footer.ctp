@@ -35,6 +35,7 @@
              <div class="modal-footer bg-white">
                  <div class="send_enquiry mt-3 mb-3 px-3 py-3">
                     <?php echo $this->Form->submit(__('Send Enuiry'), array('class' => 'btn btn-primary btn-sm', 'div' => false)); ?>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                  </div>                
              </div>       
                 <?php echo $this->Form->end(); ?> 

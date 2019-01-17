@@ -3,7 +3,7 @@ if(Configure::read("Site.Status") == 'false'){ ?>
 <!doctype html>
 <title>Site Maintenance</title>
 <style>
-  body { text-align: center; }
+  body { text-align: center;background: #1B7B98; }
   h1 { font-size: 50px;color: gold; }
   body { font: 20px Helvetica, sans-serif; color: #333; }
   article { display: block; text-align: left; width: 650px; margin: 0 auto; }

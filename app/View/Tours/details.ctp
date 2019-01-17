@@ -111,8 +111,8 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-8 mx-auto">
+            <h2>Overview</h2>
             <p class="lead">
-               <h2>Overview</h2>
                <?php echo $tour['Tour']['description'];?>
             </p>
          </div>
