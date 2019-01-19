@@ -31,3 +31,7 @@ ALTER TABLE `bus_details` ADD `source` VARCHAR(150) NOT NULL AFTER `pnr_no`, ADD
 ALTER TABLE `bus_details` ADD `booking_type` ENUM('single','whole') NOT NULL DEFAULT 'single' AFTER `customer_id`, ADD `member` INT NULL AFTER `booking_type`;
 
 ALTER TABLE `enquiries` ADD `time_of_travel` VARCHAR(150) NOT NULL AFTER `number_of_guest`, ADD `travel_duration` VARCHAR(150) NOT NULL AFTER `time_of_travel`, ADD `city_of_residence` VARCHAR(250) NOT NULL AFTER `travel_duration`, ADD `destination` INT NOT NULL COMMENT 'city_id' AFTER `city_of_residence`, ADD `special_requirements` VARCHAR(150) NOT NULL AFTER `destination`;
+
+'login' => 'silshlrp',
+'password' => '6+lL2*4dT3jR2?1e',
+'database' => 'silshlrp_tour',
