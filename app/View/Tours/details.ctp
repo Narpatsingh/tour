@@ -322,7 +322,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/1.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/1.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
@@ -342,7 +342,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/2.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/2.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
@@ -362,7 +362,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/3.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/3.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
@@ -382,7 +382,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/4.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/4.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
@@ -402,7 +402,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/5.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/5.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
@@ -422,7 +422,7 @@
             <div class="post wow fadeInUp">
                <div class="post-thumb">
                   <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>/img/blog/6.jpg" alt="" />
+                     <img src="<?php echo $this->webroot;?>img/blog/6.jpg" alt="" />
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
