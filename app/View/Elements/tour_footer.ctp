@@ -19,9 +19,9 @@
                                 <input type="text" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
                                 <input type="text" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
                                 <input type="text" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3" required>
-                                <input type="text" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3" required>
-                                <?php echo $this->Form->input('city_id',array('label' => false, 'class' => 'mr-3 mb-3','empty' => __('Select City'), 'div' => false)); ?>
-                                <input type="text" name="destination" placeholder="Destination" class="mr-3 mb-3" required>
+                                <input type="text" name="travel_duration" placeholder="Travel Duration" class="mb-3" required>
+                                <?php echo $this->Form->input('city_id',array('label' => false, 'class' => 'mr-3 mb-3','style'=>'width: 50%;','empty' => __('Select City'), 'div' => false)); ?>
+                                <input type="text" name="destination" placeholder="Destination" style="width: 100%;" class="mr-3 mb-3" required>
                                 <textarea name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
                                 <textarea name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements" required></textarea>
                             </div>

@@ -17,8 +17,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand page-scroll TourLogo" href="index.php">
-                            <h1>Silshine Trip</h1>
+                        <a class="navbar-brand page-scroll TourLogo" href="/">
+                            <?php
+                                echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display','style'=>'height: 50px;width: 220px;'));
+                            ?>
+                            <!-- <h1>Silshine Trip</h1> -->
                         </a>
                     </div>
 
@@ -142,12 +145,12 @@
     
     
     <!-- Packages Section -->
-    <section id="packages" class="inverse" style="background-image: url(images/bg_img/bg3.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+    <section id="packages" class="inverse">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Special Packages</h1>
+                        <h1 class="visible-title">Special Packages</h1>
                     </div>
                 </div>
             </div>

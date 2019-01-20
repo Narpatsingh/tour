@@ -132,3 +132,27 @@
 .field-container{
 	position:relative;
 }
+.profile_custom_content{
+	box-shadow : 0 0 5px rgba(144,144,144,.5);
+	border-radius: 5px;
+	min-height: 170px;
+	margin: 20px 5px 0 0px;
+}
+
+@media(max-width: 480px){
+	.right-side .content-header .top-links.custom_top_links{
+		float: right;
+		margin-top: 5px !important;
+	}	
+	.right-side .content-header .top-links.custom_top_links > a{
+		margin-right: 5px;
+	}
+	.skin-blue .right-side .content-header.custom_content_header{
+		height: auto;
+	}
+}
+@media(max-width: 767px){
+	header.header a.logo img.custom_logo{
+		max-width: 80px !important;
+	}
+}

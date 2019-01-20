@@ -49,12 +49,12 @@
                     $.removeCookie('sidebar', {path: '/'});
                 }
             });
-			<?php if(!empty($dashboard)){?>			
-				jQuery(".content-header").remove();
-				jQuery(".content-crumb ").remove();
-				jQuery('.sidebar-offcanvas').addClass('collapse-left')
-				jQuery('.right-side').addClass('strech')
-			<?php }?>
+            <?php if(!empty($dashboard)){?>         
+                jQuery(".content-header").remove();
+                jQuery(".content-crumb ").remove();
+                jQuery('.sidebar-offcanvas').addClass('collapse-left')
+                jQuery('.right-side').addClass('strech')
+            <?php }?>
         });
 
     </script>
@@ -73,20 +73,20 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <?php echo $this->element('backend/admin_left') ?>
     <aside class="right-side <?php echo !empty($sideBarCheck) ? 'strech' : '' ?>">
-        <section class="content-header">
+        <section class="content-header custom_content_header">
             <h1 class="pageTitleH1"><?php echo $this->fetch('pagetitle'); ?></h1>
 
-            <div class="top-links">
+            <div class="top-links custom_top_links">
                 <?php echo $this->fetch('top_links'); ?>
             </div>
             <div class="clearfix"></div>
         </section>
         <section class="content-crumb">
-		<?php echo $this->Custom->getCrumbs('', array(
+        <?php echo $this->Custom->getCrumbs('', array(
             'text' => '<i class="fa fa-home"></i> Home',
             'url' => array('controller' => 'users', 'action' => 'dashboard')
         )); ?>
-		</section>
+        </section>
         <section class="content content-breadcrumb">
             <?php echo $this->Session->flash(); ?>
             <?php echo $this->fetch('content'); ?>

@@ -1,8 +1,8 @@
 <?php
 function getLogo($logoName = null, $thumb = false)
 {
-    //return "/img/logo.png";
-    return "/img/" . NO_IMAGE;
+    return "/img/logo.png";
+    //return "/img/" . NO_IMAGE;
 }
 
 function getPhoto($id = null, $photo = null, $dirpath = PROFILE_IMAGE, $dir = false, $thumb = false)
