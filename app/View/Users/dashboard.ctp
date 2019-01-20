@@ -19,9 +19,9 @@
                         </button>
                         <a class="navbar-brand page-scroll TourLogo" href="/">
                             <?php
-                                echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display','style'=>'height: 50px;width: 220px;'));
+                                echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
                             ?>
-                            <!-- <h1>Silshine Trip</h1> -->
+                            <p class="site_name">Silshine Trip</p>
                         </a>
                     </div>
 

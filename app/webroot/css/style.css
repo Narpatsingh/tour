@@ -239,7 +239,8 @@ section{
 	background:none;
 }
 .navbar-right{
-	margin:0;
+	margin:15px 0px 0px 0px;
+	margin-bottom: -15px;
 }
 
 /************************* Banner Design ***************/
@@ -513,7 +514,7 @@ section{
 	width:100%;
 	float:left;
 	height:auto;
-	margin:0 0 50px;
+	/*margin:0 0 50px;*/
 	padding-bottom:25px;
 	background:url(../img/icon/icon.png) no-repeat center bottom;
 }
@@ -2417,4 +2418,13 @@ background:white !important;
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: 1.2;
-}    
+}  
+
+.silshine_logo{
+	height: 36px;
+    width: 90px;
+}  
+.site_name{
+	margin:0px;
+	color: #fff;
+}

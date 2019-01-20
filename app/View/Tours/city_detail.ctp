@@ -17,8 +17,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll TourLogo" href="index.php">
-              <h1>Silshine Trip</h1>
+            <a class="navbar-brand page-scroll TourLogo" href="/">
+              <?php
+                  echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
+              ?>
+              <p class="site_name">Silshine Trip</p>
             </a>
           </div>
 
