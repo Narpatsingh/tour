@@ -97,6 +97,7 @@ define('PDF_PATH', '/files/pdf/');
 define('PDF_FILE', '/file.pdf');
 define('LOGO_IMAGE', '/files/logo/');
 define('USER_IMAGE', '/files/user/photo/');
+define('BOOKING_IMAGE', '/files/booking/photo/');
 define('ROOT_DIR', WWW_ROOT);
 define('NO_IMAGE', 'no-image.png');
 define('DEFAULT_PAGES', '/pages/');

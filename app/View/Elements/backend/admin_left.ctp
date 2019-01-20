@@ -40,6 +40,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('enquiries')) ?>">
                     <?php echo $this->Html->link(__('Enquiries Management'),array('controller' => 'enquiries', 'action' => 'index'), array('icon' => 'fa-pencil ')) ?>
                 </li>  
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('bookings')) ?>">
+                    <?php echo $this->Html->link(__('Booking Management'),array('controller' => 'bookings', 'action' => 'index'), array('icon' => 'fa-file ')) ?>
+                </li>                 
 				<li class="<?php echo $this->Html->getActiveOpenClass(array('')) ?>">
 					<?php echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
 				</li>				

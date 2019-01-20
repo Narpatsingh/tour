@@ -35,3 +35,27 @@ ALTER TABLE `enquiries` ADD `time_of_travel` VARCHAR(150) NOT NULL AFTER `number
 'login' => 'silshlrp',
 'password' => '6+lL2*4dT3jR2?1e',
 'database' => 'silshlrp_tour',
+
+
+
+ToDo List:
+
+- do not send mail on approval.
+- on approval open booking form.
+- auto feel form data.
+- create new fields on booking form.
+- is booking form editable ?
+- is price updatable after members are add?
+
+
+        modified:   app/Config/bootstrap.php
+        modified:   app/Config/database.php
+        modified:   app/Controller/EnquiriesController.php
+ modified:   app/View/Elements/backend/admin_left.ctp
+ modified:   database/sql_log.txt
+
+
+        app/Controller/BookingsController.php
+        app/Model/Booking.php
+app/View/Bookings/
+app/webroot/files/booking/

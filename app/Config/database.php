@@ -8,7 +8,7 @@ class DATABASE_CONFIG
         'host' => 'localhost',
         'login' => 'root',
         'password' => '',
-        'database' => 'dummy',
+        'database' => 'silshlrp_tour',
         'prefix' => '',
         'encoding' => 'utf8',
     );
