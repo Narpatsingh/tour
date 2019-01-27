@@ -48,10 +48,14 @@ class Tour extends AppModel {
 			'className' => 'State',
 			'foreignKey' => 'state_id',
 		),
+		'Hotel' => array(
+			'className' => 'Hotel',
+			'foreignKey' => 'hotel_id',
+		),
 	);
 
 	public function get_list(){
-		return $this->find('list');
+		return $this->find('list',['order'=>['Tour.id'=>'DESC']]);
 	}
 
 

@@ -1,7 +1,7 @@
 <?php $logUserName = $this->Session->read('Auth.User.name');?>
 <header class="header">
     <div class="setCenterText">
-        <?php echo Configure::read("Site.Name");?>
+        <?php echo "Under Construction Mode:";?>
         <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" class="pull_right">
         <input type="hidden" id="activeStatus" value='<?php echo Configure::read("Site.Status"); ?>'/></td>
     </div>

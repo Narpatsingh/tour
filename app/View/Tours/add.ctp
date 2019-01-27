@@ -41,6 +41,7 @@ if (isset($this->request->data['Tour']['id'])) {
                         echo $this->Form->input('days', array('tabindex' => 1,'placeholder' => __('Days'), 'label' => __('Days'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('nights', array('tabindex' => 3,'placeholder' => __('Nights'), 'label' => __('Nights'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('discount', array('tabindex' => 3,'placeholder' => __('Discount'), 'label' => __('Discount'),'div' => array('class' => 'form-group')));
+                        echo $this->Form->input('hotel_id',array('label' => __('Hotel'), 'class' => 'form-control','options'=>$hotels,'empty' => __('Select Hotel'), 'div' => array('class' => 'form-group required')));
                         if(!empty($photo)){
                             echo $this->element('backend/logoDiv', array('id' => $id, 'photo' => $photo, 'logoTitle' => __('Tour Picture')));
                         }else { ?>
@@ -126,10 +127,9 @@ if (isset($this->request->data['Tour']['id'])) {
                             'required' => 1,
                             'number'=>true
                         ),
-                        // 'photo' => array(
-                        //     'required' => 1,
-                        //     'accept' => 'jpg|jpeg|png'
-                        // ),
+                        'hotel_id' => array(
+                            'required' => 1,
+                        ),
                         
                     ),
                     'Messages' => array(
@@ -167,10 +167,9 @@ if (isset($this->request->data['Tour']['id'])) {
                             'required' => __('Please enter nights.'),
                             'number'=> __('Please enter number only.'),
                         ),
-                        // 'photo' => array(
-                        //     'required' =>  __('Please choose file.'),
-                        //     'accept' => __('Please choose files having jpg, jpeg, png extension.')
-                        // ),
+                        'hotel_id' => array(
+                            'required' => __('Please select hotel.'),
+                        ),
                     )
                 );
 

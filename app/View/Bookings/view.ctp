@@ -16,7 +16,7 @@ $this->end();
 			<div class="overflow-hide-break">
 				<div class="box-body userViewPage">
 					<div class='col-xs-12 col-sm-3'>
-						<?php echo $this->Html->image(getUserPhoto($booking['Booking']['id'],$booking['Booking']['proof_file'],false,false), array('class' => 'thumbnail img-responsive'))?>
+						<?php echo $this->Html->image(getPhoto($booking['Booking']['id'],$booking['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive'))?>
 					</div>
 					<div class='col-xs-12 col-sm-9 detailBox'>
 						<div class='row'>

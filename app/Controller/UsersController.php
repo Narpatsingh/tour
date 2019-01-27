@@ -247,17 +247,17 @@ class UsersController extends AppController {
         $this->loadModel('State');
         $this->loadModel('City');
         $this->loadModel('Hotel');
-        //if ($this->Session->read('Auth.User.id')) {
-            $hotels = $this->Hotel->find('all');
-            $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
-            $cities = $this->City->find('list');
-            $specials = $this->Tour->find('all', array('contain' => false,'conditions' => array('Tour.type' => '1')));
-            $hots = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '2')));
-            $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
-            $this->set(compact('specials','hots','discounts','states','cities','hotels'));
-        // }else{
-        //     return $this->redirect(array('controller'=>'users','action' => 'maintainace')); 
-        // } 
+        $this->loadModel('Slider');
+        $hotels = $this->Hotel->find('all');
+        $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
+        $cities = $this->City->find('list');
+        $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+        $specials = $this->Tour->find('all', array('contain' => false,'conditions' => array('Tour.type' => '1')));
+        $hots = $this->Tour->find('all', array('contain' => false,'limit'=>6,'conditions' => array('Tour.type' => '2')));
+        $discounts = $this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3')));
+        $blogs = $this->Tour->find('all', array('contain' => false, 'limit'=>6,'order' => array('Tour.id' => 'DESC')));
+        $sliders = $this->Slider->find('all');
+        $this->set(compact('specials','hots','discounts','states','cities','hotels','blogs','destination','sliders')); 
     }
 
     public function maintainace()

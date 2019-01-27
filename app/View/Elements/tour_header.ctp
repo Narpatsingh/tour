@@ -27,11 +27,36 @@
                     'new_css/main.css',
                     'new_css/animate.css',
                     'new_css/responsive.css',
-                    'style',
+                    'style.css?'.time(),
                     'new_css/font-awesome.min.css',
                 ), array('inline' => false)
         );
         echo $this->fetch('css');
+    ?>
+
+    <?php echo $this->Html->script(
+                array(
+            'jquery',
+            'bootstrap.min',
+            'jquery.easing.min',
+            'wow',
+            'jquery.mixitup.min',
+            'jquery.fancybox.pack',
+            'waypoints.min',
+            'jquery.counterup.min',
+            'owl.carousel.min',
+            'jquery.stellar.min',
+            'bootstrap-datepicker',
+            'script',
+            'scrolling-nav',
+            'bootstrap-slider',
+            'jquery.slimscroll',
+            'custom.js?'.time(),
+                ), array('inline' => false)
+        );
+
+        echo $this->fetch('script');    
+
     ?>    
 
 </head>

@@ -8,7 +8,10 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
 <div class="user-panel">
         <ul class="sidebar-menu">
             <?php if ($this->Session->read("Auth.User.role") == 'admin'): ?>                				
-				<li class="<?php echo $this->Html->getActiveOpenClass(array('states')) ?>">
+				<li class="<?php echo $this->Html->getActiveOpenClass(array('sliders')) ?>">
+                    <?php echo $this->Html->link(__('Slider Management'),array('controller' => 'sliders', 'action' => 'index'), array('icon' => 'fa fa-sliders ')) ?>
+                </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('states')) ?>">
                     <?php echo $this->Html->link(__('State Management'),array('controller' => 'states', 'action' => 'index'), array('icon' => 'fa fa-building ')) ?>
                 </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('citys')) ?>">

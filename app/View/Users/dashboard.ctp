@@ -1,13 +1,21 @@
-
 <body id="page-top">
     <!--Preload-->
     <div class="preloader">
         <div class="preloader_image"></div>
     </div>
+    <!-- <div class="top-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="top-contact">
+                    <span class="call"> Call <span class="number">+91 2358745824</span></span>
+                </div>
+            </div>
+        </div>
+    </div> -->
     
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container" style="margin-left: 0px">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="navbar-header page-scroll">
@@ -18,11 +26,11 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand page-scroll TourLogo" href="/">
-                            <?php
+                             <?php
                                 echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
                             ?>
-                            <p class="site_name">Silshine Trip</p>
-                        </a>
+                        </a>    
+                        <!-- <p class="site_name">Silshine Trip</p> -->
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,75 +39,84 @@
                             <li class="active">
                                 <a class="page-scroll" href="#home">Home</a>
                             </li>
-                            <li class="dropdown mega-dropdown india">
-                                <a href="Citypackage.php" target="_blank" class="dropdown-toggle" data-toggle="dropdown">India <span class="caret"></span></a>              
-                                <ul class="dropdown-menu mega-dropdown-menu">
-                                  <?php  $count = 0;
-                                    foreach ($states as $key => $value) {
-                                        if($count == 0){
-                                            echo '<li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">';
-                                            echo '<ul>';
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
+
+                                <li class="dropdown mega-dropdown india">
+                                    <a href="tours/india" target="_blank" class="dropdown-toggle page-scroll" data-toggle="dropdown">India <span class="caret"></span></a>              
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+                                      <?php  $count = 0;
+                                        foreach ($states as $key => $value) {
+                                            if($count == 0){
+                                                echo '<li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">';
+                                                echo '<ul>';
+                                                echo '<li class="dropdown-header">';
+                                                echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
                                                 echo '</li>';
+                                                foreach ($value['City'] as $key1 => $name) {
+                                                    echo '<li>';
+                                                    echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
+                                                    echo '</li>';
+                                                }
+                                                $count++;   
+                                            }elseif($count == 2){
+                                                echo '<li class="dropdown-header">';
+                                                echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
+                                                echo '</li>';
+                                                foreach ($value['City'] as $key1 => $name) {
+                                                    echo '<li>';
+                                                    echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
+                                                    echo '</li>';     
+                                                }
+                                                echo '</li>';
+                                                echo '</ul>';
+                                                $count = 0;
+                                            }elseif($count < 2){
+                                                echo '<li class="dropdown-header">';
+                                                echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
+                                                echo '</li>';
+                                                foreach ($value['City'] as $key1 => $name) {
+                                                    echo '<li>';
+                                                    echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
+                                                    echo '</li>';       
+                                                }
+                                                $count++;
                                             }
-                                            $count++;   
-                                        }elseif($count == 2){
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
-                                                echo '</li>';     
-                                            }
-                                            echo '</li>';
-                                            echo '</ul>';
-                                            $count = 0;
-                                        }elseif($count < 2){
-                                            echo '<li class="dropdown-header">';
-                                            echo $this->Html->link($value['State']['name'], array('controller' => 'tours', 'action' => 'state_detail',$value['State']['id']),array('class'=>'dropdown-header'));
-                                            echo '</li>';
-                                            foreach ($value['City'] as $key1 => $name) {
-                                                echo '<li>';
-                                                echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
-                                                echo '</li>';       
-                                            }
-                                            $count++;
-                                        }
-                                    } ?>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#packages">Packages</a>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#hot-deals">Hot Deals</a>
-                            </li>
-                            
-                            <li>
-                                <a class="page-scroll" href="#deals-discounts">Deals and Discounts</a>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#gallery">Gallery</a>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#blog">Blog</a>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#testimonials">Feedback</a>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="#map">Contact Us</a>
-                            </li>
-                        </ul>
+                                        } ?>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#packages">Packages</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#hot-deals">Hot Deals</a>
+                                </li>
+                                
+                                <li>
+                                    <a class="page-scroll" href="#deals-discounts">Deals and Discounts</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#gallery">Gallery</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#blog">Blog</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#testimonials">Feedback</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#contact">Contact Us</a>
+                                </li>
+                                <?php if($this->Session->read('Auth.User.id')){ ?>
+                                <li>
+                                    <a class="page-scroll" href="users/profile">Profile</a>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
                     </div>
-                    <!-- /.navbar-collapse -->
+                    
                 </div>
+                
             </div>
             
         </div>
@@ -107,45 +124,46 @@
     </nav>
 <!-- Banner Section -->
     <section id="home"> 
-        <div id="main-slider" class="carousel slide" data-ride="carousel">
+        <div id="banner" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
             <ol class="carousel-indicators">
-                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
+                <li data-target="#banner" data-slide-to="0" class="active"></li>
+                <li data-target="#banner" data-slide-to="1"></li>
+                <li data-target="#banner" data-slide-to="2"></li>
+                <li data-target="#banner" data-slide-to="3"></li>
+                <li data-target="#banner" data-slide-to="4"></li>
+                <li data-target="#banner" data-slide-to="5"></li>
             </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="img-responsive" src="img/slider/1.jpg" alt="slider">                       
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <?php $i=0;foreach ($sliders as $key => $slider) { 
+                    if($i == 0){$i++; ?>
+                <div class="item active" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
                     <div class="carousel-caption">
-                        <h2>register for our next event </h2>
-                        <h4>full event package only @$199</h4>
-                        <a href="#contact">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
+                        <h2><?php echo $slider['Slider']['title'];?> </h2>
+                        <h4>full event package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                        <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-                <div class="item">
-                    <img class="img-responsive" src="img/slider/2.jpg" alt="slider">
+                <?php }else{ ?>
+                <div class="item" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
                     <div class="carousel-caption">
-                        <h2>register for our next event </h2>
-                        <h4>full event package only @$199</h4>
-                        <a href="#contact">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
+                        <h2><?php echo $slider['Slider']['title'];?> </h2>
+                        <h4>full event package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                        <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-                <div class="item">
-                    <img class="img-responsive" src="img/slider/3.jpg" alt="slider">
-                    <div class="carousel-caption">
-                        <h2>register for our next event </h2>
-                        <h4>full event package only @$199</h4>
-                        <a href="#contact" >GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>              
-            </div>
+                <?php } ?>    
+            <?php } ?>
+            </div><!--end carousel-inner-->
+            <!-- Controls -->
+            <a class="control left" href="#banner" data-slide="prev"><i class="fa fa-long-arrow-left"></i></a>
+            <a class="right control" href="#banner" data-slide="next"><i class="fa fa-long-arrow-right"></i></a>
         </div>      
     </section>
     <!--end Banner-->
     
-    
-    <!-- Packages Section -->
     <section id="packages" class="inverse">
+        <!-- <hr> -->
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -154,34 +172,32 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <?php foreach ($specials as $key => $special) {?>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <div class="package-list wow fadeInUp">
-                            <a href="tours/details/<?php echo $special['Tour']['id']; ?>">
-                                <div class="package-thumb">
+            <div id="package" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="owl-carousel" id="packages-carousel">
+                            <?php foreach ($specials as $key => $special){ ?>
+                            <div class="tour-item">
+                                <div class="thumb">
                                     <img src="<?php echo $special['Tour']['img']; ?>" alt="" />
-                                    <div class="duration">
-                                        <?php echo $special['Tour']['days']; ?> days<br/><?php echo $special['Tour']['nights']; ?> nights
-                                    </div>
                                 </div>
-                                <div class="package-info">
-                                    <h3><?php echo $special['City']['name']; ?></h3>
-                                    <p><?php echo $special['Tour']['description']; ?></p>
-                                    <span class="pull-right price">&#x20b9;<?php echo $special['Tour']['price']; ?></span>
+                                <div class="discount-info">
+                                    <h3 class="text-white"><?php echo $special['City']['name']; ?></h3>
+                                    <a class="" href="tours/details/<?php echo $special['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                            <?php } ?> 
+                        </div>  
                     </div>
-                <?php } ?>      
+                </div>
             </div>
         </div>
+        
     </section>
     <!-- end Packages -->
-    
     <!-- Hot Deals Section -->
     <section id="hot-deals" >
+        <!-- <hr> -->
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -191,34 +207,90 @@
                 </div>
             </div>
         </div>
-        
-        <ul class="tour-list">
+        <div class="container">
+            <?php $i=0; ?>
+            <div class="row">
             <?php foreach ($hots as $key => $hot) { ?>
-            <li>
-                <div class="tour-thumb">
-                    <img src="<?php echo $hot['Tour']['img']; ?>" alt="" />
-                    <div class="overlay">
-                        <div class="ovelay-inner text-center">
-                            <h2><?php echo $hot['City']['name']; ?></h2>
-                            <p><em>India, <?php echo $hot['Tour']['nights']; ?> Nights</em></p>
-                            <a href="tours/details/<?php echo $hot['Tour']['id']; ?>" class="btn btn-primary">Read More</a>
+                    <?php if($i == 0){
+                        $i++; ?>
+                    <div class="col-md-8 my-3">
+                        <a href="tours/details/<?php echo $hot['Tour']['id']; ?>">
+                            <div class="hotdeal">
+                                <div class="deal-pic">
+                                    <img src="<?php echo $hot['Tour']['img']; ?>" alt="">
+                                </div>
+                                <div class="deal-content">
+                                   <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php }else if($i == 1){ 
+                        $i++;?>
+                    <div class="col-md-4 my-3">
+                        <div class="hotdeal">
+                            <a href="tours/details/<?php echo $hot['Tour']['id']; ?>">
+                                <div class="deal-pic">
+                                    <img src="<?php echo $hot['Tour']['img']; ?>" alt="">
+                                </div>
+                                <div class="deal-content">
+                                   <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
+                                </div>
+                            </a>    
                         </div>
                     </div>
-                </div>
-            </li>
-            <?php } ?>
-        </ul>
+                    <?php }else if($i == 2){ 
+                        $i++;?>
+                    <div class="col-md-4 my-3">
+                        <div class="hotdeal">
+                            <a href="tours/details/<?php echo $hot['Tour']['id']; ?>">
+                                <div class="deal-pic">
+                                    <img src="<?php echo $hot['Tour']['img']; ?>" alt="">
+                                </div>
+                                <div class="deal-content">
+                                   <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
+                                </div>
+                            </a>   
+                        </div>
+                    </div>
+                    <?php }else if($i == 3){ 
+                        $i = 0;?>
+                    <div class="col-md-8 my-3">
+                        <div class="hotdeal">
+                            <a href="tours/details/<?php echo $hot['Tour']['id']; ?>">
+                                <div class="deal-pic">
+                                    <img src="<?php echo $hot['Tour']['img']; ?>" alt="">
+                                </div>
+                                <div class="deal-content">
+                                   <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
+                                </div>
+                            </a>    
+                        </div>
+                    </div>
+                    <?php } ?>
+            <?php } ?>     
+            </div>
+        </div>        
         
     </section>
     <!--end hot-deals-->
     
     <!-- Deals and Discounts -->
-    <section id="deals-discounts" class="inverse" style="background-image: url(images/bg_img/bg4.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+    <section id="deals-discounts" class="inverse">
+        <!-- <hr> -->
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Deals and Discounts</h1>
+                        <h1 class="visible-title">Deals and Discounts</h1>
                     </div>
                 </div>
             </div>
@@ -253,6 +325,7 @@
     
     <!-- Count Section-->
     <section class="count-section parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/bg/1.jpg);">
+        <!-- <hr> -->
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -306,206 +379,101 @@
                     </ul><!-- @end #filter-list -->
                 </div>
             </div>
-        </div>
-        
-        <ul class="gallery-item">
-            <?php foreach ($hotels as $key => $hotel) {  ?>
-            <li class="gallery hotels">
-                <div class="thumb">
-                    <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-inner">
-                            <h2><?php echo $hotel['Hotel']['name']; ?></h2>
-                            <a href="<?php echo $hotel['Hotel']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
-                        </div>
-                    </div>
-                </div><!--end post thumb-->
-            </li>
-            <?php } ?> 
-            <?php for ($x = 1; $x <= 3; $x++) { ?>
-            <li class="gallery tours">
-                <div class="thumb">
-                    <img src="img/gallery/5.jpg" alt="" />
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-inner">
-                            <h2>Gallery <?php echo $x; ?></h2>
-                            <a href="img/gallery/8.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
-                        </div>
-                    </div>
-                </div><!--end post thumb-->
-            </li>
-            <?php } ?>
-            <?php for ($x = 1; $x <= 3; $x++) { ?>
-            <li class="gallery cruises">
-                <div class="thumb">
-                    <img src="img/gallery/9.jpg" alt="" />
-                    <div class="gallery-overlay">
-                        <div class="gallery-overlay-inner">
-                            <h2>Gallery <?php echo $x; ?></h2>
-                            <a href="img/gallery/9.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
-                        </div>
-                    </div>
-                </div><!--end post thumb-->
-            </li>
-            <?php } ?>
-            
-        </ul>
+            <div class="row" style="overflow: hidden;">
+                <ul class="gallery-item">
+                    <?php foreach ($hotels as $key => $hotel) {  ?>
+                    <li class="gallery hotels">
+                        <div class="thumb">
+                            <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
+                            <div class="gallery-overlay">
+                                <div class="gallery-overlay-inner">
+                                    <h2><?php echo $hotel['Hotel']['name']; ?></h2>
+                                    <a href="<?php echo $hotel['Hotel']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
+                                </div>
+                            </div>
+                        </div><!--end post thumb-->
+                    </li>
+                    <?php } ?> 
+                    <?php for ($x = 1; $x <= 2; $x++) { ?>
+                    <li class="gallery tours">
+                        <div class="thumb">
+                            <img src="img/gallery/5.jpg" alt="" />
+                            <div class="gallery-overlay">
+                                <div class="gallery-overlay-inner">
+                                    <h2>Gallery <?php echo $x; ?></h2>
+                                    <a href="img/gallery/8.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
+                                </div>
+                            </div>
+                        </div><!--end post thumb-->
+                    </li>
+                    <?php } ?>
+                    <?php for ($x = 1; $x <= 2; $x++) { ?>
+                    <li class="gallery cruises">
+                        <div class="thumb">
+                            <img src="img/gallery/9.jpg" alt="" />
+                            <div class="gallery-overlay">
+                                <div class="gallery-overlay-inner">
+                                    <h2>Gallery <?php echo $x; ?></h2>
+                                    <a href="img/gallery/9.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
+                                </div>
+                            </div>
+                        </div><!--end post thumb-->
+                    </li>
+                    <?php } ?>
+                    
+                </ul>
+            </div>   
+        </div>     
         
     </section>
     <!-- end gallery-->
     
     <!-- Blog Section -->
-    <section id="blog" class="inverse" style="background-image: url(images/bg_img/bg5.jpg);background-position: 50% 0; background-size: contain; position: relative;">
+    <section id="blog" class="inverse">
+        <!-- <hr> -->
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Recent Posts</h1>
+                        <h1 class="visible-title">Recent Posts</h1>
                     </div>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/1.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
+            <div id="blog" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="row">
+                    <div class="col-xs-12" style="padding: 0px 0px 10px 0px;">
+                        <div class="owl-carousel" id="blogs-carousel">
+                            <?php foreach ($blogs as $key => $blog){ ?>
+                            <div class="tour-item">
+                                <div class="thumb">
+                                    <img src="<?php echo $blog['Tour']['img']; ?>" alt="" />
                                 </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
-                            </div>
-                            
-                        </div>
-                    </div><!--end post-->
-                </div>
-                
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/2.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
+                                <div class="discount-info">
+                                    <h3 class="text-white"><?php echo $blog['City']['name']; ?></h3>
+                                    <a class="" href="tours/details/<?php echo $blog['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
                             </div>
-                            
-                        </div>
-                    </div><!--end post-->
+                            <?php } ?> 
+                        </div>  
+                    </div>
                 </div>
-                
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/3.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
-                            </div>
-                            
-                        </div>
-                    </div><!--end post-->
-                </div>
-                
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/4.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
-                            </div>
-                                
-                        </div>
-                    </div><!--end post-->
-                </div>
-                
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/5.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
-                            </div>
-                            
-                        </div>
-                    </div><!--end post-->
-                </div>
-                
-                <div class="col-xs-6 col-md-4">
-                    <div class="post wow fadeInUp">
-                        <div class="post-thumb">
-                            <a href="details.php">
-                                <img src="img/blog/6.jpg" alt="" />
-                                <div class="post-overlay">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="post-bottom">
-                            <h3>Tour Place</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                            <div class="pull-left">
-                                <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                                
-                            </div>
-                            
-                        </div>
-                    </div><!--end post-->
-                </div>
-                
             </div>
         </div>
+        <!-- <hr> -->
     </section>
     <!--end blog-->
     
     <!-- Testimonials Section -->
-    <section id="testimonials">
+    <section id="testimonials" style="background: #808080;">
         <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center">
+                        <h1>Feedback</h1>
+                    </div>
+                </div>
+            </div>
             <div id="twitter-feed" class="carousel slide" data-interval="false">
                 <!-- <div class="twit">
                     <img class="img-responsive" src="images/bg_img/twit.png" alt="twit">
@@ -537,37 +505,53 @@
         </div>    
     </section>
     <!--end testimonials-->
-    <section id="map">
-        <div class="conatc_content">
-            <div class="col-md-12">
-                <div class="row mb-3"  style="background-image: url(images/bg_img/bg1.jpg);background-position: 50% 0; background-size: contain; position: relative;">
-                    <div class="section-title text-center" style="padding: 15px;">
-                        <h1 class="text-white">CONTACT US</h1>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="add_detail text-center">
-                            <i class="fa fa-home"></i>
-                            <p class="text-white">Shakti - 2 opp.sudarshan Bunglow  Nr.Europen catalog 
-                            Ahmedabad - 380015 </p>
+    <section id="contact" style="padding: 0px">
+        <div class="contact-section" style="background-image: url(images/bg_img/bg1.jpg);background-position: 50% 0; background-size: contain; position: relative;background-size: cover;">
+            <div class="ear-piece">
+                <img class="img-responsive" src="images/ear-piece.png" alt="">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-4">
+                        <div class="contact-text">
+                            <h3>Contact</h3>
+                            <address>
+                                E-mail: promo@party.com<br>
+                                Phone: +1 (123) 456 7890<br>
+                                Fax: +1 (123) 456 7891
+                            </address>
+                        </div>
+                        <div class="contact-address">
+                            <h3>Contact</h3>
+                            <address>
+                                Unit C2, St.Vincent's Trading Est.,<br>
+                                Feeder Road,<br>
+                                Bristol, BS2 0UY<br>
+                                United Kingdom
+                            </address>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="add_detail text-center">
-                            <i class="fa fa-phone"></i>
-                            <p class="text-white">+91 9876543210</p>
-                            <p class="text-white">+91 9513578520</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-4">
-                        <div class="add_detail text-center">
-                            <i class="fa fa-envelope"></i>
-                            <p class="text-white">TestABc@gmail.com</p>
+                    <div class="col-sm-5">
+                        <div id="contact-section">
+                            <h3>Send a message</h3>
+                            <div class="status alert alert-success" style="display: none"></div>
+                            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="#">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" required="required" placeholder="Email ID">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" id="message" required="required" class="form-control" rows="4" placeholder="Enter your message"></textarea>
+                                </div>                        
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary pull-right">Send</button>
+                                </div>
+                            </form>        
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="">
-                
             </div>
         </div>
         
@@ -575,17 +559,21 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </section>
-<!-- <script type="text/javascript">
-    $(document).ready(function(){
-    $(".dropdown").hover(            
-      function() {
-        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-        $(this).toggleClass('open');        
-      },
-      function() {
-        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-        $(this).toggleClass('open');       
-      }
-      );
+
+<?php   echo $this->Html->script(
+        array(
+            'jquery.mobile.min',
+        ), array('inline' => false)
+    );
+
+    //echo $this->fetch('script');
+?>   
+
+<script type="text/javascript">
+    $(".carousel-inner").swiperight(function() {  
+    $(this).parent().carousel('prev');  
+  });  
+  $(".carousel-inner").swipeleft(function() {  
+    $(this).parent().carousel('next');  
   });
-</script> -->
+</script>    

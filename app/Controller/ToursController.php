@@ -96,6 +96,11 @@ class ToursController extends AppController {
             $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
         }
         $options = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $id));
+        $this->loadModel('City');
+        $cities = $this->City->find('list');
+        $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+        $this->set('cities', $cities);
+        $this->set('destination', $destination);
         $this->set('tour', $this->Tour->find('first', $options));
     }
 
@@ -104,7 +109,12 @@ class ToursController extends AppController {
         if (!empty($id)) {
             $options = array('conditions' => array('Tour.city_id' => $id));
             $tour = $this->Tour->find('all', $options);
+            $this->loadModel('City');
+            $cities = $this->City->find('list');
+            $destination = $this->Tour->find('list',array('fields' => array('place','place')));
             if(!empty($tour)){
+                $this->set('destination', $destination);
+                $this->set('cities', $cities);
                 $this->set('tour', $tour);
             }else{
                 $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
@@ -119,7 +129,12 @@ class ToursController extends AppController {
         if (!empty($id)) {
             $options = array('conditions' => array('Tour.state_id' => $id));
             $tour = $this->Tour->find('all', $options);
+            $this->loadModel('City');
+            $cities = $this->City->find('list');
+            $destination = $this->Tour->find('list',array('fields' => array('place','place')));
             if(!empty($tour)){
+                $this->set('destination', $destination);
+                $this->set('cities', $cities);
                 $this->set('tour', $tour);
             }else{
                 $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
@@ -132,6 +147,11 @@ class ToursController extends AppController {
 
     public function india() {
         $this->layout = 'tour';
+        $this->loadModel('City');
+        $cities = $this->City->find('list');
+        $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+        $this->set('destination', $destination);
+        $this->set('cities', $cities);
         $this->set('tour', $this->Tour->find('all'));
         $this->render('city_detail');
     }
@@ -143,6 +163,8 @@ class ToursController extends AppController {
 */
     public function add() {
         $this->loadModel('Highlight');
+        $this->loadModel('Hotel');
+        $this->loadModel('State');
         if ($this->request->is('post')) {
             $this->Tour->create();
             $type = $this->request->data['Tour']['type'];
@@ -182,9 +204,10 @@ class ToursController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
         }
-        $this->loadModel('State');
         $states = $this->State->find('list');
-        $city = array(); 
+        $hotels = $this->Hotel->find('list');
+        $city = array();
+        $this->set('hotels',$hotels); 
         $this->set('city',$city);
         $this->set('states',$states);
         $this->set('dbOpration',"Add");
@@ -199,6 +222,8 @@ class ToursController extends AppController {
 */
     public function edit($id = null) {
         $this->loadModel('Highlight');
+        $this->loadModel('Hotel');
+        $this->loadModel('City');
         $userId = $this->Session->read('Auth.User.id');
         $this->Tour->id = $id;
         if (!$this->Tour->exists()) {
@@ -256,9 +281,9 @@ class ToursController extends AppController {
         $highlight_data=$this->Tour->Highlight->find('list',array('conditions' => array('Highlight.tour_id' => $id)));
         $this->loadModel('State');
         $states = $this->State->find('list');
-        $this->loadModel('City');
         $city = $this->City->find('list',array('conditions'=>array('City.id' => $Tour_data['Tour']['city_id']))); 
-        $this->set(compact('dbOpration','highlight_data','states','city'));
+        $hotels = $this->Hotel->find('list');
+        $this->set(compact('dbOpration','highlight_data','states','city','hotels'));
         $this->render('add');
     }
 

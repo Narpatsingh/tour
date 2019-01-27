@@ -1,75 +1,90 @@
 <title>Detail page</title>
-<body id="page-top details-page">
-  <!--Preload-->
-  <div class="preloader">
-    <div class="preloader_image"></div>
-  </div>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll TourLogo" href="/">
-              <?php
-                  echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
-              ?>
-              <p class="site_name">Silshine Trip</p>
-            </a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-             
-              <li class="active">
-                <?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-
-              <li>
-                <?php echo $this->Html->link('Packages', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-              <li>
-                <?php echo $this->Html->link('Hot Deals', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-
-              <li>
-                <?php echo $this->Html->link('Deals and Discounts', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-              <li>
-                <?php echo $this->Html->link('Gallery', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-              <li>
-                <?php echo $this->Html->link('Blog', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-              <li>
-                <?php echo $this->Html->link('Feedback', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-              <li>
-                <?php echo $this->Html->link('Contact Us', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
-                ?>
-              </li>
-            </ul>
-          </div>
-      <!-- /.navbar-collapse -->
+<body id="page-top" class="details-page">
+    <!--Preload-->
+    <div class="preloader">
+        <div class="preloader_image"></div>
     </div>
-  </div>
+    <!-- <div class="top-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="top-contact">
+                    <span class="call"> Call <span class="number">+91 2358745824</span></span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="">
+            <div class="col-md-2">
+                <a class="navbar-brand page-scroll TourLogo" href="/">
+                    <?php
+                        echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
+                    ?>
+                </a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 custom_navigation">
 
-</div>
+                        <div class="navbar-header page-scroll">
+                            <a href="tel:1800227979"> <i class="fa fa-phone"></i></a>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            
+                            <!-- <p class="site_name">Silshine Trip</p> -->
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar">
+                            <ul class="nav navbar-nav navbar-right">
+             
+                  <li class="active">
+                    <?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+
+                  <li>
+                    <?php echo $this->Html->link('Packages', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                  <li>
+                    <?php echo $this->Html->link('Hot Deals', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+
+                  <li>
+                    <?php echo $this->Html->link('Deals and Discounts', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                  <li>
+                    <?php echo $this->Html->link('Gallery', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                  <li>
+                    <?php echo $this->Html->link('Blog', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                  <li>
+                    <?php echo $this->Html->link('Feedback', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                  <li>
+                    <?php echo $this->Html->link('Contact Us', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                    ?>
+                  </li>
+                </ul>
+              </div>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+
+    </div>
 <!-- /.container -->
 </nav>
 <section id="page-title" class="parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/blog/1.jpg);">
@@ -110,8 +125,8 @@
               <div class="col-xs-6 col-sm-4 col-md-4">
                 <div class="tour-item">
                     <div class="thumb">
-                      <?php echo $this->Html->image($value['Tour']['img']); ?>
-                    </div>
+                      <img src="/<?php echo $value['Tour']['img']; ?>" alt="" />
+                      </div>
                     <div class="discount-info">
                         <div class="price-info">
                             <span class="sale-price">&#x20b9;<?php echo $value['Tour']['price']; ?></span>

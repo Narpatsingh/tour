@@ -7,7 +7,7 @@
 </div>
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top">
-   <div class="container">
+   <div class="container" style="margin-left: 0px">
       <div class="row">
          <div class="col-xs-12">
             <div class="navbar-header page-scroll">
@@ -18,11 +18,11 @@
                <span class="icon-bar"></span>
                </button>
                 <a class="navbar-brand page-scroll TourLogo" href="/">
-                  <?php
-                      echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
-                  ?>
-                  <p class="site_name">Silshine Trip</p>
+                    <?php
+                        echo $this->Html->image(getLogo(), array('class' => 'img-responsive img-display silshine_logo'));
+                    ?>
                 </a>
+                <!-- <p class="site_name">Silshine Trip</p> -->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar">
@@ -75,8 +75,10 @@
       <div class="container">
          <div class="row">
             <div class="col-xs-12">
-               <div class="page-title text-center" id="Overview">
-                  <h1>Details Single Page</h1>
+               <div class="page-title text-center" id="">
+                  <h1><?php echo $tour['Tour']['name'];?></h1>
+                  <h2><?php echo "City: ".$tour['City']['name'];?></h2>
+                  <h2><?php echo "Price: ".$tour['Tour']['price'];?></h2>
                </div>
             </div>
          </div>
@@ -91,19 +93,19 @@
          <div class="collapse navbar-collapse mb-2 remove_add" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#Overview">Overview</a>
+                  <a class="single-page-scroll" href="#Overview">Overview</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#Itinerary">Itinerary</a>
+                  <a class="single-page-scroll" href="#Itinerary">Itinerary</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#Highlights">Highlights</a>
+                  <a class="single-page-scroll" href="#Highlights">Highlights</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#Informaion">Informaion</a>
+                  <a class="single-page-scroll" href="#Informaion">Hotel Information</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#DatePrice">Date Price</a>
+                  <a class="single-page-scroll" href="#DatePrice">Date Price</a>
                </li>
             </ul>
          </div>
@@ -111,15 +113,15 @@
    </nav>
 </section>
 <section id="Overview" class="pt-1">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-8 mx-auto">
-            <h2>Overview</h2>
-            <p class="lead">
-               <?php echo $tour['Tour']['description'];?>
-            </p>
-         </div>
-         <div class="col-lg-4 mx-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Overview</h2>
+        <p class="lead">
+          <?php echo $tour['Tour']['description'];?>
+        </p>
+      </div>
+         <!-- <div class="col-lg-4 mx-auto">
             <div class="overview_enquiry px-3 py-3 ">
                <p class="font-bold">Tell us more about your holiday plans</p>
                <form action="function.php" method="post" accept-charset="utf-8">
@@ -139,9 +141,9 @@
                   <button type="submit" class="btn btn-primary btn-sm">Send Enquiry</button>
                </div>
             </div>
-         </div>
-      </div>
-   </div>
+         </div> -->
+    </div>
+  </div>
 </section>
 <section id="Itinerary" class="bg-light">
    <div class="container">
@@ -191,9 +193,20 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-8 mx-auto">
-            <h2>Information</h2>
+            <h2>Hotel Information</h2>
             <p class="lead">
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.
+              <div class="row">
+                <div class="col-xs-12">
+                  <h3 class="text-white" style="color: crimson;">Hotel : <?php echo $tour['Hotel']['name']; ?></h3>
+                  <div class="thumb">
+                      <img src="/tour_management/<?php echo $tour['Hotel']['photo']; ?>" alt="" />
+                  </div>
+                  <div class="discount-info">
+                      <h2 style="color: crimson;">Meal Plan :</h2>
+                      <p ><?php echo $tour['Hotel']['meal_plan']; ?></h3> 
+                  </div>
+                </div>
+              </div>  
             </p>
          </div>
       </div>

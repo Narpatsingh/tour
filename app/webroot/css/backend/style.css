@@ -156,3 +156,14 @@
 		max-width: 80px !important;
 	}
 }
+
+.toggle-on.btn {
+    padding-right: 24px;
+    background-color: #11ab11;
+}
+
+.toggle-off.btn {
+    padding-right: 24px;
+    background-color: #f71e1e;
+}
+

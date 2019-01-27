@@ -3,6 +3,7 @@
 	"use strict";
 	
 	
+	//jQuery("#packages owl-carousel .owl-controls .owl-nav .owl-prev").css('display', 'block');
 	//========================= preloader ================
 	$(window).on('load', function() {
 		preloader();
@@ -24,12 +25,29 @@
 	$(document).on('ready', function () {
 		$('a.page-scroll').on('click', function(event) {
 			$('.nav li').removeClass('active');
+			$('li.nav-item').removeClass('active');
 			$(this).parent().addClass('active');
 			var $anchor = $(this);
 			$('html, body').stop().animate({
 				scrollTop: $($anchor.attr('href')).offset().top-75
 			}, 1500, 'easeInOutExpo');
 			event.preventDefault();
+		});
+
+
+
+		$('.single-page-scroll').on('click', function(event) {
+
+			// $(".nav-item").dblclick();
+			
+			$('li.nav-item').removeClass('active');
+			$(this).parent().addClass('active');
+
+				var $anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop: $($anchor.attr('href')).offset().top-100
+				}, 1500, 'easeInOutExpo');
+				event.preventDefault();
 		});
 		 
 		$('body').scrollspy({ 
@@ -57,7 +75,7 @@
 		//============= Deals and Discount Carousel =====
 		
 		$("#deals-discounts-carousel").owlCarousel({
-			autoplay: true,
+			autoplay: false,
 			autoplayTimeout:2000,
 			margin:30,
 			nav: false,
@@ -78,6 +96,55 @@
 			  }
 			}
 		 });
+
+		$("#packages-carousel").owlCarousel({
+			autoplay: true,
+			autoplayTimeout:2000,
+			margin:30,
+			nav: true,
+			smartSpeed:1000,
+			dots:false,
+			autoplayHoverPause:true,
+			loop:true,
+			responsiveClass: true,
+			responsive: {
+			  0: {
+				items: 1,
+			  },
+			  600: {
+				items: 2,
+			  },
+			  1000: {
+				items: 3,
+			  }
+			}
+		 });
+
+		$("#blogs-carousel").owlCarousel({
+			autoplay: true,
+			autoplayTimeout:2000,
+			margin:30,
+			nav: true,
+			smartSpeed:1000,
+			dots:false,
+			autoplayHoverPause:true,
+			loop:true,
+			responsiveClass: true,
+			responsive: {
+			  0: {
+				items: 1,
+			  },
+			  600: {
+				items: 2,
+			  },
+			  1000: {
+				items: 3,
+			  }
+			}
+		 });
+
+		$('.owl-nav').find('.owl-prev').addClass('control').html('<i class="fa fa-long-arrow-left"></i>');
+		$('.owl-nav').find('.owl-next').addClass('control').html('<i class="fa fa-long-arrow-right"></i>');;
 		
 		//===================== Datepicker ================
 		$( ".date_pic" ).datepicker({
@@ -200,14 +267,24 @@
 	}
 	
 	//Variables on page load 
-	var $myCarousel = $('#banner'),
+	var $myCarousel = $('#package'),
 		$firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+	
+	var $package = $('#package'),
+		$firstpackage = $package.find('.item:first').find("[data-animation ^= 'animated']");
+	
+	var $blog = $('#blog'),
+		$firstblog = $blog.find('.item:first').find("[data-animation ^= 'animated']");
 		
 	//Initialize carousel 
 	$myCarousel.carousel();
-	
+	$package.carousel();
+	$blog.carousel(); 
+		
 	//Animate captions in first slide on page load 
+	doAnimations($firstpackage);
 	doAnimations($firstAnimatingElems);
+	doAnimations($firstblog);
 	
 	//Pause carousel  
 	$myCarousel.carousel('pause');

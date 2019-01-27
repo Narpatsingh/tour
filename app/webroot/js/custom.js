@@ -8,6 +8,13 @@ $( document ).ready(function() {
      }
   });
 
+
+if (document.documentElement.clientWidth > 700) {
+  $( "div[rel='mptdash-scrollcontent1']" ).slimScroll( { size: '5px', height:'800px',wheelStep : 10,touchScrollStep : 75 });
+  $( "div[rel='mptdash-scrollcontent2']" ).slimScroll( { size: '5px', height:'950px',wheelStep : 10,touchScrollStep : 75 });
+  $( "div[rel='mptdash-scrollcontent_gallery']" ).slimScroll( { size: '5px', height:'620px',wheelStep : 10,touchScrollStep : 75 });
+}
+$( "div[rel='mptdash_scrollcontent_hot_deals']" ).slimScroll( { size: '5px', height:'600px',wheelStep : 10,touchScrollStep : 75 });
     var windowsize = $(window).width();
         if (windowsize < 991) {
           console.log(windowsize);
@@ -26,7 +33,6 @@ $( document ).ready(function() {
 
 
     
-    
     $(".dropdown").hover(            
       function() {
         $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
@@ -44,6 +50,5 @@ $( document ).ready(function() {
   $(".close_enquiry").click(function(){
       $(".overview_enquiry_popup").css('display','none');
   });
-
 
 });

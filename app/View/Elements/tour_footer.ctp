@@ -16,21 +16,21 @@
                     <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
 
                             <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                                <input type="text" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
-                                <input type="text" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
-                                <input type="text" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3" required>
-                                <input type="text" name="travel_duration" placeholder="Travel Duration" class="mb-3" required>
-                                <?php echo $this->Form->input('city_id',array('label' => false, 'class' => 'mr-3 mb-3','style'=>'width: 50%;','empty' => __('Select City'), 'div' => false)); ?>
-                                <input type="text" name="destination" placeholder="Destination" style="width: 100%;" class="mr-3 mb-3" required>
-                                <textarea name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
-                                <textarea name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements" required></textarea>
+                                <input type="text" data-role="none" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
+                                <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
+                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3" required>
+                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mb-3" required>
+                                <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
+                                <?php echo $this->Form->input('destination',array('label' => false,'data-role'=>"none",'options'=>$destination,'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Destination'), 'div' => false)); ?>
+                                <textarea data-role="none" name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
+                                <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements" required></textarea>
                             </div>
                             <div class="contact_detail mt-3 mb-3 px-3 py-3">
                                 <p class="font-bold">Your Contact Detail</p>
-                                <input type="text" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
-                                <input type="text" name="lastname" placeholder="Last name" class="mb-3" required>
-                                <input type="number" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
-                                <input type="email" name="email" placeholder="Email" class=" mb-3" required>
+                                <input type="text" data-role="none" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
+                                <input type="text" data-role="none" name="lastname" placeholder="Last name" class="mb-3" required>
+                                <input type="number" data-role="none" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
+                                <input type="email" data-role="none" name="email" placeholder="Email" class=" mb-3" required>
                             </div>  
                 
              </div>     
@@ -66,29 +66,7 @@
             </div>
         </div>
     </footer>
-    <?php echo $this->Html->script(
-                array(
-            'jquery',
-            'bootstrap.min',
-            'jquery.easing.min',
-            'wow',
-            'jquery.mixitup.min',
-            'jquery.fancybox.pack',
-            'waypoints.min',
-            'jquery.counterup.min',
-            'owl.carousel.min',
-            'jquery.stellar.min',
-            'bootstrap-datepicker',
-            'script',
-            'custom',
-            'scrolling-nav',
-            'bootstrap-slider',
-                ), array('inline' => false)
-        );
 
-        echo $this->fetch('script');    
-
-    ?>
 <script type="text/javascript">
        $("#time_of_travel").datepicker( {
         format: "MM-yyyy",
