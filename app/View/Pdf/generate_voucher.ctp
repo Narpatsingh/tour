@@ -63,11 +63,23 @@ $pdf->AddPage();
 $date = date("d-M-Y");
 $customer_signature = $voucher['customer_signature'];
 $company_signature = $voucher['company_signature'];
+$package_photo = APP.'webroot/'.$voucher['tour_photo'];
 $customer_full_name = $voucher['customer_full_name'];
+$customer_contact_no = $voucher['customer_contact_no'];
+$tour_manager_name = $voucher['tour_manager_name'];
+$tour_manager_contact_no = $voucher['tour_manager_contact_no'];
+$emergency_contact_no = $voucher['emergency_contact_no'];
 $customer_tour_type = $voucher['customer_tour_type'];
 $customer_tour_name = $voucher['customer_tour_name'];
-$payment_type = $voucher['payment_type'];
-$total_payment = $voucher['total_payment'];
+$customer_tour_date = date('d-M-Y',strtotime($voucher['customer_tour_date']));
+$meal_plan = $voucher['meal_plan'];
+$customer_travel_type = $voucher['customer_travel_type'];
+$customer_hotel_name = $voucher['customer_hotel_name'];
+$customer_hotel_place_name = $voucher['customer_hotel_place_name'];
+$hotel_contact_no = $voucher['hotel_contact_no'];
+$customer_room_type = $voucher['customer_room_type'];
+$customer_hotel_check_in_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date']));
+$customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date']));
 $id = $voucher['booking_id'];
 $html = <<<EOF
 <!-- EXAMPLE OF CSS STYLE -->
@@ -155,18 +167,16 @@ $html = <<<EOF
 
 </style>
 
-
 <div><img src="$app">
 </div>
-<h2>Receipt</h2>
+
 <br />
 		<table width="100%"  class="innerTable">
 		<tr>
 			<td width="20%">
-				
+				<img src="$package_photo" class="package_photo" width="300px" height="180px">
 			</td>
-		</tr>
-		<tr>
+			<td width="2%"></td>
 			<td width="400px" >
 	
 
@@ -182,20 +192,20 @@ $html = <<<EOF
 						<td width="40%"> $customer_full_name </td>
 					</tr>
 					<tr>
-						<td width="40%"> Customer Tour Type </td>
-						<td width="40%"> $customer_tour_type </td>
+						<td width="40%"> Customer Contact </td>
+						<td width="40%"> $customer_contact_no </td>
 					</tr>
 					<tr>
-						<td width="40%"> Tour Name </td>
-						<td width="40%"> $customer_tour_name </td>
+						<td width="40%"> Tour Manager Name </td>
+						<td width="40%"> $tour_manager_name </td>
 					</tr>
 					<tr>
-						<td width="40%"> Payment Type </td>
-						<td width="40%"> $payment_type </td>
+						<td width="40%"> Tour Manager Contact </td>
+						<td width="40%"> $tour_manager_contact_no </td>
 					</tr>
 					<tr>
-						<td width="40%"> Payment Amount </td>
-						<td width="40%"> $total_payment </td>
+						<td width="40%"> Emergency Contact No </td>
+						<td width="40%"> $emergency_contact_no </td>
 					</tr>
 		</table>
 
@@ -206,7 +216,49 @@ $html = <<<EOF
 	<br>
 	<br>
 	<br>
+
+<table class="first" cellpadding="4" cellspacing="6">
+ <tr>
+  <td width="30" align="center"><b>No.</b></td>
+  <td width="140" align="center"><b>Tour Type</b></td>
+  <td width="140" align="center"><b>Tour Name</b></td>
+  <td width="80" align="center"> <b>Tour Date</b></td>
+  <td width="80" align="center"><b>Meal Plan</b></td>
+  <td width="90" align="center"><b>Travel Type</b></td>
+ </tr>
+ <tr>
+  <td width="30" align="center">1.</td>
+  <td width="140">$customer_tour_type</td>
+  <td width="140">$customer_tour_name</td>
+  <td width="80">$customer_tour_date</td>
+  <td width="80">$meal_plan</td>
+  <td align="center" width="90">$customer_travel_type</td>
+ </tr>
+ <tr style="border:none"></tr><tr style="border:none"></tr>
+ <tr>
+  <td width="90" align="center"><b>Hotel Name</b></td>
+  <td width="115"><b>Place Name</b></td>
+  <td width="100"><b>Hotel Contact No</b></td>
+  <td width="75" align="center"><b>Room Type</b></td>
+  <td width="90"><b>Check in Date</b></td>
+  <td width="90"><b>Check Out Date</b></td>
+ </tr>
+<tr>
+  <td width="90" align="center">$customer_hotel_name</td>
+  <td width="115">$customer_hotel_place_name</td>
+  <td width="100">$hotel_contact_no</td>
+  <td align="center" width="75">$customer_room_type</td>
+  <td width="90">$customer_hotel_check_in_date</td>
+  <td width="90">$customer_hotel_check_out_date</td>
+ </tr>
+</table>
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
 Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
 	<br><br>
 Company  Signature :  <b><i><u>$company_signature</u>.</i></b> 
@@ -219,7 +271,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->lastPage();
 
 //Close and output PDF document
-$pdf_path = APP . 'webroot/files/receipt' . DS . $id;
+$pdf_path = APP . 'webroot/files/voucher' . DS . $id;
 createFolder($pdf_path); 
 $pdf->Output($pdf_path . DS .''.'file.pdf', 'F');
 ?>

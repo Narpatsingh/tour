@@ -14,7 +14,7 @@
                 	<?php
 		echo $this->Form->input('id',array('type'=>'hidden'));
 		echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('package_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('package_id',array('class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('dob',array('type'=>'text', 'label'=>'Date of birth','class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -63,4 +63,9 @@
             autoclose: true    	
     });
   });
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#CustomerPackageId').multiselect();
+	});	
 </script>

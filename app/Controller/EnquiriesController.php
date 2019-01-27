@@ -142,7 +142,6 @@ class EnquiriesController extends AppController {
         $package = $this->Tour->find('first', $toptions);
         $this->set(compact('package','id','enquiry'));
         $this->layout = 'pdf';
-        //$this->render('/Pdf/generate_pdf');
         $this->render('/Pdf/generate_receipt');
         $pdfpath = ROOT_DIR.PDF_PATH.$id.PDF_FILE;
             $this->Message->setSuccess(__('The Enquiry has been approved.'));

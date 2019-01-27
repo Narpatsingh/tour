@@ -124,6 +124,9 @@ public function add() {
         } else {
             $this->Message->setWarning(__('The customer could not be saved. Please, try again.'));
         }
+        $this->loadModel("Tour");
+        $tour_list = $this->Tour->get_list();
+        $this->set('packages',$tour_list);        
     }
 }
 

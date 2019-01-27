@@ -106,6 +106,7 @@ public function add($id=null) {
         $this->request->data['Booking']['customer_email_id'] = $enquiries['Customer']['email'];
         $this->request->data['Booking']['total_tour_member '] = $enquiries['Enquiry']['number_of_guest'];
         $this->request->data['Booking']['place_name'] =  $package['Tour']['place'];
+        $this->request->data['Booking']['tour_photo'] =  $package['Tour']['img'];
         $this->request->data['Booking']['total_payment'] =  $package['Tour']['price'];
         $this->request->data['Booking']['customer_emergency_contact_no'] =  $enquiries['Customer']['emergency_mobile'];
         $this->request->data['Booking']['customer_tour_name'] = $package['Tour']['name'];
@@ -115,7 +116,7 @@ public function add($id=null) {
     }
     if ($this->request->is('post')) {
         $this->Booking->create();
-        $this->request->data['Booking']['enquiry_id'] = decrypt($id);
+        $this->request->data['Booking']['enquiry_id'] = $id;
         if ($this->Booking->save($this->request->data)) {
             if(!empty($this->request->data['GuestMember'])){
             $this->request->data['GuestMember']['booking_id'] = $this->Booking->getLastInsertID();
@@ -191,16 +192,15 @@ public function delete($id = null) {
         $package = $this->Tour->find('first', $toptions);
         $id = $eid;
         $this->set(compact('package','id','Booking'));
-        $this->layout = 'pdf';
-        $this->render('/Pdf/generate_pdf');
+        /*$this->layout = 'pdf';
         $this->render('/Pdf/generate_receipt');
         $pdfpath = ROOT_DIR.PDF_PATH.$eid.PDF_FILE;
+        $this->sendMail($booking,'Quick Booking For Travel',$pdfpath);*/
             $this->Message->setSuccess(__('The Booking has been approved.'));
-            $this->sendMail($booking,'Quick Booking For Travel',$pdfpath);
         } else {
             $this->Message->setWarning(__('The Booking could not be approved. Please, try again.'));
         }        
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('controller' => 'vouchers','action' => 'add',encrypt($bid)));
     }
 
     public function reject($id = null) {

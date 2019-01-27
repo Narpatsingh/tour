@@ -39,7 +39,6 @@ $this->end();
                     <th><?php echo $this->Paginator->sort('customer_email_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('total_tour_member'); ?></th>
                     <th><?php echo $this->Paginator->sort('tour_type'); ?></th>
-                    <th><?php echo $this->Paginator->sort('member_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('meal_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('place_name'); ?></th>
                     <th><?php echo $this->Paginator->sort('total_payment'); ?></th>
@@ -78,7 +77,6 @@ $this->end();
                       <td><?php echo h($booking['Booking']['customer_email_id']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['total_tour_member']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['tour_type']); ?>&nbsp;</td>
-                      <td><?php echo h($booking['Booking']['member_id']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['meal_type']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['place_name']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['total_payment']); ?>&nbsp;</td>
@@ -101,7 +99,7 @@ $this->end();
                       <td><?php echo h($booking['Booking']['all_t_and_c']); ?>&nbsp;</td>
                       <td class="actions text-center">
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $booking['Booking']['id']), array('icon'=>'view','title' => __('Click here to view this Booking'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'edit', $booking['Booking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Booking'))); ?>
+                         <?php //echo $this->Html->link(__(''), array('action' => 'edit', $booking['Booking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Booking'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'delete', $booking['Booking']['id']), array('icon'=>'delete','title' => __('Click here to delete this Booking')), __('Are you sure you want to delete Booking?')); ?>
                          <?php 
                         if(!empty($booking['Booking']['enquiry_id']) && empty($booking['Booking']['is_approved'])):
@@ -119,19 +117,19 @@ $this->end();
                                         ), __('Are you sure you want to reject selected booking?'));                                    
                         endif;
                         if(!empty($booking['Booking']['is_approved']) && $booking['Booking']['is_approved']=='Yes'):
-                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'pdf', $booking['Booking']['enquiry_id'],'file.pdf'),
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['id'],'file.pdf'),
                                         array(
                                             'icon' => 'fa-file',
                                             'target'=>'_blank',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('View Invoice')
+                                            'title' => __('View Receipt')
                                         ));
-                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['enquiry_id'],'file.pdf'),
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'voucher', $booking['Booking']['id'],'file.pdf'),
                                         array(
                                             'icon' => 'fa-file-text-o',
                                             'target'=>'_blank',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('View Receipt')
+                                            'title' => __('View Voucher')
                                         ));
                         endif;                         
                          ?>

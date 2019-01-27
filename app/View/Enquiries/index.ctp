@@ -143,8 +143,18 @@ $searchPanelArray = array(
                                         array(
                                             'icon' => 'view',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('View Customer')
+                                            'title' => __('View Enquiry')
                                         ));
+                                    
+                                    if(empty($enquiry['Customer']['package_id'])){
+                                    echo $this->Html->link(__(''), array('controller' => 'customers','action' => 'edit', $enquiry['Customer']['id']),
+                                        array(
+                                            'icon' => 'fa-user',
+                                            'class' => 'no-hover-text-decoration',
+                                            'title' => __('Update Customer Details')
+                                        ));
+                                    }
+
                                     if(!empty($enquiry['Customer']['package_id']) && empty($enquiry['Enquiry']['is_approved'])):
                                     echo $this->Html->link(__(''), array('action' => 'approve', $enquiry['Enquiry']['id']),
                                         array(
@@ -159,7 +169,7 @@ $searchPanelArray = array(
                                             'title' => __('Reject Customer')
                                         ), __('Are you sure you want to reject selected Enquiry?'));                                    
                                     endif;
-                                    if(!empty($enquiry['Enquiry']['is_approved']) && $enquiry['Enquiry']['is_approved']=='Yes'):
+                                    /*if(!empty($enquiry['Enquiry']['is_approved']) && $enquiry['Enquiry']['is_approved']=='Yes'):
                                     echo $this->Html->link(__(''), array('controller'=>'files','action' => 'pdf', $enquiry['Enquiry']['id'],'file.pdf'),
                                         array(
                                             'icon' => 'fa-file',
@@ -174,7 +184,7 @@ $searchPanelArray = array(
                                             'class' => 'no-hover-text-decoration',
                                             'title' => __('View Receipt')
                                         ));
-                                    endif;
+                                    endif;*/
                                     ?>
                                 </span>
                                 </td>
