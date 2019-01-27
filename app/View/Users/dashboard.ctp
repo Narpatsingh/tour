@@ -172,7 +172,7 @@
                     </div>
                 </div>
             </div>
-            <div id="package" class="carousel slide carousel-fade" data-ride="carousel">
+            <div id="package" class="carousel slide carousel-fade mb-2" data-ride="carousel">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="owl-carousel" id="packages-carousel">
@@ -196,7 +196,7 @@
     </section>
     <!-- end Packages -->
     <!-- Hot Deals Section -->
-    <section id="hot-deals" >
+    <section id="hot-deals" class="padding">
         <!-- <hr> -->
         <div class="container">
             <div class="row">
@@ -360,7 +360,7 @@
     
     <!-- Gallery Section -->
     <section id="gallery">
-        <div class="container">
+        <div class="container mb-2">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
@@ -465,12 +465,12 @@
     <!--end blog-->
     
     <!-- Testimonials Section -->
-    <section id="testimonials" style="background: #808080;">
+    <section id="testimonials">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1>Feedback</h1>
+                        <h1 class="visible-title">Feedback</h1>
                     </div>
                 </div>
             </div>
@@ -506,10 +506,7 @@
     </section>
     <!--end testimonials-->
     <section id="contact" style="padding: 0px">
-        <div class="contact-section" style="background-image: url(images/bg_img/bg1.jpg);background-position: 50% 0; background-size: contain; position: relative;background-size: cover;">
-            <div class="ear-piece">
-                <img class="img-responsive" src="images/ear-piece.png" alt="">
-            </div>
+        <div class="contact-section">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 col-sm-offset-4">
@@ -560,20 +557,20 @@
         </div>
     </section>
 
-<?php   echo $this->Html->script(
+<?php   /*echo $this->Html->script(
         array(
             'jquery.mobile.min',
         ), array('inline' => false)
     );
 
-    //echo $this->fetch('script');
+    echo $this->fetch('script');*/
 ?>   
 
 <script type="text/javascript">
-    $(".carousel-inner").swiperight(function() {  
-    $(this).parent().carousel('prev');  
-  });  
-  $(".carousel-inner").swipeleft(function() {  
-    $(this).parent().carousel('next');  
-  });
+  //   $(".carousel-inner").swiperight(function() {  
+  //   $(this).parent().carousel('prev');  
+  // });  
+  // $(".carousel-inner").swipeleft(function() {  
+  //   $(this).parent().carousel('next');  
+  // });
 </script>    
