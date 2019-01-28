@@ -166,7 +166,7 @@ h2 {
 }
 
 #twitter-feed .item p {
-  color: #ffff;
+  color: #0f0c0b;
 }
 
 #twitter-feed .item a {
@@ -176,7 +176,7 @@ h2 {
 .twitter-control-left, 
 .twitter-control-right {
   position: absolute;
-  color: #ffff;
+  color: #800080;
   top: 59%;
   font-size: 24px
 }
@@ -195,8 +195,6 @@ h2 {
 **************************/
 
 .contact-section {
-  background-color: #f7ab24;
-  background-image: url("../images/contact-bg.jpg");
   background-position:60% 0;
   background-size:contain;
   background-repeat:no-repeat;  

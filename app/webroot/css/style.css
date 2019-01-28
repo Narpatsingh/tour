@@ -2678,3 +2678,25 @@ ul.dropdown-menu.mega-dropdown-menu{
 ul.nav.navbar-nav.navbar-right a.page-scroll,ul.nav.navbar-nav.navbar-right a.dropdown-toggle{
 	bottom: -6px;
 }
+
+#hot-deals {
+	position: relative;
+	background: url(../images/packages/4.jpg) no-repeat;
+}
+#gallery,#testimonials{
+	position: relative;
+	background: url(../images/packages/4.jpg) no-repeat;
+}
+
+#contact{
+	position: relative;
+	background: url(../images/bg_img/contact_us.jpg) no-repeat;
+}
+
+#hot-deals,#gallery,#testimonials,#contact{
+   background-position: center center;
+   -webkit-background-size: cover;
+   background-size: cover;
+   background-attachment: fixed;
+   width: 100%;
+}
