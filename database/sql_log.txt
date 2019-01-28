@@ -2,10 +2,29 @@ d-- phpMyAdmin SQL Dump
 -- version 4.5.1
 
 --
--- Database: `dummy`
+-- Database: `silshlrp_tour`
 --
 
--- --------------------------------------------------------
+--------------------------------------------------------
+
+28-01-2019
+ALTER TABLE `bookings` ADD `tour_type2` VARCHAR(150) NULL AFTER `updated`, ADD `tour_type3` VARCHAR(150) NULL AFTER `tour_type2`, ADD `tour_photo2` VARCHAR(150) NULL AFTER `tour_type3`, ADD `tour_photo3` VARCHAR(150) NULL AFTER `tour_photo2`, ADD `meal_type2` VARCHAR(150) NULL AFTER `tour_photo3`, ADD `meal_type3` VARCHAR(150) NULL AFTER `meal_type2`, ADD `place_name2` VARCHAR(150) NULL AFTER `meal_type3`, ADD `place_name3` VARCHAR(150) NULL AFTER `place_name2`, ADD `total_payment2` INT(50) NULL AFTER `place_name3`, ADD `total_payment3` INT(50) NULL AFTER `total_payment2`, ADD `customer_tour_date2` DATE NULL AFTER `total_payment3`, ADD `customer_tour_date3` DATE NULL AFTER `customer_tour_date2`, ADD `travel_type2` VARCHAR(150) NULL AFTER `customer_tour_date3`, ADD `travel_type3` VARCHAR(150) NULL AFTER `travel_type2`, ADD `travel_number2` VARCHAR(150) NULL AFTER `travel_type3`, ADD `travel_number3` VARCHAR(150) NULL AFTER `travel_number2`, ADD `travel_pnr_no2` VARCHAR(150) NULL AFTER `travel_number3`, ADD `travel_pnr_no3` VARCHAR(150) NULL AFTER `travel_pnr_no2`, ADD `return_travel_number2` VARCHAR(150) NULL AFTER `travel_pnr_no3`, ADD `return_travel_number3` VARCHAR(150) NULL AFTER `return_travel_number2`, ADD `return_travel_date2` DATE NULL AFTER `return_travel_number3`, ADD `return_travel_date3` DATE NULL AFTER `return_travel_date2`, ADD `return_travel_pnr_no2` VARCHAR(150) NULL AFTER `return_travel_date3`, ADD `return_travel_pnr_no3` VARCHAR(150) NULL AFTER `return_travel_pnr_no2`, ADD `customer_hotel_type2` VARCHAR(150) NULL AFTER `return_travel_pnr_no3`, ADD `customer_hotel_type3` VARCHAR(150) NULL AFTER `customer_hotel_type2`;
+
+ALTER TABLE `bookings` ADD `travel_date2` DATE NULL AFTER `travel_number3`, ADD `travel_date3` DATE NULL AFTER `travel_date2`;
+
+ALTER TABLE `bookings` ADD `package_count` INT NOT NULL AFTER `customer_hotel_type3`;
+
+ALTER TABLE `vouchers` ADD `customer_tour_type2` VARCHAR(150) NULL AFTER `tour_photo`, ADD `customer_tour_type3` VARCHAR(150) NULL AFTER `customer_tour_type2`, ADD `customer_tour_name2` VARCHAR(150) NULL AFTER `customer_tour_type3`, ADD `customer_tour_name3` VARCHAR(150) NULL AFTER `customer_tour_name2`, ADD `customer_hotel_name2` VARCHAR(150) NULL AFTER `customer_tour_name3`, ADD `customer_hotel_name3` VARCHAR(150) NULL AFTER `customer_hotel_name2`, ADD `customer_tour_date2` DATE NULL AFTER `customer_hotel_name3`, ADD `customer_tour_date3` DATE NULL AFTER `customer_tour_date2`, ADD `customer_hotel_check_in_date2` DATE NULL AFTER `customer_tour_date3`, ADD `customer_hotel_check_in_date3` DATE NULL AFTER `customer_hotel_check_in_date2`, ADD `customer_hotel_check_out_date2` DATE NULL AFTER `customer_hotel_check_in_date3`, ADD `customer_hotel_check_out_date3` DATE NULL AFTER `customer_hotel_check_out_date2`, ADD `customer_room_type2` VARCHAR(150) NULL AFTER `customer_hotel_check_out_date3`, ADD `customer_room_type3` VARCHAR(150) NULL AFTER `customer_room_type2`, ADD `customer_travel_type2` VARCHAR(150) NULL AFTER `customer_room_type3`, ADD `customer_travel_type3` VARCHAR(150) NULL AFTER `customer_travel_type2`, ADD `meal_plan2` VARCHAR(150) NULL AFTER `customer_travel_type3`, ADD `meal_plan3` VARCHAR(150) NULL AFTER `meal_plan2`, ADD `hotel_contact_no2` VARCHAR(15) NULL AFTER `meal_plan3`, ADD `hotel_contact_no3` VARCHAR(15) NULL AFTER `hotel_contact_no2`, ADD `total_payment2` INT NULL AFTER `hotel_contact_no3`, ADD `total_payment3` INT NULL AFTER `total_payment2`, ADD `package_count` INT NULL AFTER `total_payment3`;
+
+ALTER TABLE `vouchers` ADD `tour_photo2` VARCHAR(150) NOT NULL AFTER `total_payment3`, ADD `tour_photo3` VARCHAR(150) NOT NULL AFTER `tour_photo2`;
+--------------------------------------------------------
+
+27-01-2019
+ALTER TABLE `bookings` CHANGE `member_id` `tour_photo` VARCHAR(150) NULL;
+ALTER TABLE `vouchers` ADD `tour_photo` VARCHAR(150) NULL AFTER `customer_signature`;
+ALTER TABLE `vouchers` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL AFTER `emergency_contact_no`;
+ALTER TABLE `vouchers` ADD `total_payment` INT NULL AFTER `payment_type`;
+ALTER TABLE `customers` ADD `multi_package` VARCHAR(50) NOT NULL AFTER `package_id`;
 
 04-01-2019~Ajay
 ALTER TABLE `customers` ADD `email` VARCHAR(100) NOT NULL AFTER `name`;
@@ -45,17 +64,46 @@ ToDo List:
 - auto feel form data.
 - create new fields on booking form.
 - is booking form editable ?
+- create voucher form after booking approval.
+- allow multiple tour.
 - is price updatable after members are add?
 
 
-        modified:   app/Config/bootstrap.php
-        modified:   app/Config/database.php
-        modified:   app/Controller/EnquiriesController.php
- modified:   app/View/Elements/backend/admin_left.ctp
- modified:   database/sql_log.txt
+customer_full_name
+customer_contact_no
+customer_tour_type
+customer_tour_name
+customer_hotel_name
+customer_tour_date
+customer_hotel_places_name
+customer_hotel_check_in_date
+customer_hotel_check_out_date
+customer_room_type
+customer_travel_type
+meal_plan
+tour_manager_name
+tour_manager_contact_no
+hotel_contact_no
+emergency_contact_no
+company_signature
+customer_signature
 
 
-        app/Controller/BookingsController.php
-        app/Model/Booking.php
-app/View/Bookings/
-app/webroot/files/booking/
+
+app/Config/bootstrap.php app/Config/database.php app/Controller/EnquiriesController.php app/View/Elements/backend/admin_left.ctp database/sql_log.txt app/Controller/BookingsController.php app/Model/Booking.php app/View/Bookings/ app/webroot/files/booking/
+
+
+
+mamange_accounts
+
+enquiry_id = 1
+total_payable = 1500x4
+recieved = 750
+
+enquiry_id = 2
+total_payable = 1500
+recieved = 750
+
+enquiry_id = 3
+total_payable = 1500
+recieved = 750

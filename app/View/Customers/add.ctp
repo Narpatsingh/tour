@@ -66,6 +66,29 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#CustomerPackageId').multiselect();
+		$('#CustomerPackageId').multiselect(
+		// 	function(){
+			
+		// 	onChange : function(event){
+		// 	    if ($("select option:selected").length > 3) {
+		// 	    	event.preventDefault();
+		// 	        $(this).removeAttr("selected");
+		// 	        alert('You can select upto 3 options only.');
+		// 	    }
+		// 	}
+		// }
+		);
+
+		$("#CustomerPackageId").change(function (event) {
+				
+			if ($("select option:selected").length > 3) {
+		    	event.preventDefault();
+		        $(this).removeAttr("selected");
+		        alert('You can select upto 3 Packages only.');
+		    }
+
+	    $('#CustomerPackageId').multiselect('refresh');
+		});
+
 	});	
 </script>

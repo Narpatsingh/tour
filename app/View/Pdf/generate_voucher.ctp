@@ -119,7 +119,7 @@ $html = <<<EOF
 		background-color: #ccffcc;
 	}
 	td {
-		border: 2px solid blue;
+		border: none;
 		background-color: #ffffee;
 	}
 	td.second {
@@ -180,7 +180,7 @@ $html = <<<EOF
 			<td width="400px" >
 	
 
-	<table class="innerTable">
+	<table class="innerTable" style="border:1px solid #800080;">
 					<tr>
 						<td width="40%"> 
 							Date

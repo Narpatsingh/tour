@@ -1,0 +1,75 @@
+-- --------------------------------------------------------
+
+04-01-2018~Ajay
+- tour_management\app\Controller\EnquiriesController.php
+- tour_management\app\View\Elements\tour_footer.ctp
+- tour_management\app\View\Tours\add.ctp
+- tour_management\app\Model\Tour.php
+- tour_management\app\Controller\CustomersController.php
+- G:\xampp\htdocs\tour_management\app\View\Customers\add.ctp
+- G:\xampp\htdocs\tour_management\app\View\Elements\backend\admin_left.ctp
+- G:\xampp\htdocs\tour_management\app\Model\Enquiry.php
+- G:\xampp\htdocs\tour_management\app\View\Layouts\pdf.ctp
+- G:\xampp\htdocs\tour_management\app\View\Pdf\generate_pdf.ctp
+
+12-01-2018~Ajay
+- tour_management\app\Controller\EnquiriesController.php
+- tour_management\app\View\Pdf\generate_pdf.ctp
+- tour_management\app\View\Pdf\generate_receipt.ctp
+
+ToDo List:
+
+Travel Management
+- manage customer id field.
+- source to destination.
+- generate reciept.
+- reciept.
+- send email
+
+
+git commit -m "Generate Reciept" app/Controller/EnquiriesController.php app/View/Enquiries/view.ctp app/View/Pdf/generate_pdf.ctp
+
+- G:\xampp\htdocs\tour_management\app\View\Enquiries\index.ctp
+- G:\xampp\htdocs\tour_management\app\View\Pdf\generate_receipt.ctp
+- G:\xampp\htdocs\tour_management\app\Controller\TrainDetailsController.php
+- G:\xampp\htdocs\tour_management\app\View\TrainDetails\add.ctp
+- G:\xampp\htdocs\tour_management\app\Model\TrainDetail.php
+- G:\xampp\htdocs\tour_management\app\View\TrainDetails\index.ctp
+- G:\xampp\htdocs\tour_management\app\View\BusDetails\add.ctp
+- G:\xampp\htdocs\tour_management\database\sql_log.txt
+- G:\xampp\htdocs\tour_management\app\Model\FlightDetail.php
+- G:\xampp\htdocs\tour_management\app\Controller\FlightDetailsController.php
+- G:\xampp\htdocs\tour_management\app\Config\bootstrap.php
+- G:\xampp\htdocs\tour_management\app\Controller\AppController.php
+- G:\xampp\htdocs\tour_management\app\Controller\AppController.php
+- G:\xampp\htdocs\tour_management\database\files_log - ajay.txt
+               
+14-01-2018~Ajay
+
+ToDo List:
+
+manage popup design in enquiry. (Done)
+BusDetails changes for single and whole if user select single need to add the user count and if whole full bus booked for him. (Done)
+add new fields in enquiry form. 
+manage multiple tour for customer (only database side)
+fix the attachment mail issue.
+
+
+- G:\xampp\htdocs\tour_management\app\View\Elements\tour_footer.ctp
+- G:\xampp\htdocs\tour_management\app\webroot\css\style.css
+- G:\xampp\htdocs\tour_management\app\View\BusDetails\add.ctp
+
+
+
+time_of_travel
+travel_duration
+city_of_residence
+destination
+special_requirements
+
+bus detail
+booking_type
+member
+
+
+app/Controller/EnquiriesController.php app/Controller/UsersController.php app/Model/Enquiry.php app/View/BusDetails/add.ctp app/View/Elements/tour_footer.ctp app/View/Enquiries/index.ctp app/webroot/css/style.css database/finance_management.xlsx database/sql_log.txt

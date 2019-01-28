@@ -117,6 +117,19 @@ public function view($id = null) {
 */
 public function add() {
     if ($this->request->is('post')) {
+
+         if(empty($this->request->data['Customer']['package_id'])){
+            $this->Message->setWarning(__('Please Select Atleast one package.'));return $this->redirect($this->referer());
+        }else{
+            $packages = $this->request->data['Customer']['package_id'];
+            
+            if(count($packages)>3){
+                $this->Message->setWarning(__('You can select upto 3 Packages only.')); return $this->redirect($this->referer());
+            }
+        }
+        $this->request->data['Customer']['package_id'] = $packages[0];
+        $this->request->data['Customer']['multi_package'] = implode(',', $packages);
+
         $this->Customer->create();
         if ($this->Customer->save($this->request->data)) {
             $this->Message->setSuccess(__('The customer has been saved.'));
@@ -143,6 +156,18 @@ public function edit($id = null) {
         $this->Message->setWarning(__('Invalid customer'),array('action'=>'index'));
     }
     if ($this->request->is(array('post', 'put'))) {
+
+        if(empty($this->request->data['Customer']['package_id'])){
+            $this->Message->setWarning(__('Please Select Atleast one package.'));return $this->redirect($this->referer());
+        }else{
+            $packages = $this->request->data['Customer']['package_id'];
+            
+            if(count($packages)>3){
+                $this->Message->setWarning(__('You can select upto 3 Packages only.')); return $this->redirect($this->referer());
+            }
+        }
+        $this->request->data['Customer']['package_id'] = $packages[0];
+        $this->request->data['Customer']['multi_package'] = implode(',', $packages);
         if ($this->Customer->save($this->request->data)) {
             $this->Message->setSuccess(__('The customer has been updated.'));
             return $this->redirect(array('action' => 'index'));

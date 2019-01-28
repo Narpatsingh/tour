@@ -97,22 +97,27 @@ public function add($id=null) {
         $this->loadModel("Tour");$this->loadModel("Enquiry");$this->loadModel("GuestMember");
         $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $id));
         $enquiries = $this->Enquiry->find('first', $options);
-        $tour_id = $enquiries['Customer']['package_id'];
+        $tour_id = explode( ',', $enquiries['Customer']['multi_package'] );
+        $pcount = count( $tour_id );
         $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
-        $package = $this->Tour->find('first', $toptions);
+        $packages = $this->Tour->find('all', $toptions);
+        foreach ($packages as $key => $package) {
+        $apn = empty($key)?'':$key+1;
+        $this->request->data['Booking']['place_name'.$apn] =  $package['Tour']['place'];
+        $this->request->data['Booking']['tour_photo'.$apn] =  $package['Tour']['img'];
+        $this->request->data['Booking']['total_payment'.$apn] =  $package['Tour']['price'];
+        $this->request->data['Booking']['customer_tour_name'.$apn] = $package['Tour']['name'];
+        }
         $this->request->data['Booking']['customer_full_name'] = $enquiries['Customer']['name'];
         $this->request->data['Booking']['customer_date_of_birth'] = $enquiries['Customer']['dob'];
         $this->request->data['Booking']['customer_contact_no'] = $enquiries['Customer']['mobile'];
         $this->request->data['Booking']['customer_email_id'] = $enquiries['Customer']['email'];
         $this->request->data['Booking']['total_tour_member '] = $enquiries['Enquiry']['number_of_guest'];
-        $this->request->data['Booking']['place_name'] =  $package['Tour']['place'];
-        $this->request->data['Booking']['tour_photo'] =  $package['Tour']['img'];
-        $this->request->data['Booking']['total_payment'] =  $package['Tour']['price'];
         $this->request->data['Booking']['customer_emergency_contact_no'] =  $enquiries['Customer']['emergency_mobile'];
-        $this->request->data['Booking']['customer_tour_name'] = $package['Tour']['name'];
         $this->request->data['Booking']['customer_valid_id_proof'] = $enquiries['Customer']['dob_proof'];
         $this->request->data['Booking']['customer_tour_date'] = $enquiries['Enquiry']['time_of_travel'];
         $this->request->data['Booking']['total_tour_member'] = $enquiries['Enquiry']['number_of_guest'];
+        $this->request->data['Booking']['package_count'] = $pcount;
     }
     if ($this->request->is('post')) {
         $this->Booking->create();

@@ -6,6 +6,7 @@
 	$this->start('top_links');
 		echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
 	$this->end();
+	$pcount = $this->request->data['Booking']['package_count'];
 ?>
     <div class="box box-primary">
         <div class="overflow-hide-break">
@@ -16,23 +17,65 @@
 		echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-     	echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		echo $this->Form->input('tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('tour_type'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));	
+		}
+		echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('meal_type'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
+		echo $this->Form->input('place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('place_name'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
+		echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('total_payment'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
+		echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('customer_tour_name'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
+     	echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+     	for ($i=2; $i <= $pcount; $i++) { 
+     	echo $this->Form->input('customer_tour_date'.$i,array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('travel_type',array('options' => array('Bus'=>'Bus','Train'=>'Train','Flight'=>'Flight'),'class' => 'form-control','empty' => 'Select Travel Type', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('travel_type'.$i,array('options' => array('Bus'=>'Bus','Train'=>'Train','Flight'=>'Flight'),'class' => 'form-control','empty' => 'Select Travel Type', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('travel_number',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('travel_number'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('travel_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('travel_date'.$i,array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('travel_pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('travel_pnr_no'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('return_travel_number',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('return_travel_number'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('return_travel_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('return_travel_date'.$i,array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('return_travel_pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('return_travel_pnr_no'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('customer_hotel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		for ($i=2; $i <= $pcount; $i++) { 
+		echo $this->Form->input('customer_hotel_type'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+		}
 		echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('all_t_and_c',array('type'=>'textarea','class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -48,7 +91,7 @@
 				echo "<h6>Member ".$mem++.".</h6>";
 				echo $this->Form->input('member_name',array('name'=>'data[GuestMember]['.$i.'][member_name]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('member_age',array('name'=>'data[GuestMember]['.$i.'][member_age]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
-				echo $this->Form->input('member_dob',array('name'=>'data[GuestMember]['.$i.'][member_dob]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('member_dob',array('name'=>'data[GuestMember]['.$i.'][member_dob]', 'class' => 'form-control member_dob', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('member_gender',array('name'=>'data[GuestMember]['.$i.'][member_gender]', 'options' => array('male'=>'Male','female'=>'Female'),'class' => 'form-control','empty' => 'Select Gender', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('member_valid_proof',array('name'=>'data[GuestMember]['.$i.'][member_valid_proof]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
 			}
@@ -134,6 +177,10 @@
 <script type="text/javascript">
 	jQuery(document).ready(function () {
 
+        $('.member_dob').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
         $('#BookingCustomerDateOfBirth').datepicker({
             format: "yyyy-mm-dd",
             autoclose: true
@@ -150,6 +197,30 @@
             format: "yyyy-mm-dd",
             autoclose: true
         });
+        $('#BookingCustomerTourDate2').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#BookingCustomerTourDate3').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });                
+        $('#BookingTravelDate2').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });                
+        $('#BookingTravelDate3').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });                
+        $('#BookingReturnTravelDate2').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });                
+        $('#BookingReturnTravelDate3').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });                
     });    
 	jQuery(document).on('change','#BookingTotalTourMember',function (e) {
 		var bla = $('#BookingTotalTourMember').val();

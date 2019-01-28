@@ -94,13 +94,21 @@ public function view($id = null) {
 public function add($id=null) {
         $id = decrypt($id);
     if ($this->request->is('post')) {
+        ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
         $this->Voucher->create();
         if ($this->Voucher->save($this->request->data)) {
 
             $voucher = $this->request->data['Voucher'];
+
+            $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
             $this->set(compact('voucher'));
-            $this->render('/Pdf/generate_voucher'); 
+            if($pcount==1){
+            $this->render('/Pdf/generate_voucher');     
+            }else{
+            $this->render('/Pdf/generate_voucher'.$pcount);         
+            }
+
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->render('/Pdf/generate_receipt');     
@@ -124,8 +132,15 @@ public function add($id=null) {
             $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id'];
             $this->request->data['Voucher']['enc_id'] = $bookings['Booking']['enquiry_id'];
             $this->request->data['Voucher']['customer_tour_type'] = $bookings['Booking']['tour_type'];
-            $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['place_name'];
             $this->request->data['Voucher']['customer_tour_date'] = $bookings['Booking']['travel_date'];
+            $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['place_name'];
+            $this->request->data['Voucher']['customer_hotel_place_name'] = $bookings['Booking']['place_name'];
+            for ($i=2; $i <= $bookings['Booking']['package_count']; $i++) { 
+            $this->request->data['Voucher']['customer_tour_type'.$i] = $bookings['Booking']['tour_type'.$i];
+            $this->request->data['Voucher']['customer_tour_date'.$i] = $bookings['Booking']['travel_date'.$i];
+            $this->request->data['Voucher']['customer_tour_name'.$i] = $bookings['Booking']['place_name'.$i];
+            $this->request->data['Voucher']['customer_hotel_place_name'.$i] = $bookings['Booking']['place_name'.$i];
+            }
         }
     }
 }

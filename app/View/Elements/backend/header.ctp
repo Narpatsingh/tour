@@ -75,7 +75,6 @@
 <script>
   $(function() {
     $('#toggle-event').change(function() {
-        console.log($(this).prop('checked'))
         $('#console-event').html('Toggle: ' + $(this).prop('checked'));
         var status = $(this).prop('checked');
         jQuery.ajax({
