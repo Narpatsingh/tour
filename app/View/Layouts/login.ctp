@@ -36,7 +36,7 @@
             <?php } ?>
         </div>
     <center class="margin-bottom20">
-        <h2 style="color: #fff;"> Silshine Trip </h2>
+        <img src="/img/logo.png" class="img-responsive img-display" alt="">
         <?php //echo $this->Html->link($this->Html->image(getLogo(),array('style'=>'max-width:200px !important')), '/', array('escape' => false, 'class' => 'logo')) ?>
     </center>
     <?php echo $this->fetch('content'); ?>	

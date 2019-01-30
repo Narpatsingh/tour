@@ -35,8 +35,8 @@ $this->end();
                       <td><?php echo h($slider['Slider']['updated']); ?>&nbsp;</td>
                       <td class="actions text-center">
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $slider['Slider']['id']), array('icon'=>'view','title' => __('Click here to view this Slider'))); ?>
-                         <?php //echo $this->Html->link(__(''), array('action' => 'edit', $slider['Slider']['id']), array('icon'=>'edit','title' => __('Click here to edit this Slider'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'delete', $slider['Slider']['id']), array('icon'=>'delete','title' => __('Click here to delete this Slider')), __('Are you sure you want to delete Slider?')); ?>
+                         <?php echo $this->Html->link(__(''), array('action' => 'edit', $slider['Slider']['id']), array('icon'=>'edit','title' => __('Click here to edit this Slider'))); ?>
+                         <?php //echo $this->Html->link(__(''), array('action' => 'delete', $slider['Slider']['id']), array('icon'=>'delete','title' => __('Click here to delete this Slider')), __('Are you sure you want to delete Slider?')); ?>
                      </td>
                  </tr>
              <?php endforeach; ?>

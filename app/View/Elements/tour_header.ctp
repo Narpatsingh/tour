@@ -38,6 +38,8 @@
                 array(
             'jquery',
             'bootstrap.min',
+            'lib/jquery-ui-1.11.4',
+            'lib/jquery.validate',
             'jquery.easing.min',
             'wow',
             'jquery.mixitup.min',

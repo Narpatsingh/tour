@@ -230,11 +230,13 @@
 
   .twitter-control-left, 
   .twitter-control-right {
+    position: initial;
     top: inherit;
     bottom: -40px;
   }
 
   .twitter-control-left {
+    margin-left: 50%;
     left: 46%;
   }
 
@@ -405,6 +407,7 @@
   #twitter-feed .item a, 
   #twitter-feed .item p {
     font-size: 15px;
+    font-weight: normal;
   }
 
   .twitter-control-left, 

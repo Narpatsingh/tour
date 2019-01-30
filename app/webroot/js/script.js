@@ -294,7 +294,12 @@
 	$myCarousel.on('slide.bs.carousel', function (e) {
 		var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
 		doAnimations($animatingElems);
-	});  
+	}); 
+
+	// $(".slide").data('owlCarousel').reinit({
+	//     touchDrag  : true,
+	//     mouseDrag  : true
+	// }); 
 	
 })(jQuery);	
 	

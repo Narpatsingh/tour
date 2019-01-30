@@ -1,8 +1,146 @@
 <body id="page-top">
     <!--Preload-->
     <div class="preloader">
-        <div class="preloader_image"></div>
+        <div class="wrapper">
+           <div id="stars">
+            <div class='body'>
+                <span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <div class='base'>
+                    <span></span>
+                    <div class='face'></div>
+                </div>
+            </div>
+            <svg id="stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                 <g id="stars-2" data-name="stars">
+                    <g id="rect">
+                       <g id="star" class="star-bg big">
+                          <path d="M208.68,108.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M204.7,101.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V101.87Z" fill="#ee85b5"/>
+                       </g>
+                       <g id="star-2" class="star-bg big" data-name="star">
+                          <path d="M95.68,194.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M91.7,187.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V187.87Z" fill="#ee85b5"/>
+                       </g>
+                       <g id="star-3" class="star-bg big" data-name="star">
+                          <path d="M295.68,64.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M291.7,57.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V57.87Z" fill="#ee85b5"/>
+                       </g>
+                       <g id="star-4" class="star-bg big" data-name="star">
+                          <path d="M379.68,160.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M375.7,153.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V153.87Z" fill="#ee85b5"/>
+                       </g>
+                       <g id="star-5" class="star-bg big" data-name="star">
+                          <path d="M498.68,128.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M494.7,121.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V121.87Z" fill="#ee85b5"/>
+                       </g>
+                       <g id="star-6" class="star-bg big" data-name="star">
+                          <path d="M653.68,139.13a4.5,4.5,0,0,1-2.87-2.87l-1.12-3.4-1.12,3.4a4.5,4.5,0,0,1-2.87,2.87l-3.4,1.12,3.4,1.12a4.5,4.5,0,0,1,2.87,2.87l1.12,3.4,1.12-3.4a4.5,4.5,0,0,1,2.87-2.87l3.4-1.12Z" fill="#ffaaa3"/>
+                          <path d="M649.7,132.87l1.12,3.4a4.5,4.5,0,0,0,2.87,2.87l3.4,1.12-3.4,1.12a4.5,4.5,0,0,0-2.87,2.87l-1.12,3.4V132.87Z" fill="#ee85b5"/>
+                       </g>
+                    </g>
+                    <g id="dots">
+                       <circle class="star-bg small" cx="419.81" cy="84.29" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="478.81" cy="203.29" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="309.28" cy="147.62" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="85.55" cy="65.24" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="717.52" cy="175.5" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="582.87" cy="66.63" r="2.62" fill="#ff958c"/>
+                       <circle class="star-bg small" cx="702.57" cy="98.13" r="2.62" fill="#ff958c"/>
+                    </g>
+                 </g>
+              </svg>
+           </div>
+           <div id="lights">
+              <svg id="lights" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 600">
+                 <defs>
+                    <radialGradient id="radial-gradient" cx="205.17" cy="270.39" r="41.14" gradientUnits="userSpaceOnUse">
+                       <stop offset="0.01" stop-color="#ff958c"/>
+                       <stop offset="0.18" stop-color="#ff958c" stop-opacity="0.77"/>
+                       <stop offset="0.41" stop-color="#ff958c" stop-opacity="0.5"/>
+                       <stop offset="0.61" stop-color="#ff958c" stop-opacity="0.28"/>
+                       <stop offset="0.78" stop-color="#ff958c" stop-opacity="0.13"/>
+                       <stop offset="0.92" stop-color="#ff958c" stop-opacity="0.03"/>
+                       <stop offset="1" stop-color="#ff958c" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="radial-gradient-2" cx="628.17" cy="270.39" r="41.14" xlink:href="#radial-gradient"/>
+                 </defs>
+                 <g id="light1">
+                    <g>
+                       <path d="M202.39,400l0.12,0h2.66V293.53h-2.78V400Z" fill="#bf7069"/>
+                       <path d="M202.39,400a2.77,2.77,0,0,0-2.66,2.76v12.84a2.88,2.88,0,0,1,.53-0.11h4.91V400h-2.66Z" fill="#b36488"/>
+                       <path d="M200.26,415.48a2.88,2.88,0,0,0-.53.11,3,3,0,0,0-2.52,2.94v33h8v-36h-4.91Z" fill="#653162"/>
+                       <path d="M200.44,286.88H198a2.5,2.5,0,0,0-2.38,2.6v1.44a2.5,2.5,0,0,0,2.38,2.6h7.14v-6.64h-4.73Z" fill="#441b3c"/>
+                    </g>
+                    <g>
+                       <path d="M207.21,400l-0.12,0h-2.66V293.53h2.78V400Z" fill="#bf7069"/>
+                       <path d="M207.21,400a2.77,2.77,0,0,1,2.66,2.76v12.84a2.88,2.88,0,0,0-.53-0.11h-4.91V400h2.66Z" fill="#b36488"/>
+                       <path d="M209.34,415.48a2.88,2.88,0,0,1,.53.11,3,3,0,0,1,2.52,2.94v33h-8v-36h4.91Z" fill="#653162"/>
+                       <path d="M209.16,286.88h2.41a2.5,2.5,0,0,1,2.38,2.6v1.44a2.5,2.5,0,0,1-2.38,2.6h-7.14v-6.64h4.73Z" fill="#441b3c"/>
+                    </g>
+                    <circle class="light-bulb" cx="205.17" cy="270.39" r="41.14" fill="url(#radial-gradient)"/>
+                    <circle cx="205.17" cy="270.39" r="17.93" fill="#ffaaa3" opacity="0.8"/>
+                    <path d="M196.69,260c-0.6-.79-3.16-0.05-3.93.58s-2.57,3.9-1.53,4.42,2.93-.52,3.94-0.62C196.44,264.29,197.46,261.05,196.69,260Z" fill="#ffaaa3"/>
+                 </g>
+                 <g id="light2">
+                    <g>
+                       <path d="M625.39,400l0.12,0h2.66V293.53h-2.78V400Z" fill="#bf7069"/>
+                       <path d="M625.39,400a2.77,2.77,0,0,0-2.66,2.76v12.84a2.88,2.88,0,0,1,.53-0.11h4.91V400h-2.66Z" fill="#b36488"/>
+                       <path d="M623.26,415.48a2.88,2.88,0,0,0-.53.11,3,3,0,0,0-2.52,2.94v33h8v-36h-4.91Z" fill="#653162"/>
+                       <path d="M623.44,286.88H621a2.5,2.5,0,0,0-2.38,2.6v1.44a2.5,2.5,0,0,0,2.38,2.6h7.14v-6.64h-4.73Z" fill="#441b3c"/>
+                    </g>
+                    <g>
+                       <path d="M630.21,400l-0.12,0h-2.66V293.53h2.78V400Z" fill="#bf7069"/>
+                       <path d="M630.21,400a2.77,2.77,0,0,1,2.66,2.76v12.84a2.88,2.88,0,0,0-.53-0.11h-4.91V400h2.66Z" fill="#b36488"/>
+                       <path d="M632.34,415.48a2.88,2.88,0,0,1,.53.11,3,3,0,0,1,2.52,2.94v33h-8v-36h4.91Z" fill="#653162"/>
+                       <path d="M632.16,286.88h2.41a2.5,2.5,0,0,1,2.38,2.6v1.44a2.5,2.5,0,0,1-2.38,2.6h-7.14v-6.64h4.73Z" fill="#441b3c"/>
+                    </g>
+                    <circle class="light-bulb" cx="628.17" cy="270.39" r="41.14" fill="url(#radial-gradient-2)"/>
+                    <circle cx="628.17" cy="270.39" r="17.93" fill="#ffaaa3" opacity="0.8"/>
+                    <path d="M619.69,260c-0.6-.79-3.16-0.05-3.93.58s-2.57,3.9-1.53,4.42,2.93-.52,3.94-0.62C619.44,264.29,620.46,261.05,619.69,260Z" fill="#ffaaa3"/>
+                 </g>
+              </svg>
+           </div>
+           <div id="carousels">
+              <div id="horse-ride">
+                 <svg id="ground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                    <g>
+                       <path d="M183.77,523a16.5,16.5,0,0,1,0-33H616.23a16.5,16.5,0,0,1,0,33H183.77Z" fill="#773069"/>
+                       <rect x="151" y="451" width="499" height="40" rx="16.26" ry="16.26" transform="translate(801 942) rotate(180)" fill="#883677"/>
+                    </g>
+                    <g id="carousel-2" data-name="carousel">
+                       <path d="M401,191.7s0-4.82,0-14.45c2.59,0.89,6.22,2.65,8.89,2.65,3.26,0,7.15-1.83,10.34-2.65l-4.78,5.26,6,2.15c-5.38,4.92-13.47,1.32-20.23.51l0.05,6.53H401Z" fill="#b257b0"/>
+                       <polygon points="401.13 187 288.44 269 325.69 269 325.85 269 363.23 269 363.39 269 400.77 269 400.92 269 401.13 269 438.79 269 438.94 269 476.32 269 476.48 269 513.73 269 401.13 187" fill="#ee85b5"/>
+                       <polygon points="438.79 269.05 438.94 269.05 476.32 269.05 476.48 269.05 513.73 269.05 401.13 187.06 401.13 269.05 438.79 269.05" fill="#ca61c3"/>
+                       <path d="M274.71,443l9.68-13.91H402.13v22.19H279.85C275.15,451.27,272.26,446.62,274.71,443Z" fill="#ee85b5"/>
+                       <path d="M525.31,443l-9-13.91H401v22.19H520.26C524.88,451.27,527.72,446.62,525.31,443Z" fill="#ca61c3"/>
+                       <polygon points="516.31 428.45 516.31 417.92 400.05 417.92 400.05 429.08 516.31 429.08 516.31 428.45" fill="#883677"/>
+                       <polygon points="284.39 428.45 284.39 417.92 401.13 417.92 401.13 429.08 284.39 429.08 284.39 428.45" fill="#883677"/>
+                       <path d="M476.16,269H288.44c0,10,8.41,19,18.78,19A18.9,18.9,0,0,0,326,269a18.76,18.76,0,0,0,37.52.61A18.9,18.9,0,0,0,382.25,288h0.1a18.9,18.9,0,0,0,18.77-19c0,9,6.8,19,18.79,19a18.88,18.88,0,0,0,18.73-18.21A18.89,18.89,0,0,0,457.39,288c9.61,0,18.5-9.36,18.82-18.34A18.9,18.9,0,0,0,495,288c10.37,0,18.78-9,18.78-19H476.16Z" fill="#883677"/>
+                    </g>
+                 </svg>
+              </div>
+              <div id="fade-black"></div>
+              <div id="pole">
+              </div>
+              <div id="cylinder">
+                 <div id="horses">
+                    <div class="a"><img class="hors up" src="http://svgur.com/i/5o.svg" /></div>
+                    <div class="b"><img class="hors down" src="http://svgur.com/i/5o.svg" /></div>
+                    <div class="c"><img class="hors up" src="http://svgur.com/i/5o.svg" /></div>
+                    <div class="d"><img class="hors down" src="http://svgur.com/i/5o.svg" /></div>
+                    <div class="e"><img class="hors up" src="http://svgur.com/i/5o.svg" /></div>
+                    <div class="f"><img class="hors down" src="http://svgur.com/i/5o.svg" /></div>
+                 </div>
+              </div>
+           </div>
+        </div>    
     </div>
+    <!--End Preload-->
     <!-- <div class="top-header">
         <div class="row">
             <div class="col-md-12">
@@ -15,7 +153,7 @@
     
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container" style="margin-left: 0px">
+        <div class="container full_width" style="margin-left: 0px">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="navbar-header page-scroll">
@@ -105,13 +243,49 @@
                                 <li>
                                     <a class="page-scroll" href="#contact">Contact Us</a>
                                 </li>
-                                <?php if($this->Session->read('Auth.User.id')){ ?>
+                                <?php if($this->Session->read('Auth.User.id')){ 
+                                    $logUserName = $this->Session->read('Auth.User.name');
+                                ?>
+                                
                                 <li>
-                                    <a class="page-scroll" href="users/profile">Profile</a>
+                                  <div class="navbar-right" style="margin-top: 0px;">
+                                    <ul class="nav navbar-nav">
+                                        <li class="dropdown user user-menu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <img src="/tour_management/files/user/photo/1/22.jpg" class="img-circle" alt="">
+                                                <span><?php echo $logUserName ?><i class="caret"></i></span>
+                                            </a>
+                                            <ul class="dropdown-menu" style="min-width: 220px;">
+                                                <!-- Admin image -->
+                                                <li class="user-header bg-danger">
+                                                    <img src="/tour_management/files/user/photo/1/22.jpg" class="img-circle" alt="">
+                                                    <p><?php echo $logUserName ?><small></small>
+                                                    </p>
+                                                </li>
+                                                <!-- Menu Body -->
+                                                <li class="user-body">
+                                                    <div class="col-xs-12 text-center">
+                                                        <a href="/tour_management/users/change_password" class="no-hover-text-decoration">Change Password</a>
+                                                    </div>
+                                                </li>
+                                                <!-- Menu Footer-->
+                                                <li class="user-footer">
+                                                    <div class="pull-left">
+                                                        <a href="/tour_management/users/profile" class="btn btn-default btn-flat">Profile</a>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <a href="/tour_management/users/logout" class="btn btn-default btn-flat">Log out</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                  </div>
                                 </li>
                                 <?php } ?>
                             </ul>
                         </div>
+
                         <!-- /.navbar-collapse -->
                     </div>
                     
@@ -140,7 +314,8 @@
                 <div class="item active" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
                     <div class="carousel-caption">
                         <h2><?php echo $slider['Slider']['title'];?> </h2>
-                        <h4>full event package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                        <h4><?php echo $slider['Slider']['description']; ?></h4>
+                        <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
                         <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
@@ -148,7 +323,8 @@
                 <div class="item" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
                     <div class="carousel-caption">
                         <h2><?php echo $slider['Slider']['title'];?> </h2>
-                        <h4>full event package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                        <h4><?php echo $slider['Slider']['description']; ?></h4>
+                        <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
                         <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
@@ -161,7 +337,6 @@
         </div>      
     </section>
     <!--end Banner-->
-    
     <section id="packages" class="inverse">
         <!-- <hr> -->
         <div class="container">
@@ -194,9 +369,11 @@
         </div>
         
     </section>
+    <section class="parallax1">
+    </section>
     <!-- end Packages -->
     <!-- Hot Deals Section -->
-    <section id="hot-deals" class="padding">
+    <section id="hot-deals" class="padding inverse">
         <!-- <hr> -->
         <div class="container">
             <div class="row">
@@ -282,7 +459,8 @@
         
     </section>
     <!--end hot-deals-->
-    
+    <section class="parallax2">
+    </section>
     <!-- Deals and Discounts -->
     <section id="deals-discounts" class="inverse">
         <!-- <hr> -->
@@ -322,7 +500,60 @@
         
     </section>
     <!--end deals-discounts-->
-    
+    <section id="image_cards">
+        <ul id="elImageList">
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1547809526-d641162a6d7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1547809397-e2c7eea071fa?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1547808343-a2b9ca4bdba1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1547712407-657b35c945a9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1547192906-cbe9ea846725?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1546840207-3d1d487ef205?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1546234709-19651142a0f2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1545631421-43aabd0ee071?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1545463488-ed7b4513bb80?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+            <li class="item">
+                <a class="link">
+                    <img class="img" src="https://images.unsplash.com/photo-1545804571-2cac41b26118?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
+                </a>
+            </li>
+        </ul>
+    </section>
     <!-- Count Section-->
     <section class="count-section parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/bg/1.jpg);">
         <!-- <hr> -->
@@ -357,7 +588,6 @@
         </div>
     </section>
     <!--end count-section-->
-    
     <!-- Gallery Section -->
     <section id="gallery">
         <div class="container mb-2">
@@ -427,7 +657,8 @@
         
     </section>
     <!-- end gallery-->
-    
+    <section class="parallax3">
+    </section>
     <!-- Blog Section -->
     <section id="blog" class="inverse">
         <!-- <hr> -->
@@ -470,7 +701,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <h1 class="visible-title">Feedback</h1>
+                        <h1>Feedback</h1>
                     </div>
                 </div>
             </div>
@@ -532,7 +763,8 @@
                         <div id="contact-section">
                             <h3>Send a message</h3>
                             <div class="status alert alert-success" style="display: none"></div>
-                            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="#">
+                            <?php echo $this->Form->create('Contact',array('controller'=>'contacts','action'=>'add')); ?>
+                            <!-- <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="#"> -->
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" required="required" placeholder="Name">
                                 </div>
@@ -552,20 +784,12 @@
             </div>
         </div>
         
-        <div  class="no-padding" style='width:100%'>
+        <div  class="no-padding" style="width:100%;margin-bottom: -5px;">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </section>
 
-<?php   /*echo $this->Html->script(
-        array(
-            'jquery.mobile.min',
-        ), array('inline' => false)
-    );
-
-    echo $this->fetch('script');*/
-?>   
-
+ 
 <script type="text/javascript">
   //   $(".carousel-inner").swiperight(function() {  
   //   $(this).parent().carousel('prev');  
@@ -573,4 +797,47 @@
   // $(".carousel-inner").swipeleft(function() {  
   //   $(this).parent().carousel('next');  
   // });
+  const imgContent = document.querySelectorAll('.img-content-hover');
+
+function showImgContent(e) {
+  for(var i = 0; i < imgContent.length; i++) {
+    imgContent[i].style.left = e.pageX + 'px';
+    imgContent[i].style.top = e.pageY + 'px';
+  }
+};
+
+document.addEventListener('mousemove', showImgContent);
+
+  $(document).ready(function(){
+    $('#ContactAddForm').validate({ 
+        rules: {
+            'name': {
+                required: true,
+            },
+            'email': {
+                required: true,
+                email : true
+            },
+            'message': {
+                required: true,
+            }
+        },
+        messages: {
+            'first_name': {
+                required: "Please enter name.",
+            },
+            'email': {
+                required: "Please enter email.",
+                email: "Please enter valid email.",
+            },
+            'message': {
+                required: "Please enter message.",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });     
+  });
+
 </script>    

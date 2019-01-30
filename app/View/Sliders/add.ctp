@@ -15,6 +15,7 @@
                echo $this->Form->input('id',array('type'=>'hidden'));
                echo $this->Form->input('tour_id',array('class' => 'form-control','options'=>$tour_id,'empty'=>'Select Package','div' => array('class' => 'form-group')));
                echo $this->Form->input('title',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+               echo $this->Form->input('description',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                ?>
            </div>
            <div class="form-action">
@@ -27,11 +28,13 @@
           'Rules' => array(
             'tour_id' => array('required' => 1),
             'title' => array('required' => 1),
+            'description' => array('required' => 1),
 
         ),
           'Messages' => array(
             'tour_id' => array('required' => __('Please select Tour.')),
-            'title' => array('required' => __('Please enter Title.')),));
+            'title' => array('required' => __('Please enter Title.')),
+            'description' => array('required' => __('Please enter Description.')),));
         echo $this->Form->setValidation($arrValidation); ?>
 
             <?php echo $this->Form->end(); ?>

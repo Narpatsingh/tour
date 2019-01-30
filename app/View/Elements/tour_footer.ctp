@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-7">
-                    <div class="text-right">
+                    <div>
                         <p>&copy; Copyright <?php echo date('Y'); ?>. All Rights Reserved.</p>
                     </div>
                 </div>
@@ -76,9 +76,67 @@
 
         jQuery('.EnquiryBtn').on('click', function (e) {
                 $('#commonModel').modal('show');
-          });
+        });
         
-         
+    // $(document).ready(function(){
+    //     $('#EnquiryAddForm').validate({ 
+    //         rules: {
+    //             'number_of_month': {
+    //                 required: true,
+    //             },
+    //             'number_of_guest': {
+    //                 required: true,
+    //             },
+    //             'time_of_travel': {
+    //                 required: true,
+    //             },
+    //             'travel_duration': {
+    //                 required: true,
+    //             },
+    //             'city_id': {
+    //                 required: true,
+    //             },
+    //             'destination': {
+    //                 required: true,
+    //             },
+    //             'experience': {
+    //                 required: true,
+    //             },
+    //             'special_requirements': {
+    //                 required: true,
+    //             },
+    //             'firstname': {
+    //                 required: true,
+    //             },
+    //             'lastname': {
+    //                 required: true,
+    //             },
+    //             'mobile': {
+    //                 required: true,
+    //                 number: true
+    //             },
+    //             'email': {
+    //                 required: true,
+    //                 email: true,
+    //             },
+    //         },
+    //         messages: {
+    //             'firstname': {
+    //                 required: "Please enter first name.",
+    //             },
+    //             'email': {
+    //                 required: "Please enter email.",
+    //                 email: "Please enter valid email.",
+    //             },
+    //             'message': {
+    //                 required: "Please enter message.",
+    //             },
+    //         },
+    //         submitHandler: function(form) {
+    //             form.submit();
+    //         }
+    //     });     
+    // });         
    
     
 </script>  
