@@ -78,7 +78,7 @@ $this->end();
 
                 echo $this->Form->input('phone_no', array(
                     'placeholder' => 'Phone Number',
-                    'class' => 'form-control phoneNumber phoneno',
+                    'class' => 'form-control',
                     'label' => __('Phone No'),
                     'type' => 'text',
                     'div' => array('class' => 'required form-group')));

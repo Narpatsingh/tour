@@ -6,9 +6,8 @@
     </div>
     <div class="footer text-center bg-gray">
         <?php
-        echo $this->Form->submit(' Reset Password ', array('class' => 'btn btn-primary btn-block', 'escape' => false, 'div' => false));
+        echo $this->Form->submit('Reset Password', array('class' => 'btn btn-primary btn-block', 'escape' => false, 'div' => false));
         echo $this->Html->link('Already have an account?', array('controller' => 'users', 'action' => 'login'), array('class' => 'text-center new-account'));
-
         ?>
     </div>
 </div>

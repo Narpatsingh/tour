@@ -115,29 +115,33 @@
                                     <ul class="nav navbar-nav">
                                         <li class="dropdown user user-menu">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <img src="/tour_management/files/user/photo/1/22.jpg" class="img-circle" alt="">
+                                                <?php
+                                                  echo $this->Html->image(getUserPhoto($this->Session->read('Auth.User.id'),$this->Session->read('Auth.User.photo'), false, false), array('class' => 'img-circle'));
+                                                ?>
                                                 <span><?php echo $logUserName ?><i class="caret"></i></span>
                                             </a>
                                             <ul class="dropdown-menu" style="min-width: 220px;">
                                                 <!-- Admin image -->
                                                 <li class="user-header bg-danger">
-                                                    <img src="/tour_management/files/user/photo/1/22.jpg" class="img-circle" alt="">
+                                                    <?php
+                                                      echo $this->Html->image(getUserPhoto($this->Session->read('Auth.User.id'),$this->Session->read('Auth.User.photo'), false, false), array('class' => 'img-circle'));
+                                                    ?>
                                                     <p><?php echo $logUserName ?><small></small>
                                                     </p>
                                                 </li>
                                                 <!-- Menu Body -->
                                                 <li class="user-body">
                                                     <div class="col-xs-12 text-center">
-                                                        <a href="/tour_management/users/change_password" class="no-hover-text-decoration">Change Password</a>
+                                                        <a href="/users/change_password" class="no-hover-text-decoration">Change Password</a>
                                                     </div>
                                                 </li>
                                                 <!-- Menu Footer-->
                                                 <li class="user-footer">
                                                     <div class="pull-left">
-                                                        <a href="/tour_management/users/profile" class="btn btn-default btn-flat">Profile</a>
+                                                        <a href="/users/profile" class="btn btn-default btn-flat">Profile</a>
                                                     </div>
                                                     <div class="pull-right">
-                                                        <a href="/tour_management/users/logout" class="btn btn-default btn-flat">Log out</a>
+                                                        <a href="/users/logout" class="btn btn-default btn-flat">Log out</a>
                                                     </div>
                                                 </li>
                                             </ul>

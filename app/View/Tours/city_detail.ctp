@@ -200,5 +200,15 @@
     </div>
   </div>
 </div>
+<style type="text/css" media="screen">
+  
+.tour-item .thumb {
+    float: left;
+    position: relative;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+</style>
 
 

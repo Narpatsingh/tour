@@ -18,6 +18,8 @@
     <div class="footer text-center bg-gray">
         <?php
         echo $this->Form->submit(' Sign in ', array('class' => 'btn bg-danger btn-block btn-primary', 'escape' => false, 'div' => false));
+        echo $this->Html->link('Forgot your password?', array('controller' => 'users', 'action' => 'forgot_password'), array('class' => 'text-center new-account'));
+
         ?>
     </div>
 </div>

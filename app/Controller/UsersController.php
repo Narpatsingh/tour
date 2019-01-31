@@ -8,11 +8,11 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
     public $components = array('Auth', 'Captcha', 'Cookie');
-    public $uses = array('User','SocialMediaDetail','KeywordMonitored','OffendingDomain','ContactInformation','Report','Ticket', 'DomainsDiscovered','KeyPost','Vvip','SiteConfig');
+    public $uses = array('User','SiteConfig');
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('getCaptcha','activateUser','dashboard','login','maintainace');
+        $this->Auth->allow('getCaptcha','activateUser','dashboard','login','maintainace','forgot_password');
         $this->_checkLogin();
     }
 
