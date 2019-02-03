@@ -1794,7 +1794,7 @@ h3{
 
 @media only screen and (max-width: 991px){
 	.india.open .mega-dropdown-menu{
-		height: 600px;
+		height: 450px;
 		overflow-y: scroll;
 	}
 .navbar-nav .open .dropdown-menu {

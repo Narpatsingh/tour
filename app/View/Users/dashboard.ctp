@@ -42,7 +42,7 @@
                             </li>
 
                                 <li class="dropdown mega-dropdown india">
-                                    <a href="tours/india" target="_blank" class="dropdown-toggle page-scroll" data-toggle="dropdown">India <span class="caret"></span></a>              
+                                    <a href="#" target="_blank" class="dropdown-toggle page-scroll" data-toggle="dropdown">India <span class="caret"></span></a>              
                                     <ul class="dropdown-menu mega-dropdown-menu">
                                       <?php  $count = 0;
                                         foreach ($states as $key => $value) {
@@ -120,7 +120,7 @@
                                                 ?>
                                                 <span><?php echo $logUserName ?><i class="caret"></i></span>
                                             </a>
-                                            <ul class="dropdown-menu" style="min-width: 220px;">
+                                            <ul class="dropdown-menu" style="min-width: 220px;padding: 0px">
                                                 <!-- Admin image -->
                                                 <li class="user-header bg-danger">
                                                     <?php

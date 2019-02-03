@@ -29,6 +29,7 @@ if(Configure::read("Site.Status") == 'true'){
 } else {
   	echo $this->element('tour_header');  
     $tour_detail=array();
+    echo $this->Session->flash();
     echo $this->fetch('content');	
     echo $this->element('tour_footer'); 
 } ?>

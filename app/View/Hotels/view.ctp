@@ -15,7 +15,39 @@
         <div class="box box-primary">
             <div class="overflow-hide-break">
                 <div class="box-body userViewPage">
-                    		<div class='col-xs-12 col-sm-3'>			 <?php echo $this->Html->image(getUserPhoto($hotel['Hotel']['id'],$hotel['Hotel']['photo'],false,false), array('class' => 'thumbnail img-responsive'))?>		</div>		<div class='col-xs-12 col-sm-9 detailBox'>			<div class='row'>				<div class='col-md-12 col-sm-12 innerBox'>					<div class='dl-horizontal'>						<ul>							<li>								<span class='col-xs-12'>									<div class='row'>										Hotel Detail									</div>								</span>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Id'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['id']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Name'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['name']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Price'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['price']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Address'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['address']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Type'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['type']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Meal Plan'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['meal_plan']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Created'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $hotel['Hotel']['created']; ?>							</li>						</ul>					</div>				</div>			</div>		</div>                </div>
+                    <div class="col-md-9">
+                        <div class="table-responsive-lg table-responsive-sm table-responsive-md table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><?php echo __('Name'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['name']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Price'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['price']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Address'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['address']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Type'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['type']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Meal Plan'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['meal_plan']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th> <?php echo __('Created'); ?></th>
+                                        <td><p><?php echo $hotel['Hotel']['created']; ?></p></t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
             </div>
         </div>
     </div>
