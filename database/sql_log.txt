@@ -6,6 +6,18 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+03-02-2019
+
+CREATE TABLE `slider` ( `id` INT NOT NULL AUTO_INCREMENT , `tour_id` INT NOT NULL , `title` VARCHAR(255) NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `contacts` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `email` VARCHAR(200) NOT NULL , `message` TEXT NOT NULL , `created` INT NOT NULL , `updated` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `contacts` CHANGE `created` `created` DATETIME NOT NULL;
+ALTER TABLE `contacts` CHANGE `updated` `updated` DATETIME NOT NULL;
+
+
+--------------------------------------------------------
 02-02-2019
 ALTER TABLE `bookings` ADD `payment_recieved` INT NOT NULL AFTER `total_payment`;
 
