@@ -179,6 +179,16 @@ $html = <<<EOF
 	.package_photo{
 		margin-top:12px;margin-right:25px;width:300px;height:180px;
 	}
+	.PackageTable{
+		border:1px solid #800080;
+		border-right:1px solid #800080;
+		padding:5px;
+
+	}
+	.PackageTable td{
+		border:1px solid #800080;
+		padding:2px;		
+	}	
 
 </style>
 
@@ -195,7 +205,7 @@ $html = <<<EOF
 			<td width="400px" >
 	
 
-	<table class="innerTable" style="border:1px solid #800080;">
+	<table class="PackageTable">
 					<tr>
 						<td width="40%"> 
 							Date
@@ -232,7 +242,7 @@ $html = <<<EOF
 	<br>
 	<br>
 
-<table class="first" cellpadding="4" cellspacing="6">
+<table class="first" cellpadding="4" cellspacing="6" nobr="true">
  <tr>
   <td width="30" align="center"><b>No.</b></td>
   <td width="140" align="center"><b>Tour Type</b></td>
@@ -273,7 +283,7 @@ $html = <<<EOF
 	<br>
 	<br>
 
-<table class="first" cellpadding="4" cellspacing="6">
+<table class="first" cellpadding="4" cellspacing="6" nobr="true">
  <tr>
   <td width="30" align="center"><b>No.</b></td>
   <td width="140" align="center"><b>Tour Type</b></td>

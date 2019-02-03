@@ -1,6 +1,6 @@
 d<?php
 App::import('Vendor','xtcpdf');
-$app = APP.'webroot/img/reciept_logo.jpg';
+$app = APP.'webroot/img/pdf_logo.jpg';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -54,21 +54,18 @@ $pdf->AddPage();
  *
  * $html = file_get_contents('/path/to/your/file.html');
  *
- * External CSS $invoice_no will be automatically loaded.
+ * External CSS files will be automatically loaded.
  * Sometimes you need to fix the path of the external CSS.
  * *********************************************************
  */
 
 // define some HTML content with style
 $date = date("d-M-Y");
-$all_t_and_c = $voucher['all_t_and_c'];
 $customer_signature = $voucher['customer_signature'];
 $company_signature = $voucher['company_signature'];
 $customer_full_name = $voucher['customer_full_name'];
-$invoice_no = $voucher['invoice_no'];
 $customer_tour_type = $voucher['customer_tour_type'];
 $customer_tour_name = $voucher['customer_tour_name'];
-$customer_contact_no = $voucher['customer_contact_no'];
 $payment_type = $voucher['payment_type'];
 $total_payment = $voucher['total_payment'];
 $id = $voucher['booking_id'];
@@ -155,24 +152,31 @@ $html = <<<EOF
 	.package_photo{
 		margin-top:12px;margin-right:25px;width:300px;height:180px;
 	}
-	h2{
-		margin-left:50%;
-	}
+
 </style>
 
 
 <div><img src="$app">
 </div>
-<center><h2><u>Receipt</u></h2></center>
+<h2>Receipt</h2>
 <br />
-
 		<table width="100%"  class="innerTable">
-
+		<tr>
+			<td width="20%">
+				
+			</td>
+		</tr>
 		<tr>
 			<td width="400px" >
 	
 
 	<table class="innerTable">
+					<tr>
+						<td width="40%"> 
+							Date
+						</td>
+						<td width="40%"> $date </td>
+					</tr>
 					<tr>
 						<td width="40%"> Customer Name </td>
 						<td width="40%"> $customer_full_name </td>
@@ -186,32 +190,6 @@ $html = <<<EOF
 						<td width="40%"> $customer_tour_name </td>
 					</tr>
 					<tr>
-						<td width="40%"> Contact Number </td>
-						<td width="40%"> $customer_contact_no </td>
-					</tr>
-		</table>
-
-			</td>
-
-			<td width="100px" style="background-color:none;">
-
-			</td>
-
-			<td width="500px" >
-				<table class="innerTable">
-					<tr>
-						<td width="40%"> 
-							Invoice No.
-						</td>
-						<td width="40%"> $invoice_no </td>
-					</tr>
-					<tr>
-						<td width="40%"> 
-							Date
-						</td>
-						<td width="40%"> $date </td>
-					</tr>
-					<tr>
 						<td width="40%"> Payment Type </td>
 						<td width="40%"> $payment_type </td>
 					</tr>
@@ -219,17 +197,11 @@ $html = <<<EOF
 						<td width="40%"> Payment Amount </td>
 						<td width="40%"> $total_payment </td>
 					</tr>
-				</table>	
+		</table>
+
 			</td>
 		</tr>
-
-
-
 	</table>
-
-	<div>
-	$all_t_and_c
-	</div>
 	<br>
 	<br>
 	<br>
@@ -250,4 +222,6 @@ $pdf->lastPage();
 $pdf_path = APP . 'webroot/files/receipt' . DS . $id;
 createFolder($pdf_path); 
 $pdf->Output($pdf_path . DS .''.'file.pdf', 'F');
+
+echo $html; exit;
 ?>

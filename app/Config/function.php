@@ -172,10 +172,6 @@ function decrypt($sData)
 
 function getrandompassword($len = 6)
 {
-    return '123456';
-    if (!isLive()) {
-        return '123456';
-    }
     $str = '';
     for ($i = 1; $i <= $len; $i++) {
         $ord = rand(48, 90);
@@ -552,4 +548,9 @@ function addMoreKeywords($type,$edit=null)
 }
 function getSaveHelp(){
 	return '<span class="savehelp">Click on save button after making any change.</span>';
+}
+
+function get_invoice_no()
+{
+    return 'INC'.time().'SILSHINE'.substr(md5(getrandompassword()),0,5).'AKNZ';
 }

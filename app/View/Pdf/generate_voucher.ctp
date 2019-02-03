@@ -112,10 +112,10 @@ $html = <<<EOF
 		color: #003300;
 		font-family: helvetica;
 		font-size: 8pt;
-		border-left: 3px solid #800080;
-		border-right: 3px solid #800080;
-		border-top: 3px solid #800080;
-		border-bottom: 3px solid #800080;
+		border-left: 2px solid #800080;
+		border-right: 2px solid #800080;
+		border-top: 2px solid #800080;
+		border-bottom: 2px solid #800080;
 		background-color: #ccffcc;
 	}
 	td {
@@ -164,9 +164,19 @@ $html = <<<EOF
 	.package_photo{
 		margin-top:12px;margin-right:25px;width:300px;height:180px;
 	}
+	.PackageTable{
+		border:1px solid #800080;
+		border-right:1px solid #800080;
+		padding:5px;
+
+	}
+	.PackageTable td{
+		border:1px solid #800080;
+		padding:2px;		
+	}	
 
 </style>
-
+<body style="border:2px solid #800080;">
 <div><img src="$app">
 </div>
 
@@ -180,7 +190,7 @@ $html = <<<EOF
 			<td width="400px" >
 	
 
-	<table class="innerTable" style="border:1px solid #800080;">
+	<table class="PackageTable">
 					<tr>
 						<td width="40%"> 
 							Date
@@ -262,6 +272,7 @@ $html = <<<EOF
 Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
 	<br><br>
 Company  Signature :  <b><i><u>$company_signature</u>.</i></b> 
+</body>
 EOF;
 
 // output the HTML content

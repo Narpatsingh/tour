@@ -96,10 +96,10 @@ public function add($id=null) {
     if ($this->request->is('post')) {
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
         $this->Voucher->create();
+        $this->request->data['Voucher']['invoice_no'] = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {
 
             $voucher = $this->request->data['Voucher'];
-
             $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
             $this->set(compact('voucher'));
