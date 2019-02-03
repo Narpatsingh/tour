@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
     <?php echo $this->Html->meta('mg/flight.png', 'img/flight.png', array('type' => 'icon')); ?>
     <title>
         <?php echo 'Silshine Trip - '.strip_tags($this->fetch('pagetitle')) ; ?>

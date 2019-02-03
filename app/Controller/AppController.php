@@ -22,7 +22,7 @@ class AppController extends Controller
 
     public function beforeFilter()
     {
-        $this->setTimezone(); // Setting Timezone from Database        
+        //$this->setTimezone(); // Setting Timezone from Database        
         parent::beforeFilter();
         if(!$this->Session->check('Auth.User.id')){
             $this->layout = 'login';
@@ -52,12 +52,12 @@ class AppController extends Controller
         $this->Auth->authError = __('Please login to view that page.');
     }
     
-    function setTimezone($timezone = null){
-        $timezone =  !empty($timezone)?$timezone:Configure::read("Site.Timezone");
-        if(!empty($timezone)){
-            date_default_timezone_set($timezone);
-        }
-    }
+    // function setTimezone($timezone = null){
+    //     $timezone =  !empty($timezone)?$timezone:Configure::read("Site.Timezone");
+    //     if(!empty($timezone)){
+    //         date_default_timezone_set($timezone);
+    //     }
+    // }
 	function getSearchCondition($model,$all = null){
 		$conditions = array();
 		if(!empty($this->type)){

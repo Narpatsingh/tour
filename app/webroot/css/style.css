@@ -142,7 +142,7 @@ section{
 	left:0;
 	right:0;
 	bottom:0;
-	background:#800080;
+	background: #441151;
 	z-index:13000;
 	height:100%;
 }
@@ -2690,7 +2690,7 @@ ul.nav.navbar-nav.navbar-right a.page-scroll,ul.nav.navbar-nav.navbar-right a.dr
 
 #contact{
 	position: relative;
-	background: url(../images/bg_img/contact.jpg) no-repeat;
+	background: url(../images/bg_img/contact_us.jpg) no-repeat;
 }
 
 #testimonials,#contact{

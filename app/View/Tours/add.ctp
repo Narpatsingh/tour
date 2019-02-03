@@ -41,7 +41,7 @@ if (isset($this->request->data['Tour']['id'])) {
                         echo $this->Form->input('days', array('tabindex' => 1,'placeholder' => __('Days'), 'label' => __('Days'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('nights', array('tabindex' => 3,'placeholder' => __('Nights'), 'label' => __('Nights'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('discount', array('tabindex' => 3,'placeholder' => __('Discount'), 'label' => __('Discount'),'div' => array('class' => 'form-group')));
-                        echo $this->Form->input('hotel_id',array('label' => __('Hotel'), 'class' => 'form-control','options'=>$hotels,'empty' => __('Select Hotel'), 'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('hotel_id',array('class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
                         if(!empty($photo)){
                             echo $this->element('backend/logoDiv', array('id' => $id, 'photo' => $photo, 'logoTitle' => __('Tour Picture')));
                         }else { ?>
@@ -190,6 +190,8 @@ if (isset($this->request->data['Tour']['id'])) {
                 var highlights ='<div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][new][]" class="form-control col-md-11 SurveyOption" placeholder="Enter Highlight Title" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>';
                 jQuery('#appendTagName').append(highlights);
             });
+        $('#TourHotelId').multiselect();   
+
     });
     function removeOptionItem(this1){
         if(confirm("Are you sure you want to remove this?")){
@@ -228,6 +230,6 @@ if (isset($this->request->data['Tour']['id'])) {
 
             }
         });
-    });   
+    });
 
 </script>

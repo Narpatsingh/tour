@@ -182,7 +182,12 @@ class ToursController extends AppController {
                     $filename = WWW_ROOT. DS . 'images'.DS. $type .DS.time().$this->data['Tour']['img']['name']; 
                     move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
                     $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().$this->request->data['Tour']['img']['name'];
-                } 
+                }
+                $hotels = $this->request->data['Tour']['hotel_id'];
+                if(!empty($hotels)){
+                    $this->request->data['Tour']['hotel_id'] = $hotels[0];
+                    $this->request->data['Tour']['multi_hotel'] = implode(',', $hotels);
+                }
                 if ($this->Tour->save($this->request->data)) {
                     $tour_id  = $this->Tour->getLastInsertID();
                     if(!empty($Highlights_data)){
@@ -255,7 +260,11 @@ class ToursController extends AppController {
             }else{
                 $this->request->data['Tour']['img'] = $Tour_data['Tour']['img'];
             }
-
+            $hotels = $this->request->data['Tour']['hotel_id'];
+            if(!empty($hotels)){
+                $this->request->data['Tour']['hotel_id'] = $hotels[0];
+                $this->request->data['Tour']['multi_hotel'] = implode(',', $hotels);
+            }
             if ($this->Tour->save($this->request->data)) {
                 foreach ($old_data as $old_key => $old_value) {
                     $this->Highlight->id = $old_key;
@@ -276,6 +285,7 @@ class ToursController extends AppController {
             }
         } else {
            $this->request->data = $Tour_data;
+           $this->request->data['Tour']['hotel_id'] = explode(',',$this->request->data['Tour']['multi_hotel']);
         }
         $dbOpration = "Edit";
         $highlight_data=$this->Tour->Highlight->find('list',array('conditions' => array('Highlight.tour_id' => $id)));
