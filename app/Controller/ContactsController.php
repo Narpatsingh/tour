@@ -23,7 +23,7 @@ public $components = array('Paginator');
 public function beforeFilter()
 {
     parent::beforeFilter();
-    $this->_checkLogin();
+    $this->Auth->allow();
 }
 
 /**

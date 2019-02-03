@@ -1,4 +1,4 @@
-<div role="alert" class="alert alert-success alert-dismissible notification-message">
+<div role="alert" class="alert alert-success alert-dismissible notification-message alert-message">
     <i class="fa fa-check"></i>
     <button data-dismiss="alert" class="close" type="button">
         <span aria-hidden="true">×</span><span class="sr-only">Close</span>

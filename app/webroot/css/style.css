@@ -2854,3 +2854,13 @@ img.img {
 	  }
 	}
 }	
+
+.alert-message{
+	display: block;
+    position: relative;
+    z-index: 99999;
+    width: 80%;
+    align-content: center;
+    margin-left: 10%;
+    margin-bottom: 0px;
+}    

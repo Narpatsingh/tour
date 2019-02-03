@@ -1,4 +1,5 @@
 <body id="page-top">
+    <?php echo $this->Session->flash(); ?>
     <!--Preload-->
     <div class="preloader">
         <?php echo $this->element('loader/loader') ?>  
