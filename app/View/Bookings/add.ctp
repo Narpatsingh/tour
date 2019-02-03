@@ -6,7 +6,7 @@
 	$this->start('top_links');
 		echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
 	$this->end();
-	$pcount = $this->request->data['Booking']['package_count'];
+	$pcount = empty($this->request->data['Booking']['package_count'])?1:$this->request->data['Booking']['package_count'];
 ?>
     <div class="box box-primary">
         <div class="overflow-hide-break">
@@ -36,6 +36,7 @@
 		for ($i=2; $i <= $pcount; $i++) { 
 		echo $this->Form->input('total_payment'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		}
+		echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		for ($i=2; $i <= $pcount; $i++) { 
 		echo $this->Form->input('customer_tour_name'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));

@@ -20,243 +20,214 @@ $this->end();
 					</div>
 					<div class='col-xs-12 col-sm-9 detailBox'>
 						<div class='row'>
-							<div class='col-md-12 col-sm-12 innerBox'>
+							<div class=''>
 								<div class='dl-horizontal'>
-									
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Full Name'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_full_name']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Date Of Birth'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_date_of_birth']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Contact No'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_contact_no']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Email Id'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_email_id']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Total Tour Member'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['total_tour_member']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Tour Type'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['tour_type']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Member Id'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['member_id']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Meal Type'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['meal_type']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Place Name'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['place_name']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Total Payment'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['total_payment']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Emergency Contact No'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_emergency_contact_no']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Tour Name'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_tour_name']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Valid Id Proof'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_valid_id_proof']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Tour Date'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_tour_date']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Car Couch Type'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['car_couch_type']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Travel Type'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['travel_type']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Travel Number'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['travel_number']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Travel Date'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['travel_date']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Travel Pnr No'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['travel_pnr_no']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Return Travel Number'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['return_travel_number']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Return Travel Date'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['return_travel_date']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Return Travel Pnr No'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['return_travel_pnr_no']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Hotel Type'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_hotel_type']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Customer Signature'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['customer_signature']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('Company Signature'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['company_signature']; ?>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>
-											<?php echo __('All T And C'); ?>
-											<i class='fa fa-hand-o-right'></i>
-										</li>
-										<li>
-											<?php echo $booking['Booking']['all_t_and_c']; ?>
-										</li>
-									</ul>
+			                        <div class="table-responsive-lg table-responsive-sm table-responsive-md table-responsive">
+			                            <table class="table table-bordered table-striped">
+			                            <tbody>     									
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Full Name'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_full_name']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Date Of Birth'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_date_of_birth']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Contact No'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_contact_no']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Email Id'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_email_id']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Total Tour Member'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['total_tour_member']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Tour Type'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['tour_type']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Meal Type'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['meal_type']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Place Name'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['place_name']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Total Payment'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['total_payment']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Emergency Contact No'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_emergency_contact_no']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Tour Name'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_tour_name']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Valid Id Proof'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_valid_id_proof']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Tour Date'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_tour_date']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Car Couch Type'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['car_couch_type']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Travel Type'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['travel_type']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Travel Number'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['travel_number']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Travel Date'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['travel_date']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Travel Pnr No'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['travel_pnr_no']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Return Travel Number'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['return_travel_number']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Return Travel Date'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['return_travel_date']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Return Travel Pnr No'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['return_travel_pnr_no']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Hotel Type'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_hotel_type']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Customer Signature'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['customer_signature']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('Company Signature'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['company_signature']; ?>
+												</td>
+											</tr>
+											<tr>
+												<th class='innreicons'>
+													<?php echo __('All T And C'); ?>
+												</th>
+												<td>
+													<?php echo $booking['Booking']['all_t_and_c']; ?>
+												</td>
+											</tr>
+			                                </tbody>
+			                            </table>
+			                        </div>									
 								</div>
 							</div>
 						</div>

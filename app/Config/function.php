@@ -554,3 +554,9 @@ function get_invoice_no()
 {
     return 'INC'.time().'SILSHINE'.substr(md5(getrandompassword()),0,5).'AKNZ';
 }
+
+function get_gst_amount($amount,$gst_percent)
+{
+    $payment_with_gst = ($amount * $gst_percent) / 100;
+    return $payment_with_gst + $amount;
+}

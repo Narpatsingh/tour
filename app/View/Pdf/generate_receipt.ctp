@@ -62,6 +62,7 @@ $pdf->AddPage();
 // define some HTML content with style
 $date = date("d-M-Y");
 $all_t_and_c = $voucher['all_t_and_c'];
+$payment_recieved = $voucher['payment_recieved'];
 $customer_signature = $voucher['customer_signature'];
 $company_signature = $voucher['company_signature'];
 $customer_full_name = $voucher['customer_full_name'];
@@ -70,7 +71,9 @@ $customer_tour_type = $voucher['customer_tour_type'];
 $customer_tour_name = $voucher['customer_tour_name'];
 $customer_contact_no = $voucher['customer_contact_no'];
 $payment_type = $voucher['payment_type'];
-$total_payment = $voucher['total_payment'];
+$total_payment = $voucher['total_payment_sum'];
+$final_total_payment = $voucher['final_payment_with_gst'];
+$gst_percent = $voucher['gst_percent'];
 $id = $voucher['booking_id'];
 $html = <<<EOF
 <!-- EXAMPLE OF CSS STYLE -->
@@ -189,6 +192,10 @@ $html = <<<EOF
 						<td width="40%"> Contact Number </td>
 						<td width="40%"> $customer_contact_no </td>
 					</tr>
+					<tr>
+						<td width="40%"> Payment Recieved </td>
+						<td width="40%"> $payment_recieved </td>
+					</tr>
 		</table>
 
 			</td>
@@ -219,11 +226,13 @@ $html = <<<EOF
 						<td width="40%"> Payment Amount </td>
 						<td width="40%"> $total_payment </td>
 					</tr>
+					<tr>
+						<td width="40%"> Payment Amount with GST($gst_percent%) </td>
+						<td width="40%"> $final_total_payment </td>
+					</tr>
 				</table>	
 			</td>
 		</tr>
-
-
 
 	</table>
 

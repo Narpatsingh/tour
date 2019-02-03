@@ -95,6 +95,13 @@ public function add($id=null) {
         $id = decrypt($id);
     if ($this->request->is('post')) {
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
+
+        $gst_percent = empty(Configure::read('Site.gst_percent'))?10:Configure::read('Site.gst_percent');
+        $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
+        $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];
+        $this->request->data['Voucher']['total_payment_sum'] = $total_payment_sum = $this->request->data['Voucher']['total_payment'] + $payment2 + $payment3;        
+        $this->request->data['Voucher']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+        $this->request->data['Voucher']['gst_percent'] = $gst_percent;
         $this->Voucher->create();
         $this->request->data['Voucher']['invoice_no'] = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {

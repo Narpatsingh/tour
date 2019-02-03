@@ -7,10 +7,14 @@ d-- phpMyAdmin SQL Dump
 
 --------------------------------------------------------
 02-02-2019
+ALTER TABLE `bookings` ADD `payment_recieved` INT NOT NULL AFTER `total_payment`;
+
 ALTER TABLE `vouchers` ADD `invoice_no` VARCHAR(150) NOT NULL AFTER `package_count`;
 
 28-01-2019
 ALTER TABLE `bookings` ADD `tour_type2` VARCHAR(150) NULL AFTER `updated`, ADD `tour_type3` VARCHAR(150) NULL AFTER `tour_type2`, ADD `tour_photo2` VARCHAR(150) NULL AFTER `tour_type3`, ADD `tour_photo3` VARCHAR(150) NULL AFTER `tour_photo2`, ADD `meal_type2` VARCHAR(150) NULL AFTER `tour_photo3`, ADD `meal_type3` VARCHAR(150) NULL AFTER `meal_type2`, ADD `place_name2` VARCHAR(150) NULL AFTER `meal_type3`, ADD `place_name3` VARCHAR(150) NULL AFTER `place_name2`, ADD `total_payment2` INT(50) NULL AFTER `place_name3`, ADD `total_payment3` INT(50) NULL AFTER `total_payment2`, ADD `customer_tour_date2` DATE NULL AFTER `total_payment3`, ADD `customer_tour_date3` DATE NULL AFTER `customer_tour_date2`, ADD `travel_type2` VARCHAR(150) NULL AFTER `customer_tour_date3`, ADD `travel_type3` VARCHAR(150) NULL AFTER `travel_type2`, ADD `travel_number2` VARCHAR(150) NULL AFTER `travel_type3`, ADD `travel_number3` VARCHAR(150) NULL AFTER `travel_number2`, ADD `travel_pnr_no2` VARCHAR(150) NULL AFTER `travel_number3`, ADD `travel_pnr_no3` VARCHAR(150) NULL AFTER `travel_pnr_no2`, ADD `return_travel_number2` VARCHAR(150) NULL AFTER `travel_pnr_no3`, ADD `return_travel_number3` VARCHAR(150) NULL AFTER `return_travel_number2`, ADD `return_travel_date2` DATE NULL AFTER `return_travel_number3`, ADD `return_travel_date3` DATE NULL AFTER `return_travel_date2`, ADD `return_travel_pnr_no2` VARCHAR(150) NULL AFTER `return_travel_date3`, ADD `return_travel_pnr_no3` VARCHAR(150) NULL AFTER `return_travel_pnr_no2`, ADD `customer_hotel_type2` VARCHAR(150) NULL AFTER `return_travel_pnr_no3`, ADD `customer_hotel_type3` VARCHAR(150) NULL AFTER `customer_hotel_type2`;
+
+INSERT INTO `site_configs` (`key`, `value`, `description`, `sort`, `created`, `updated`) VALUES ('Site.gst_percent', '10', '', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 ALTER TABLE `bookings` ADD `travel_date2` DATE NULL AFTER `travel_number3`, ADD `travel_date3` DATE NULL AFTER `travel_date2`;
 

@@ -96,7 +96,7 @@ $this->end();
                       <td><?php echo h($booking['Booking']['customer_hotel_type']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['customer_signature']); ?>&nbsp;</td>
                       <td><?php echo h($booking['Booking']['company_signature']); ?>&nbsp;</td>
-                      <td><?php echo h($booking['Booking']['all_t_and_c']); ?>&nbsp;</td>
+                      <td><?php echo cropDetail($booking['Booking']['all_t_and_c'],10); ?>&nbsp;</td>
                       <td class="actions text-center">
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $booking['Booking']['id']), array('icon'=>'view','title' => __('Click here to view this Booking'))); ?>
                          <?php //echo $this->Html->link(__(''), array('action' => 'edit', $booking['Booking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Booking'))); ?>
