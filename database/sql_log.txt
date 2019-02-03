@@ -7,6 +7,7 @@ d-- phpMyAdmin SQL Dump
 
 --------------------------------------------------------
 03-02-2019
+ALTER TABLE `tours` ADD `multi_hotel` VARCHAR(100) NULL AFTER `hotel_id`;
 
 CREATE TABLE `slider` ( `id` INT NOT NULL AUTO_INCREMENT , `tour_id` INT NOT NULL , `title` VARCHAR(255) NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
