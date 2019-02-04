@@ -179,7 +179,8 @@
             <div class="carousel-inner" role="listbox">
                 <?php $i=0;foreach ($sliders as $key => $slider) { 
                     if($i == 0){$i++; ?>
-                <div class="item active" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
+                <div class="item active" >
+                    <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
                     <div class="carousel-caption">
                         <h2><?php echo $slider['Slider']['title'];?> </h2>
                         <h4><?php echo $slider['Slider']['description']; ?></h4>
@@ -188,7 +189,8 @@
                     </div>
                 </div>
                 <?php }else{ ?>
-                <div class="item" style="background-image:url(<?php echo $slider['Tour']['img']; ?>);">
+                <div class="item">
+                    <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
                     <div class="carousel-caption">
                         <h2><?php echo $slider['Slider']['title'];?> </h2>
                         <h4><?php echo $slider['Slider']['description']; ?></h4>
