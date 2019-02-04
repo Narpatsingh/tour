@@ -92,6 +92,7 @@ $searchPanelArray = array(
                         <?php $fieldCount = 9; ?>
 
                         <th width="5%"> <?php echo __('Sr.'); ?> </th>
+                        <th><?php echo $this->Paginator->sort('Tour.name', __('Title')); ?></th>
                         <th><?php echo $this->Paginator->sort('Tour.city', __('City')); ?></th>
                         <th><?php echo $this->Paginator->sort('Tour.place', __('Place')); ?></th>
                         <th><?php echo $this->Paginator->sort('Tour.price', __('Price')); ?></th>
@@ -114,6 +115,7 @@ $searchPanelArray = array(
                         <?php foreach ($Tours as $tour): ?>
                             <tr>
                                 <td> <?php echo $startNo++; ?> </td>
+                                <td> <?php echo isset($tour['Tour']['name']) ? $tour['Tour']['name'] : ''; ?> </td>
                                 <td> <?php echo isset($tour['City']['name']) ? $tour['City']['name'] : ''; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['place']) ? $tour['Tour']['place'] : ''; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['price']) ? $tour['Tour']['price'] : ''; ?> </td>

@@ -64,7 +64,18 @@ if (isset($this->request->data['Tour']['id'])) {
                         
                         <?php echo "<div id='appendTagName'></div>"; 
                         } else{
+                            if(empty($highlight_data)){
+                                echo '<div class="col-md-10">';
+                                echo $this->Form->input('Highlight.title',array('name'=>'data[Highlight][name][new][]', 'type'=>'text','label'=>'Highlight Title', 'class' => 'form-control','placeholder'=>'Enter Highlight Title','div' => array('class' => 'form-group required')));
+                                ?>
+                                </div>
+
+                                <a id="AddMoreOptions" href="#" class="btn btn-primary" style="float: right;margin-right: 76px;margin-top: 23px;">+ Add More</a>
+                            
+                            <?php echo "<div id='appendTagName'></div>";  
+                            }
                              $flag=0;
+                            
                             foreach ($highlight_data as $key => $tag) {
                                 $flag++;
                                 if($flag==1){
