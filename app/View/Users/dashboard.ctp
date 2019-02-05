@@ -614,18 +614,18 @@
                         <div class="contact-text">
                             <h3>Contact</h3>
                             <address>
-                                E-mail: promo@party.com<br>
-                                Phone: +1 (123) 456 7890<br>
-                                Fax: +1 (123) 456 7891
+                                E-mail : silshinetrip@gmail.com<br>
+                                Contact No : 8733897945<br>
+                                Contact No : 8758368590
                             </address>
                         </div>
                         <div class="contact-address">
-                            <h3>Contact</h3>
+                            <h3>Address</h3>
                             <address>
-                                Unit C2, St.Vincent's Trading Est.,<br>
-                                Feeder Road,<br>
-                                Bristol, BS2 0UY<br>
-                                United Kingdom
+                                501/6,Bhakti dharm,<br>
+                                Township Palanpur,<br>
+                                Canal Road,<br>
+                                Jahangirabad Surat.
                             </address>
                         </div>
                     </div>
@@ -655,7 +655,7 @@
         </div>
         
         <div  class="no-padding" style="width:100%;margin-bottom: -5px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7438.906951197761!2d72.77224493252278!3d21.21385909032098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c41f49e790b%3A0xc794ddaa38573360!2sBhakti+Dharm+Township!5e0!3m2!1sen!2sin!4v1549383934402" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </section>
 
