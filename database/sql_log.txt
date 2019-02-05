@@ -6,6 +6,12 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+05-02-2019
+ALTER TABLE `train_details` ADD `company_name` VARCHAR(100) NULL AFTER `customer_id`;
+
+ALTER TABLE `train_details` ADD `price` INT NOT NULL AFTER `pnr_no`;
+
+--------------------------------------------------------
 03-02-2019
 ALTER TABLE `tours` ADD `multi_hotel` VARCHAR(100) NULL AFTER `hotel_id`;
 
