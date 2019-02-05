@@ -47,7 +47,7 @@
             <tbody>
                 <?php if(empty($flightDetails)){?>
     				<tr>
-    				   <td colspan='7' class='text-warning'><?php echo __('No Flight Detail found.')?></td>
+    				   <td colspan='9' class='text-warning'><?php echo __('No Flight Detail found.')?></td>
     				</tr>
                 <?php }else{?>
 

@@ -430,7 +430,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <ul>
+                    <ul class="remove_list_style">
                         <li>
                             <i class="fa fa-heart-o"></i>
                             <h2><span class="counter count">2500</span></h2>

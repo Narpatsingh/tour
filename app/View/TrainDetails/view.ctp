@@ -10,12 +10,45 @@
 	$this->end();
 ?>
 
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="overflow-hide-break">
                 <div class="box-body userViewPage">
-                    		<div class='col-xs-12 col-sm-9 detailBox'>			<div class='row'>				<div class='col-md-12 col-sm-12 innerBox'>					<div class='dl-horizontal'>						<ul>							<li>								<span class='col-xs-12'>									<div class='row'>										Train Detail Detail									</div>								</span>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Id'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $trainDetail['TrainDetail']['id']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Customer Id'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $trainDetail['TrainDetail']['customer_id']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Train No'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $trainDetail['TrainDetail']['train_no']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Pnr No'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $trainDetail['TrainDetail']['pnr_no']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Created'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $trainDetail['TrainDetail']['created']; ?>							</li>						</ul>					</div>				</div>			</div>		</div>                </div>
+                    <div class="col-md-9">
+                        <div class="table-responsive-lg table-responsive-sm table-responsive-md table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><?php echo __('Train No'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['train_no']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Source'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['source']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Destination'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['destination']; ?></p></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <th><?php echo __('Price'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['price']; ?></p></td>
+                                    </tr> -->
+                                    <tr>
+                                        <th><?php echo __('Pnr No'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['pnr_no']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th> <?php echo __('Created'); ?></th>
+                                        <td><p><?php echo $trainDetail['TrainDetail']['created']; ?></p></t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
             </div>
         </div>
     </div>

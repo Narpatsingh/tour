@@ -2874,4 +2874,8 @@ img.img {
     align-content: center;
     margin-left: 10%;
     margin-bottom: 0px;
-}    
+}
+
+.remove_list_style{
+	list-style-type: none;
+}

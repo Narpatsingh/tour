@@ -9,43 +9,36 @@ $this->end();
 ?>
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="box box-primary">
-			<div class="overflow-hide-break">
-				<div class="box-body userViewPage">
-					<div class='col-xs-12 col-sm-9 detailBox'>
-						<div class='row'>
-							<div class='col-md-12 col-sm-12 innerBox'>
-								<div class='dl-horizontal'>
-									<ul>
-										<li>
-											<span class='col-xs-12'>
-												<div class='row'>Slider Detail</div>
-											</span>
-										</li>
-									</ul>
-									<ul>
-										<li class='innreicons'>	<?php echo __('Package'); ?><i class='fa fa-hand-o-right'>								</i>							</li>
-										<li><?php echo $slider['Tour']['name']; ?></li>
-									</ul>
-									<ul>
-										<li class='innreicons'><?php echo __('Title'); ?><i class='fa fa-hand-o-right'>								</i>							</li>
-										<li><?php echo $slider['Slider']['title']; ?></li>
-									</ul>
-									<ul>
-										<li class='innreicons'><?php echo __('Created'); ?><i class='fa fa-hand-o-right'>								</i>							</li>
-										<li><?php echo $slider['Slider']['created']; ?></li>
-									</ul>
-									<ul>
-										<li class='innreicons'><?php echo __('Updated'); ?><i class='fa fa-hand-o-right'>								</i>							</li>
-										<li><?php echo $slider['Slider']['updated']; ?></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="overflow-hide-break">
+                <div class="box-body userViewPage">
+                    <div class="col-md-9">
+                        <div class="table-responsive-lg table-responsive-sm table-responsive-md table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><?php echo __('Package'); ?></th>
+                                        <td><p><?php echo $slider['Tour']['name']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Title'); ?></th>
+                                        <td><p><?php echo $slider['Slider']['title']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th> <?php echo __('Created'); ?></th>
+                                        <td><p><?php echo $slider['Slider']['created']; ?></p></t>
+                                    </tr>
+                                    <tr>
+                                        <th> <?php echo __('Updated'); ?></th>
+                                        <td><p><?php echo $slider['Slider']['updated']; ?></p></t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
 </div>
