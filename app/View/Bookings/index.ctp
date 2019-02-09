@@ -11,10 +11,11 @@ $this->end();
             <div class="box-body row">
                 <div class="col-md-12">
                  <?php echo $this->Form->create('Booking', array('autocomplete' => 'off', 'novalidate' => 'novalidate'));
+                       echo $this->Form->input('name', array('label' => __('Customer Name'), 'placeholder' => __('name'), 'required' => false, 'class' => 'form-control', 'div' => array('class' => 'col-md-3')));
                  ?>
 
                  <label>&nbsp</label>
-                 <div class="col-md-12 form-group">
+                 <div class="col-md-9 form-group">
                   <?php echo $this->Form->submit(__('Search'), array('class' => 'btn btn-primary margin-right10', 'div' => false));		echo $this->Html->link(__('Reset Search'), array('action' => 'index', 'all'), array('title' => __('reset search'), 'class' => 'btn btn-default')); ?>
               </div>
 
@@ -117,7 +118,7 @@ $this->end();
                                         ), __('Are you sure you want to reject selected booking?'));                                    
                         endif;
                         if(!empty($booking['Booking']['is_approved']) && $booking['Booking']['is_approved']=='Yes'):
-                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['id'],'file.pdf'),
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['id'],$booking['Booking']['invoice_no'].'.pdf'),
                                         array(
                                             'icon' => 'fa-file',
                                             'target'=>'_blank',

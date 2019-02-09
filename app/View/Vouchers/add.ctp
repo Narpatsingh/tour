@@ -74,6 +74,7 @@
                 for ($i=2; $i <= $pcount; $i++) { 
                 echo $this->Form->input('total_payment'.$i,array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 }
+                echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
     			echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
@@ -107,7 +108,7 @@
                     'customer_signature' => array('required' => 1),
                     'payment_type' => array('required' => 1),
                     'total_payment' => array('required' => 1),
-
+                    'payment_recieved' => array('required' => 1),
     			),
     			'Messages' => array(
     				'customer_full_name' => array('required' => __('Please enter Customer Full Name')),
@@ -129,7 +130,8 @@
     				'company_signature' => array('required' => __('Please enter Company Signature')),
                     'customer_signature' => array('required' => __('Please enter Customer Signature')),
                     'payment_type' => array('required' => __('Please select payment type')),
-    				'total_payment' => array('required' => __('Please enter total payment')),
+                    'total_payment' => array('required' => __('Please enter total payment')),
+    				'payment_recieved' => array('required' => __('Please enter payment recieved amount.')),
                 ));
 
 

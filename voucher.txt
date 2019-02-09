@@ -1,0 +1,53 @@
+•	Customer Full Name
+•	Customer Contact No
+
+•	Customer Tour Type
+•	Customer Tour Name
+•	Customer Tour Date
+•	Meal Plan
+•	Customer Room Type
+•	Customer Car/ Bus Type
+
+•	Customer Hotel Name
+•	Customer Hotel Places Name
+•	Hotel check in Date
+•	Hotel check Out date
+•	Hotel Contact No
+
+•	Tour manager Name
+•	Tour Manager Contact No
+•	Emergency Contact No
+
+•	Company & Customer Signature
+
+
+
+
+<table class="first" cellpadding="4" cellspacing="6">
+ <tr>
+  <td width="150" align="center"></td>
+  <td width="140" align="center"></td>
+  <td width="140" align="center"></td>
+  <td width="140" align="center"></td>
+  <td width="80" align="center"> </td>
+  /tr>
+ <tr>
+  <td width="150" align="center">Hotel Name</td>
+  <td width="140">XXXX</td>
+  <td width="140">XXXX</td>
+  <td width="140">XXXX</td>
+  <td width="80">XXXX</td>
+  /tr>
+</table>
+
+
+accounts
+
+voucher_id
+total_Payment
+final_payment_with_gst
+payment_recieved
+payment_recievable
+created 
+updated
+

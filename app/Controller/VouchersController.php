@@ -86,25 +86,50 @@ public function view($id = null) {
     $this->set('voucher', $this->Voucher->find('first', $options));
 }
 
+public function tour_receipt() {
+$options = array('conditions' => array('Voucher.' . $this->Voucher->primaryKey => 1));
+$vouchers = $this->Voucher->find('first', $options);
+
+$voucher = $vouchers['Voucher'];
+$voucher['total_payment_sum'] = 500;        
+$voucher['final_payment_with_gst'] = 5000;
+$voucher['gst_percent'] = 10;
+$voucher['all_t_and_c'] = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+$voucher['booking_id'] = 1;
+$voucher['invoice_no'] = 'INC1549688664SILSHINEc614dAKNZ';
+$this->set(compact('voucher'));    
+$this->layout = 'pdf';
+$this->render('/Pdf/tour_receipt');     
+}
+
 /**
 * add method
 *
 * @return void
 */
 public function add($id=null) {
-        $id = decrypt($id);
+        $id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
     if ($this->request->is('post')) {
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
 
-        $gst_percent = empty(Configure::read('Site.gst_percent'))?10:Configure::read('Site.gst_percent');
+        $config_gst = Configure::read('Site.gst_percent');
+        $gst_percent = empty($config_gst)?10:$config_gst;
         $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
         $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];
         $this->request->data['Voucher']['total_payment_sum'] = $total_payment_sum = $this->request->data['Voucher']['total_payment'] + $payment2 + $payment3;        
         $this->request->data['Voucher']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
         $this->request->data['Voucher']['gst_percent'] = $gst_percent;
         $this->Voucher->create();
-        $this->request->data['Voucher']['invoice_no'] = get_invoice_no();
+        $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {
+
+            $this->loadModel("Account");
+            $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
+            $account_data['payment_amount'] = $total_payment_sum;
+            $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
+            $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
+            $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];
+            $this->Account->save($account_data);
 
             $voucher = $this->request->data['Voucher'];
             $pcount = $voucher['package_count'];
@@ -118,9 +143,12 @@ public function add($id=null) {
 
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
-            $this->render('/Pdf/generate_receipt');     
-            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$id.PDF_FILE, ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
+            $this->render('/Pdf/tour_receipt');     
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
             }
+            $this->loadModel("Booking");
+            $this->Booking->id = $id;
+            $this->Booking->saveField('invoice_no',$invoice_no);
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
             $booking =  $this->Enquiry->find('first', $options);            

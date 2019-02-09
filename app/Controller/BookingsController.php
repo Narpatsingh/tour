@@ -43,20 +43,8 @@ public function index($all = null) {
         $this->request->data['Booking'] = array_filter($this->request->data['Booking']);
         $this->request->data['Booking'] = array_map('trim', $this->request->data['Booking']);
         if (!empty($this->request->data)) {
-            if (isset($this->request->data['Booking']['first_name'])) {
-                $conditions['Booking.first_name LIKE '] = '%' . $this->request->data['Booking']['first_name'] . '%';
-            }
-            if (isset($this->request->data['Booking']['last_name'])) {
-                $conditions['Booking.last_name LIKE '] = '%' . $this->request->data['Booking']['last_name'] . '%';
-            }
             if (isset($this->request->data['Booking']['name'])) {
-                $conditions['Booking.name LIKE '] = '%' . $this->request->data['Booking']['name'] . '%';
-            }
-            if (isset($this->request->data['Booking']['email'])) {
-                $conditions['Booking.email LIKE '] = '%' . $this->request->data['Booking']['email'] . '%';
-            }
-            if (isset($this->request->data['Booking']['status'])) {
-                $conditions['Booking.status'] = $this->request->data['Booking']['status'];
+                $conditions['Booking.customer_full_name LIKE '] = '%' . $this->request->data['Booking']['name'] . '%';
             }
         }
         $this->Session->write('BookingSearch', $this->request->data['Booking']);

@@ -1,4 +1,4 @@
-d<?php
+<?php
 App::import('Vendor','xtcpdf');
 $app = APP.'webroot/img/reciept_logo.jpg';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
@@ -258,5 +258,5 @@ $pdf->lastPage();
 //Close and output PDF document
 $pdf_path = APP . 'webroot/files/receipt' . DS . $id;
 createFolder($pdf_path); 
-$pdf->Output($pdf_path . DS .''.'file.pdf', 'F');
+$pdf->Output($pdf_path . DS .''.$invoice_no.'.pdf', 'F');
 ?>

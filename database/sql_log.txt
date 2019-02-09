@@ -6,6 +6,12 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+08-02-2019
+ALTER TABLE `vouchers` ADD `payment_recieved` DOUBLE NOT NULL DEFAULT '0' AFTER `package_count`;
+
+05-02-2019
+CREATE TABLE `silshlrp_tour`.`accounts` ( `id` INT NOT NULL AUTO_INCREMENT , `voucher_id` INT NOT NULL , `payment_amount` DOUBLE NOT NULL , `total_payment_with_gst` DOUBLE NOT NULL , `payment_recieved` DOUBLE NOT NULL , `payment_receivable` DOUBLE NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
 03-02-2019
 ALTER TABLE `tours` ADD `multi_hotel` VARCHAR(100) NULL AFTER `hotel_id`;
 
