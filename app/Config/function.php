@@ -552,7 +552,7 @@ function getSaveHelp(){
 
 function get_invoice_no()
 {
-    return 'INC'.time().'SILSHINE'.substr(md5(getrandompassword()),0,5).'AKNZ';
+    return 'INC'.date('Y').'SILSHINE'.substr(md5(getrandompassword()),0,5).'AKNZ'.time();
 }
 
 function get_gst_amount($amount,$gst_percent)
