@@ -21,7 +21,7 @@ $id = $voucher['booking_id'];
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Two tables and header with jspdf-autotable</title> 
+  <title>SilShine Trip</title> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
   
 </head>

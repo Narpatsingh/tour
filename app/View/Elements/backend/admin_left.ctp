@@ -32,6 +32,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                         <li class="<?php echo $this->Html->getActiveClass(array('bus_details'), array('index','add','edit','view')) ?>">
                             <?php echo $this->Html->link(__('Bus Details'),array('controller' => 'bus_details', 'action' => 'index'),array('icon' => 'fa fa-bus')); ?>
                         </li>
+                        <li class="<?php echo $this->Html->getActiveClass(array('car_details'), array('index','add','edit','view')) ?>">
+                            <?php echo $this->Html->link(__('Car Details'),array('controller' => 'car_details', 'action' => 'index'),array('icon' => 'fa fa-car')); ?>
+                        </li>
                         <li class="<?php echo $this->Html->getActiveClass(array('train_details'),array('index','add','edit','view')) ?>">
                             <?php echo $this->Html->link(__('Train Details'),array('controller' => 'train_details', 'action' => 'index'),array('icon' => 'fa fa-train')); ?>
                         </li>
