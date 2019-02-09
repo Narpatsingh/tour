@@ -39,7 +39,7 @@
 		$('.single-page-scroll').on('click', function(event) {
 
 			// $(".nav-item").dblclick();
-			
+			$('.nav li').removeClass('active');
 			$('li.nav-item').removeClass('active');
 			$(this).parent().addClass('active');
 

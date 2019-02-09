@@ -16,14 +16,14 @@
                     <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
 
                             <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                                <input type="text" data-role="none" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3" required>
-                                <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3" required>
-                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3" required>
-                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mb-3" required>
+                                <input type="text" data-role="none" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3">
+                                <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3">
+                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3">
+                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mb-3">
                                 <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
                                 <?php echo $this->Form->input('destination',array('label' => false,'data-role'=>"none",'options'=>$destination,'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Destination'), 'div' => false)); ?>
-                                <textarea data-role="none" name="experience" class=" textarea mt-3" placeholder="Additional Experiences" required></textarea>
-                                <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements" required></textarea>
+                                <textarea data-role="none" name="experience" class=" textarea mt-3" placeholder="Additional Experiences"></textarea>
+                                <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements"></textarea>
                             </div>
                             <div class="contact_detail mt-3 mb-3 px-3 py-3">
                                 <p class="font-bold">Your Contact Detail</p>
@@ -81,30 +81,6 @@
     // $(document).ready(function(){
     //     $('#EnquiryAddForm').validate({ 
     //         rules: {
-    //             'number_of_month': {
-    //                 required: true,
-    //             },
-    //             'number_of_guest': {
-    //                 required: true,
-    //             },
-    //             'time_of_travel': {
-    //                 required: true,
-    //             },
-    //             'travel_duration': {
-    //                 required: true,
-    //             },
-    //             'city_id': {
-    //                 required: true,
-    //             },
-    //             'destination': {
-    //                 required: true,
-    //             },
-    //             'experience': {
-    //                 required: true,
-    //             },
-    //             'special_requirements': {
-    //                 required: true,
-    //             },
     //             'firstname': {
     //                 required: true,
     //             },
@@ -124,12 +100,15 @@
     //             'firstname': {
     //                 required: "Please enter first name.",
     //             },
+    //             'lastname': {
+    //                 required: "Please enter last name.",
+    //             },
     //             'email': {
     //                 required: "Please enter email.",
     //                 email: "Please enter valid email.",
     //             },
-    //             'message': {
-    //                 required: "Please enter message.",
+    //             'mobile': {
+    //                 required: "Please enter mobile number.",
     //             },
     //         },
     //         submitHandler: function(form) {

@@ -110,7 +110,7 @@
    </div>
    <!-- /.container -->
 </nav>
-<section id="page-title" class="parallax" data-stellar-background-ratio="0.5" style="background-image: url(<?php echo $this->webroot.$tour['Tour']['img']; ?>);">
+<section id="page-title" class="detail_page_image"  style="background-image: url(<?php echo $this->webroot.$tour['Tour']['img']; ?>);">
    <div class="title-info">
       <div class="container">
          <div class="row">
@@ -142,7 +142,7 @@
                   <a class="single-page-scroll" href="#Highlights">Highlights</a>
                </li>
                <li class="nav-item">
-                  <a class="single-page-scroll" href="#Informaion">Hotel Information</a>
+                  <a class="single-page-scroll" href="#special_package">Hotel Information</a>
                </li>
                <li class="nav-item">
                   <a class="single-page-scroll" href="#DatePrice">Date Price</a>
@@ -229,28 +229,121 @@
       </div>
    </div>
 </section>
-<section id="Informaion">
+<section id="special_package" class="special_package section-padding">
    <div class="container">
       <div class="row">
-         <div class="col-lg-8 mx-auto">
-            <h2>Hotel Information</h2>
-            <p class="lead">
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3 class="text-white" style="color: yellowgreen;">Hotel : <?php echo $tour['Hotel']['name']; ?></h3>
-                  <div class="thumb">
-                      <img src="/tour_management/<?php echo $tour['Hotel']['photo']; ?>" style="height: 300px;width: 340px;"alt="" />
-                  </div>
-                  <div class="discount-info">
-                      <h2 style="color: yellowgreen;">Meal Plan :</h2>
-                      <p ><?php echo $tour['Hotel']['meal_plan']; ?></h3> 
-                  </div>
-                </div>
-              </div>  
-            </p>
+         <div class="col-md-12">
+            <div class="section-title mx-auto">
+               <h2>Hotel Information</h2>
+               <span></span>
+            </div>
          </div>
+         <!-- END COL -->
       </div>
+      <!-- END ROW -->  
+      <div class="row text-center">
+         <div class="col-md-12" data-aos="fade-up">
+            <div id="package-slider" class="owl-carousel">
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/1.jpg" alt="">
+                  <h5 class="package-name">Australia</h5>
+                  <div class="package-hover">
+                     <h5>Australia</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>  
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/2.jpg" alt="">
+                  <h5 class="package-name">canada</h5>
+                  <div class="package-hover">
+                     <h5>canada</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/3.jpg" alt="">
+                  <h5 class="package-name">france</h5>
+                  <div class="package-hover">
+                     <h5>france</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>  
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/4.jpg" alt="">
+                  <h5 class="package-name">germany</h5>
+                  <div class="package-hover">
+                     <h5>germany</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/5.jpg" alt="">
+                  <h5 class="package-name">Japan</h5>
+                  <div class="package-hover">
+                     <h5>Japan</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+               <div class="single_package">
+                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/6.jpg" alt="">
+                  <h5 class="package-name">orange</h5>
+                  <div class="package-hover">
+                     <h5>orange</h5>
+                     <span>Starting from $236</span>
+                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>  
+                     <span class="time_zone">5 days 4 night</span>
+                  </div>
+               </div>
+               <!-- END SINGLE PACKAGE -->
+            </div>
+         </div>
+         <!-- END COL -->
+      </div>
+      <!-- END ROW -->
    </div>
+   <!-- END CONTAINER -->
 </section>
 <section id="DatePrice">
    <div class="container">
@@ -497,3 +590,31 @@
       </div>
    </div>
 </section>
+<script type="text/javascript">
+  /*START PACKAGE JS*/  
+    $("#package-slider").owlCarousel({
+        loop: true,
+        nav: false,
+        pagination:true,
+        navigation:false,
+        slideSpeed:1000,
+        autoplay: true,
+        responsive: {
+            0: {
+              items: 1
+            },
+            768: {
+              items: 2
+            },
+            1170: {
+              items: 3
+            }
+          }
+    });
+    /*END PACKAGE JS*/
+</script>
+<style type="text/css" media="screen">
+.owl-stage-outer{
+  height: 260px;
+}  
+</style>

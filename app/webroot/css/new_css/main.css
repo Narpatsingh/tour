@@ -213,7 +213,7 @@ h2 {
 
 #contact h3 {
   text-transform:inherit;
-  /*color: #373737; */
+  /*color: #373737;*/ 
   color: #ffffff;
 }
 
@@ -223,7 +223,7 @@ h2 {
 
 #contact address {
   font-size: 18px;  
-  /*color: #373737; */
+  /*color: #373737;*/ 
   color: #ffffff;
 }
 

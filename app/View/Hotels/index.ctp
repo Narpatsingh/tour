@@ -57,7 +57,7 @@
 		<td><?php echo h($hotel['Hotel']['price']); ?>&nbsp;</td>
 		<td><?php echo h($hotel['Hotel']['address']); ?>&nbsp;</td>
 		<td class="photo" style='width: 150px;height: 100px;'><?php echo $this->Html->image('../'.$hotel['Hotel']['photo'])?></td>
-        <td><?php echo h($hotel['Hotel']['type']); ?>&nbsp;</td>
+        <td><?php echo h($hotel['Hotel']['type']." Star"); ?>&nbsp;</td>
 		<td><?php echo h($hotel['Hotel']['meal_plan']); ?>&nbsp;</td>
 		<td><?php echo h($hotel['Hotel']['created']); ?>&nbsp;</td>
 		<td class="actions text-center">

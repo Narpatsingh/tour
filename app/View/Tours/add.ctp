@@ -33,6 +33,7 @@ if (isset($this->request->data['Tour']['id'])) {
                         echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('place', array('tabindex' => 3,'placeholder' => __('Place'), 'label' => __('Place'),'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('description',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Description'), 'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('date_price',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Date Price'), 'div' => array('class' => 'form-group required')));
                         ?> 
                     </div>
                     <div class="col-md-6">

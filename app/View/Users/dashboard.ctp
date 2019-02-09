@@ -177,29 +177,34 @@
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <?php $i=0;foreach ($sliders as $key => $slider) { 
-                    if($i == 0){$i++; ?>
-                <div class="item active" >
-                    <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
-                    <div class="carousel-caption">
-                        <h2><?php echo $slider['Slider']['title'];?> </h2>
-                        <h4><?php echo $slider['Slider']['description']; ?></h4>
-                        <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
-                        <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
+                <?php $i=0;
+                if (!count($sliders)) { ?>   
+                    <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                <?php }else {
+                foreach ($sliders as $key => $slider) { 
+                        if($i == 0){$i++; ?>
+                    <div class="item active" >
+                        <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
+                        <div class="carousel-caption">
+                            <h2><?php echo $slider['Slider']['title'];?> </h2>
+                            <h4><?php echo $slider['Slider']['description']; ?></h4>
+                            <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                            <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
+                        </div>
                     </div>
-                </div>
-                <?php }else{ ?>
-                <div class="item">
-                    <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
-                    <div class="carousel-caption">
-                        <h2><?php echo $slider['Slider']['title'];?> </h2>
-                        <h4><?php echo $slider['Slider']['description']; ?></h4>
-                        <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
-                        <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
+                    <?php }else{ ?>
+                    <div class="item">
+                        <img src="<?php echo  $slider['Tour']['img']; ?>" alt="" />
+                        <div class="carousel-caption">
+                            <h2><?php echo $slider['Slider']['title'];?> </h2>
+                            <h4><?php echo $slider['Slider']['description']; ?></h4>
+                            <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                            <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
+                        </div>
                     </div>
-                </div>
-                <?php } ?>    
-            <?php } ?>
+                    <?php } ?>    
+                <?php } ?>
+                <?php } ?>
             </div><!--end carousel-inner-->
             <!-- Controls -->
             <a class="control left" href="#banner" data-slide="prev"><i class="fa fa-long-arrow-left"></i></a>
@@ -221,17 +226,21 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="owl-carousel" id="packages-carousel">
-                            <?php foreach ($specials as $key => $special){ ?>
-                            <div class="tour-item">
-                                <div class="thumb">
-                                    <img src="<?php echo $special['Tour']['img']; ?>" alt="" />
+                            <?php if (!count($specials)) { ?>   
+                            <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                            <?php } else {
+                                foreach ($specials as $key => $special){ ?>
+                                <div class="tour-item">
+                                    <div class="thumb">
+                                        <img src="<?php echo $special['Tour']['img']; ?>" alt="" />
+                                    </div>
+                                    <div class="discount-info">
+                                        <h3 class="text-white"><?php echo $special['City']['name']; ?></h3>
+                                        <a class="" href="tours/details/<?php echo $special['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <div class="discount-info">
-                                    <h3 class="text-white"><?php echo $special['City']['name']; ?></h3>
-                                    <a class="" href="tours/details/<?php echo $special['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <?php } ?> 
+                                <?php } ?>
+                            <?php } ?>
                         </div>  
                     </div>
                 </div>
@@ -257,7 +266,10 @@
         <div class="container">
             <?php $i=0; ?>
             <div class="row">
-            <?php foreach ($hots as $key => $hot) { ?>
+            <?php if (!count($hots)) { ?>   
+                <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                <?php } else {
+                foreach ($hots as $key => $hot) { ?>
                     <?php if($i == 0){
                         $i++; ?>
                     <div class="col-md-8 my-3">
@@ -323,6 +335,7 @@
                         </div>
                     </div>
                     <?php } ?>
+                <?php } ?>
             <?php } ?>     
             </div>
         </div>        
@@ -346,22 +359,26 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="owl-carousel" id="deals-discounts-carousel">
-                        <?php foreach ($discounts as $key => $discount) {  ?>
-                        <div class="tour-item">
-                            <div class="thumb">
-                                <img src="<?php echo $discount['Tour']['img']; ?>" alt="" />
-                            </div>
-                            <div class="discount-info">
-                                <div class="price-info">
-                                    <span class="regular-price">&#x20b9;<?php echo $discount['Tour']['discount']; ?></span>
-                                    <span class="sale-price">&#x20b9;<?php echo $discount['Tour']['price']; ?></span>
+                        <?php if (!count($discounts)) { ?>   
+                        <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                        <?php } else {
+                            foreach ($discounts as $key => $discount) {  ?>
+                            <div class="tour-item">
+                                <div class="thumb">
+                                    <img src="<?php echo $discount['Tour']['img']; ?>" alt="" />
                                 </div>
-                                <h3><?php echo $discount['City']['name']; ?></h3>
-                                <p><?php echo $discount['Tour']['description']; ?></p>
-                                <a href="tours/details/<?php echo $discount['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
+                                <div class="discount-info">
+                                    <div class="price-info">
+                                        <span class="regular-price">&#x20b9;<?php echo $discount['Tour']['discount']; ?></span>
+                                        <span class="sale-price">&#x20b9;<?php echo $discount['Tour']['price']; ?></span>
+                                    </div>
+                                    <h3><?php echo $discount['City']['name']; ?></h3>
+                                    <p><?php echo $discount['Tour']['description']; ?></p>
+                                    <a href="tours/details/<?php echo $discount['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <?php } ?> 
+                            <?php } ?>
+                        <?php } ?>
                     </div>  
                 </div>
             </div>
@@ -370,7 +387,7 @@
         
     </section>
     <!--end deals-discounts-->
-    <section id="image_cards">
+    <!-- <section id="image_cards">
         <ul id="elImageList">
             <li class="item">
                 <a class="link">
@@ -423,7 +440,7 @@
                 </a>
             </li>
         </ul>
-    </section>
+    </section> -->
     <!-- Count Section-->
     <section class="count-section parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/bg/1.jpg);">
         <!-- <hr> -->
@@ -545,17 +562,21 @@
                 <div class="row">
                     <div class="col-xs-12" style="padding: 0px 0px 10px 0px;">
                         <div class="owl-carousel" id="blogs-carousel">
-                            <?php foreach ($blogs as $key => $blog){ ?>
-                            <div class="tour-item">
-                                <div class="thumb">
-                                    <img src="<?php echo $blog['Tour']['img']; ?>" alt="" />
+                            <?php if (!count($blogs)) { ?>   
+                            <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                            <?php } else { 
+                                foreach ($blogs as $key => $blog){ ?>
+                                <div class="tour-item">
+                                    <div class="thumb">
+                                        <img src="<?php echo $blog['Tour']['img']; ?>" alt="" />
+                                    </div>
+                                    <div class="discount-info">
+                                        <h3 class="text-white"><?php echo $blog['City']['name']; ?></h3>
+                                        <a class="" href="tours/details/<?php echo $blog['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <div class="discount-info">
-                                    <h3 class="text-white"><?php echo $blog['City']['name']; ?></h3>
-                                    <a class="" href="tours/details/<?php echo $blog['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <?php } ?> 
+                                <?php } ?>
+                            <?php } ?>
                         </div>  
                     </div>
                 </div>
@@ -566,7 +587,7 @@
     <!--end blog-->
     
     <!-- Testimonials Section -->
-    <section id="testimonials">
+    <!-- <section id="testimonials">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -576,9 +597,6 @@
                 </div>
             </div>
             <div id="twitter-feed" class="carousel slide" data-interval="false">
-                <!-- <div class="twit">
-                    <img class="img-responsive" src="images/bg_img/twit.png" alt="twit">
-                </div> -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="text-center carousel-inner center-block">
@@ -604,8 +622,184 @@
                 </div>
             </div>
         </div>    
+    </section> -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="customers-testimonials" class="owl-carousel">
+                        <!--TESTIMONIAL 1 -->
+                        <div class="item">
+                            <div class="shadow-effect">
+                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Helpful Support
+                                    The telephone Customer service team was very
+                                    supportive. Special mention about raj , who was
+                                    very helpful and patient in handling all queries
+                                    and all bookings were done professionally by
+                                    him.
+                                </p>
+                            </div>
+                            <div class="testimonial-name">Jonn</div>
+                        </div>
+                        <!--END OF TESTIMONIAL 1 -->
+                        <!--TESTIMONIAL 2 -->
+                        <div class="item">
+                            <div class="shadow-effect">
+                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Great Efforts
+                                    Many Thanks for your effort with me. Be sure for
+                                    my coming trips it will be with you as i was very
+                                    pleased with your professionalization. Once
+                                    again thank you personally and thanks silshine
+                                    Trip.
+                                </p>
+                            </div>
+                            <div class="testimonial-name">ANNA</div>
+                        </div>
+                        <!--END OF TESTIMONIAL 2 -->
+                        <!--TESTIMONIAL 3 -->
+                        <div class="item">
+                            <div class="shadow-effect">
+                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Great Help
+                                    What ends well is well done. Thanks again for all
+                                    the help.Looking forward for further
+                                    engagements.
+                                </p>
+                            </div>
+                            <div class="testimonial-name">LARA ATKINSON</div>
+                        </div>
+                        <!--END OF TESTIMONIAL 3 -->
+                        <!--TESTIMONIAL 4 -->
+                        <div class="item">
+                            <div class="shadow-effect">
+                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Amazing Vacations
+                                    We are back from one of the most amazing
+                                    vacations we've been on lately! It was indeed a
+                                    great experience- right from the interactions with
+                                    bhavsar at SST, which were always informative
+                                    and usefull
+                                </p>
+                            </div>
+                            <div class="testimonial-name">IAN OWEN</div>
+                        </div>
+                        <!--END OF TESTIMONIAL 4 -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!--end testimonials-->
+    <!-- <section id="contact" style="padding: 0px">
+        <div class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-area">
+                            <div class="contact">
+                                <main>
+                                    <section>
+                                        <div class="content">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/_mLIxaKY_400x400.jpg" alt="Profile Image">
+
+                                            <aside>
+                                                <h1>Riccardo Cavallo</h1>
+                                                <p>Hi, I'm Riccardo Cavallo and I'm a Graphic and Visual Designer.</p>
+                                            </aside>
+                                  
+                                            <button type="button" data-toggle="modal" data-target="#myModal">
+                                                <span>Contact Me</span>
+                                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#444444"> <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path> </g> </svg>
+                                            </button>
+                                         </div>
+                                    </section>
+                                </main>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="border-radius: 12px;">
+                            <button type="button" class="close" data-dismiss="modal" style="padding: 10px;">×</button>
+                                <div class="modal-header Enquiry_header">
+                                    <h3 class="modal-title" style="color:#ffff;">Contact Detail</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="contact-text">
+                                        <h2 class="visible-title">Contact</h2>
+                                        <address>
+                                            E-mail : silshinetrip@gmail.com<br>
+                                            Contact No : 8733897945<br>
+                                            Contact No : 8758368590
+                                        </address>
+                                    </div>
+                                    <div class="contact-address">
+                                        <h2 class="visible-title">Address</h2>
+                                        <address>
+                                            501/6,Bhakti dharm,<br>
+                                            Township Palanpur,<br>
+                                            Canal Road,<br>
+                                            Jahangirabad Surat.
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <!-- <div class="col-sm-3 col-sm-offset-4">
+                        <div class="contact-text">
+                            <h3>Contact</h3>
+                            <address>
+                                E-mail : silshinetrip@gmail.com<br>
+                                Contact No : 8733897945<br>
+                                Contact No : 8758368590
+                            </address>
+                        </div>
+                        <div class="contact-address">
+                            <h3>Address</h3>
+                            <address>
+                                501/6,Bhakti dharm,<br>
+                                Township Palanpur,<br>
+                                Canal Road,<br>
+                                Jahangirabad Surat.
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="contact-section">
+                            <h3 style="color:white;">Send a message</h3>
+                            <div class="status alert alert-success" style="display: none"></div>
+                            <?php //echo $this->Form->create('Contact',array('controller'=>'contacts','action'=>'add')); ?>
+                            
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" required="required" placeholder="Email ID">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" id="message" required="required" class="form-control" rows="4" placeholder="Enter your message"></textarea>
+                                </div>                        
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary pull-right">Send</button>
+                                </div>
+                            </form>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div  class="no-padding" style="width:100%;margin-bottom: -5px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7438.906951197761!2d72.77224493252278!3d21.21385909032098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c41f49e790b%3A0xc794ddaa38573360!2sBhakti+Dharm+Township!5e0!3m2!1sen!2sin!4v1549383934402" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </section> -->
+
     <section id="contact" style="padding: 0px">
         <div class="contact-section">
             <div class="container">
@@ -614,18 +808,18 @@
                         <div class="contact-text">
                             <h3>Contact</h3>
                             <address>
-                                E-mail: promo@party.com<br>
-                                Phone: +1 (123) 456 7890<br>
-                                Fax: +1 (123) 456 7891
+                                E-mail : silshinetrip@gmail.com<br>
+                                Contact No : 8733897945<br>
+                                Contact No : 8758368590
                             </address>
                         </div>
                         <div class="contact-address">
-                            <h3>Contact</h3>
+                            <h3>Address</h3>
                             <address>
-                                Unit C2, St.Vincent's Trading Est.,<br>
-                                Feeder Road,<br>
-                                Bristol, BS2 0UY<br>
-                                United Kingdom
+                                501/6,Bhakti dharm,<br>
+                                Township Palanpur,<br>
+                                Canal Road,<br>
+                                Jahangirabad Surat.
                             </address>
                         </div>
                     </div>
@@ -653,30 +847,12 @@
                 </div>
             </div>
         </div>
-        
         <div  class="no-padding" style="width:100%;margin-bottom: -5px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.510408257974!2d72.86946061432718!3d21.171873685921003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc305aa1c03%3A0xdafdc4ff76d283e6!2sRaghunandan+Row+House!5e0!3m2!1sen!2sin!4v1544246768635" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7438.906951197761!2d72.77224493252278!3d21.21385909032098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c41f49e790b%3A0xc794ddaa38573360!2sBhakti+Dharm+Township!5e0!3m2!1sen!2sin!4v1549383934402" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-    </section>
-
+    </section>    
  
 <script type="text/javascript">
-  //   $(".carousel-inner").swiperight(function() {  
-  //   $(this).parent().carousel('prev');  
-  // });  
-  // $(".carousel-inner").swipeleft(function() {  
-  //   $(this).parent().carousel('next');  
-  // });
-  const imgContent = document.querySelectorAll('.img-content-hover');
-
-function showImgContent(e) {
-  for(var i = 0; i < imgContent.length; i++) {
-    imgContent[i].style.left = e.pageX + 'px';
-    imgContent[i].style.top = e.pageY + 'px';
-  }
-};
-
-document.addEventListener('mousemove', showImgContent);
 
   $(document).ready(function(){
     $('#ContactAddForm').validate({ 
@@ -709,5 +885,28 @@ document.addEventListener('mousemove', showImgContent);
         }
     });     
   });
+
+  jQuery(document).ready(function($) {
+            "use strict";
+            //  TESTIMONIALS CAROUSEL HOOK
+        $('#customers-testimonials').owlCarousel({
+            loop: true,
+            center: true,
+            margin:10,
+            autoplay: true,
+            nav:true,
+            responsive: {
+              0: {
+                items: 1
+              },
+              768: {
+                items: 2
+              },
+              1170: {
+                items: 3
+              }
+            }
+        });
+    });
 
 </script>    
