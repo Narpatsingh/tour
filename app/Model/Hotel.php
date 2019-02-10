@@ -13,6 +13,17 @@ class Hotel extends AppModel {
  */
 	public $displayField = 'name';
 
+	public $belongsTo = array(
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'city_id',
+		),
+		'State' => array(
+			'className' => 'State',
+			'foreignKey' => 'state_id',
+		)
+	);
+
 /**
  * Validation rules
  *

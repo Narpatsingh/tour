@@ -89,7 +89,7 @@ $searchPanelArray = array(
                 <table class="table table-hover table-bordered">
                     <thead>
                     <tr>
-                        <?php $fieldCount = 9; ?>
+                        <?php $fieldCount = 10; ?>
 
                         <th width="5%"> <?php echo __('Sr.'); ?> </th>
                         <th><?php echo $this->Paginator->sort('Tour.name', __('Title')); ?></th>
@@ -108,7 +108,7 @@ $searchPanelArray = array(
                     <?php if (empty($Tours)) { ?>
                         <tr>
                             <td colspan='<?php echo $fieldCount; ?>'
-                                class='text-warning'><?php echo __('No User found.') ?>
+                                class='text-warning'><?php echo __('No Tour found.') ?>
 							</td>
                         </tr>
                     <?php } else { ?>
@@ -130,19 +130,19 @@ $searchPanelArray = array(
                                         array(
                                             'icon' => 'view',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('view User')
+                                            'title' => __('view Tour')
                                         ));
                                     echo $this->Html->link(__(''), array('action' => 'edit', $tour['Tour']['id']),
                                         array(
                                             'icon' => 'edit',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('Edit User')
+                                            'title' => __('Edit Tour')
                                         ));
                                     echo $this->Html->link(__(''), array('action' => 'delete', $tour['Tour']['id']),
                                         array(
                                             'icon' => 'delete',
                                             'class' => 'no-hover-text-decoration',
-                                            'title' => __('Delete User')
+                                            'title' => __('Delete Tour')
                                         ), __('Are you sure you want to delete selected Tour?'));
                                     ?>
                                 </span>

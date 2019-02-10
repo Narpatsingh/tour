@@ -96,12 +96,18 @@ class ToursController extends AppController {
             $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
         }
         $options = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $id));
+        $tour =  $this->Tour->find('first', $options);
+        $blogs = $this->Tour->find('all', array('contain' => false, 'limit'=>6,'order' => array('Tour.id' => 'DESC')));
+        $this->loadModel('Hotel');
+        $hotels = [];
+        if(!empty($tour['Tour']['multi_hotel'])){
+            $hotel_ids = explode(",",$tour['Tour']['multi_hotel']);
+            $hotels = $this->Hotel->find('all', array('conditions' => array('Hotel.id' => $hotel_ids)));
+        }
         $this->loadModel('City');
         $cities = $this->City->find('list');
         $destination = $this->Tour->find('list',array('fields' => array('place','place')));
-        $this->set('cities', $cities);
-        $this->set('destination', $destination);
-        $this->set('tour', $this->Tour->find('first', $options));
+        $this->set(compact('cities','hotels','destination','tour','blogs')); 
     }
 
     public function city_detail($id = null) {
@@ -291,7 +297,7 @@ class ToursController extends AppController {
         $highlight_data=$this->Tour->Highlight->find('list',array('conditions' => array('Highlight.tour_id' => $id)));
         $this->loadModel('State');
         $states = $this->State->find('list');
-        $city = $this->City->find('list',array('conditions'=>array('City.id' => $Tour_data['Tour']['city_id']))); 
+        $city = $this->City->find('list',array('conditions'=>array('City.state_id' => $Tour_data['Tour']['state_id']))); 
         $hotels = $this->Hotel->find('list');
         $this->set(compact('dbOpration','highlight_data','states','city','hotels'));
         $this->render('add');

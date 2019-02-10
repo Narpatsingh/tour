@@ -243,101 +243,28 @@
       <!-- END ROW -->  
       <div class="row text-center">
          <div class="col-md-12" data-aos="fade-up">
+              <?php if (!count($hotels)) { ?>   
+              <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+              <?php } else { ?>
             <div id="package-slider" class="owl-carousel">
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/1.jpg" alt="">
-                  <h5 class="package-name">Australia</h5>
-                  <div class="package-hover">
-                     <h5>Australia</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>  
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/2.jpg" alt="">
-                  <h5 class="package-name">canada</h5>
-                  <div class="package-hover">
-                     <h5>canada</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/3.jpg" alt="">
-                  <h5 class="package-name">france</h5>
-                  <div class="package-hover">
-                     <h5>france</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>  
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/4.jpg" alt="">
-                  <h5 class="package-name">germany</h5>
-                  <div class="package-hover">
-                     <h5>germany</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/5.jpg" alt="">
-                  <h5 class="package-name">Japan</h5>
-                  <div class="package-hover">
-                     <h5>Japan</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
-               <div class="single_package">
-                  <img class="img-fluid" src="https://bestwpware.com/themes-wp/vromon/wp-content/uploads/2017/11/6.jpg" alt="">
-                  <h5 class="package-name">orange</h5>
-                  <div class="package-hover">
-                     <h5>orange</h5>
-                     <span>Starting from $236</span>
-                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>  
-                     <span class="time_zone">5 days 4 night</span>
-                  </div>
-               </div>
-               <!-- END SINGLE PACKAGE -->
+              <?php foreach ($hotels as $key => $hotel){ ?>
+              <div class="single_package">
+                <img class="img-fluid" src="<?php echo $this->webroot.$hotel['Hotel']['photo']; ?>" alt="" style="height: 250px;">
+                <h5 class="package-name"><?php echo $hotel['State']['name'];?></h5>
+                <div class="package-hover">
+                   <h5><?php echo $hotel['City']['name'];?></h5>
+                   <span>Starting from &#x20b9;<?php echo $hotel['Hotel']['price'];?></span>
+                   <p><?php echo $hotel['Hotel']['address'];?></p>
+                   <?php for ($i=0; $i < $hotel['Hotel']['type']; $i++) { ?>
+                      <i class="fa fa-star"></i>
+                   <?php } ?>
+                   <!-- <span class="time_zone">5 days 4 night</span> -->
+                </div>
+              </div>
+              <?php } ?>
             </div>
+            <?php } ?>
+              <!-- END SINGLE PACKAGE -->
          </div>
          <!-- END COL -->
       </div>
@@ -462,131 +389,35 @@
       <div class="row">
          <div class="col-xs-12">
             <div class="section-title text-center">
-               <h1>Other Trips</h1>
+               <h1 class="visible-title">Other Trips</h1>
             </div>
          </div>
       </div>
       <div class="row">
+        <?php if (!count($blogs)) { ?>   
+        <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+        <?php } else { 
+        foreach ($blogs as $key => $blog){ ?>
          <div class="col-xs-6 col-md-4">
             <div class="post wow fadeInUp">
                <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/1.jpg" alt="" />
+                  <a href="<?php echo $this->webroot.'tours/details/'.$blog['Tour']['id']; ?>">
+                     <img src="<?php echo $this->webroot.$blog['Tour']['img'];?>" alt="" style="height: 250px;">
                      <div class="post-overlay">
                         <i class="fa fa-link"></i>
                      </div>
                   </a>
                </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
+                <div class="post-bottom">
+                  <h3><?php echo $blog['State']['name'];?></h3>
+                  <p><?php echo $blog['Tour']['name'];?></p>
+                </div>
             </div>
             <!--end post-->
          </div>
-         <div class="col-xs-6 col-md-4">
-            <div class="post wow fadeInUp">
-               <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/2.jpg" alt="" />
-                     <div class="post-overlay">
-                        <i class="fa fa-link"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
-            </div>
-            <!--end post-->
-         </div>
-         <div class="col-xs-6 col-md-4">
-            <div class="post wow fadeInUp">
-               <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/3.jpg" alt="" />
-                     <div class="post-overlay">
-                        <i class="fa fa-link"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
-            </div>
-            <!--end post-->
-         </div>
-         <div class="col-xs-6 col-md-4">
-            <div class="post wow fadeInUp">
-               <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/4.jpg" alt="" />
-                     <div class="post-overlay">
-                        <i class="fa fa-link"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
-            </div>
-            <!--end post-->
-         </div>
-         <div class="col-xs-6 col-md-4">
-            <div class="post wow fadeInUp">
-               <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/5.jpg" alt="" />
-                     <div class="post-overlay">
-                        <i class="fa fa-link"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
-            </div>
-            <!--end post-->
-         </div>
-         <div class="col-xs-6 col-md-4">
-            <div class="post wow fadeInUp">
-               <div class="post-thumb">
-                  <a href="details.php">
-                     <img src="<?php echo $this->webroot;?>img/blog/6.jpg" alt="" />
-                     <div class="post-overlay">
-                        <i class="fa fa-link"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-bottom">
-                  <h3>Tour Place</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typeseatting industry. Lorem Ipsum has been the industry's</p>
-                  <div class="pull-left">
-                     <span class="post-date"><i class="fa fa-calendar"></i> 16 February 2019</span>
-                  </div>
-               </div>
-            </div>
-            <!--end post-->
-         </div>
+          <?php } ?>
+        <?php } ?>
+         
       </div>
    </div>
 </section>
@@ -617,4 +448,8 @@
 .owl-stage-outer{
   height: 260px;
 }  
+.nav-item.active{
+    border-bottom: 1px solid #800080;
+    padding-bottom: 4px;
+  }
 </style>

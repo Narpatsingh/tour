@@ -92,7 +92,7 @@ $searchPanelArray = array(
                         <?php $fieldCount = 9; ?>
 
                         <th width="5%"> <?php echo __('Sr.'); ?> </th>
-                        <th><?php echo $this->Paginator->sort('State.name', __('Description')); ?></th>
+                        <th><?php echo $this->Paginator->sort('State.name', __('State Name')); ?></th>
                         <th><?php echo $this->Paginator->sort('State.created', __('Added On')); ?></th>
                         <th><?php echo __('Actions'); ?></th>
 

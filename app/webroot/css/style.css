@@ -2623,6 +2623,7 @@ background:white !important;
 	visibility:visible;
 	opacity:1;
 }
+
 .control,
 .control:focus{
     border: 1px solid #fff;
@@ -2961,3 +2962,17 @@ h3.visible-title{
 	background-repeat:no-repeat;
 }
 
+#customers-testimonials .control{
+	visibility: visible;
+    opacity: 1;
+    background: purple;
+}
+
+#testimonials .owl-prev.control,#testimonials .owl-next.control :hover{
+	color: #fff !important;
+}
+
+#testimonials i.fa.fa-long-arrow-right{
+    text-align: center;
+    border-radius: 100%;
+}

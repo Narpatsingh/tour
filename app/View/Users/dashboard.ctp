@@ -46,6 +46,10 @@
                                     <a href="#" target="_blank" class="dropdown-toggle page-scroll" data-toggle="dropdown">India <span class="caret"></span></a>              
                                     <ul class="dropdown-menu mega-dropdown-menu">
                                       <?php  $count = 0;
+                                        $state_count = count($states);
+                                        if (!count($states)) { ?>   
+                                            <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+                                        <?php }else {
                                         foreach ($states as $key => $value) {
                                             if($count == 0){
                                                 echo '<li class="col-sm-12 col-sm-12 col-md-3 col-lg-2">';
@@ -57,6 +61,10 @@
                                                     echo '<li>';
                                                     echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
                                                     echo '</li>';
+                                                }
+                                                if($state_count == 1){
+                                                    echo '</li>';
+                                                    echo '</ul>';
                                                 }
                                                 $count++;   
                                             }elseif($count == 2){
@@ -80,9 +88,14 @@
                                                     echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
                                                     echo '</li>';       
                                                 }
+                                                if($state_count == 2){
+                                                    echo '</li>';
+                                                    echo '</ul>';
+                                                }
                                                 $count++;
                                             }
-                                        } ?>
+                                            } 
+                                        }   ?>
                                     </ul>
                                 </li>
                                 <li>
@@ -585,44 +598,6 @@
         <!-- <hr> -->
     </section>
     <!--end blog-->
-    
-    <!-- Testimonials Section -->
-    <!-- <section id="testimonials">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title text-center">
-                        <h1>Feedback</h1>
-                    </div>
-                </div>
-            </div>
-            <div id="twitter-feed" class="carousel slide" data-interval="false">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="text-center carousel-inner center-block">
-                            <div class="item active">
-                                <img src="img/no-image.png" alt="">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
-                            </div>
-                            <div class="item">
-                                <img src="img/no-image.png" alt="">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
-                            </div>
-                            <div class="item">
-                                <img src="img/no-image.png" alt="">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                <a href="#">http://t.co/yY7s1IfrAb 2 days ago</a>
-                            </div>
-                        </div>
-                        <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                        <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </section> -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="row">
@@ -632,7 +607,7 @@
                         <div class="item">
                             <div class="shadow-effect">
                                 <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Helpful Support
+                                <p>
                                     The telephone Customer service team was very
                                     supportive. Special mention about raj , who was
                                     very helpful and patient in handling all queries
@@ -640,14 +615,14 @@
                                     him.
                                 </p>
                             </div>
-                            <div class="testimonial-name">Jonn</div>
+                            <div class="testimonial-name">Helpful Support</div>
                         </div>
                         <!--END OF TESTIMONIAL 1 -->
                         <!--TESTIMONIAL 2 -->
                         <div class="item">
                             <div class="shadow-effect">
                                 <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Great Efforts
+                                <p>
                                     Many Thanks for your effort with me. Be sure for
                                     my coming trips it will be with you as i was very
                                     pleased with your professionalization. Once
@@ -655,27 +630,27 @@
                                     Trip.
                                 </p>
                             </div>
-                            <div class="testimonial-name">ANNA</div>
+                            <div class="testimonial-name">Great Efforts</div>
                         </div>
                         <!--END OF TESTIMONIAL 2 -->
                         <!--TESTIMONIAL 3 -->
                         <div class="item">
                             <div class="shadow-effect">
                                 <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Great Help
+                                <p>
                                     What ends well is well done. Thanks again for all
                                     the help.Looking forward for further
                                     engagements.
                                 </p>
                             </div>
-                            <div class="testimonial-name">LARA ATKINSON</div>
+                            <div class="testimonial-name">Great Help</div>
                         </div>
                         <!--END OF TESTIMONIAL 3 -->
                         <!--TESTIMONIAL 4 -->
                         <div class="item">
                             <div class="shadow-effect">
                                 <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Amazing Vacations
+                                <p>
                                     We are back from one of the most amazing
                                     vacations we've been on lately! It was indeed a
                                     great experience- right from the interactions with
@@ -683,7 +658,7 @@
                                     and usefull
                                 </p>
                             </div>
-                            <div class="testimonial-name">IAN OWEN</div>
+                            <div class="testimonial-name">Amazing Vacations</div>
                         </div>
                         <!--END OF TESTIMONIAL 4 -->
                     </div>
@@ -895,6 +870,7 @@
             margin:10,
             autoplay: true,
             nav:true,
+            responsiveClass: true,
             responsive: {
               0: {
                 items: 1

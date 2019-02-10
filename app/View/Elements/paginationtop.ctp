@@ -23,7 +23,7 @@
         <?php } ?>
     <div class="col-md-6 text-right pagination-info">
         <?php
-        echo __("Page Size: ");
+        echo "<span>".__("Page Size: ")."</span>";
         $results = array();
         foreach ((array) $paginationOptions as $option) {
             if ($paginationLimit == $option) {

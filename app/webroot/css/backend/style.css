@@ -169,3 +169,17 @@
 .cus_value{
 	padding-right:5%;
 }
+
+.pagination-info.text-right {
+   /* color: #3cc1ff!important;*/
+    font-weight: bold;
+}
+
+.pagination-info.text-right span{
+    color: black!important;
+}
+
+.pagination-info.text-right a{
+    font-weight: normal;
+}
+
