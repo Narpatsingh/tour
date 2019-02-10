@@ -606,7 +606,7 @@
                         <!--TESTIMONIAL 1 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
                                 <p>
                                     The telephone Customer service team was very
                                     supportive. Special mention about raj , who was
@@ -621,7 +621,7 @@
                         <!--TESTIMONIAL 2 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
                                 <p>
                                     Many Thanks for your effort with me. Be sure for
                                     my coming trips it will be with you as i was very
@@ -636,7 +636,7 @@
                         <!--TESTIMONIAL 3 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
                                 <p>
                                     What ends well is well done. Thanks again for all
                                     the help.Looking forward for further
@@ -649,7 +649,7 @@
                         <!--TESTIMONIAL 4 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
                                 <p>
                                     We are back from one of the most amazing
                                     vacations we've been on lately! It was indeed a

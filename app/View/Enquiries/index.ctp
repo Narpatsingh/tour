@@ -143,6 +143,8 @@ $searchPanelArray = array(
                                             'class' => 'no-hover-text-decoration',
                                             'title' => __('View Enquiry')
                                         ));
+
+                                    echo $this->Html->link(__(''), array('action' => 'delete', $enquiry['Enquiry']['id']), array('icon'=>'delete','title' => __('Click here to delete this Enquiry Detail')), __('Are you sure you want to delete Enquiry Detail?'));
                                     
                                     if(empty($enquiry['Customer']['package_id'])){
                                     echo $this->Html->link(__(''), array('controller' => 'customers','action' => 'edit', $enquiry['Customer']['id']),

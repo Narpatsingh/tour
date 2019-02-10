@@ -164,5 +164,25 @@ class EnquiriesController extends AppController {
             $this->Message->setWarning(__('The Enquiry could not be rejected. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
-    }    
+    }
+
+    /**
+    * delete method
+    *
+    * @throws NotFoundException
+    * @param string $id
+    * @return void
+    */
+    public function delete($id = null) {
+        $this->Enquiry->id = $id;
+        if (!$this->Enquiry->exists()) {
+            $this->Message->setWarning(__('Invalid Enquiry detail'),array('action'=>'index'));
+        }
+        if ($this->Enquiry->delete()) {
+            $this->Message->setSuccess(__('The Enquiry detail has been deleted.'));
+        } else {
+            $this->Message->setWarning(__('The Enquiry detail could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }   
 }
