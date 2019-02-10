@@ -67,6 +67,13 @@ $this->end();
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $carDetail['CarDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Car Detail'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'edit', $carDetail['CarDetail']['id']), array('icon'=>'edit','title' => __('Click here to edit this Car Detail'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'delete', $carDetail['CarDetail']['id']), array('icon'=>'delete','title' => __('Click here to delete this Car Detail')), __('Are you sure you want to delete Car Detail?')); ?>
+                         <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $carDetail['CarDetail']['ac_id'],$carDetail['CarDetail']['invoice_no'].'.pdf'),
+                                array(
+                                    'icon' => 'fa-file',
+                                    'target'=>'_blank',
+                                    'class' => 'no-hover-text-decoration',
+                                    'title' => __('View Receipt')
+                                )); ?>                         
                      </td>
                      </tr>
                 <?php endforeach; ?>

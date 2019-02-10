@@ -15,6 +15,8 @@ $total_payment = $voucher['total_payment_sum'];
 $final_total_payment = $voucher['final_payment_with_gst'];
 $gst_percent = $voucher['gst_percent'];
 $id = $voucher['booking_id'];
+$ac_id = $voucher['ac_id'];
+$redirect = $voucher['redirect'];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,8 @@ $id = $voucher['booking_id'];
 <head>
   <meta charset="UTF-8">
   <title>SilShine Trip</title> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
   
 </head>
@@ -72,7 +76,7 @@ $id = $voucher['booking_id'];
 	}
 	table{
 		border:1px solid gray;
-		width:106%;
+		width:115%;
 	}
 	th{
 		border-bottom:1px solid gray;
@@ -82,16 +86,16 @@ $id = $voucher['booking_id'];
 		text-align:center;
 	}
 	</style>
-<body style="background-color:#ffffff;">
+<body>
 	<div id="content">
-		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: right; margin-right: 25%; margin-top: 3.3%;">
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 5.3% 0% 0% 74.8%; position: fixed;">Travel and Tours</span>
+		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: right; margin-right: 25%; margin-top: 3.6%;">
+		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 5.4% 0% 0% 74.8%; position: fixed;">Travel and Tours</span>
 		<p class="logo-text" style="position: fixed; margin: 2.5% 0% 0% 74.5%; font-size: 2.3em; font-family: cursive;">Silshine</p>
-		<div class="table-contain" style="margin: 6% 0% 0% 14%; position: fixed;">
-		<center><h2><u>Receipt</u></h2></center>
+		<div class="table-contain" style="margin: 6% 0% 0% 7%; position: fixed;">
+		<center style="margin-left:10%;"><h2><u>Receipt</u></h2></center>
 		<br>
 			
-			<table class="table" style="border:1px solid black; width:106%;">
+			<table class="table" style="border:1px solid black; width:115%;">
 				<thead>
 					<th style="border-bottom:1px solid black;">Customer Name</th>
 					<th style="border-bottom:1px solid black;">Customer Tour Type</th>
@@ -109,7 +113,7 @@ $id = $voucher['booking_id'];
 			</table>
 			<br>
 			<br>
-			<table style="border:1px solid black; width:106%;">
+			<table style="border:1px solid black; width:115%;">
 				<thead>
 					<th style="border-bottom:1px solid black;">Invoice No.</th>
 					<th style="border-bottom:1px solid black;">Date</th>
@@ -130,7 +134,7 @@ $id = $voucher['booking_id'];
 			<div class="t_c" style="margin: 4% 0% 0% 0%; float:left;"> 
 				<?=$all_t_and_c?>
 			</div>
-			<div class="address" style="width:300px; float:right; margin: 3% 0% 0% 0%;">
+			<div class="address" style="width:300px; float:right; margin: 3% -17% 0% 0%;">
 			<p>
 				<b>Office:</b>
 				501/6, Bhakti Dharm Township, Palanpur, Canal Road, Jahangirabad, Surat.
@@ -153,14 +157,63 @@ $id = $voucher['booking_id'];
 </body>
 
 </html>
-<script type="text/javascript" >
-generate_cutomPDF();
-function generate_cutomPDF() {
-  	console.log(document.body);
-    var doc = new jsPDF('p', 'pt');
-	    doc.addHTML(document.body,function() {
-	    doc.save('web.pdf');
-	});
-}
+ <script>
+ 	demoFromHTML();
+    function demoFromHTML() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = document.body;
 
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: 0
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.addHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                //pdf.save('Test.pdf');
+
+					var blob = pdf.output('blob');
+		            var formData = new FormData();
+		            formData.append('pdf', blob);
+
+		            $.ajax('<?=$this->webroot?>save_file/<?=$ac_id?>/<?=$invoice_no?>',
+		            {
+		                method: 'POST',
+		                data: formData,
+		                processData: false,
+		                contentType: false,
+		                success: function(data){console.log(data); 
+		                	if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
+		                },
+		                error: function(data){console.log(data)}
+		            });                
+            }, margins
+        );
+    }
 </script>
+<?php exit; ?>

@@ -1,5 +1,6 @@
 <?php
 Router::connect('/admin_panel', array('controller' => 'users', 'action' => 'login'));
+Router::connect('/save_file/*', array('controller' => 'vouchers', 'action' => 'save_jspdf_file'));
 Router::connect('/', array('controller' => 'users', 'action' => 'dashboard'));
 Router::connect('/maintenance.html', array('controller' => 'pages', 'action' => 'maintenance'));
 Router::parseExtensions('csv');

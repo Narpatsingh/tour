@@ -86,22 +86,6 @@ public function view($id = null) {
     $this->set('voucher', $this->Voucher->find('first', $options));
 }
 
-public function tour_receipt() {
-$options = array('conditions' => array('Voucher.' . $this->Voucher->primaryKey => 1));
-$vouchers = $this->Voucher->find('first', $options);
-
-$voucher = $vouchers['Voucher'];
-$voucher['total_payment_sum'] = 500;        
-$voucher['final_payment_with_gst'] = 5000;
-$voucher['gst_percent'] = 10;
-$voucher['all_t_and_c'] = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
-$voucher['booking_id'] = 1;
-$voucher['invoice_no'] = 'INC1549688664SILSHINEc614dAKNZ';
-$this->set(compact('voucher'));    
-$this->layout = 'pdf';
-$this->render('/Pdf/tour_receipt');     
-}
-
 /**
 * add method
 *
@@ -123,15 +107,19 @@ public function add($id=null) {
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {
 
-            $this->loadModel("Account");
+            $this->loadModel("Account");$this->loadModel("Booking");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];
             $this->Account->save($account_data);
-
+            $ac_id = $this->Account->getLastInsertID();    
+            $this->Booking->id = $id;
+            $this->Booking->saveField('ac_id',$ac_id);
             $voucher = $this->request->data['Voucher'];
+            $voucher['ac_id'] = $ac_id;
+            $voucher['redirect'] = 'bookings';
             $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
             $this->set(compact('voucher'));
@@ -143,12 +131,12 @@ public function add($id=null) {
 
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
-            $this->render('/Pdf/tour_receipt');     
-            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
-            }
             $this->loadModel("Booking");
             $this->Booking->id = $id;
-            $this->Booking->saveField('invoice_no',$invoice_no);
+            $this->Booking->saveField('invoice_no',$invoice_no);                
+            $this->render('/Pdf/tour_receipt'); 
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
+            }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
             $booking =  $this->Enquiry->find('first', $options);            
@@ -224,4 +212,28 @@ public function delete($id = null) {
         $this->Message->setWarning(__('The voucher could not be deleted. Please, try again.'));
     }
     return $this->redirect(array('action' => 'index'));
-}}
+}
+
+public function save_jspdf_file($id,$invoice_no) {
+    if ($this->request->is('ajax')) {
+        $this->layout = 'ajax';
+        $this->autoRender = false;
+        $this->autoLayout = false;
+
+        if(empty($this->request->form['pdf']['tmp_name'])){
+            return false;
+        }else{
+            $pdf_path = APP . 'webroot/files/receipt' . DS . $id;
+            createFolder($pdf_path); 
+            $file_path = $pdf_path . DS .''.$invoice_no.'.pdf';
+            if(move_uploaded_file($this->request->form['pdf']['tmp_name'],$file_path)){
+            return true;
+            }
+        }
+
+    }
+    else{
+        return $this->redirect('index');
+    }
+}
+}

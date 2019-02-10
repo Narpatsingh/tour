@@ -125,6 +125,14 @@ Configure::write(
 );
 
 Configure::write(
+    'tour_types', array(
+        1 => 'Special',
+        2 => 'Hot',
+        3 => 'Deals',
+    )
+);
+
+Configure::write(
     'user_role', array(
         'admin' => 'Admin',
         'employee' => 'Employee',

@@ -94,8 +94,40 @@ $this->set('busDetail', $this->BusDetail->find('first', $options));
 public function add() {
 if ($this->request->is('post')) {
 $this->BusDetail->create();
+
+$this->request->data['BusDetail']['invoice_no'] = $invoice_no = get_invoice_no();
 if ($this->BusDetail->save($this->request->data)) {
+
+    $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
+    $voucher['company_signature'] = Configure::read('Site.Name');
+    $tour_types = Configure::read('tour_types');
+    $config_gst = Configure::read('Site.gst_percent');
+    $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
+    $this->loadModel("Customer");$this->loadModel("Tour");$this->loadModel("Account");
+    $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $this->request->data['BusDetail']['customer_id']));
+    $customer_data = $this->Customer->find('first', $options);
+    $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $customer_data['Customer']['package_id']));
+    $package = $this->Tour->find('first', $toptions);
+    $voucher['total_payment_sum'] = $total_payment_sum = $account_data['payment_amount'] = $this->request->data['BusDetail']['price'];
+    $voucher['final_payment_with_gst'] = $account_data['total_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+    $voucher['customer_tour_type'] = $tour_types[$package['Tour']['type']];
+    $voucher['customer_tour_name'] = $package['Tour']['name'];
+    $voucher['customer_contact_no'] = $customer_data['Customer']['mobile'];
+    $voucher['payment_type'] = 'cash';
+    $voucher['redirect'] = 'bus_details';
+    $voucher['invoice_no'] = $invoice_no;
+    $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
+    $account_data['ac_type'] = 'bus';
+    $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
+    $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
+    $this->Account->save($account_data);
+    $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();
+    $this->BusDetail->id = $this->BusDetail->getLastInsertID();
+    $this->BusDetail->saveField('ac_id',$ac_id);    
     $this->Message->setSuccess(__('The bus detail has been saved.'));
+    $this->set(compact('voucher'));
+    $this->layout = 'pdf';
+    $this->render('/Pdf/tour_receipt');
     return $this->redirect(array('action' => 'index'));
     } else {
     $this->Message->setWarning(__('The bus detail could not be saved. Please, try again.'));

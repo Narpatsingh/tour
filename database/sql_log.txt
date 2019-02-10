@@ -1,3 +1,4 @@
+ALTER TABLE `bookings` ADD `ac_id` INT NULL AFTER `enquiry_id`;
 d-- phpMyAdmin SQL Dump
 -- version 4.5.1
 
@@ -6,6 +7,21 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+10-02-2019
+ALTER TABLE `accounts` ADD `type` VARCHAR(50) NULL AFTER `payment_receivable`;
+ALTER TABLE `accounts` CHANGE `type` `ac_type` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `accounts` ADD `customer_name` INT NOT NULL AFTER `ac_type`;
+ALTER TABLE `accounts` CHANGE `customer_name` `customer_name` VARCHAR(250) NULL;
+ALTER TABLE `bookings` ADD `ac_id` INT NULL AFTER `enquiry_id`;
+ALTER TABLE `bus_details` ADD `invoice_no` VARCHAR(100) NULL AFTER `destination`;
+ALTER TABLE `bus_details` ADD `ac_id` INT NULL AFTER `customer_id`;
+ALTER TABLE `train_details` ADD `ac_id` INT NULL AFTER `customer_id`;
+ALTER TABLE `train_details` ADD `invoice_no` VARCHAR(100) NULL AFTER `destination`;
+ALTER TABLE `flight_details` ADD `ac_id` INT NULL AFTER `customer_id`;
+ALTER TABLE `flight_details` ADD `invoice_no` VARCHAR(100) NULL AFTER `destination`;
+ALTER TABLE `car_details` ADD `ac_id` INT NULL AFTER `customer_id`;
+ALTER TABLE `car_details` ADD `invoice_no` VARCHAR(100) NULL AFTER `destination`;
+
 08-02-2019
 ALTER TABLE `vouchers` ADD `payment_recieved` DOUBLE NOT NULL DEFAULT '0' AFTER `package_count`;
 

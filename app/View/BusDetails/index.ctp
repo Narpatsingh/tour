@@ -49,7 +49,7 @@ $this->end();
             <tbody>
                 <?php if(empty($busDetails)){?>
                     <tr>
-                       <td colspan='8' class='text-warning'><?php echo __('No Bus Detail found.')?></td>
+                       <td colspan='10' class='text-warning'><?php echo __('No Bus Detail found.')?></td>
                    </tr>
                <?php }else{?>
 
@@ -68,6 +68,13 @@ $this->end();
                      <?php echo $this->Html->link(__(''), array('action' => 'view', $busDetail['BusDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Bus Detail'))); ?>
                      <?php echo $this->Html->link(__(''), array('action' => 'edit', $busDetail['BusDetail']['id']), array('icon'=>'edit','title' => __('Click here to edit this Bus Detail'))); ?>
                      <?php echo $this->Html->link(__(''), array('action' => 'delete', $busDetail['BusDetail']['id']), array('icon'=>'delete','title' => __('Click here to delete this Bus Detail')), __('Are you sure you want to delete Bus Detail?')); ?>
+                     <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $busDetail['BusDetail']['ac_id'],$busDetail['BusDetail']['invoice_no'].'.pdf'),
+                            array(
+                                'icon' => 'fa-file',
+                                'target'=>'_blank',
+                                'class' => 'no-hover-text-decoration',
+                                'title' => __('View Receipt')
+                            )); ?>
                  </td>
              </tr>
          <?php endforeach; ?>

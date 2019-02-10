@@ -11,10 +11,11 @@
     	<div class="overflow-hide-break">
     		<?php echo $this->Form->create('Account', array('class' => 'form-validate','type'=>'file')); ?>
     		<div class="box-body box-content">
+                <?php if($this->request->data['Account']['ac_type']=='tour'): ?>
     			<table>
     				<tr>
                         <th>Customer Name</th>
-                        <td class="cus_value">: <?php echo $this->request->data['Voucher']['customer_full_name'] ?></td>
+                        <td class="cus_value">: <?php echo $this->request->data['Account']['customer_name'] ?></td>
                         <th>Contact Number</th>
                         <td class="cus_value">: <?php echo $this->request->data['Voucher']['customer_contact_no'] ?></td>
                         <th>Tour Name</th>
@@ -25,6 +26,7 @@
     					<td class="cus_value">: <?php echo $this->request->data['Voucher']['payment_type'] ?></td>
     				</tr>
     			</table>
+                <?php endif; ?>
                 <br>
                 <br>
                 
@@ -38,6 +40,7 @@
                 </div>
                 <?php
                 echo $this->Form->input('id',array('type'=>'hidden'));
+                echo $this->Form->input('ac_type',array('type'=>'hidden'));
                 //echo $this->Form->input('payment_amount',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); 
                 //echo $this->Form->input('total_payment_with_gst',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group col-md-6')));

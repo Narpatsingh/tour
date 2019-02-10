@@ -61,6 +61,14 @@ $this->end();
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $trainDetail['TrainDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Train Detail'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'edit', $trainDetail['TrainDetail']['id']), array('icon'=>'edit','title' => __('Click here to edit this Train Detail'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'delete', $trainDetail['TrainDetail']['id']), array('icon'=>'delete','title' => __('Click here to delete this Train Detail')), __('Are you sure you want to delete Train Detail?')); ?>
+                         <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $trainDetail['TrainDetail']['ac_id'],$trainDetail['TrainDetail']['invoice_no'].'.pdf'),
+                                array(
+                                    'icon' => 'fa-file',
+                                    'target'=>'_blank',
+                                    'class' => 'no-hover-text-decoration',
+                                    'title' => __('View Receipt')
+                                )); ?>
+                         
                      </td>
                  </tr>
              <?php endforeach; ?>

@@ -40,25 +40,19 @@ public function index($all = null) {
     if (empty($this->request->data['Account']) && $this->Session->read('AccountSearch')) {
         $this->request->data['Account'] = $this->Session->read('AccountSearch');
     }
+
     if (!empty($this->request->data['Account'])) {
         $this->request->data['Account'] = array_filter($this->request->data['Account']);
         $this->request->data['Account'] = array_map('trim', $this->request->data['Account']);
         if (!empty($this->request->data)) {
-            if (isset($this->request->data['Account']['first_name'])) {
-                $conditions['Account.first_name LIKE '] = '%' . $this->request->data['Account']['first_name'] . '%';
+
+            if (isset($this->request->data['Account']['customer_name'])) {
+                $conditions['Account.customer_name LIKE '] = '%' . $this->request->data['Account']['customer_name'] . '%';
             }
-            if (isset($this->request->data['Account']['last_name'])) {
-                $conditions['Account.last_name LIKE '] = '%' . $this->request->data['Account']['last_name'] . '%';
+            if (isset($this->request->data['Account']['ac_type'])) {
+                $conditions['Account.ac_type LIKE '] = '%' . $this->request->data['Account']['ac_type'] . '%';
             }
-            if (isset($this->request->data['Account']['name'])) {
-                $conditions['Account.name LIKE '] = '%' . $this->request->data['Account']['name'] . '%';
-            }
-            if (isset($this->request->data['Account']['email'])) {
-                $conditions['Account.email LIKE '] = '%' . $this->request->data['Account']['email'] . '%';
-            }
-            if (isset($this->request->data['Account']['status'])) {
-                $conditions['Account.status'] = $this->request->data['Account']['status'];
-            }
+            
         }
         $this->Session->write('AccountSearch', $this->request->data['Account']);
     }
@@ -66,6 +60,8 @@ public function index($all = null) {
         'order' => ' Account.id DESC',
         'conditions' => $conditions
     ));
+    $ac_types = array('bus'=>'Bus','tour'=>'Tour','car'=>'Car','flight'=>'Flight','train'=>'Train');
+    $this->set(compact('ac_types'));
     $this->loadModel('Account');
     $this->set('accounts', $this->paginate('Account'));
 
