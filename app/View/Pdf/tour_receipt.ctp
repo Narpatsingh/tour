@@ -160,7 +160,8 @@ $redirect = $voucher['redirect'];
  <script>
  	demoFromHTML();
     function demoFromHTML() {
-        var pdf = new jsPDF('p', 'pt', 'letter');
+        //var pdf = new jsPDF('p', 'pt', 'a4');
+        var pdf = new jsPDF('landscape', 'pt', 'a4');
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
         source = document.body;
