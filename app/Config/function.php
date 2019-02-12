@@ -560,3 +560,16 @@ function get_gst_amount($amount,$gst_percent)
     $payment_with_gst = ($amount * $gst_percent) / 100;
     return $payment_with_gst + $amount;
 }
+
+function get_itinerary_detail($km = null,$hour = null){
+    if(!empty($km) && !empty($hour)){
+        return "(".$km." kms / ".$hour." hrs)";
+    }elseif(!empty($km) && empty($hour)){
+        return "(".$km." kms)";
+    }elseif(empty($km) && !empty($hour)){
+        return "(".$hour." hrs)";
+    }else{
+        return "";
+    }
+
+}

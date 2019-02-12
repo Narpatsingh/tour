@@ -784,8 +784,7 @@
                             <h3>Contact</h3>
                             <address>
                                 E-mail : silshinetrip@gmail.com<br>
-                                Contact No : 8733897945<br>
-                                Contact No : 8758368590
+                                Contact No : 8733897945,8758368590<br>
                             </address>
                         </div>
                         <div class="contact-address">
@@ -865,11 +864,15 @@
             "use strict";
             //  TESTIMONIALS CAROUSEL HOOK
         $('#customers-testimonials').owlCarousel({
-            loop: true,
             center: true,
-            margin:10,
             autoplay: true,
-            nav:true,
+            autoplayTimeout:2000,
+            margin:30,
+            nav: true,
+            smartSpeed:1000,
+            dots:true,
+            autoplayHoverPause:true,
+            loop:true,
             responsiveClass: true,
             responsive: {
               0: {
