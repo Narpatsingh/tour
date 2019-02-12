@@ -25,10 +25,10 @@
                     'animate',
                     'jquery.fancybox',
                     'owl.carousel',
-                    'new_css/main.css',
+                    'new_css/main.css?v='.time(),
                     'new_css/animate.css',
                     'new_css/responsive.css',
-                    'style.css?'.time(),
+                    'style.css?v='.time(),
                     'new_css/font-awesome.min.css',
                 ), array('inline' => false)
         );
