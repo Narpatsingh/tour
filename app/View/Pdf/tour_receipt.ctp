@@ -17,6 +17,7 @@ $gst_percent = $voucher['gst_percent'];
 $id = $voucher['booking_id'];
 $ac_id = $voucher['ac_id'];
 $redirect = $voucher['redirect'];
+$gst_amount = $final_total_payment-$total_payment;
 ?>
 
 <!DOCTYPE html>
@@ -27,114 +28,13 @@ $redirect = $voucher['redirect'];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-  
 </head>
-
-<style type="text/css">
-	.t_c{
-    margin: 4% 0% 0% 0%;		
-    float:left;
-	}
-	.address{
-		width:300px;
-		float:right;
-		margin: 3% 0% 0% 0%;
-	}
-	.email{
-	font-size: large;
-    font-style: italic;
-    font-family: inherit;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-weight: 600;		
-	}
-	.mini-logo{
-    float: right;
-    margin-right: 25%;
-    margin-top: 3.3%;
-	}	
-	/*.mar-rgt{
-		padding:0% 0% 0% 0%;
-	}
-	.pad-two{
-		padding:0% 0% 0% 0%;
-	}*/
-	.logo-text{
-	position: fixed;
-    margin: 2.5% 0% 0% 74.5%;
-    font-size: 2.3em;
-    font-family: cursive;	
-	}
-	.logo-desc{
-	font-family: Lobster,cursive !important;
-    color: gray;
-    margin: 5.3% 0% 0% 74.8%;
-    position: fixed;		
-	}
-	.table-contain{
-    margin: 5% 0% 0% 20%;
-    position: fixed;		
-	}
-	table{
-		border:1px solid gray;
-		width:115%;
-	}
-	th{
-		border-bottom:1px solid gray;
-	}
-	td{
-		padding:25px;
-		text-align:center;
-	}
-	</style>
 <body>
 	<div id="content">
-		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: right; margin-right: 25%; margin-top: 3.6%;">
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 5.4% 0% 0% 74.8%; position: fixed;">Travel and Tours</span>
-		<p class="logo-text" style="position: fixed; margin: 2.5% 0% 0% 74.5%; font-size: 2.3em; font-family: cursive;">Silshine</p>
-		<div class="table-contain" style="margin: 6% 0% 0% 7%; position: fixed;">
-		<center style="margin-left:10%;"><h2><u>Receipt</u></h2></center>
-		<br>
-			
-			<table class="table" style="border:1px solid black; width:115%;">
-				<thead>
-					<th style="border-bottom:1px solid black;">Customer Name</th>
-					<th style="border-bottom:1px solid black;">Customer Tour Type</th>
-					<th style="border-bottom:1px solid black;">Tour Name</th>
-					<th style="border-bottom:1px solid black;">Contact Number</th>
-					<th style="border-bottom:1px solid black;">Payment Recieved</th>
-				</thead>
-				<tbody>
-					<td style="padding:25px; text-align:center;"><?=$customer_full_name?></td>
-					<td style="padding:25px; text-align:center;"><?=$customer_tour_type?></td>
-					<td style="padding:25px; text-align:center;"><?=$customer_tour_name?></td>
-					<td style="padding:25px; text-align:center;"><?=$customer_contact_no?></td>
-					<td style="padding:25px; text-align:center;"><?=$payment_recieved?></td>
-				</tbody>
-			</table>
-			<br>
-			<br>
-			<table style="border:1px solid black; width:115%;">
-				<thead>
-					<th style="border-bottom:1px solid black;">Invoice No.</th>
-					<th style="border-bottom:1px solid black;">Date</th>
-					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Type</th>
-					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Amount</th>
-					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Amount with GST(<?=$gst_percent?>%)</th>
-					<th style="border-bottom:1px solid black;"></th>
-				</thead>
-				<tbody>
-					<td style="padding:25px; text-align:center;"><?=$invoice_no?></td>
-					<td style="padding:25px; text-align:center;"><?=$date?></td>
-					<td style="padding:25px; text-align:center;" class="pad-two"><?=$payment_type?></td>
-					<td style="padding:25px; text-align:center;" class="pad-two"><?=$total_payment?></td>
-					<td style="padding:25px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
-				</tbody>
-			</table>
-
-			<div class="t_c" style="margin: 4% 0% 0% 0%; float:left;"> 
-				<?=$all_t_and_c?>
-			</div>
-			<div class="address" style="width:300px; float:right; margin: 3% -17% 0% 0%;">
+		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: left; margin-left: 7.5%; margin-top: 3.8%;">
+		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 5.7% 0% 0% 0.5%; position: fixed;font-size: smaller;font-weight: 600;">Travel and Tours</span>
+		<p class="logo-text" style="position: fixed; margin: 3% 0% 0% 13%;; font-size: 2em; font-family: cursive;">Silshine</p>
+		<div class="address" style="width:300px; float:right; margin: 2.5% 0% 0% 70.5%;text-align:justify;position:fixed;">
 			<p>
 				<b>Office:</b>
 				501/6, Bhakti Dharm Township, Palanpur, Canal Road, Jahangirabad, Surat.
@@ -143,15 +43,83 @@ $redirect = $voucher['redirect'];
 				<b>Email:</b>
 				<span class="email" style="font-size: large; font-style: italic; font-family: inherit; -webkit-font-smoothing: subpixel-antialiased; font-weight: 600;">silshinetrip@gmail.com</span>
 			</p>
+		</div>		
+		<div class="table-contain" style="margin: 6% 0% 0% 7%; position: fixed;">
+		<center style="margin-left:10%;"><h2>INVOICE</h2></center>
+		<div class="separator" style="border: 1px solid #800080;margin:0% -32% 1% 0%;"></div>
+		<br>
+			
+			<table class="table" style="border:0px; width:132.5%;">
+				<tr>
+					<td><b>Invoice No</b></td>
+					<td> <b>:</b> <?=$invoice_no?></td>
+					<td><b>Customer Name</b></td>
+					<td> <b>:</b> <?=$customer_full_name?></td>
+					<td style="padding-left:80px;"><b>Date</b></td>
+					<td> <b>:</b> <?=$date?></td>
+				</tr>
+				<tr>
+					<td><b>Customer Tour Type</b></td>
+					<td> <b>:</b> <?=$customer_tour_type?></td>
+					<td><b>Payment Type</b></td>
+					<td> <b>:</b> <?=$payment_type?></td>					
+					<td><b>Contact Number</b></td>
+					<td> <b>:</b> <?=$customer_contact_no?></td>
+				</tr>	
+			</table>
+			<br>
+			<br>
+			<table style="border:1px solid black; width:132.5%;">
+				<thead>
+					<th style="border-bottom:1px solid black;">No.</th>
+					<th style="border-bottom:1px solid black;">Tour Name</th>
+					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Amount</th>
+					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Recieved</th>
+					<th class="mar-rgt" style="border-bottom:1px solid black;">GST Amount</th>
+					<th class="mar-rgt" style="border-bottom:1px solid black;">Payment Amount with GST(<?=$gst_percent?>%)</th>
+					<th style="border-bottom:1px solid black;"></th>
+				</thead>
+				<tbody>
+					<td style="padding:10px 0px 150px 0px; text-align:center;"><?='1'?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$customer_tour_name?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$total_payment?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$payment_recieved?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"><?=$gst_amount?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
+					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"></td>
+				</tbody>
+			</table>
+			<table style="border:1px solid black; width:132.5%;">
+				<tr>
+					<td style="padding:0% 0% 0% 45%;"></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><b><?='TOTAL AMOUNT PAYABLE THIS INVOICE'?></b></td>
+					<td style="text-align:left"><b>:    &#8377;<?=$final_total_payment?></b></td>
+				</tr>	
+				<tr>
+					<td style="padding:0% 0% 0% 45%;"></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT INCLUDES GST OF'?></td>
+					<td style="text-align:left"><b>:    &#8377;</b><?=$gst_amount?></td>
+				</tr>	
+				<tr>
+					<td style="padding:0% 0% 0% 45%;"></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT EXCLUDING GST OF'?></td>
+					<td style="text-align:left"><b>:    &#8377;</b><?=$total_payment?></td>
+				</tr>	
+			</table>
+
+			<div class="t_c" style="margin: 4% 0% 0% 0%; float:left;"> 
+				<?=$all_t_and_c?>
 			</div>
 			<br>
 			<br>
-			<br>
-			<br>
-			<br>
+		<div style="line-height:10px;">
 		Customer  Signature :  <b><i><u><?=$customer_signature?></u>.</i></b> 
 			<br><br>
 		Company  Signature :  <b><i><u><?=$company_signature?></u>.</i></b>
+		</div>	
 		</div>
 	</div>
 </body>
