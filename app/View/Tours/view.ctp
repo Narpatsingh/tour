@@ -62,7 +62,7 @@
                                         ));
                                     ?>
                                 </h3>
-                                <h4>Title : <?php echo $itinerary['Itinerary']['title']."(".$itinerary['Itinerary']['km']."kms / ".$itinerary['Itinerary']['hour']."hrs)"; ?></h4>
+                                <h4>Title : <?php echo $itinerary['Itinerary']['title'].get_itinerary_detail($itinerary['Itinerary']['km'],$itinerary['Itinerary']['hour']); ?></h4>
                                 <p style="padding-right: 60px;"><b>Description : </b><?php echo $itinerary['Itinerary']['description']; ?></p>
                             </div>
                         </div>

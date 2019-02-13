@@ -199,9 +199,9 @@
                   <?php foreach ($tour['Itinerary'] as $itinerary) { ?>
                   <div class="col-md-12 col-sm-12">
                       <div class="desc">
-                          <h3>Day <?php echo $itinerary['day']; ?></h3>
-                          <h3>Title : <?php echo $itinerary['title']."(".$itinerary['km']."kms / ".$itinerary['hour']."hrs)"; ?></h3>
-                          <p style="padding-right: 60px;"><b>Description : </b><?php echo $itinerary['description']; ?></p>
+                          <h3 style="font-weight: bold;color: #343030;">Day <?php echo $itinerary['day']; ?></h3>
+                          <h3 style="font-weight: bold;color: #343030;">Title : <?php echo $itinerary['title'].get_itinerary_detail($itinerary['km'],$itinerary['hour']); ?></h3>
+                          <p style="padding-right: 60px;font-size: 18px"><b>Description : </b><?php echo $itinerary['description']; ?></p>
                       </div>
                   </div>
                <?php }
@@ -250,10 +250,10 @@
               <?php foreach ($hotels as $key => $hotel){ ?>
               <div class="single_package">
                 <img class="img-fluid" src="<?php echo $this->webroot.$hotel['Hotel']['photo']; ?>" alt="" style="height: 250px;">
-                <h5 class="package-name"><?php echo $hotel['State']['name'];?></h5>
+                <h5 class="package-name"><?php echo $hotel['City']['name'];?></h5>
                 <div class="package-hover">
                    <h5><?php echo $hotel['City']['name'];?></h5>
-                   <span>Starting from &#x20b9;<?php echo $hotel['Hotel']['price'];?></span>
+                   <span>Name : <?php echo $hotel['Hotel']['name'];?></span>
                    <p><?php echo $hotel['Hotel']['address'];?></p>
                    <?php for ($i=0; $i < $hotel['Hotel']['type']; $i++) { ?>
                       <i class="fa fa-star"></i>
@@ -277,7 +277,9 @@
       <div class="row">
          <div class="col-lg-8 mx-auto">
             <h2>Date Price</h2>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+            <p class="lead">
+              <?php echo $tour['Tour']['date_price'];?>
+            </p>
          </div>
       </div>
    </div>

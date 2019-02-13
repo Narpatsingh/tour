@@ -57,7 +57,7 @@ if (isset($this->request->data['Tour']['id'])) {
                         if($dbOpration == 'Add'){
                         
                         echo '<div class="col-md-10">';
-                        echo $this->Form->input('Highlight.title',array('name'=>'data[Highlight][name][new][]', 'type'=>'text','label'=>'Highlight Title', 'class' => 'form-control','placeholder'=>'Enter Highlight Title','div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('Highlight.title',array('name'=>'data[Highlight][name][new][]', 'type'=>'text','label'=>'Highlights', 'class' => 'form-control','placeholder'=>'Enter Highlight','div' => array('class' => 'form-group required')));
                         ?>
                         </div>
 
@@ -196,7 +196,7 @@ if (isset($this->request->data['Tour']['id'])) {
 
 
 <script type="text/javascript">
-    //jQuery(document).ready(function () {
+    jQuery(document).ready(function () {
         jQuery('#AddMoreOptions').on('click', function(e) {
                 console.log('in')
                 e.preventDefault();
@@ -205,7 +205,7 @@ if (isset($this->request->data['Tour']['id'])) {
             });
         $('#TourHotelId').multiselect();   
 
-   // });
+    });
     function removeOptionItem(this1){
         if(confirm("Are you sure you want to remove this?")){
             ID = this1.value;

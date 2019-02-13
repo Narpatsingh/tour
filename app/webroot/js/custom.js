@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   $(window).scroll(function(){
-     if ($(window).scrollTop() >= 300) {
+     if ($(window).scrollTop() >= 400) {
       $('.detail_inner_nav').addClass('fixed-header_inner');
       
      }else{

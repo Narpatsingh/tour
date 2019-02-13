@@ -91,23 +91,23 @@ p{
 	transition:all 0.35s ease-in-out;
 }
 .btn.btn-primary{
-	border:1px solid #800080;
-	background:#800080;
+	border:1px solid #340034;
+	background:#340034;
 	color:#fff;
 }
 .btn.btn-primary:hover{
 	background:none;
-	border-color:#800080;
-	color:#800080 ;
+	border-color:#340034;
+	color:#340034 ;
 }
 .btn.btn-default{
-	border:1px solid #800080;
+	border:1px solid #340034;
 	background:none;
-	color:#800080;
+	color:#340034;
 }
 .btn.btn-default:hover{
-	background:#800080;
-	border-color:#800080;
+	background:#340034;
+	border-color:#340034;
 	color:#fff;;
 }
 
@@ -167,7 +167,7 @@ section{
 	margin:0;
 }
 .navbar {
-	background:	#800080;
+	background:	#340034;
 	padding: 0px 0 0px 0;
 	-webkit-transition:background .5s ease-in-out,padding .5s ease-in-out;
 	-moz-transition:background .5s ease-in-out,padding .5s ease-in-out;
@@ -184,7 +184,7 @@ section{
 	-o-box-shadow:0 -7px 12px rgba(0, 0, 0, 0.5);
 	box-shadow:0 -7px 12px rgba(0, 0, 0, 0.5);
 	/*background:rgba(0,0,0,0.85);*/
-	background: #800080;
+	background: #340034;
 	/* background-color: blanchedalmond; */
 }
 .navbar > .container .navbar-brand, 
@@ -354,7 +354,7 @@ section{
 }
 .control:hover{
 	background:#fff;
-	color:#800080;
+	color:#340034;
 }
 .left.control{
 	left:10px;
@@ -394,7 +394,7 @@ section{
     margin: 0 0 10px;
     vertical-align: middle;
     width: 80px;
-	color:#800080;
+	color:#340034;
 	background:#fff;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -406,7 +406,7 @@ section{
 	transition:all 0.4s ease-in-out;
 }
 .service-list:hover .fa{
-	background:#800080;
+	background:#340034;
 	color:#fff;
 }
 
@@ -529,7 +529,7 @@ section{
 	/*font-family: 'Lobster', cursive;*/
 	font-family: 'Dosis', sans-serif;
 	margin:0 0 5px;
-	/*color:#800080;*/
+	/*color:#340034;*/
 }
 
 .section-title h1.visible-title{
@@ -537,7 +537,7 @@ section{
 	/*font-family: 'Lobster', cursive;*/
 	font-family: 'Dosis', sans-serif;
 	margin:0 0 5px;
-	color:#800080;
+	color:#340034;
 }
 
 .tour-list{
@@ -687,7 +687,7 @@ section{
 	-moz-transform:translateX(-50%);
 	-ms-transform:translateX(-50%);
 	transform:translateX(-50%);
-	background:#800080;
+	background:#340034;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
@@ -725,7 +725,7 @@ section{
 	cursor:pointer;
 }
 .discount-info a:hover{
-	color:#800080;
+	color:#340034;
 }
 .tour-item span .fa{
 	color:#777;
@@ -788,7 +788,7 @@ section{
 	transition:all 0.3s ease-in-out;
 }
 .count-section li:hover .fa{
-	background:#800080;
+	background:#340034;
 	color:#fff;
 }
 
@@ -820,9 +820,9 @@ section{
 }
 #filter-list li.active,
 #filter-list li:hover{
-	background:#800080;
+	background:#340034;
 	color:#fff;
-	border-color:#800080;
+	border-color:#340034;
 }
 .gallery-item{
 	width:100%;
@@ -922,7 +922,7 @@ section{
 }
 .gallery-item a:hover{
 	background:#fff;
-	color:#800080;
+	color:#340034;
 }
 .gallery-item li:hover h2,
 .gallery-item li:hover a{
@@ -956,7 +956,7 @@ section{
 	transition:all 0.5s ease-in-out;
 }
 .post:hover{
-	border-color:#800080;
+	border-color:#340034;
 }
 .post-thumb{
 	width:100%;
@@ -1010,7 +1010,7 @@ section{
 	height:auto;
 	background:#fff;
 	left:50%;
-	color:#800080;
+	color:#340034;
 	font-size:20px;
 	width:42px;
 	line-height:42px;
@@ -1042,7 +1042,7 @@ section{
 }
 .post-by a:hover,
 .post-comments a:hover{
-	color:#800080;
+	color:#340034;
 }
 .post-date{
 	font-size:14px;
@@ -1051,7 +1051,7 @@ section{
 }
 .post-comments{
 	font-size:14px;
-	color:#800080;
+	color:#340034;
 	margin-left:10px;
 }
 .post:hover .overlay {
@@ -1128,14 +1128,14 @@ section{
 	display:inline-block;
 	width:12px;
 	height:12px;
-	border:1px solid #800080;
+	border:1px solid #340034;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
     border-radius: 50%;
 	margin:0 5px;
 }
 .owl-dot.active{
-	background:#800080 ;
+	background:#340034 ;
 }
 
 /***************** Contact Section *************************/
@@ -1196,7 +1196,7 @@ section{
 	color:inherit;
 }
 .contact-left p a:hover{
-	color:#800080;
+	color:#340034;
 }
 .form-control{
 	height:50px;
@@ -1207,7 +1207,7 @@ section{
 	font-weight:300;
 }
 .form-control:focus{
-	border-color:#800080;
+	border-color:#340034;
 }
 .contact-right .form-control::-moz-placeholder{
 	opacity:1;
@@ -1287,7 +1287,7 @@ section{
 	text-decoration:none;
 }
 .meta > span a:hover{
-	color:#800080;
+	color:#340034;
 }
 .meta > span.date{
 	border:none;
@@ -1315,7 +1315,7 @@ blockquote{
 	color:#777;
 	font-weight:300;
 	font-style:italic;
-	border-color:#800080;
+	border-color:#340034;
 	background:#faf9f9;
 }
 .post_bottom{
@@ -1351,7 +1351,7 @@ blockquote{
 	text-decoration:none;
 	color:#fff;
 	line-height:18px;
-	background:#800080;
+	background:#340034;
 	border:3px solid #fff;
 	-webkit-border-radius:50%;
 	-moz-border-radius:50%;
@@ -1434,7 +1434,7 @@ blockquote{
 	font-weight:300;
 }
 .comment-list .list-inline a:hover{
-	color:#800080;
+	color:#340034;
 }
 .content-block .form-control{
 	border-color:#ccc;
@@ -1460,7 +1460,7 @@ blockquote{
 .sidebar-item h3{
 	padding:0 0 7px;
 	margin:0 0 15px;
-	border-bottom:1px solid #800080;
+	border-bottom:1px solid #340034;
 	font-family:'Dosis', sans-serif;
 }
 .sidebar-item .form-control{
@@ -1469,7 +1469,7 @@ blockquote{
 	color:#777;
 }
 .sidebar-item .form-control:focus{
-	border-color:#800080;
+	border-color:#340034;
 }
 .sidebar-item .input-group-addon{
 	padding:0;
@@ -1483,7 +1483,7 @@ blockquote{
     height: 38px;
     padding: 0 8px;
     text-transform: uppercase;
-	background:#800080;
+	background:#340034;
 }
 .category-list,
 .archive-list{
@@ -1506,8 +1506,8 @@ blockquote{
 }
 .category-list li a:hover,
 .archive-list li a:hover{
-	color:#800080;
-	border-color:#800080;
+	color:#340034;
+	border-color:#340034;
 }
 .tag-list li{
 	width:auto;
@@ -1528,8 +1528,8 @@ blockquote{
 }
 .tag-list li a:hover{
 	color:#fff;
-	border-color:#800080;
-	background:#800080;
+	border-color:#340034;
+	background:#340034;
 }
 
 #booking-form .fa{
@@ -1551,7 +1551,7 @@ blockquote{
 	float:left;
 	height:auto;
 	padding: 25px 0;
-	/*background:#800080;*/
+	/*background:#340034;*/
 	background:#212221;
 }
 #footer h2{
@@ -1582,7 +1582,7 @@ blockquote{
 }
 #footer li a:hover{
 	color:#fff;
-	background:#800080;
+	background:#340034;
 }
 #footer p{
 	margin:0;
@@ -1606,7 +1606,7 @@ blockquote{
 	text-align:center;
 }
 .back-top i {
-    background: #800080 none repeat scroll 0 0;
+    background: #340034 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
     font-size: 24px;
@@ -1691,7 +1691,7 @@ h3{
 	font-size:16px;
 }
 #banner .item{
-	height:500px;
+	height:400px;
 }
 .caption-info{
 	top:55%;
@@ -1883,7 +1883,7 @@ h3{
 }
 .navbar{
 	padding:9px 0;
-	background-color: #800080 none repeat scroll 0 0;
+	background-color: #340034 none repeat scroll 0 0;
 }
 .navbar-default .navbar-nav > li > a, 
 .navbar-default .navbar-nav > li > a:focus{
@@ -1909,7 +1909,7 @@ h3{
 }
 .navbar-default .navbar-toggle:focus .icon-bar, 
 .navbar-default .navbar-toggle:hover .icon-bar{
-	background-color:#800080;
+	background-color:#340034;
 }
 .left.control{
 	left:0;
@@ -1959,7 +1959,7 @@ h3{
 
 .TourLogo h1{
 	font-family:"Dosis", cursive;
-	/*color: #800080;*/
+	/*color: #340034;*/
 	color: #fff;
 }
 
@@ -1996,7 +1996,7 @@ h3{
 	padding: 10px 15px;
 	padding-left: 0;
 	font-size: 20px;
-	color: #800080;
+	color: #340034;
 }
 .detail_inner_nav .navbar .navbar-nav li.nav-item:hover a{
 	margin-bottom: 3px;
@@ -2004,7 +2004,7 @@ h3{
 }
 .overview_enquiry{
 	width: 100%;
-	border: 1px solid #800080;
+	border: 1px solid #340034;
 }
 .holiday_Guest input,
 .contact_detail input{
@@ -2012,7 +2012,7 @@ h3{
 	border: none;
     outline: 0;
     color: #080808;
-    border-bottom: 1px solid #800080;
+    border-bottom: 1px solid #340034;
 }
 .font-bold {
   font-weight: bold;
@@ -2021,13 +2021,13 @@ h3{
 	width: 100%;
 	border: none;
     outline: 0;
-    border-bottom: 1px solid #800080;
+    border-bottom: 1px solid #340034;
     color: black;
 }
 .holiday_Guest select{
 	border: none;
     outline: 0;
-    border-bottom: 1px solid #800080;
+    border-bottom: 1px solid #340034;
 } 	
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
@@ -2087,7 +2087,7 @@ textarea::-webkit-input-placeholder {
 .padding{padding: 0; }
 
 .mx-auto h2{
-	color: #800080;
+	color: #340034;
 }
 
 .detail_inner_nav nav{
@@ -2128,7 +2128,7 @@ body {
 }
 .mega-dropdown-menu .dropdown-header {
   font-size: 18px;
-  color: #800080;
+  color: #340034;
   padding: 5px 60px 5px 5px;
   line-height: 30px;
   font-weight: 600;
@@ -2162,7 +2162,7 @@ body {
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover{
-	background: #800080;
+	background: #340034;
 	color: #fff;
  }
 
@@ -2176,7 +2176,7 @@ body {
  }
 
 .Enquiry .EnquiryBtn{
- 	background-color: #800080;
+ 	background-color: #340034;
     border-radius: 25px;
     text-transform: uppercase;
     font-weight: 700;
@@ -2195,13 +2195,13 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
-    color:  #800080;
+    color:  #340034;
     padding: 15px 64px !important;
     line-height: 1.625rem!important;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     outline: 0!important;
-    border: 1px solid #800080;
+    border: 1px solid #340034;
     z-index: 999;
 }*/
 .overview_enquiry_popup{
@@ -2214,7 +2214,7 @@ body {
 	/*background: #ffebcd;*/
 	background: #fff;
     border-radius: 10px;
-    border: 1px solid #800080;
+    border: 1px solid #340034;
     
 }
 
@@ -2243,7 +2243,7 @@ body {
 }
 .Enquiry_header{
 	padding: 22px 17px;
-    background: #800080;
+    background: #340034;
     color: #fff;
     font-weight: 700;
     font-size: 17px;
@@ -2259,7 +2259,7 @@ body {
 }
 
 #ex1Slider .slider-selection {
-	background: #800080;
+	background: #340034;
 }
 
 @media(min-width: 991px){
@@ -2380,7 +2380,7 @@ body {
 	}
 	.Enquiry .EnquiryBtn{
 		width:100%;
-	 	background-color: #800080;
+	 	background-color: #340034;
 	    border-radius: 0px;
 	    text-transform: uppercase;
 	    font-weight: 700;
@@ -2431,7 +2431,7 @@ body {
 body .contact_form p input{
 	width: 100% !important;
 	border: 0;
-    border-bottom: 2px solid #800080;
+    border-bottom: 2px solid #340034;
     height: 40px;
     border-radius: 5px;
 }
@@ -2439,11 +2439,11 @@ body .contact_form p textarea{
 	width: 100%;
 	height: 150px;
 	border: 0;
-    border-bottom: 2px solid #800080;
+    border-bottom: 2px solid #340034;
  	border-radius: 5px;   
 }
 .contact_form .send_btn{
-	background: #800080;
+	background: #340034;
 	color: #FFF;
 }
 .add_detail i{
@@ -2546,7 +2546,7 @@ background:white !important;
 }
 .top-header{
 	/*background: #980e98;*/
-	background:  #800080;
+	background:  #340034;
 	position: relative;
 	top: 0;
 }
@@ -2633,13 +2633,13 @@ background:white !important;
     position: absolute;
     right: 15px;
     text-align: center;
-    top: 50%;
+    top: 47%;
     width: 36px;
 	margin:-15px 0 0;
 }
 .control:hover{
 	background:#fff;
-	color:#800080;
+	color:#340034;
 }
 .owl-prev{
 	left:10px;
@@ -2798,7 +2798,7 @@ img.img {
     border-radius: 4px;
     text-align: center;
 	/*border:1px solid #ECECEC;*/
-	border:1px solid #800080;
+	border:1px solid #340034;
     box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.02);
 }
 #customers-testimonials .shadow-effect p {
@@ -2812,7 +2812,7 @@ img.img {
     margin: -17px auto 0;
     display: table;
     width: auto;
-    background:  #800080;
+    background:  #340034;
     padding: 9px 35px;
     border-radius: 12px;
     text-align: center;
@@ -2842,7 +2842,7 @@ img.img {
 }
 /*#customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
 #customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
-    background: #800080;
+    background: #340034;
     transform: translate3d(0px, -50%, 0px) scale(0.7);
 }
 #customers-testimonials.owl-carousel .owl-dots{
@@ -2854,7 +2854,7 @@ img.img {
 	display: contents;
 }
 #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
-    background:  #800080;
+    background:  #340034;
     display: inline-block;
     height: 20px;
     margin: 0 2px 5px;
@@ -2896,7 +2896,7 @@ h3.visible-title{
 	bottom: -100%;
 	padding: 30px;
 	padding-bottom: 0px;
-	background: purple;
+	background: #340034;
 	transition: all 0.3s ease-in-out;
 	opacity: 0;
 	visibility: hidden;
@@ -2939,7 +2939,7 @@ h3.visible-title{
 	width: 100%;
 }
 .package-name {
-	background:purple;
+	background:#340034;
 	bottom: 0;
 	color: #fff;
 	font-size: 16px;
@@ -2965,7 +2965,7 @@ h3.visible-title{
 #customers-testimonials .control{
 	visibility: visible;
     opacity: 1;
-    background: purple;
+    background: #340034;
 }
 
 #testimonials .owl-prev.control,#testimonials .owl-next.control :hover{
