@@ -80,21 +80,21 @@ $gst_amount = $final_total_payment-$total_payment;
 					<th style="border-bottom:1px solid black;"></th>
 				</thead>
 				<tbody>
-					<td style="padding:10px 0px 150px 0px; text-align:center;"><?='1'?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$customer_tour_name?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$total_payment?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;"><?=$payment_recieved?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"><?=$gst_amount?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
-					<td style="padding:10px 0px 150px 0px; text-align:center;" class="pad-two"></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;"><?='1'?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;"><?=$customer_tour_name?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;"><?=$total_payment?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;"><?=$payment_recieved?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;" class="pad-two"><?=$gst_amount?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
+					<td style="padding:25px 0px 110px 0px; text-align:center;" class="pad-two"></td>
 				</tbody>
 			</table>
 			<table style="border:1px solid black; width:132.5%;">
 				<tr>
 					<td style="padding:0% 0% 0% 45%;"></td>
-					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><b><?='TOTAL AMOUNT PAYABLE THIS INVOICE'?></b></td>
-					<td style="text-align:left"><b>:    &#8377;<?=$final_total_payment?></b></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT EXCLUDING GST OF'?></td>
+					<td style="text-align:left"><b>:    &#8377;</b><?=$total_payment?></td>
 				</tr>	
 				<tr>
 					<td style="padding:0% 0% 0% 45%;"></td>
@@ -105,8 +105,14 @@ $gst_amount = $final_total_payment-$total_payment;
 				<tr>
 					<td style="padding:0% 0% 0% 45%;"></td>
 					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT EXCLUDING GST OF'?></td>
-					<td style="text-align:left"><b>:    &#8377;</b><?=$total_payment?></td>
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT RECIEVED'?></td>
+					<td style="text-align:left"><b>:    &#8377;</b><?=$payment_recieved?></td>
+				</tr>	
+				<tr>
+					<td style="padding:0% 0% 0% 45%;"></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><b><?='TOTAL AMOUNT PAYABLE THIS INVOICE'?></b></td>
+					<td style="text-align:left"><b>:    &#8377;<?=$final_total_payment-$payment_recieved?></b></td>
 				</tr>	
 			</table>
 
@@ -177,7 +183,7 @@ $gst_amount = $final_total_payment-$total_payment;
 		                processData: false,
 		                contentType: false,
 		                success: function(data){console.log(data); 
-		                	if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
+		                	//if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
 		                },
 		                error: function(data){console.log(data)}
 		            });                
