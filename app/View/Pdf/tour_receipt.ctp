@@ -183,7 +183,7 @@ $gst_amount = $final_total_payment-$total_payment;
 		                processData: false,
 		                contentType: false,
 		                success: function(data){console.log(data); 
-		                	//if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
+		                	if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
 		                },
 		                error: function(data){console.log(data)}
 		            });                
