@@ -60,7 +60,7 @@
      $("#HotelStateId").on('change',function() {
         var id = $(this).val();
         jQuery.ajax({
-            url: BaseUrl + 'states/get_city/' + id,
+            url: BaseUrl + 'citys/get_city/' + id,
             type: 'post',
             dataType: 'json',
             success: function (html) {

@@ -29,9 +29,9 @@ if (isset($this->request->data['Tour']['id'])) {
                         <?php
                         echo $this->Form->input('type',array('class' => 'form-control','options'=>array('1'=>'Special Package','2'=>'Hot Package','3'=>'Deals & Discounts'),'empty' => __('Select Type'), 'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('name',array('class' => 'form-control','placeholder' => __('Title'),'label'=>'Title', 'div' => array('class' => 'form-group required')));
-                        echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
-                        echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
-                        echo $this->Form->input('place', array('tabindex' => 3,'placeholder' => __('Place'), 'label' => __('Place'),'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','multiple' => true,'options'=>$states, 'div' => array('class' => 'form-group')));
+                        echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
+                        echo $this->Form->input('place_id', array('tabindex' => 3,'placeholder' => __('Place'),'multiple' => true,'div' => array('class' => 'form-group')));
                         echo $this->Form->input('description',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Description'), 'div' => array('class' => 'form-group required')));
                         echo $this->Form->input('date_price',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Date Price'), 'div' => array('class' => 'form-group required')));
                         ?> 
@@ -197,12 +197,18 @@ if (isset($this->request->data['Tour']['id'])) {
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
+        //$("#TourStateId").trigger('change');
+
         jQuery('#AddMoreOptions').on('click', function(e) {
                 console.log('in')
                 e.preventDefault();
                 var highlights ='<div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][new][]" class="form-control col-md-11 SurveyOption" placeholder="Enter Highlight Title" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>';
                 jQuery('#appendTagName').append(highlights);
             });
+        $('#TourStateId').multiselect();   
+        $('#TourCityId').multiselect();   
+        $('#TourPlaceId').multiselect();   
         $('#TourHotelId').multiselect();   
 
     });
@@ -225,6 +231,55 @@ if (isset($this->request->data['Tour']['id'])) {
         return false;
     }
 
+    $("#TourCityId").on('change',function() {
+        var id = $(this).val();
+        jQuery.ajax({
+            url: BaseUrl + 'places/get_place_data/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (html) {
+                $('#TourPlaceId').multiselect('destroy');
+                $("#TourPlaceId option").remove();
+                var append_place = '';
+                $.each(html, function(optkey, optvalue) {    
+                    append_place += '<optgroup label="'+optkey+'">';
+                $.each(optvalue, function(key, value) {
+                    append_place += '<option value='+key+'>'+value+'</option>';
+                });
+                    append_place += '</optgroup>';
+                });
+                $("#TourPlaceId").html(append_place);
+                $('#TourPlaceId').multiselect();
+            },
+            error: function (e) {
+
+            }
+        });
+
+        jQuery.ajax({
+            url: BaseUrl + 'hotels/get_hotel_data/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (html) {
+                $('#TourHotelId').multiselect('destroy');
+                $("#TourHotelId option").remove();
+                var append_hotel = '';
+                $.each(html, function(optkey, optvalue) {    
+                    append_hotel += '<optgroup label="'+optkey+'">';
+                $.each(optvalue, function(key, value) {
+                    append_hotel += '<option value='+key+'>'+value+'</option>';
+                });
+                    append_hotel += '</optgroup>';
+                });
+                $("#TourHotelId").html(append_hotel);
+                $('#TourHotelId').multiselect();
+            },
+            error: function (e) {
+
+            }
+        });        
+    });
+
     $("#TourStateId").on('change',function() {
         var id = $(this).val();
         jQuery.ajax({
@@ -232,12 +287,18 @@ if (isset($this->request->data['Tour']['id'])) {
             type: 'post',
             dataType: 'json',
             success: function (html) {
+                $('#TourCityId').multiselect('destroy');
                 $("#TourCityId option").remove();
-                $('#TourCityId').append($("<option></option>").attr("value","").text("Select City"));
-                $.each(html, function(key, value) {
-                    $('<option>').val('').text('select');
-                    $('<option>').val(key).text(value).appendTo($("#TourCityId"));
+                var append_city = '';
+                $.each(html, function(optkey, optvalue) {    
+                    append_city += '<optgroup label="'+optkey+'">';
+                $.each(optvalue, function(key, value) {
+                    append_city += '<option value='+key+'>'+value+'</option>';
                 });
+                    append_city += '</optgroup>';
+                });
+                $("#TourCityId").html(append_city);
+                $('#TourCityId').multiselect();
             },
             error: function (e) {
 

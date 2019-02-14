@@ -158,4 +158,20 @@ public function delete($id = null) {
         $this->Message->setWarning(__('The place could not be deleted. Please, try again.'));
     }
     return $this->redirect(array('action' => 'index'));
-}}
+}
+
+public function get_place_data($id){
+        if ($this->request->is('ajax')) {        
+        $this->layout = false;
+        $this->render = false;
+        $id = explode(',', $id);
+        $place = array();
+        $places = $this->Place->find('all',array('conditions' => array('city_id'=> $id),'fields'=>array('Place.id','Place.name','City.name')));
+        foreach ($places as $key => $value) {
+            $place[$value['City']['name']][$value['Place']['id']]=$value['Place']['name'];
+        }
+        echo json_encode($place);
+        exit;
+        }else{return $this->redirect('/');}
+    }
+}

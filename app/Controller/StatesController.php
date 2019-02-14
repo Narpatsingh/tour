@@ -141,13 +141,18 @@ class StatesController extends AppController {
     }
 
     public function get_city($id = null) {
-        
+        if ($this->request->is('ajax')) {        
         $this->layout = false;
         $this->render = false;
         $this->loadModel('City');
-        $city = $this->City->find('list',array('conditions' => array('state_id'=> $id)));
+        $id = explode(',', $id);
+        $cities = $this->City->find('all',array('conditions' => array('state_id'=> $id),'fields'=>array('City.id','City.name','State.name')));
+        foreach ($cities as $key => $value) {
+            $city[$value['State']['name']][$value['City']['id']]=$value['City']['name'];
+        }
         echo json_encode($city);
         exit;
+        }else{return $this->redirect('/');}
     }    
 
 }

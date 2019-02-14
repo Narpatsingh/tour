@@ -169,8 +169,8 @@ class ToursController extends AppController {
 */
     public function add() {
         $this->loadModel('Highlight');
-        $this->loadModel('Hotel');
-        $this->loadModel('State');
+
+
         if ($this->request->is('post')) {
             $this->Tour->create();
             $type = $this->request->data['Tour']['type'];
@@ -194,6 +194,23 @@ class ToursController extends AppController {
                     $this->request->data['Tour']['hotel_id'] = $hotels[0];
                     $this->request->data['Tour']['multi_hotel'] = implode(',', $hotels);
                 }
+
+                if(!empty($this->request->data['Tour']['state_id'])){
+                    $this->request->data['Tour']['state_id'] = implode(',', $this->request->data['Tour']['state_id']);
+                }
+
+                if(!empty($this->request->data['Tour']['city_id'])){
+                    $this->request->data['Tour']['city_id'] = implode(',', $this->request->data['Tour']['city_id']);
+                }
+
+                if(!empty($this->request->data['Tour']['place_id'])){
+                    $this->request->data['Tour']['place_id'] = implode(',', $this->request->data['Tour']['place_id']);
+                }
+
+                if(!empty($this->request->data['Tour']['hotel_id'])){
+                    $this->request->data['Tour']['hotel_id'] = implode(',', $this->request->data['Tour']['hotel_id']);
+                }
+
                 if ($this->Tour->save($this->request->data)) {
                     $tour_id  = $this->Tour->getLastInsertID();
                     if(!empty($Highlights_data)){
@@ -215,11 +232,8 @@ class ToursController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
         }
+        $this->loadModel('State');
         $states = $this->State->find('list');
-        $hotels = $this->Hotel->find('list');
-        $city = array();
-        $this->set('hotels',$hotels); 
-        $this->set('city',$city);
         $this->set('states',$states);
         $this->set('dbOpration',"Add");
     }
@@ -291,6 +305,9 @@ class ToursController extends AppController {
             }
         } else {
            $this->request->data = $Tour_data;
+           $this->request->data['Tour']['state_id'] = explode(',',$this->request->data['Tour']['state_id']);
+           $this->request->data['Tour']['city_id'] = explode(',',$this->request->data['Tour']['city_id']);
+           $this->request->data['Tour']['place_id'] = explode(',',$this->request->data['Tour']['place_id']);
            $this->request->data['Tour']['hotel_id'] = explode(',',$this->request->data['Tour']['multi_hotel']);
         }
         $dbOpration = "Edit";

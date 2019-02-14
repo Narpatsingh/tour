@@ -163,4 +163,21 @@ public function delete($id = null) {
         $this->Message->setWarning(__('The hotel could not be deleted. Please, try again.'));
     }
     return $this->redirect(array('action' => 'index'));
-}}
+}
+
+public function get_hotel_data($id){
+        if ($this->request->is('ajax')) {        
+        $this->layout = false;
+        $this->render = false;
+        $id = explode(',', $id);
+        $hotel = array();
+        $hotels = $this->Hotel->find('all',array('conditions' => array('Hotel.city_id'=> $id),'fields'=>array('Hotel.id','Hotel.name','City.name')));
+        foreach ($hotels as $key => $value) {
+            $hotel[$value['City']['name']][$value['Hotel']['id']]=$value['Hotel']['name'];
+        }
+        echo json_encode($hotel);
+        exit;
+        }else{return $this->redirect('/');}
+    }
+
+}

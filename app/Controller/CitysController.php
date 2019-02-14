@@ -145,4 +145,13 @@ class CitysController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    public function get_city($id = null) {
+        if ($this->request->is('ajax')) {        
+        $this->layout = false;
+        $this->render = false;
+        $city = $this->City->find('list',array('conditions' => array('state_id'=> $id)));
+        echo json_encode($city);
+        exit;
+    }else{  return $this->redirect('/'); } 
+}
 }
