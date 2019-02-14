@@ -99,6 +99,7 @@ define('VOUCHER_PATH', '/files/voucher/');
 define('PDF_FILE', '/file.pdf');
 define('LOGO_IMAGE', '/files/logo/');
 define('USER_IMAGE', '/files/user/photo/');
+define('PLACE_IMAGE', '/files/place/photo/');
 define('BOOKING_IMAGE', '/files/booking/proof_file/');
 define('ROOT_DIR', WWW_ROOT);
 define('NO_IMAGE', 'no-image.png');

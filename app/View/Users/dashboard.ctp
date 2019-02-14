@@ -512,7 +512,7 @@
             <div class="row" style="overflow: hidden;">
                 <ul class="gallery-item">
                     <?php foreach ($hotels as $key => $hotel) {  ?>
-                    <li class="gallery hotels">
+                    <li class="gallery hotels mix_all">
                         <div class="thumb">
                             <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
                             <div class="gallery-overlay">
@@ -523,9 +523,22 @@
                             </div>
                         </div><!--end post thumb-->
                     </li>
-                    <?php } ?> 
+                    <?php } ?>
+                    <?php foreach ($hotels as $key => $hotel) {  ?>
+                    <li class="gallery hotels mix_all">
+                        <div class="thumb">
+                            <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
+                            <div class="gallery-overlay">
+                                <div class="gallery-overlay-inner">
+                                    <h2><?php echo $hotel['Hotel']['name']; ?></h2>
+                                    <a href="<?php echo $hotel['Hotel']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
+                                </div>
+                            </div>
+                        </div><!--end post thumb-->
+                    </li>
+                    <?php } ?>  
                     <?php for ($x = 1; $x <= 2; $x++) { ?>
-                    <li class="gallery tours">
+                    <li class="gallery tours mix_all">
                         <div class="thumb">
                             <img src="img/gallery/5.jpg" alt="" />
                             <div class="gallery-overlay">
@@ -538,7 +551,7 @@
                     </li>
                     <?php } ?>
                     <?php for ($x = 1; $x <= 2; $x++) { ?>
-                    <li class="gallery cruises">
+                    <li class="gallery cruises mix_all">
                         <div class="thumb">
                             <img src="img/gallery/9.jpg" alt="" />
                             <div class="gallery-overlay">
@@ -726,7 +739,7 @@
                             </div>
                         </div>
                     </div>    
-                    <!-- <div class="col-sm-3 col-sm-offset-4">
+                    <div class="col-sm-3 col-sm-offset-4">
                         <div class="contact-text">
                             <h3>Contact</h3>
                             <address>
@@ -828,7 +841,7 @@
  
 <script type="text/javascript">
 
-  $(document).ready(function(){
+$(document).ready(function(){
     $('#ContactAddForm').validate({ 
         rules: {
             'name': {
@@ -857,35 +870,34 @@
         submitHandler: function(form) {
             form.submit();
         }
-    });     
-  });
-
-  jQuery(document).ready(function($) {
-            "use strict";
-            //  TESTIMONIALS CAROUSEL HOOK
-        $('#customers-testimonials').owlCarousel({
-            center: true,
-            autoplay: true,
-            autoplayTimeout:2000,
-            margin:30,
-            nav: true,
-            smartSpeed:1000,
-            dots:true,
-            autoplayHoverPause:true,
-            loop:true,
-            responsiveClass: true,
-            responsive: {
-              0: {
-                items: 1
-              },
-              768: {
-                items: 2
-              },
-              1170: {
-                items: 3
-              }
-            }
-        });
     });
+    
+    $('#customers-testimonials').owlCarousel({
+        center: true,
+        autoplay: true,
+        autoplayTimeout:2000,
+        margin:30,
+        nav: true,
+        smartSpeed:1000,
+        dots:true,
+        autoplayHoverPause:true,
+        loop:true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1170: {
+            items: 3
+          }
+        }
+    });
+
+    $('.owl-nav').find('.owl-prev').addClass('control').html('<i class="fa fa-long-arrow-left"></i>');
+    $('.owl-nav').find('.owl-next').addClass('control').html('<i class="fa fa-long-arrow-right"></i>');     
+});
+
 
 </script>    

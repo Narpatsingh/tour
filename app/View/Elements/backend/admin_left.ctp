@@ -17,6 +17,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('citys')) ?>">
                     <?php echo $this->Html->link(__('City Management'),array('controller' => 'citys', 'action' => 'index'), array('icon' => 'fa fa-building ')) ?>
                 </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('places')) ?>">
+                    <?php echo $this->Html->link(__('Place Management'),array('controller' => 'places', 'action' => 'index'), array('icon' => 'fa fa-building ')) ?>
+                </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('hotels')) ?>">
                     <?php echo $this->Html->link(__('Hotel Management'),array('controller' => 'hotels', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
