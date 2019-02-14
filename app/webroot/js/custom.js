@@ -61,4 +61,113 @@ $( "div[rel='mptdash_scrollcontent_hot_deals']" ).slimScroll( { size: '5px', hei
       $(".overview_enquiry_popup").css('display','none');
   });
 
+  $('#ContactAddForm').validate({ 
+        rules: {
+            'name': {
+                required: true,
+            },
+            'email': {
+                required: true,
+                email : true
+            },
+            'message': {
+                required: true,
+            }
+        },
+        messages: {
+            'first_name': {
+                required: "Please enter name.",
+            },
+            'email': {
+                required: "Please enter email.",
+                email: "Please enter valid email.",
+            },
+            'message': {
+                required: "Please enter message.",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  $('#customers-testimonials').owlCarousel({
+        center: true,
+        autoplay: true,
+        autoplayTimeout:2000,
+        margin:30,
+        nav: true,
+        smartSpeed:1000,
+        dots:true,
+        autoplayHoverPause:true,
+        loop:true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1170: {
+            items: 3
+          }
+        }
+    });
+
+    //============= Portfolio section ============ 
+    
+    $('.gallery-item').mixitup({
+      targetSelector: '.gallery',
+      transitionSpeed: 650
+    });
+    $('a.fancybox').fancybox();
+
+    //============= Blogs Crousel   =============
+
+    $("#blogs-carousel").owlCarousel({
+      autoplay: true,
+      autoplayTimeout:2000,
+      margin:30,
+      nav: true,
+      smartSpeed:1000,
+      dots:false,
+      autoplayHoverPause:true,
+      loop:true,
+      responsiveClass: true,
+      responsive: {
+        0: {
+        items: 1,
+        },
+        600: {
+        items: 2,
+        },
+        1000: {
+        items: 3,
+        }
+      }
+     });
+
+    $('.owl-nav').find('.owl-prev').addClass('control').html('<i class="fa fa-long-arrow-left"></i>');
+    $('.owl-nav').find('.owl-next').addClass('control').html('<i class="fa fa-long-arrow-right"></i>'); 
+
+    $("#package-slider").owlCarousel({
+        loop: true,
+        nav: false,
+        pagination:true,
+        navigation:false,
+        slideSpeed:1000,
+        autoplay: true,
+        responsive: {
+            0: {
+              items: 1
+            },
+            768: {
+              items: 2
+            },
+            1170: {
+              items: 3
+            }
+          }
+    }); 
+
 });

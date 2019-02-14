@@ -144,7 +144,7 @@
 		 });
 
 		$('.owl-nav').find('.owl-prev').addClass('control').html('<i class="fa fa-long-arrow-left"></i>');
-		$('.owl-nav').find('.owl-next').addClass('control').html('<i class="fa fa-long-arrow-right"></i>');;
+		$('.owl-nav').find('.owl-next').addClass('control').html('<i class="fa fa-long-arrow-right"></i>');
 		
 		//===================== Datepicker ================
 		$( ".date_pic" ).datepicker({

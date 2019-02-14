@@ -1,3 +1,29 @@
+<?php echo $this->Html->script(
+                array(
+            'jquery',
+            'bootstrap.min',
+            // 'lib/jquery-ui-1.11.4',
+            'lib/jquery.validate',
+            'jquery.easing.min',
+            'wow',
+            'jquery.mixitup.min',
+            'jquery.fancybox.pack',
+            'waypoints.min',
+            'jquery.counterup.min',
+            'owl.carousel.min',
+            'jquery.stellar.min',
+            'bootstrap-datepicker',
+            'script',
+            'scrolling-nav',
+            'bootstrap-slider',
+            'jquery.slimscroll',
+            'custom.js?'.time(),
+                ), array('inline' => false)
+        );
+
+        echo $this->fetch('script');    
+
+    ?>    
     <div class="Enquiry">
         <div class="EnquiryClick ">
             <button class="EnquiryBtn"><i class="fa fa-pencil mr-2" ></i> Enquiry</button>
@@ -16,13 +42,12 @@
                     <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
 
                             <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                                <input type="text" data-role="none" name="number_of_month" placeholder="Holidays Month" class="mr-3 mb-3">
+                                <input type="text" data-role="none" name="date"  id="travel_date" placeholder="Date" class="mr-3 mb-3">
                                 <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3">
-                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mr-3 mb-3">
-                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mb-3">
+                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3">
+                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mb-3">
                                 <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
-                                <?php echo $this->Form->input('destination',array('label' => false,'data-role'=>"none",'options'=>$destination,'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Destination'), 'div' => false)); ?>
-                                <textarea data-role="none" name="experience" class=" textarea mt-3" placeholder="Additional Experiences"></textarea>
+                                <?php echo $this->Form->input('package_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Package'), 'div' => false)); ?>
                                 <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements"></textarea>
                             </div>
                             <div class="contact_detail mt-3 mb-3 px-3 py-3">
@@ -74,6 +99,10 @@
         minViewMode: "months"
         });
 
+       $("#travel_date").datepicker( {
+            format: "dd-MM-yyyy",
+        });
+
         jQuery('.EnquiryBtn').on('click', function (e) {
                 $('#commonModel').modal('show');
         });
@@ -119,7 +148,16 @@
    
     
 </script>  
-    
+<style type="text/css">
+    /*div.error{
+        margin-right: 15px;
+        float:left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }*/
+</style>    
 
 </body>
 </html>

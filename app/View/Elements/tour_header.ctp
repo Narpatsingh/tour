@@ -35,7 +35,7 @@
         echo $this->fetch('css');
     ?>
 
-    <?php echo $this->Html->script(
+    <?php /*echo $this->Html->script(
                 array(
             'jquery',
             'bootstrap.min',
@@ -56,9 +56,9 @@
             'jquery.slimscroll',
             'custom.js?'.time(),
                 ), array('inline' => false)
-        );
+        );*/
 
-        echo $this->fetch('script');    
+        //echo $this->fetch('script');    
 
     ?>    
 
