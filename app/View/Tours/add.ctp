@@ -198,10 +198,10 @@ if (isset($this->request->data['Tour']['id'])) {
 <script type="text/javascript">
     jQuery(document).ready(function () {
 
-        //$("#TourStateId").trigger('change');
+        $("#TourStateId").trigger('change');
 
         jQuery('#AddMoreOptions').on('click', function(e) {
-                console.log('in')
+
                 e.preventDefault();
                 var highlights ='<div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][new][]" class="form-control col-md-11 SurveyOption" placeholder="Enter Highlight Title" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>';
                 jQuery('#appendTagName').append(highlights);
@@ -231,8 +231,46 @@ if (isset($this->request->data['Tour']['id'])) {
         return false;
     }
 
+    $("#TourStateId").on('change',function() {
+        var id = $(this).val();
+        var selected_id = '<?php echo empty($this->request->data["Tour"]["city_id"])?"[]":json_encode( $this->request->data["Tour"]["city_id"] ); ?>';
+
+        jQuery.ajax({
+            url: BaseUrl + 'states/get_city/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (html) {
+                $('#TourCityId').multiselect('destroy');
+                $("#TourCityId option").remove();
+                var append_city = '';
+                $.each(html, function(optkey, optvalue) {    
+                    append_city += '<optgroup label="'+optkey+'">';
+                $.each(optvalue, function(key, value) {
+
+                    if (jQuery.inArray(key, jQuery.parseJSON(selected_id)) != -1){
+                    append_city += '<option value='+key+' selected="selected">'+value+'</option>';
+                    }else{
+                    append_city += '<option value='+key+'>'+value+'</option>';    
+                    }
+
+                });
+                    append_city += '</optgroup>';
+                });
+
+                $("#TourCityId").html(append_city);
+                $('#TourCityId').multiselect();
+                $("#TourCityId").trigger('change');
+            },
+            error: function (e) {
+
+            }
+        });
+    });
+
     $("#TourCityId").on('change',function() {
         var id = $(this).val();
+        var place_selected_id = '<?php echo empty($this->request->data["Tour"]["place_id"])?"[]":json_encode( $this->request->data["Tour"]["place_id"] ); ?>';
+        var hotel_selected_id = '<?php echo empty($this->request->data["Tour"]["hotel_id"])?"[]":json_encode( $this->request->data["Tour"]["hotel_id"] ); ?>';
         jQuery.ajax({
             url: BaseUrl + 'places/get_place_data/' + id,
             type: 'post',
@@ -244,7 +282,11 @@ if (isset($this->request->data['Tour']['id'])) {
                 $.each(html, function(optkey, optvalue) {    
                     append_place += '<optgroup label="'+optkey+'">';
                 $.each(optvalue, function(key, value) {
-                    append_place += '<option value='+key+'>'+value+'</option>';
+                    if (jQuery.inArray(key, jQuery.parseJSON(place_selected_id)) != -1){
+                    append_place += '<option value='+key+' selected="selected">'+value+'</option>';
+                    }else{
+                    append_place += '<option value='+key+'>'+value+'</option>';    
+                    }
                 });
                     append_place += '</optgroup>';
                 });
@@ -267,7 +309,11 @@ if (isset($this->request->data['Tour']['id'])) {
                 $.each(html, function(optkey, optvalue) {    
                     append_hotel += '<optgroup label="'+optkey+'">';
                 $.each(optvalue, function(key, value) {
-                    append_hotel += '<option value='+key+'>'+value+'</option>';
+                    if (jQuery.inArray(key, jQuery.parseJSON(hotel_selected_id)) != -1){
+                    append_hotel += '<option value='+key+' selected="selected">'+value+'</option>';
+                    }else{
+                    append_hotel += '<option value='+key+'>'+value+'</option>';    
+                    }
                 });
                     append_hotel += '</optgroup>';
                 });
@@ -278,32 +324,6 @@ if (isset($this->request->data['Tour']['id'])) {
 
             }
         });        
-    });
-
-    $("#TourStateId").on('change',function() {
-        var id = $(this).val();
-        jQuery.ajax({
-            url: BaseUrl + 'states/get_city/' + id,
-            type: 'post',
-            dataType: 'json',
-            success: function (html) {
-                $('#TourCityId').multiselect('destroy');
-                $("#TourCityId option").remove();
-                var append_city = '';
-                $.each(html, function(optkey, optvalue) {    
-                    append_city += '<optgroup label="'+optkey+'">';
-                $.each(optvalue, function(key, value) {
-                    append_city += '<option value='+key+'>'+value+'</option>';
-                });
-                    append_city += '</optgroup>';
-                });
-                $("#TourCityId").html(append_city);
-                $('#TourCityId').multiselect();
-            },
-            error: function (e) {
-
-            }
-        });
     });
 
 </script>

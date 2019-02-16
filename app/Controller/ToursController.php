@@ -207,10 +207,6 @@ class ToursController extends AppController {
                     $this->request->data['Tour']['place_id'] = implode(',', $this->request->data['Tour']['place_id']);
                 }
 
-                if(!empty($this->request->data['Tour']['hotel_id'])){
-                    $this->request->data['Tour']['hotel_id'] = implode(',', $this->request->data['Tour']['hotel_id']);
-                }
-
                 if ($this->Tour->save($this->request->data)) {
                     $tour_id  = $this->Tour->getLastInsertID();
                     if(!empty($Highlights_data)){
@@ -284,6 +280,18 @@ class ToursController extends AppController {
             if(!empty($hotels)){
                 $this->request->data['Tour']['hotel_id'] = $hotels[0];
                 $this->request->data['Tour']['multi_hotel'] = implode(',', $hotels);
+            }
+
+            if(!empty($this->request->data['Tour']['state_id'])){
+                $this->request->data['Tour']['state_id'] = implode(',', $this->request->data['Tour']['state_id']);
+            }
+
+            if(!empty($this->request->data['Tour']['city_id'])){
+                $this->request->data['Tour']['city_id'] = implode(',', $this->request->data['Tour']['city_id']);
+            }
+
+            if(!empty($this->request->data['Tour']['place_id'])){
+                $this->request->data['Tour']['place_id'] = implode(',', $this->request->data['Tour']['place_id']);
             }
             if ($this->Tour->save($this->request->data)) {
                 foreach ($old_data as $old_key => $old_value) {

@@ -31,11 +31,11 @@ $gst_amount = $final_total_payment-$total_payment;
 </head>
 <body id="content">
 	<div>
-		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: left; margin-left: 7.5%; margin-top: 3.8%;">
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 5.7% 0% 0% 0.5%; position: fixed;font-size: smaller;font-weight: 600;">Travel and Tours</span>
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: 7% 0% 0% -5.5%; position: fixed;font-size: medium;font-weight: 600;">Makeover Your Own Trip</span>
-		<p class="logo-text" style="position: fixed; margin: 3% 0% 0% 13%;; font-size: 2em; font-family: cursive;">Silshine</p>
-		<div class="address" style="width:300px; float:right; margin: 2.5% 0% 0% 70.5%;text-align:justify;position:fixed;">
+		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: left; margin-left: 0%; margin-top: -5.8%;">
+		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: -3.7% 0% 0% 5.8%; position: fixed;font-size: smaller;font-weight: 600;">Travel and Tours</span>
+		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin:-2.5% 0% 0% 0%; position: fixed;font-size: medium;font-weight: 600;">Makeover Your Own Trip</span>
+		<p class="logo-text" style="position: fixed; margin: -6.2% 0% 0% 5.5%; font-size: 2em; font-family: cursive;">Silshine</p>
+		<div class="address" style="width:300px; float:right; margin: -7% 0% 0% 77%;text-align:justify;position:fixed;">
 			<p>
 				<b>Office:</b>
 				501/6, Bhakti Dharm Township, Palanpur, Canal Road, Jahangirabad, Surat.
@@ -45,12 +45,12 @@ $gst_amount = $final_total_payment-$total_payment;
 				<span class="email" style="font-size: large; font-style: italic; font-family: inherit; -webkit-font-smoothing: subpixel-antialiased; font-weight: 600;">silshinetrip@gmail.com</span>
 			</p>
 		</div>		
-		<div class="table-contain" style="margin: 6% 0% 0% 7%; position: fixed;">
-		<center style="margin:6% 0% -2% 120%;"><h2>INVOICE</h2></center>
-		<div class="separator" style="border: 1px solid #800080;margin:0% -32% 1% 0%;"></div>
+		
+		<center style="margin:7% 0% -1% 92%;"><h2>INVOICE</h2></center>
+		<div class="separator" style="border: 1px solid #800080;margin:0% 0% 1% 0%;"></div>
 		<br>
 			
-			<table class="table" style="border:0px; width:132.5%;">
+			<table class="table" style="border:0px; width:100%;">
 				<tr>
 					<td><b>Invoice No</b></td>
 					<td> <b>:</b> <?=$invoice_no?></td>
@@ -69,8 +69,8 @@ $gst_amount = $final_total_payment-$total_payment;
 			</table>
 			<br>
 			<br>
-			<div class="separator" style="border: 0.5px solid black;margin: 2% 0% 1% 0%; position: fixed; width: 86.8%;"></div>
-			<table style="border:1px solid black; width:132.5%;">
+			<div class="separator" style="border: 0.5px solid black;margin: 2% 0% 1% 0%; position: fixed; width: 98.5%;"></div>
+			<table style="border:1px solid black; width:100%;">
 				<thead>
 					<th>No.</th>
 					<th>Tour Name</th>
@@ -90,7 +90,7 @@ $gst_amount = $final_total_payment-$total_payment;
 					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;" class="pad-two"></td>
 				</tbody>
 			</table>
-			<table style="border:1px solid black; width:132.5%;">
+			<table style="border:1px solid black; width:100%;">
 				<!-- <tr>
 					<td style="padding:0% 0% 0% 45%;"></td>
 					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
@@ -122,7 +122,7 @@ $gst_amount = $final_total_payment-$total_payment;
 			</div>
 			<br>
 			<br>
-		<div style="line-height:10px;width: 132.5%;">
+		<div style="line-height:10px;width: 100%;">
 			<div style="float:left;">	
 			Customer  Signature :  <b><i><u><?=$customer_signature?></u>.</i></b> 
 			</div>
@@ -130,7 +130,7 @@ $gst_amount = $final_total_payment-$total_payment;
 			Company  Signature :  <b><i><u><?=$company_signature?></u>.</i></b>
 			</div>
 		</div>	
-		</div>
+		
 	</div>
 </body>
 
@@ -138,8 +138,8 @@ $gst_amount = $final_total_payment-$total_payment;
  <script>
  	demoFromHTML();
     function demoFromHTML() {
-        var pdf = new jsPDF('p', 'pt', 'a4');
-        //var pdf = new jsPDF('landscape', 'pt', 'a4');
+        //var pdf = new jsPDF('p', 'pt', 'a4');
+        var pdf = new jsPDF('landscape', 'pt', 'a4');
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
         source = document.body;
@@ -170,8 +170,8 @@ $gst_amount = $final_total_payment-$total_payment;
             //     'width': 1365, // max width of content on PDF
             //     'elementHandlers': specialElementHandlers
             // },
-            scale: 2,
-            dpi: 144,
+            // scale: 2,
+            // dpi: 144,
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF 
                 //          this allow the insertion of new lines after html
