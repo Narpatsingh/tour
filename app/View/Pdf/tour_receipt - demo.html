@@ -1,0 +1,94 @@
+<table>
+		<tr>
+		<td><img src="G:\xampp\htdocs\tour_management\app\webroot\files\logo\reciept-mini-logo.jpg"></td>
+		<td style="line-height:1">
+		<span class="logo-text" style="font-size: 2em; font-family: cursive;">Silshine</span><br>
+		<span style="font-family: Lobster,cursive !important; color: gray; margin-left: 3%; font-size: smaller;font-weight: 600;">Travel and Tours</span>
+		</td>
+		</tr>
+		<tr style="line-height:0.8">
+		<td colspan="2">
+		<span style="font-family: Lobster,cursive !important; color: gray; font-size: medium;font-weight: 600;">Makeover Your Own Trip</span>			
+		</td>			
+		</tr>		
+		<tr style="width:300px; float:right;margin:-5% 0% 0% 76.5%;text-align:justify;position:fixed;">
+			<td>
+				<b>Office:</b>
+				501/6, Bhakti Dharm Township, Palanpur, Canal Road, Jahangirabad, Surat.
+				<b>Contact No:</b>
+				8733897945 / 8758368590
+				<b>Email:</b>
+				<span class="email" style="font-size: large; font-style: italic; font-family: inherit; -webkit-font-smoothing: subpixel-antialiased; font-weight: 600;">silshinetrip@gmail.com</span>
+			</td>
+		</tr>				
+</table>		
+<table align="right">
+		<tr>
+			<td>
+			<h2 style="margin: 15% 0% 0% 0%;">INVOICE</h2>
+			</td>			
+		</tr>	
+</table>
+<hr style="margin: 4% 0% 0% 0%;border-color: #800080;">
+		<br>
+			
+			<table class="table" style="border:0px; width:100%;">
+				<tr>
+					<td><b>Invoice No</b></td>
+					<td> <b>:</b> <?=$invoice_no?></td>
+					<td><b>Customer Name</b></td>
+					<td> <b>:</b> <?=$customer_full_name?></td>
+					<td style="padding-left:80px;"><b>Date</b></td>
+					<td> <b>:</b> <?=$date?></td>
+				</tr>
+				<tr>
+					<td><b>Customer Tour Type</b></td>
+					<td> <b>:</b> <?=$customer_tour_type?></td>
+										
+					<td><b>Contact Number</b></td>
+					<td> <b>:</b> <?=$customer_contact_no?></td>
+				</tr>	
+			</table>
+			<br>
+			<table style="border:1px solid black;border-collapse: collapse;width:100%;">
+				<thead style="border-right:1px solid black">
+					<tr>
+					<th>No.</th>
+					<th>Tour Name</th>
+					<th>Payment Type</th>
+					<th>Payment Amount</th>
+					<th>Payment Recieved</th>
+					<th style="border-right: 1px solid black;">Payment Amount with GST(<?=$gst_percent?>%)</th>
+					</tr>
+				</thead>
+				<tbody style="border-top:1px solid black">
+					<tr>
+					<td style="padding:25px 0px 25px 0px; text-align:center;"><?='1'?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;"><?=$customer_tour_name?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;" class="pad-two"><?=$payment_type?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;"><?=$total_payment?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;"><?=$payment_recieved?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
+					<td style="padding:25px 0px 25px 0px; text-align:center;" class="pad-two"></td>
+					</tr>
+				</tbody>
+			</table>
+			<table style="border:1px solid black; width:100%;">
+				<tr>
+					<td style="padding:0% 0% 0% 45%;"></td>
+					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
+					<td style="padding:0px 0px 0px 0px; text-align:right;"><b><?='TOTAL AMOUNT PAYABLE THIS INVOICE'?></b></td>
+					<td style="text-align:left"><b>:    &#8377;<?=$final_total_payment-$payment_recieved?></b></td>
+				</tr>	
+			</table>
+			<br>
+		<table style="line-height:10px;width: 100%;">
+			<tr>
+			<td style="float:left;">	
+			Customer  Signature :  <b><i><u><?=$customer_signature?></u>.</i></b> 
+			</td>
+			<td style="float:right;">	
+			Company  Signature :  <b><i><u><?=$company_signature?></u>.</i></b>
+			</td>
+			</tr>
+		</table>

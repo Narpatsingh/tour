@@ -1,4 +1,66 @@
-<?php 
+<?php
+App::import('Vendor','xtcpdf');
+$app = APP.'webroot/img/tour_head_logo.png';
+$rupee = APP.'webroot/img/rupee.png';
+$pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Silshine');
+$pdf->SetTitle('Silshine');
+$pdf->SetSubject('Invoice Receipt');
+$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+
+// set default header data
+$pdf->SetHeaderData($app, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 061', PDF_HEADER_STRING);
+
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+}
+
+// ---------------------------------------------------------
+
+// set font
+$pdf->SetFont('helvetica', '', 10);
+
+// add a page
+$pdf->AddPage();
+
+/* NOTE:
+ * *********************************************************
+ * You can load external XHTML using :
+ *
+ * $html = file_get_contents('/path/to/your/file.html');
+ *
+ * External CSS $invoice_no will be automatically loaded.
+ * Sometimes you need to fix the path of the external CSS.
+ * *********************************************************
+ */
+
+
 // define variables.
 $date = date("d-M-Y");
 $all_t_and_c = $voucher['all_t_and_c'];
@@ -18,182 +80,87 @@ $id = $voucher['booking_id'];
 $ac_id = $voucher['ac_id'];
 $redirect = $voucher['redirect'];
 $gst_amount = $final_total_payment-$total_payment;
+$grand_total = $final_total_payment-$payment_recieved;
+// define some HTML content with style
+$html = <<<EOF
+<img src="$app">
+<br><br>
+<table style"width:120%;">
+	<tr>
+		<td><b>Invoice No</b></td>
+		<td colspan="2"> <b>:</b> $invoice_no</td>
+		<td><b>Customer Name</b></td>
+		<td> <b>:</b> $customer_full_name</td>
+	</tr>	
+</table>
+<table style"width:120%;">
+	<tr>
+		<td><b>Customer Tour Type</b></td>
+		<td  colspan="2"> <b>:</b> $customer_tour_type</td>
+		<td><b>Contact Number</b></td>
+		<td> <b>:</b> $customer_contact_no</td>
+	</tr>
+</table>
+<table style"width:120%;">
+<tr>
+		<td> </td>
+		<td  colspan="2"> </td>
+		<td><b>Date</b></td>
+		<td> <b>:</b> $date</td>
+</tr>
+</table>
+<br>
+<br>
+<table border="1" style="padding:5px;">
+	<thead>
+		<tr>
+		<th style="width:35px">No.</th>
+		<th>Tour Name</th>
+		<th>Payment Type</th>
+		<th>Payment Amount</th>
+		<th>Payment Recieved</th>
+		<th style="width:30%">Payment Amount with GST($gst_percent%)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<td style="width:35px;">1</td>
+		<td>$customer_tour_name</td>
+		<td class="pad-two">$payment_type</td>
+		<td>$total_payment</td>
+		<td>$payment_recieved</td>
+		<td style="width:30%">$final_total_payment</td>
+		</tr>
+	</tbody>
+</table>
+<table style="border:1px solid black; width:100.3%; padding:5px;">
+	<tr>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>TOTAL AMOUNT PAYABLE THIS INVOICE</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$grand_total</td>
+	</tr>	
+</table>
+<br>
+<br>
+<br>
+<table style="line-height:10px;width: 120%;">
+	<tr>
+	<td style="float:left;">	
+	Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
+	</td>
+	<td style="float:right;">	
+	Company  Signature :  <b><i><u>$company_signature</u>.</i></b>
+	</td>
+	</tr>
+</table>
+EOF;
+
+// output the HTML content
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// reset pointer to the last page
+$pdf->lastPage();
+
+//Close and output PDF document
+$pdf_path = APP . 'webroot/files/receipt' . DS . $ac_id;
+createFolder($pdf_path); 
+$pdf->Output($pdf_path . DS .''.$invoice_no.'.pdf', 'F');
 ?>
-
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>SilShine Trip</title> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-</head>
-<body id="content">
-	<div>
-		<img src="<?=$this->webroot?>files/logo/reciept-mini-logo.jpg" style="float: left; margin-left: 0%; margin-top: -5.8%;">
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin: -3.7% 0% 0% 5.8%; position: fixed;font-size: smaller;font-weight: 600;">Travel and Tours</span>
-		<span class="logo-desc" style="font-family: Lobster,cursive !important; color: gray; margin:-2.5% 0% 0% 0%; position: fixed;font-size: medium;font-weight: 600;">Makeover Your Own Trip</span>
-		<p class="logo-text" style="position: fixed; margin: -6.2% 0% 0% 5.5%; font-size: 2em; font-family: cursive;">Silshine</p>
-		<div class="address" style="width:300px; float:right; margin: -7% 0% 0% 77%;text-align:justify;position:fixed;">
-			<p>
-				<b>Office:</b>
-				501/6, Bhakti Dharm Township, Palanpur, Canal Road, Jahangirabad, Surat.
-				<b>Contact No:</b>
-				8733897945 / 8758368590
-				<b>Email:</b>
-				<span class="email" style="font-size: large; font-style: italic; font-family: inherit; -webkit-font-smoothing: subpixel-antialiased; font-weight: 600;">silshinetrip@gmail.com</span>
-			</p>
-		</div>		
-		
-		<center style="margin:7% 0% -1% 92%;"><h2>INVOICE</h2></center>
-		<div class="separator" style="border: 1px solid #800080;margin:0% 0% 1% 0%;"></div>
-		<br>
-			
-			<table class="table" style="border:0px; width:100%;">
-				<tr>
-					<td><b>Invoice No</b></td>
-					<td> <b>:</b> <?=$invoice_no?></td>
-					<td><b>Customer Name</b></td>
-					<td> <b>:</b> <?=$customer_full_name?></td>
-					<td style="padding-left:80px;"><b>Date</b></td>
-					<td> <b>:</b> <?=$date?></td>
-				</tr>
-				<tr>
-					<td><b>Customer Tour Type</b></td>
-					<td> <b>:</b> <?=$customer_tour_type?></td>
-										
-					<td><b>Contact Number</b></td>
-					<td> <b>:</b> <?=$customer_contact_no?></td>
-				</tr>	
-			</table>
-			<br>
-			<br>
-			<div class="separator" style="border: 0.5px solid black;margin: 2% 0% 1% 0%; position: fixed; width: 98.5%;"></div>
-			<table style="border:1px solid black; width:100%;">
-				<thead>
-					<th>No.</th>
-					<th>Tour Name</th>
-					<th>Payment Type</th>
-					<th>Payment Amount</th>
-					<th>Payment Recieved</th>
-					<th>Payment Amount with GST(<?=$gst_percent?>%)</th>
-					<th></th>
-				</thead>
-				<tbody>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;"><?='1'?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;"><?=$customer_tour_name?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;" class="pad-two"><?=$payment_type?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;"><?=$total_payment?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;"><?=$payment_recieved?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;" class="pad-two"><?=$final_total_payment?></td>
-					<td style="border-top:1px;padding:25px 0px 25px 0px; text-align:center;" class="pad-two"></td>
-				</tbody>
-			</table>
-			<table style="border:1px solid black; width:100%;">
-				<!-- <tr>
-					<td style="padding:0% 0% 0% 45%;"></td>
-					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT EXCLUDING GST OF'?></td>
-					<td style="text-align:left"><b>:    &#8377;</b><?=$total_payment?></td>
-				</tr>	
-				<tr>
-					<td style="padding:0% 0% 0% 45%;"></td>
-					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT INCLUDES GST OF'?></td>
-					<td style="text-align:left"><b>:    &#8377;</b><?=$gst_amount?></td>
-				</tr>	
-				<tr>
-					<td style="padding:0% 0% 0% 45%;"></td>
-					<td style="padding:0% 0% 0% 45%;"><b> </b></td>					
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><?='TOTAL AMOUNT RECIEVED'?></td>
-					<td style="text-align:left"><b>:    &#8377;</b><?=$payment_recieved?></td>
-				</tr>	 -->
-				<tr>
-					<td style="padding:0% 0% 0% 45%;"></td>
-					<td style="padding:0% 0% 0% 45%;"><b> </b></td>
-					<td style="padding:0px 0px 0px 0px; text-align:right;"><b><?='TOTAL AMOUNT PAYABLE THIS INVOICE'?></b></td>
-					<td style="text-align:left"><b>:    &#8377;<?=$final_total_payment-$payment_recieved?></b></td>
-				</tr>	
-			</table>
-
-			<div class="t_c" style="margin: 4% 0% 0% 0%; float:left;"> 
-				<?=$all_t_and_c?>
-			</div>
-			<br>
-			<br>
-		<div style="line-height:10px;width: 100%;">
-			<div style="float:left;">	
-			Customer  Signature :  <b><i><u><?=$customer_signature?></u>.</i></b> 
-			</div>
-			<div style="float:right;">	
-			Company  Signature :  <b><i><u><?=$company_signature?></u>.</i></b>
-			</div>
-		</div>	
-		
-	</div>
-</body>
-
-</html>
- <script>
- 	demoFromHTML();
-    function demoFromHTML() {
-        //var pdf = new jsPDF('p', 'pt', 'a4');
-        var pdf = new jsPDF('landscape', 'pt', 'a4');
-        // source can be HTML-formatted string, or a reference
-        // to an actual DOM element from which the text will be scraped.
-        source = document.body;
-
-        // we support special element handlers. Register them with jQuery-style 
-        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-        // There is no support for any other type of selectors 
-        // (class, of compound) at this time.
-        specialElementHandlers = {
-            // element with id of "bypass" - jQuery style selector
-            '#bypassme': function (element, renderer) {
-                // true = "handled elsewhere, bypass text extraction"
-                return true
-            }
-        };
-        margins = {
-            top: 0,
-            bottom: 0,
-            left: 0,
-            width: 0
-        };
-        // all coords and widths are in jsPDF instance's declared units
-        // 'inches' in this case
-        pdf.addHTML(
-            source, // HTML string or DOM elem ref.
-            // margins.left, // x coord
-            // margins.top, { // y coord
-            //     'width': 1365, // max width of content on PDF
-            //     'elementHandlers': specialElementHandlers
-            // },
-            // scale: 2,
-            // dpi: 144,
-            function (dispose) {
-                // dispose: object with X, Y of the last line add to the PDF 
-                //          this allow the insertion of new lines after html
-                //pdf.save('Test.pdf');
-
-					var blob = pdf.output('blob');
-		            var formData = new FormData();
-		            formData.append('pdf', blob);
-
-		            $.ajax('<?=$this->webroot?>save_file/<?=$ac_id?>/<?=$invoice_no?>',
-		            {
-		                method: 'POST',
-		                data: formData,
-		                processData: false,
-		                contentType: false,
-		                success: function(data){console.log(data); 
-		                	//if(data){window.location.assign("<?=$this->webroot.$redirect?>")}
-		                },
-		                error: function(data){console.log(data)}
-		            });                
-            }, margins
-        );
-    }
-</script>
-<?php exit; ?>
