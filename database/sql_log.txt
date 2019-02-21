@@ -7,6 +7,22 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+21-02-2019
+
+import gallery table from sql file
+
+CREATE TABLE `hotel_booking` ( `id` INT NOT NULL AUTO_INCREMENT , `city_id` INT NOT NULL , `state_id` INT NOT NULL , `hotel_id` INT NOT NULL , `customer_id` INT NOT NULL , `price` INT NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `enquiries` CHANGE `city_of_residence` `travel_date` DATETIME NULL;
+ALTER TABLE `enquiries` CHANGE `number_of_month` `number_of_month` INT(11) NULL;
+ALTER TABLE `enquiries` CHANGE `number_of_guest` `number_of_guest` INT(11) NULL;
+ALTER TABLE `enquiries` CHANGE `time_of_travel` `time_of_travel` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `enquiries` CHANGE `travel_duration` `travel_duration` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `enquiries` CHANGE `special_requirements` `special_requirements` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `enquiries` CHANGE `destination` `destination` INT(11) NULL COMMENT 'city_id';
+
+
+
 14-02-2019
 ALTER TABLE `tours` CHANGE `city_id` `city_id` VARCHAR(50) NULL;
 ALTER TABLE `tours` CHANGE `state_id` `state_id` VARCHAR(50) NULL DEFAULT NULL;
