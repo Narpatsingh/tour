@@ -34,6 +34,10 @@ class ToursController extends AppController {
 */
     public function index($all = null) {
         $conditions = array();
+        $this->loadModel('State');
+        $this->loadModel('City');
+        $this->loadModel('Place');
+        $this->loadModel('Hotel');
         if ($all == "all") {
             $this->Session->write('TourSearch', '');
         }
@@ -56,10 +60,10 @@ class ToursController extends AppController {
         }
         $this->AutoPaginate->setPaginate(array(
             'order' => ' Tour.id DESC',
-            'conditions' => $conditions,
-            'recursive'=>'1'
+            'conditions' => $conditions
         ));
-        $this->set('Tours', $this->paginate('Tour'));
+        $tour_data = $this->getTourDetails($this->paginate('Tour'));
+        $this->set('Tours', $tour_data );
     }
 
 /**
@@ -96,8 +100,8 @@ class ToursController extends AppController {
             $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
         }
         $options = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $id));
-        $tour =  $this->Tour->find('first', $options);
-        $blogs = $this->Tour->find('all', array('contain' => false, 'limit'=>6,'order' => array('Tour.id' => 'DESC')));
+        $tour =  $this->getSingleDetails($this->Tour->find('first', $options));
+        $blogs = $this->getTourDetails($this->Tour->find('all', array('contain' => false, 'limit'=>6,'order' => array('Tour.id' => 'DESC'))));
         $this->loadModel('Hotel');
         $hotels = [];
         if(!empty($tour['Tour']['multi_hotel'])){
@@ -106,18 +110,18 @@ class ToursController extends AppController {
         }
         $this->loadModel('City');
         $cities = $this->City->find('list');
-        $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+        $destination = $this->Tour->find('list',array('fields' => array('name','name')));
         $this->set(compact('cities','hotels','destination','tour','blogs')); 
     }
 
     public function city_detail($id = null) {
         $this->layout = 'tour';
         if (!empty($id)) {
-            $options = array('conditions' => array('Tour.city_id' => $id));
-            $tour = $this->Tour->find('all', $options);
+            $options = array('conditions' => array('Tour.city_id LIKE' => '%'.$id.'%'));
+            $tour = $this->getTourDetails($this->Tour->find('all', $options));
             $this->loadModel('City');
             $cities = $this->City->find('list');
-            $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+            $destination = $this->Tour->find('list',array('fields' => array('name','name')));
             if(!empty($tour)){
                 $this->set('destination', $destination);
                 $this->set('cities', $cities);
@@ -133,11 +137,11 @@ class ToursController extends AppController {
     public function state_detail($id = null) {
         $this->layout = 'tour';
         if (!empty($id)) {
-            $options = array('conditions' => array('Tour.state_id' => $id));
-            $tour = $this->Tour->find('all', $options);
+            $options = array('conditions' => array('Tour.state_id LIKE' => '%'.$id.'%'));
+            $tour = $this->getTourDetails($this->Tour->find('all', $options));
             $this->loadModel('City');
             $cities = $this->City->find('list');
-            $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+            $destination = $this->Tour->find('list',array('fields' => array('name','name')));
             if(!empty($tour)){
                 $this->set('destination', $destination);
                 $this->set('cities', $cities);
@@ -155,7 +159,7 @@ class ToursController extends AppController {
         $this->layout = 'tour';
         $this->loadModel('City');
         $cities = $this->City->find('list');
-        $destination = $this->Tour->find('list',array('fields' => array('place','place')));
+        $destination = $this->Tour->find('list',array('fields' => array('name','name')));
         $this->set('destination', $destination);
         $this->set('cities', $cities);
         $this->set('tour', $this->Tour->find('all'));
@@ -185,9 +189,9 @@ class ToursController extends AppController {
                     $type = "deals";
                 }
                 if (!empty($this->request->data['Tour']['img']['name'])){
-                    $filename = WWW_ROOT. DS . 'images'.DS. $type .DS.time().$this->data['Tour']['img']['name']; 
+                    $filename = WWW_ROOT.'images'.DS. $type .DS.time().str_replace(" ", "", $this->request->data['Tour']['img']['name']); 
                     move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
-                    $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().$this->request->data['Tour']['img']['name'];
+                    $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().str_replace(" ", "", $this->request->data['Tour']['img']['name']);
                 }
                 $hotels = $this->request->data['Tour']['hotel_id'];
                 if(!empty($hotels)){
@@ -270,9 +274,9 @@ class ToursController extends AppController {
                 $old_data=array_filter($this->request->data['Highlight']['name']['old']);
             }    
             if (!empty($this->request->data['Tour']['img']['name'])){
-                $filename = WWW_ROOT.'images'.DS. $type .DS.time().$this->data['Tour']['img']['name']; 
+                $filename = WWW_ROOT.'images'.DS. $type .DS.time().str_replace(" ", "", $this->request->data['Tour']['img']['name']); 
                 move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
-                $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().$this->request->data['Tour']['img']['name'];
+                $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().str_replace(" ", "", $this->request->data['Tour']['img']['name']);
             }else{
                 $this->request->data['Tour']['img'] = $Tour_data['Tour']['img'];
             }
@@ -357,6 +361,119 @@ class ToursController extends AppController {
         $delete=$this->Highlight->delete();
         exit;
         
+    }
+
+    public function getTourDetails($tour_data)
+    {
+        $this->loadModel('Place');
+        $this->loadModel('State');
+        $this->loadModel('City');
+        $this->loadModel('Hotel');
+        foreach ($tour_data as $main_key => $tour_value) {
+            if(!empty($tour_value['Tour']['city_id'])){
+                $cities = [];
+                $cityIds = explode(',', $tour_value['Tour']['city_id']);
+                $City_detail = $this->City->find('all',array('conditions' => array('City.id'=> $cityIds),'fields'=>array('City.id','City.name')));
+                foreach ($City_detail as $key => $city_value) {
+                   $cities[] = $city_value['City']['name'];
+                }
+                if(!empty($cities)){
+                    $tour_data[$main_key]['City']['name'] = implode(',', $cities);
+                }
+            }
+            if(!empty($tour_value['Tour']['state_id'])){
+                $states = [];
+                $state_Ids = explode(',', $tour_value['Tour']['state_id']);
+                $states_detail = $this->State->find('all',array('conditions' => array('State.id'=> $state_Ids),'fields'=>array('State.id','State.name')));
+                if(!empty($states_detail)){
+                    foreach ($states_detail as $key => $state_value) {
+                       $states[] = $state_value['State']['name'];
+                    }
+                    if(!empty($states)){
+                        $tour_data[$main_key]['State']['name'] = implode(',', $states);
+                    }
+                }
+            }
+            if(!empty($tour_value['Tour']['multi_hotel'])){
+                $hotels = [];
+                $hotelIds = explode(',', $tour_value['Tour']['multi_hotel']);
+                $hotel_detail = $this->Hotel->find('all',array('conditions' => array('Hotel.id'=> $hotelIds),'fields'=>array('Hotel.id','Hotel.name')));
+                foreach ($hotel_detail as $key => $hotel_value) {
+                   $hotels[] = $hotel_value['Hotel']['name'];
+                }
+                if(!empty($hotels)){
+                    $tour_data[$main_key]['Hotel']['name'] = implode(',', $hotels);
+                }
+            }
+            if(!empty($tour_value['Tour']['place_id'])){
+                $Places = [];
+                $placeIds = explode(',', $tour_value['Tour']['place_id']);
+                $Place_detail = $this->Place->find('all',array('conditions' => array('Place.id'=> $placeIds),'fields'=>array('Place.id','Place.name')));
+                foreach ($Place_detail as $key => $Place_value) {
+                   $Places[] = $Place_value['Place']['name'];
+                }
+                if(!empty($Places)){
+                    $tour_data[$main_key]['Place']['name'] = implode(',', $Places);
+                }
+            }
+            
+        }
+        return $tour_data;
+    }
+
+    public function getSingleDetails($tour_data='')
+    {
+        $this->loadModel('Place');
+        $this->loadModel('State');
+        $this->loadModel('City');
+        $this->loadModel('Hotel');
+        if(!empty($tour_data['Tour']['city_id'])){
+            $cities = [];
+            $cityIds = explode(',', $tour_data['Tour']['city_id']);
+            $City_detail = $this->City->find('all',array('conditions' => array('City.id'=> $cityIds),'fields'=>array('City.id','City.name')));
+            foreach ($City_detail as $key => $city_value) {
+               $cities[] = $city_value['City']['name'];
+            }
+            if(!empty($cities)){
+                $tour_data['City']['name'] = implode(',', $cities);
+            }
+        }
+        if(!empty($tour_data['Tour']['state_id'])){
+            $states = [];
+            $state_Ids = explode(',', $tour_data['Tour']['state_id']);
+            $states_detail = $this->State->find('all',array('conditions' => array('State.id'=> $state_Ids),'fields'=>array('State.id','State.name')));
+            if(!empty($states_detail)){
+                foreach ($states_detail as $key => $state_value) {
+                   $states[] = $state_value['State']['name'];
+                }
+                if(!empty($states)){
+                    $tour_data['State']['name'] = implode(',', $states);
+                }
+            }
+        }
+        if(!empty($tour_data['Tour']['multi_hotel'])){
+            $hotels = [];
+            $hotelIds = explode(',', $tour_data['Tour']['multi_hotel']);
+            $hotel_detail = $this->Hotel->find('all',array('conditions' => array('Hotel.id'=> $hotelIds),'fields'=>array('Hotel.id','Hotel.name')));
+            foreach ($hotel_detail as $key => $hotel_value) {
+               $hotels[] = $hotel_value['Hotel']['name'];
+            }
+            if(!empty($hotels)){
+                $tour_data['Hotel']['name'] = implode(',', $hotels);
+            }
+        }
+        if(!empty($tour_data['Tour']['place_id'])){
+            $Places = [];
+            $placeIds = explode(',', $tour_data['Tour']['place_id']);
+            $Place_detail = $this->Place->find('all',array('conditions' => array('Place.id'=> $placeIds),'fields'=>array('Place.id','Place.name')));
+            foreach ($Place_detail as $key => $Place_value) {
+               $Places[] = $Place_value['Place']['name'];
+            }
+            if(!empty($Places)){
+                $tour_data['Place']['name'] = implode(',', $Places);
+            }
+        }
+        return $tour_data;
     }
 
 }

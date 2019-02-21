@@ -62,10 +62,6 @@
                                                     echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
                                                     echo '</li>';
                                                 }
-                                                if($state_count == 1){
-                                                    echo '</li>';
-                                                    echo '</ul>';
-                                                }
                                                 $count++;   
                                             }elseif($count == 2){
                                                 echo '<li class="dropdown-header">';
@@ -88,14 +84,15 @@
                                                     echo $this->Html->link($name['name'], array('controller' => 'tours', 'action' => 'city_detail',$name['id']));
                                                     echo '</li>';       
                                                 }
-                                                if($state_count == 2){
-                                                    echo '</li>';
-                                                    echo '</ul>';
-                                                }
                                                 $count++;
                                             }
                                             } 
-                                        }   ?>
+                                        } 
+                                        if($state_count % 3 != 0){
+                                            echo '</li>';
+                                            echo '</ul>';
+                                    
+                                        } ?>
                                     </ul>
                                 </li>
                                 <li>
@@ -293,7 +290,7 @@
                                 </div>
                                 <div class="deal-content">
                                    <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
-                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['name']; ?></h2>
                                    <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
                                 </div>
                             </div>
@@ -309,7 +306,7 @@
                                 </div>
                                 <div class="deal-content">
                                    <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
-                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['name']; ?></h2>
                                    <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
                                 </div>
                             </a>    
@@ -325,7 +322,7 @@
                                 </div>
                                 <div class="deal-content">
                                    <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
-                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['name']; ?></h2>
                                    <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
                                 </div>
                             </a>   
@@ -341,7 +338,7 @@
                                 </div>
                                 <div class="deal-content">
                                    <label class="hotdeal-label">Starts from &#x20b9;<?php echo $hot['Tour']['price']; ?></label>
-                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['place']; ?></h2>
+                                   <h2 class="hotdeal-name"><?php echo $hot['Tour']['name']; ?></h2>
                                    <span class="hotdeal-days"><?php echo $hot['Tour']['days']; ?> Days</span>
                                 </div>
                             </a>    
@@ -400,61 +397,6 @@
         
     </section>
     <!--end deals-discounts-->
-    <!-- <section id="image_cards">
-        <ul id="elImageList">
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1547809526-d641162a6d7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1547809397-e2c7eea071fa?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1547808343-a2b9ca4bdba1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1547712407-657b35c945a9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1547192906-cbe9ea846725?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1546840207-3d1d487ef205?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1546234709-19651142a0f2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1545631421-43aabd0ee071?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1545463488-ed7b4513bb80?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-            <li class="item">
-                <a class="link">
-                    <img class="img" src="https://images.unsplash.com/photo-1545804571-2cac41b26118?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"/>
-                </a>
-            </li>
-        </ul>
-    </section> -->
-    <!-- Count Section-->
     <section class="count-section parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/bg/1.jpg);">
         <!-- <hr> -->
         <div class="container">
@@ -601,12 +543,19 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center" style="padding: 0px;">
+                        <h1 class="visible-title">Feedback</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel">
                         <!--TESTIMONIAL 1 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
+                                <img class="img-circle img" src="images/bg_img/testimonial/technical-support.png" alt="">
                                 <p>
                                     The telephone Customer service team was very
                                     supportive. Special mention about raj , who was
@@ -621,7 +570,7 @@
                         <!--TESTIMONIAL 2 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
+                                <img class="img-circle img" src="images/bg_img/testimonial/effort.png" alt="">
                                 <p>
                                     Many Thanks for your effort with me. Be sure for
                                     my coming trips it will be with you as i was very
@@ -636,7 +585,7 @@
                         <!--TESTIMONIAL 3 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
+                                <img class="img-circle img" src="images/bg_img/testimonial/help.png" alt="">
                                 <p>
                                     What ends well is well done. Thanks again for all
                                     the help.Looking forward for further
@@ -649,7 +598,7 @@
                         <!--TESTIMONIAL 4 -->
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle img" src="images/bg_img/download.png" alt="">
+                                <img class="img-circle img" src="images/bg_img/testimonial/sun-umbrella.png" alt="">
                                 <p>
                                     We are back from one of the most amazing
                                     vacations we've been on lately! It was indeed a

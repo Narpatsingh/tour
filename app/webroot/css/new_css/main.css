@@ -275,11 +275,20 @@ h2 {
   color: red;  
 }
 
-.user-menu .dropdown-toggle .img-circle{width:30px;height:30px;margin:0 5px 0 0}
+.user-menu .dropdown-toggle .img-circle{
+  width:30px;
+  height:30px;
+  margin:0 5px 0 0
+}
 
-.user-menu .dropdown-toggle{padding:10px}
+.user-menu .dropdown-toggle{
+  padding:10px
+}
 
-.img-circle{border-radius:50%}
+.img-circle{
+  border-radius: 20%;
+  border: 1px solid #340034;
+}
 
 .navbar-nav>.user-menu>.dropdown-menu:after{bottom:100%;right:10px;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none;border-color:rgba(255,255,255,0);border-bottom-color:#fff;border-width:10px;margin-left:-10px}.navbar-nav>.user-menu>.dropdown-menu>li.user-header{height:160px;padding:10px;background: #340034;text-align:center}.navbar-nav>.user-menu>.dropdown-menu>li.user-header>img{z-index:5;height:90px;width:90px;border:8px solid;border-color:transparent;border-color:rgba(255,255,255,.2)}.navbar-nav>.user-menu>.dropdown-menu>li.user-header>p{z-index:5;color:#340034;color:rgba(255,255,255,.8);font-size:17px;text-shadow:2px 2px 3px #333;margin-top:10px}.navbar-nav>.user-menu>.dropdown-menu>li.user-header>p>small{display:block;font-size:12px}
 

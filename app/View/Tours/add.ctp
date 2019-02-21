@@ -7,9 +7,15 @@ $this->assign('pagetitle', __('%s Tour', $dbOpration));
 $this->Custom->addCrumb(__('%s Tour', $dbOpration));
 
 $this->start('top_links');
-
 echo $this->Html->link(__('Back'), array('action' => 'index'), array('icon' => 'back', 'class' => 'btn btn-default', 'escape' => false));
 $this->end();
+echo $this->Html->script(
+    array(
+        'backend/ckeditor/ckeditor.js'
+    ), array('inline' => false)
+);
+echo $this->fetch('script');
+
 $photo = '';
 if (isset($this->request->data['Tour']['id'])) {
     $id = $this->request->data['Tour']['id'];
@@ -32,8 +38,8 @@ if (isset($this->request->data['Tour']['id'])) {
                         echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','multiple' => true,'options'=>$states, 'div' => array('class' => 'form-group')));
                         echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
                         echo $this->Form->input('place_id', array('tabindex' => 3,'placeholder' => __('Place'),'multiple' => true,'div' => array('class' => 'form-group')));
-                        echo $this->Form->input('description',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Description'), 'div' => array('class' => 'form-group required')));
-                        echo $this->Form->input('date_price',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Date Price'), 'div' => array('class' => 'form-group required')));
+                        echo $this->Form->input('description',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Description'), 'div' => array('class' => 'editor form-group required')));
+                        echo $this->Form->input('date_price',array('type'=>'textarea','class' => 'form-control','placeholder' => __('Enter Date Price'), 'div' => array('class' => 'editor form-group required')));
                         ?> 
                     </div>
                     <div class="col-md-6">
@@ -325,5 +331,11 @@ if (isset($this->request->data['Tour']['id'])) {
             }
         });        
     });
+
+    jQuery(document).ready(function () {
+        CKEDITOR.replace('TourDescription');
+        CKEDITOR.replace('TourDatePrice');
+    });
+
 
 </script>

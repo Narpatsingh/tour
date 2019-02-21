@@ -92,38 +92,44 @@ class EnquiriesController extends AppController {
         
         $this->layout = 'tour';
         if ($this->request->is('post')) {
-
-        $save_customer['name'] = $this->request->data['firstname'].' '.$this->request->data['lastname'];
-        $save_customer['email'] = $this->request->data['email'];
-        $save_customer['mobile'] = $this->request->data['mobile']; unset($this->request->data['firstname'],$this->request->data['lastname'],$this->request->data['mobile'],$this->request->data['email']);
-
-        $this->loadModel("Customer");
-        $this->Customer->create();
-        if ($this->Customer->save($save_customer)) {
-
-            $last_customer_id  = $this->Customer->getLastInsertID();
-            $this->Enquiry->create();
-            $this->request->data['customer_id'] = $last_customer_id;
-            $this->request->data['destination'] = $this->request->data['Enquiry']['city_id']; unset($this->request->data['Enquiry']);
-            if ($this->Enquiry->save($this->request->data)) {
-
-                //send mail to customer & admin
-                /*
-                 * #code here
-                 *   
-                */
-                $this->Message->setSuccess(__('Your Enquiry has been sent to admin, we will contact you soon!'));
-                return $this->redirect('/');
+            if(!empty($this->request->data['travel_date'])){
+                $date = new DateTime($this->request->data['travel_date']);
+                $this->request->data['travel_date'] = $date->format('Y-m-d H:i:s');
             }
+            $save_customer['name'] = $this->request->data['firstname'].' '.$this->request->data['lastname'];
+            $save_customer['email'] = $this->request->data['email'];
+            $save_customer['mobile'] = $this->request->data['mobile']; unset($this->request->data['firstname'],$this->request->data['lastname'],$this->request->data['mobile'],$this->request->data['email']);
+
+            $this->loadModel("Customer");
+            $this->Customer->create();
+            if ($this->Customer->save($save_customer)) {
+
+                $last_customer_id  = $this->Customer->getLastInsertID();
+                $this->Enquiry->create();
+                $this->request->data['customer_id'] = $last_customer_id;
+                $this->request->data['destination'] = $this->request->data['Enquiry']['city_id']; unset($this->request->data['Enquiry']);
+                //debug($this->request->data);exit;
+                if ($this->Enquiry->save($this->request->data)) {
+
+                    //send mail to customer & admin
+                    /*
+                     * #code here
+                     *   
+                    */
+                    $this->Message->setSuccess(__('Your Enquiry has been sent to admin, we will contact you soon!'));
+                    return $this->redirect('/');
+                }
                 else {
-                $this->Message->setWarning(__('The Enquiry could not be saved. Please, try again.'));
-                return $this->redirect('/');
+                    $this->Message->setWarning(__('The Enquiry could not be saved. Please, try again.'));
+                    return $this->redirect('/');
                 }
             }else {
                 $this->Message->setWarning(__('The Enquiry could not be saved. Please, select Enquiry type.'));
                 return $this->redirect('/');
             }
-        }else{return $this->redirect('/');}
+        }else{
+            return $this->redirect('/');
+        }
         $this->set('dbOpration',"Add");
         $this->render('/Users/dashboard');
     }

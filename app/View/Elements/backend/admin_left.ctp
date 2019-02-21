@@ -23,6 +23,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('hotels')) ?>">
                     <?php echo $this->Html->link(__('Hotel Management'),array('controller' => 'hotels', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('hotelBookings')) ?>">
+                    <?php echo $this->Html->link(__('Hotel Bookings'),array('controller' => 'hotelBookings', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
+                </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('tours')) ?>">
                     <?php echo $this->Html->link(__('Tour Management'),array('controller' => 'tours', 'action' => 'index'), array('icon' => 'fa fa-plane ')) ?>
                 </li>

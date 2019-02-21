@@ -6,6 +6,11 @@ $this->Custom->addCrumb(__('%s Place',$type));
 $this->start('top_links');
 echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
 $this->end();
+$photo = '';
+if (isset($this->request->data['Place']['id'])) {
+    $id = $this->request->data['Place']['id'];
+    $photo = isset($this->request->data['Place']['photo']) ? $this->request->data['Place']['photo'] : '';
+}
 ?>
 <div class="box box-primary">
 	<div class="overflow-hide-break">
@@ -16,8 +21,21 @@ $this->end();
 			echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
             echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			?><label class="form-group" style="margin-bottom: 10px">Place</label><div class="form-group row"><div id='photoId' class='col-md-4'><?php echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
-			<?php echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', 'before' => '<label for="PlacePhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo', 'div' => array('class' => 'col-md-10'))) ?><div for='PlacePhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div>
+			?>
+			<label class="form-group" style="margin-bottom: 10px">Place Photo</label>
+			<div class="form-group row">
+				<div id='photoId' class='col-md-4'>
+					<?php if(!empty($photo)){
+						echo $this->Html->image(PLACE_IMAGE.$id.'/'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+					}else{
+						echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+					}?>
+				</div>
+				<?php echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', /*'before' => '<label for="PlacePhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo',*/ 'div' => array('class' => 'col-md-10'))) ?>
+				<div for='PlacePhoto' generated='true' class='error' style='display: none'>
+					<span class="errorDV"> </span>
+				</div>
+			</div>
 			
 		</div>
 		<div class="form-action">
@@ -30,14 +48,12 @@ $this->end();
 			'Rules' => array(
 				'city_id' => array('required' => 1),
 				'state_id' => array('required' => 1),
-				'photo' => array('required' => 1),
 				'name' => array('required' => 1),
 
 			),
 			'Messages' => array(
 				'city_id' => array('required' => __('Please enter City Id')),
 				'state_id' => array('required' => __('Please enter State Id')),
-				'photo' => array('required' => __('Please enter Photo')),
 				'name' => array('required' => __('Please enter Name')),
 			));
 		

@@ -180,4 +180,16 @@ public function get_hotel_data($id){
         }else{return $this->redirect('/');}
     }
 
+    public function get_hotel($id = null) {
+        if ($this->request->is('ajax')) {        
+            $this->layout = false;
+            $this->render = false;
+            $Hotel = $this->Hotel->find('list',array('conditions' => array('city_id'=> $id)));
+            echo json_encode($Hotel);
+            exit;
+        }else{  
+            return $this->redirect('/'); 
+        } 
+    }    
+
 }

@@ -183,12 +183,16 @@
             autoclose: true
         });
         $('#BookingCustomerDateOfBirth').datepicker({
-            //format: "yyyy-mm-dd",
-            yearRange: "-20:+0", // this is the option you're looking for
-		    showOn: "both", 
-		    buttonImage: "templates/images/calendar.gif", 
-		    buttonImageOnly: true, 
-            //autoclose: true
+           	format: "yyyy-mm-dd",
+            autoclose: true,
+            beforeShow: function (input, inst) {
+		        setTimeout(function () {
+		            inst.dpDiv.css({
+		                top: $("#BookingCustomerDateOfBirth").offset().top + 40,
+		                left: $("#BookingCustomerDateOfBirth").offset().left
+		            });
+		        }, 0);
+		    },
         });
         $('#BookingCustomerTourDate').datepicker({
             format: "yyyy-mm-dd",

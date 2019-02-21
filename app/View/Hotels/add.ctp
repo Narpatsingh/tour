@@ -6,6 +6,10 @@
     $this->start('top_links');
     echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
     $this->end();
+    $photo = '';
+    if (isset($this->request->data['Hotel']['id'])) {
+        $photo = isset($this->request->data['Hotel']['photo']) ? $this->request->data['Hotel']['photo'] : '';
+    }
     ?>
     <div class="box box-primary">
     	<div class="overflow-hide-break">
@@ -19,11 +23,24 @@
     			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
     			echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
     			?>
-    			<label class="form-group" style="margin-bottom: 10px">Hotel</label><div class="form-group row"><div id='photoId' class='col-md-4'><?php echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div><?php 		echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', 'before' => '<label for="HotelPhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo', 'div' => array('class' => 'col-md-10'))) ?><div for='HotelPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div>
+                <label class="form-group" style="margin-bottom: 10px">Hotel Photo</label>
+                <div class="form-group row">
+                    <div id='photoId' class='col-md-4'>
+                        <?php if(!empty($photo)){
+                            echo $this->Html->image('../'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+                        }else{
+                            echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+                        }?>
+                    </div>
+                    <?php echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', /*'before' => '<label for="PlacePhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo',*/ 'div' => array('class' => 'col-md-10'))) ?>
+                    <div for='PlacePhoto' generated='true' class='error' style='display: none'>
+                        <span class="errorDV"> </span>
+                    </div>
+                </div>
                 <?php
                 echo $this->Form->input('type',array('label' => __('Type'), 'class' => 'form-control','options'=>$types,'empty' => __('Select Star'), 'div' => array('class' => 'form-group required')));
                 echo $this->Form->input('meal_plan',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-    			?>
+                ?>
     		</div>
     		<div class="form-action">
     			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
@@ -36,7 +53,6 @@
     				'name' => array('required' => 1),
     				'price' => array('required' => 1),
     				'address' => array('required' => 1),
-    				'photo' => array('required' => 1),
     				'type' => array('required' => 1),
     				'meal_plan' => array('required' => 1),
 
@@ -45,7 +61,6 @@
     				'name' => array('required' => __('Please enter Name')),
     				'price' => array('required' => __('Please enter Price')),
     				'address' => array('required' => __('Please enter Address')),
-    				'photo' => array('required' => __('Please enter Photo')),
     				'type' => array('required' => __('Please enter Type')),
     				'meal_plan' => array('required' => __('Please enter Meal Plan')),));
 

@@ -34,29 +34,28 @@
         <div class="modal-dialog">
             <button type="button" class="close" data-dismiss="modal" style="padding: 10px;">&times;</button>
             <div class="modal-header Enquiry_header">
-              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-              <h4 class="modal-title">Quick Enquiry</h4>
-              <h5 class="modal-title">Can't find what you are looking for? Send us an enquiry and we will get in touch with you in 1 day.</h5>
+                <h4 class="modal-title">Quick Enquiry</h4>
+                <h5 class="modal-title">Can't find what you are looking for? Send us an enquiry and we will get in touch with you in 1 day.</h5>
             </div>
             <div class="modal-body bg-white audit-scroll">
                     <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add')); ?>
 
-                            <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
-                                <input type="text" data-role="none" name="date"  id="travel_date" placeholder="Date" class="mr-3 mb-3">
-                                <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3">
-                                <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3">
-                                <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mb-3">
-                                <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
-                                <?php echo $this->Form->input('package_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Package'), 'div' => false)); ?>
-                                <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements"></textarea>
-                            </div>
-                            <div class="contact_detail mt-3 mb-3 px-3 py-3">
-                                <p class="font-bold">Your Contact Detail</p>
-                                <input type="text" data-role="none" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
-                                <input type="text" data-role="none" name="lastname" placeholder="Last name" class="mb-3" required>
-                                <input type="number" data-role="none" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
-                                <input type="email" data-role="none" name="email" placeholder="Email" class=" mb-3" required>
-                            </div>  
+                    <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
+                        <input type="text" data-role="none" name="travel_date"  id="travel_date" placeholder="Travel Date" class="mr-3 mb-3">
+                        <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3">
+                        <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3">
+                        <!-- <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mb-3"> -->
+                        <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
+                        <?php echo $this->Form->input('destination',array('label' => false,'type'=>'select','data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Package'), 'div' => false)); ?>
+                        <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements"></textarea>
+                    </div>
+                    <div class="contact_detail mt-3 mb-3 px-3 py-3">
+                        <p class="font-bold">Your Contact Detail</p>
+                        <input type="text" data-role="none" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
+                        <input type="text" data-role="none" name="lastname" placeholder="Last name" class="mb-3" required>
+                        <input type="number" data-role="none" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
+                        <input type="email" data-role="none" name="email" placeholder="Email" class=" mb-3" required>
+                    </div>  
                 
              </div>     
              <div class="modal-footer bg-white">
@@ -93,18 +92,18 @@
     </footer>
 
 <script type="text/javascript">
-       $("#time_of_travel").datepicker( {
-        format: "MM-yyyy",
-        viewMode: "months", 
-        minViewMode: "months"
+        $("#time_of_travel").datepicker( {
+            format: "MM-yyyy",
+            viewMode: "months", 
+            minViewMode: "months"
         });
 
-       $("#travel_date").datepicker( {
-            format: "dd-MM-yyyy",
+        $("#travel_date").datepicker( {
+            format: "yyyy-M-dd",
         });
 
         jQuery('.EnquiryBtn').on('click', function (e) {
-                $('#commonModel').modal('show');
+            $('#commonModel').modal('show');
         });
         
     // $(document).ready(function(){
@@ -144,10 +143,29 @@
     //             form.submit();
     //         }
     //     });     
-    // });         
-   
-    
-</script>  
+    // });     
+    var BaseUrl = '<?php echo $this->Html->url('/', true) ?>';
+    $("#EnquiryCityId").on('change',function() {
+        var id = $(this).val();
+        jQuery.ajax({
+            url: BaseUrl + 'citys/get_tours/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (html) {
+                $("#EnquiryDestination option").remove();
+                $('#EnquiryDestination').append($("<option></option>").attr("value","").text("Select Package"));
+                $.each(html, function(key, value) {
+                    $('<option>').val('').text('select');
+                    $('<option>').val(key).text(value).appendTo($("#EnquiryDestination"));
+                });
+            },
+            error: function (e) {
+
+            }
+        });
+    });
+</script>      
+ 
 <style type="text/css">
     /*div.error{
         margin-right: 15px;
