@@ -27,7 +27,7 @@
                 <div class="form-group row">
                     <div id='photoId' class='col-md-4'>
                         <?php if(!empty($photo)){
-                            echo $this->Html->image('../'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+                            echo $this->Html->image('../'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'width: 300px;height: 220px;'));
                         }else{
                             echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
                         }?>

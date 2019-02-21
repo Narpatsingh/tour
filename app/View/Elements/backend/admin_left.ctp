@@ -23,14 +23,17 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('hotels')) ?>">
                     <?php echo $this->Html->link(__('Hotel Management'),array('controller' => 'hotels', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
-                <li class="<?php echo $this->Html->getActiveOpenClass(array('hotelBookings')) ?>">
-                    <?php echo $this->Html->link(__('Hotel Bookings'),array('controller' => 'hotelBookings', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
-                </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('tours')) ?>">
                     <?php echo $this->Html->link(__('Tour Management'),array('controller' => 'tours', 'action' => 'index'), array('icon' => 'fa fa-plane ')) ?>
                 </li>
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('customers')) ?>">
                     <?php echo $this->Html->link(__('Customer Management'),array('controller' => 'customers', 'action' => 'index'), array('icon' => 'fa-user ')) ?>
+                </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('enquiries')) ?>">
+                    <?php echo $this->Html->link(__('Enquiries Management'),array('controller' => 'enquiries', 'action' => 'index'), array('icon' => 'fa-pencil ')) ?>
+                </li>  
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('hotelBookings')) ?>">
+                    <?php echo $this->Html->link(__('Hotel Bookings'),array('controller' => 'hotelBookings', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
                 <li class="treeview <?php echo $this->Html->getActiveClass(array('bus_details','train_details','flight_details'),array('index','add','edit','view'), 'all') ?>">
                     <?php echo $this->Html->link('Travel Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa fa-plane')); ?>
@@ -49,21 +52,18 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                         </li>                                               
                     </ul>
                 </li> 
-                <li class="<?php echo $this->Html->getActiveOpenClass(array('enquiries')) ?>">
-                    <?php echo $this->Html->link(__('Enquiries Management'),array('controller' => 'enquiries', 'action' => 'index'), array('icon' => 'fa-pencil ')) ?>
-                </li>  
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('bookings')) ?>">
                     <?php echo $this->Html->link(__('Booking Management'),array('controller' => 'bookings', 'action' => 'index'), array('icon' => 'fa-file ')) ?>
                 </li>
-                <li class="<?php echo $this->Html->getActiveOpenClass(array('contacts')) ?>">
-                    <?php echo $this->Html->link(__('Contact Management'),array('controller' => 'contacts', 'action' => 'index'), array('icon' => 'fa-phone ')) ?>
-                </li>                
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('accounts')) ?>">
                     <?php echo $this->Html->link(__('Finance Management'),array('controller' => 'accounts', 'action' => 'index'), array('icon' => 'fa-tachometer ')) ?>
                 </li>               
-				<li class="<?php echo $this->Html->getActiveOpenClass(array('')) ?>">
-					<?php echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
-				</li>				
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('contacts')) ?>">
+                    <?php echo $this->Html->link(__('Contact Management'),array('controller' => 'contacts', 'action' => 'index'), array('icon' => 'fa-phone ')) ?>
+                </li>                
+				<!-- <li class="<?php //echo $this->Html->getActiveOpenClass(array('')) ?>">
+					<?php //echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
+				</li> -->				
             <?php endif; ?>    
 
             <li class="<?php echo $this->Html->getActiveClass(array('users'), 'logout') ?>">
