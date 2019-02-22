@@ -1,114 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
 <?php
 $siteUrl = Router::url('/', true);
-
 ?>
 <html>
     <head>
-        <title><?php echo $this->fetch('title'); ?></title>
-    </head>
-    <body>
-        <div>
-            <div style="overflow: hidden;">
-                <div dir="ltr">
-                    <div style="font-family:verdana,sans-serif;font-size:small;color:#000000"><br></div>
-                    <div>
-                        <div style="background-color:#ffffff">
-                            <table align="center" width="600" style="margin:20px auto;padding:20px 0;border-collapse:collapse">
-                                <tbody>
-                                    <tr>
-                                        <td style="margin:0;padding:0"></td>
-                                        <td bgcolor="#FFFFFF" style="margin:0 auto;padding:0;border:1px solid #d5d5d5;display:block;max-width:600px;clear:both">
-                                            <table bgcolor="#000" style="margin:0;padding:0;width:100%;border-bottom:1px solid #d5d5d5">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="margin:0;padding:0"></td>
-                                                        <td style="margin:0;padding:10px 20px 10px 10px">
-                                                            <table style="margin:0;padding:0;width:100%">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td width="170" style="margin:0;padding:0;color:#fff;font-size:12px">
-                                                                            <?php
-																				echo $this->Html->link($this->Html->image($siteUrl . 'img/logo.png', array('width' => '170', 'alt' => Configure::read('Site.Name'), 'style' => 'max-width:100%')), array('controller' => 'users', 'action' => 'login'), array('escape' => false, 'title' => Configure::read('Site.Name'), 'style' => 'color:#fff', 'target' => '_blank'));
-                                                                            ?>
-                                                                        </td>
-                                                                        <td align="right" style="margin:0;padding:0;font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;color:#777777;font-size:12px;line-height:14px;">
-                                                                            <?php
-                                                                            echo date('jS F Y');
+        <title>Test</title>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width">
+                <style type="text/css"> /* CLIENT-SPECIFIC STYLES */ /* Force Outlook to provide a "view in browser" message */ #outlook a{padding:0;} /* Force Hotmail to display emails at full width */ .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display normal line spacing */ .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */ body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Remove spacing between tables in Outlook 2007 and up */ table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Allow smoother rendering of resized image in Internet Explorer */ img{-ms-interpolation-mode:bicubic;} /* RESET STYLES */ body{margin:0; padding:0;} img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;} table{border-collapse:collapse !important;} body{height:100% !important; margin:0; padding:0; width:100% !important;} /* iOS BLUE LINKS */ .appleBody a {color:#50a1ff; text-decoration: none;} .appleFooter a {color:#999999; text-decoration: none;} div.preheader { display: none !important; } /* MOBILE STYLES */ @media screen and (max-width: 480px) {.table_shrink  {width:95% !important;} .hero {width: 100% !important;} .appleBody a {color:#333333; text-decoration: none;} } </style>
+            </head>
+            <body>
+                <div class="preheader" style="font-size: 1px; display: none !important;">Quick Enquiry</div>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink" style="border-radius: 10px; "  align="center">
+                    <tr>
+                        <td>
+                            <table width="520" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink"  align="center">
+                                <tr>
+                                    <td>
+                                        <table width="520" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink"  align="center">
+                                            <tr>
+                                                <td valign="top" style="padding-top: 10px; font-family:Helvetica neue, Helvetica, Arial, Verdana, sans-serif; color: #5a5757; line-height: 40px; text-align:left; font-weight:bold;font-size: 12px; line-height: 16px;" align="middle">
+                                                    <p>Dear Guest,
+                                                    
+                                                    </br>
+                                                </br> Greetings from SilShine Trip…!!
+                                            
+                                            </br>
+                                            <?php
+                                            if (!empty($isFromView)):
+                                                echo '{BODY}';
+                                            else:
+                                                echo $this->fetch('content');
+                                            endif;
 
-                                                                            ?>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                        <td style="margin:0;padding:0"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <table style="margin:0;padding:0;width:100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="margin:0;padding:10px 15px 10px;color:#777;font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif">
-                                                            <?php
-                                                            if (!empty($isFromView)):
-                                                                echo '{BODY}';
-                                                            else:
-                                                                echo $this->fetch('content');
-                                                            endif;
-
-                                                            ?>
-													    </td>
-                                                    </tr>
-													<tr>
-                                                        <td style="margin:0;padding:10px 15px 10px;color:#777;font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif">
-                                                    		--<br>
-															Thanks and Regards,<br>
-															<?php echo Configure::read("Site.Name")?><br>
-															<?php echo Configure::read("Site.Url")?><br>													
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td style="margin:0;padding:0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="margin:0;padding:0"></td>
-                                        <td style="text-align:center;clear:both;max-width:600px;display:block;padding:0px;margin:0px auto">
-                                            <img width="100%" src="<?php echo $siteUrl . 'img/email_shadow.png' ?>">
-                                        </td>
-                                        <td style="margin:0;padding:0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="margin:0;padding:0"></td>
-                                        <td align="center" style="clear:both;max-width:600px;display:block;padding:0px;margin:0px auto;color:#aaaaaa;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif">
-                                            <p style="margin-bottom:10px;font-weight:normal;font-size:12px">
-                                                Questions? Please do not reply to this email; responses are not monitored. If you have questions, please use the contact information above.                                    
-                                            </p>
-                                        </td>
-                                        <td style="margin:0;padding:0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="margin:0;padding:0"></td>
-                                        <td align="center" style="clear:both;max-width:600px;display:block;padding:0px;margin:0px auto;color:#aaaaaa;font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif">
-                                            <p style="margin-bottom:10px;font-weight:normal;font-size:12px">
-                                                Copyright © <?php echo date('Y'); ?> <?php echo Configure::read('Site.Name'); ?>. All Rights Reserved.
-                                            </p>
-                                        </td>
-                                        <td style="margin:0;padding:0"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-		<style>
-			table {border-collapse: collapse;}
-			th, td {border: 1px solid #d5d5d5;padding:5px;}
-		</style>
-    </body>
-</html>
+                                            ?>
+                            </br>
+                        </br> In case of any changes, please contact your travel advisor (Minesh Pisolkar &amp; 8733897945) or the SilShine trip toll-free number 8758368590 immediately.
+                    
+                    </br>
+                </br> Thank you and have a nice day!
+            
+            </br>
+        </br> SilShine Trip
+    
+    </br>
+</br> Here is booking form Attached</br></br></p></td></tr><tr><td valign="top" style="padding-top: 10px; font-family:Helvetica neue, Helvetica, Arial, Verdana, sans-serif; color: #999; line-height: 40px; text-align:left; font-weight:bold;font-size: 12px; line-height: 16px;" align="middle"><p>--<br /> Thanks and Regards,<br /> Team SilShine <br /> http://silshinetrip.com </p></td></tr><tr><td style="color:#cccccc;" valign="top"><hr color="cccccc" size="1"></td></tr><tr><td valign="top" style=" font-family: Helvetica, Helvetica neue, Arial, Verdana, sans-serif; color: #707070; font-size: 12px; line-height: 18px; text-align:center; font-weight:none;" align="center"> Copyright © <?=date('Y')?> SilShine Trip. All Rights Reserved </td></tr></table></td></tr></table></td></tr></table></body></html>

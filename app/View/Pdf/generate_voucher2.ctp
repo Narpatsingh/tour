@@ -4,9 +4,9 @@ $app = APP.'webroot/img/pdf_logo.jpg';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 061');
-$pdf->SetSubject('TCPDF Tutorial');
+$pdf->SetAuthor('Silshine');
+$pdf->SetTitle('Silshine Invoice');
+$pdf->SetSubject('Silshine');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // remove default header/footer
@@ -322,11 +322,9 @@ $html = <<<EOF
 	<br>
 	<br>
 	<br>
-	<br>
-
 
 Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
-	<br><br>
+	<br>
 Company  Signature :  <b><i><u>$company_signature</u>.</i></b> 
 EOF;
 

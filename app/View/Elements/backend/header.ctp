@@ -2,7 +2,7 @@
 <header class="header">
     <div class="setCenterText">
         <?php echo "Under Construction Mode:";?>
-        <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" class="pull_right">
+        <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" class="pull_right construction">
         <input type="hidden" id="activeStatus" value='<?php echo Configure::read("Site.Status"); ?>'/></td>
     </div>
 
@@ -74,18 +74,21 @@
 </header>
 <script>
   $(function() {
+    var old_status = "<?php echo Configure::read("Site.Status"); ?>";
     $('#toggle-event').change(function() {
         $('#console-event').html('Toggle: ' + $(this).prop('checked'));
         var status = $(this).prop('checked');
-        jQuery.ajax({
-            url : '<?php echo Router::url(array('controller' => 'users', 'action' => 'site_status'), true);?>/' + status,
-            type: 'post',
-            success: function (response) {
-                
-            },
-            error: function (e) {
-            }
-        });
+        if(JSON.parse(old_status) != status){
+            old_status = status.toString();
+            jQuery.ajax({
+                url : '<?php echo Router::url(array('controller' => 'users', 'action' => 'site_status'), true);?>/' + status,
+                type: 'post',
+                success: function (response) {
+                },
+                error: function (e) {
+                }
+            });
+        }
     })
   });
 $(document).ready(function() {

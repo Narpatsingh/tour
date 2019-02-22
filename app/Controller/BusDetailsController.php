@@ -118,7 +118,7 @@ public function add() {
             $voucher['invoice_no'] = $invoice_no;
             $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
             $account_data['ac_type'] = 'bus';
-            $account_data['payment_recieved'] = $voucher['payment_recieved'] = 5000;
+            $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
             $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
             $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();
@@ -128,6 +128,10 @@ public function add() {
             $this->set(compact('voucher'));
             $this->layout = 'pdf';
             $this->render('/Pdf/tour_receipt');
+            $arrData['Customer']['text'] = 'BUS '. $this->request->data['BusDetail']['pnr_no'];
+            $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['booking_type'] = 'Bus Ticket';
+            $this->sendNewFormateMail($arrData);
             return $this->redirect(array('action' => 'index'));
         } else {
             $this->Message->setWarning(__('The bus detail could not be saved. Please, try again.'));

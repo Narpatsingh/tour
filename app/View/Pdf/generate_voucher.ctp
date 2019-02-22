@@ -266,11 +266,9 @@ $html = <<<EOF
 	<br>
 	<br>
 	<br>
-	<br>
-
 
 Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
-	<br><br>
+	<br>
 Company  Signature :  <b><i><u>$company_signature</u>.</i></b> 
 </body>
 EOF;

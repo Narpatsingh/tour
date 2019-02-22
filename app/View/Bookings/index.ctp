@@ -118,7 +118,7 @@ $this->end();
                                         ), __('Are you sure you want to reject selected booking?'));                                    
                         endif;
                         if(!empty($booking['Booking']['is_approved']) && $booking['Booking']['is_approved']=='Yes'):
-                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['ac_id'],$booking['Booking']['invoice_no'].'.pdf'),
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $booking['Booking']['ac_id'].'/'.$booking['Booking']['invoice_no'].'.pdf'),
                                         array(
                                             'icon' => 'fa-file',
                                             'target'=>'_blank',

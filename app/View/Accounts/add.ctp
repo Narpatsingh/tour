@@ -50,6 +50,9 @@
                     <label for="ReceivablePaymentAmount">Payment Receivable</label>
                     <span class="form-control" disabled="disabled" id="ReceivablePaymentAmount"> <?php echo $this->request->data['Account']['payment_receivable'] ?> </span>
                 </div>
+                <div class="form-group col-md-6">
+                <?php echo $this->Form->input('generate_receipt',array('type'=>'checkbox')); ?>
+                </div>
     		</div>
     		<div class="form-action">
     			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>

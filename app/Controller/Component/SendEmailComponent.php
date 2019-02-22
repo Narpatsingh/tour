@@ -88,6 +88,27 @@
             $this->send($to, $subject, $body);
         }
 
+        function sendBusDetailsEmail($arrData)
+        {
+            $emailTemplete = $this->_getTemplate('bus_booking');
+            if (empty($emailTemplete) || empty($arrData['email'])) {
+                return false;
+            }
+            $replacement = array(
+                '{PNR_NO}' => isset($arrData['pnr_no']) ? ucfirst($arrData['pnr_no']) : '',
+                '{SOURCE}' => isset($arrData['source']) ? ucfirst($arrData['source']) : '',
+                '{DESTINATION}' => isset($arrData['Destination']) ? ucfirst($arrData['Destination']) : '',
+                '{SITE_NAME}' => Configure::read('Site.Name'),
+                '{SITE_URL}' => Router::url('/', true),
+            );
+            $emailTemplete['body'] = str_replace(array_keys($replacement), array_values($replacement),
+                $emailTemplete['body']);
+            $emailTemplete['subject'] = str_replace(array_keys($replacement), array_values($replacement),
+                $emailTemplete['subject']);
+
+            $this->send($arrData['email'], $emailTemplete['subject'], $emailTemplete['body']);
+        }
+        
         function send($to, $subject, $body, $cc = array(), $attachment = '') {
 
             if (is_array($to)) {

@@ -33,6 +33,7 @@ $this->Custom->addCrumb(__('Accounts'));
                 <tr>
                     <th><?php echo 'Srno'; ?></th>
                     <th><?php echo $this->Paginator->sort('customer_name','Customer Name'); ?></th>
+                    <th><?php echo $this->Paginator->sort('customer_tour_name','Tour Name'); ?></th>
                     <th><?php echo $this->Paginator->sort('ac_type','Type'); ?></th>
                     <th><?php echo $this->Paginator->sort('payment_amount'); ?></th>
                     <th><?php echo $this->Paginator->sort('total_payment_with_gst'); ?></th>
@@ -54,6 +55,7 @@ $this->Custom->addCrumb(__('Accounts'));
                          <?php echo $srno++; ?>
                      </td>
                      <td><?php echo h($account['Account']['customer_name']); ?>&nbsp;</td>
+                     <td><?php echo empty($account['Voucher']['customer_tour_name'])?'N/A':$account['Voucher']['customer_tour_name']; ?>&nbsp;</td>
                      <td><?php echo h(Inflector::humanize($account['Account']['ac_type'])); ?>&nbsp;</td>
                      <td><?php echo h($account['Account']['payment_amount']); ?>&nbsp;</td>
                      <td><?php echo h($account['Account']['total_payment_with_gst']); ?>&nbsp;</td>
