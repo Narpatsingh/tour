@@ -60,7 +60,7 @@ public function index($all = null) {
         'order' => ' Account.id DESC',
         'conditions' => $conditions
     ));
-    $ac_types = array('bus'=>'Bus','tour'=>'Tour','car'=>'Car','flight'=>'Flight','train'=>'Train');
+    $ac_types = array('bus'=>'Bus','tour'=>'Tour','car'=>'Car','flight'=>'Flight','train'=>'Train','hotel'=>'Hotel');
     $this->set(compact('ac_types'));
     $this->loadModel('Account');
     $this->set('accounts', $this->paginate('Account'));
@@ -121,6 +121,11 @@ public function edit($id = null) {
         }
 
         if ($this->Account->save($this->request->data)) {
+
+            if(!empty($this->request->data['Account']['generate_receipt'])){
+                echo "HERE"; exit;
+            }
+
             $this->Message->setSuccess(__('The account has been updated.'));
             return $this->redirect(array('action' => 'index'));
         } else {

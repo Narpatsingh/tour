@@ -115,6 +115,11 @@ public function add() {
         $voucher['payment_type'] = 'cash';
         $voucher['redirect'] = 'train_details';
         $voucher['invoice_no'] = $invoice_no;
+        $voucher['train_no'] = $this->request->data['TrainDetail']['train_no'];
+        $voucher['source'] = $this->request->data['TrainDetail']['source'];
+        $voucher['destination'] = $this->request->data['TrainDetail']['destination'];
+        $voucher['pnr_no'] = $this->request->data['TrainDetail']['pnr_no'];
+        $voucher['company_name'] = $this->request->data['TrainDetail']['company_name'];        
         $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
         $account_data['ac_type'] = 'train';
         $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
@@ -126,8 +131,12 @@ public function add() {
         $this->Message->setSuccess(__('The train detail has been saved.'));
         $this->set(compact('voucher'));
         $this->layout = 'pdf';
-        $this->render('/Pdf/tour_receipt');            
-            
+        $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
+        $this->render('/Pdf/train_receipt');            
+            $arrData['Customer']['text'] = 'Train '. $this->request->data['TrainDetail']['pnr_no'];
+            $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['booking_type'] = 'Train Ticket';
+            $this->sendNewFormateMail($arrData,'Train Booking',$pdfpath);            
             return $this->redirect(array('action' => 'index'));
         } else {
             $this->Message->setWarning(__('The train detail could not be saved. Please, try again.'));

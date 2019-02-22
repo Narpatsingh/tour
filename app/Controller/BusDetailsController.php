@@ -116,6 +116,11 @@ public function add() {
             $voucher['payment_type'] = 'cash';
             $voucher['redirect'] = 'bus_details';
             $voucher['invoice_no'] = $invoice_no;
+            $voucher['bus_no'] = $this->request->data['BusDetail']['bus_no'];
+            $voucher['source'] = $this->request->data['BusDetail']['source'];
+            $voucher['destination'] = $this->request->data['BusDetail']['destination'];
+            $voucher['pnr_no'] = $this->request->data['BusDetail']['pnr_no'];
+            $voucher['company_name'] = $this->request->data['BusDetail']['company_name'];
             $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
             $account_data['ac_type'] = 'bus';
             $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
@@ -127,11 +132,12 @@ public function add() {
             $this->Message->setSuccess(__('The bus detail has been saved.'));
             $this->set(compact('voucher'));
             $this->layout = 'pdf';
-            $this->render('/Pdf/tour_receipt');
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
+            $this->render('/Pdf/bus_receipt');
             $arrData['Customer']['text'] = 'BUS '. $this->request->data['BusDetail']['pnr_no'];
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
             $arrData['Customer']['booking_type'] = 'Bus Ticket';
-            $this->sendNewFormateMail($arrData);
+            $this->sendNewFormateMail($arrData,'Bus Booking',$pdfpath);
             return $this->redirect(array('action' => 'index'));
         } else {
             $this->Message->setWarning(__('The bus detail could not be saved. Please, try again.'));

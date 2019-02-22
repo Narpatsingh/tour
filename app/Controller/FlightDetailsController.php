@@ -117,6 +117,11 @@ public function add() {
         $voucher['payment_type'] = 'cash';
         $voucher['redirect'] = 'flight_details';
         $voucher['invoice_no'] = $invoice_no;
+        $voucher['flight_no'] = $this->request->data['FlightDetail']['flight_no'];
+        $voucher['source'] = $this->request->data['FlightDetail']['source'];
+        $voucher['destination'] = $this->request->data['FlightDetail']['destination'];
+        $voucher['pnr_no'] = $this->request->data['FlightDetail']['pnr_no'];
+        $voucher['company_name'] = $this->request->data['FlightDetail']['company_name'];        
         $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
         $account_data['ac_type'] = 'flight';
         $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
@@ -128,7 +133,13 @@ public function add() {
         $this->Message->setSuccess(__('The flight detail has been saved.'));
         $this->set(compact('voucher'));
         $this->layout = 'pdf';
-        $this->render('/Pdf/tour_receipt');            
+        $this->render('/Pdf/flight_receipt');            
+        $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
+        $arrData['Customer']['text'] = 'Flight '. $this->request->data['FlightDetail']['pnr_no'];
+        $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+        $arrData['Customer']['booking_type'] = 'Flight Ticket';
+        $this->sendNewFormateMail($arrData,'Flight Booking',$pdfpath);
+
         return $this->redirect(array('action' => 'index'));
 
         } else {

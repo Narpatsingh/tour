@@ -1,4 +1,14 @@
--- --------------------------------------------------------
+----------------------------------------------------------
+
+21-02-2019 ~ Ajay
+ G:\xampp\htdocs\tour_management\app\View\Accounts\index.ctp
+ G:\xampp\htdocs\tour_management\app\View\Accounts\add.ctp
+ G:\xampp\htdocs\tour_management\app\Controller\AccountsController.php
+ G:\xampp\htdocs\tour_management\app\Controller\BookingsController.php
+ G:\xampp\htdocs\tour_management\app\Controller\EnquiriesController.php
+ G:\xampp\htdocs\tour_management\app\View\Bookings\add.ctp
+ G:\xampp\htdocs\tour_management\app\View\Pdf\generate_pdf.ctp
+ G:\xampp\htdocs\tour_management\app\View\Bookings\index.ctp
 
 04-01-2018~Ajay
 - tour_management\app\Controller\EnquiriesController.php
@@ -73,3 +83,16 @@ member
 
 
 app/Controller/EnquiriesController.php app/Controller/UsersController.php app/Model/Enquiry.php app/View/BusDetails/add.ctp app/View/Elements/tour_footer.ctp app/View/Enquiries/index.ctp app/webroot/css/style.css database/finance_management.xlsx database/sql_log.txt
+
+
+-Calculate subtotal of tour amount in booking form.
+-Send email after booking save.
+-Send mail with form detail in all travel module.
+-Send mail with form detail in hotel booking module.
+
+-Accounts management add generate receipt check box for all. - Done
+-Accounts management add tour name in listing. - Done
+-Booking management save detail not working. - Done
+-Add date picker in Member Dob(Booking management). - Done
+
+manual_bus

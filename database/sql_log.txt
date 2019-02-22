@@ -7,6 +7,10 @@ d-- phpMyAdmin SQL Dump
 --
 
 --------------------------------------------------------
+21-02-2019 ~ Ajay
+ALTER TABLE `hotel_booking` ADD `invoice_no` VARCHAR(50) NOT NULL AFTER `price`, ADD `ac_id` INT NOT NULL AFTER `invoice_no`;
+ALTER TABLE `bookings` ADD `invoice_no` VARCHAR(100) NULL AFTER `package_count`;
+
 21-02-2019
 
 import gallery table from sql file
