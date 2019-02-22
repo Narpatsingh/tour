@@ -1,6 +1,6 @@
 <?php
 App::import('Vendor','xtcpdf');
-$app = APP.'webroot/img/pdf_logo.jpg';
+$app = APP.'webroot/img/tour_head_logo.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);

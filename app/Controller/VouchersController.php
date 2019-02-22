@@ -139,8 +139,13 @@ public function add($id=null) {
             }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
-            $booking =  $this->Enquiry->find('first', $options);            
-            $this->sendMail($booking,'Quick Booking For Travel',$pdfpath);
+            //$booking =  $this->Enquiry->find('first', $options);            
+            
+            $arrData['Customer']['text'] = 'Tour'. $invoice_no;
+            $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['booking_type'] = 'Tour';
+
+            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
             $this->Message->setSuccess(__('The voucher has been saved.'));
             return $this->redirect(array('controller' => 'bookings','action' => 'index'));
         } else {

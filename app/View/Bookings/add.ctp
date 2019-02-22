@@ -98,7 +98,7 @@
 			}
 		}
 		echo "</div>";
-		echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
+		//echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
 ?>
 
             </div>
