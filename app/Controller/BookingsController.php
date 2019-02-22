@@ -120,6 +120,11 @@ public function add($id=null) {
             if(!empty($this->request->data['GuestMember'])){
             $this->request->data['GuestMember']['booking_id'] = $this->Booking->getLastInsertID();
             $this->GuestMember->save($this->request->data['GuestMember']);            
+
+            $arrData['Customer']['text'] = 'Tour ';
+            $arrData['Customer']['email'] = $this->request->data['Booking']['customer_email_id'];
+            $arrData['Customer']['booking_type'] = 'Tour Booking';
+            $this->sendNewFormateMail($arrData,'Tour Booking');            
             }
             $this->Message->setSuccess(__('The booking has been saved.'));
             return $this->redirect(array('action' => 'index'));
