@@ -93,7 +93,7 @@ if (isset($this->request->data['Tour']['id'])) {
 
                                 }else{
                                     ?>
-                                    <div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][old][<?=$key?>]" value="<?php echo $tag; ?>" class="form-control col-md-11 SurveyOption" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;"
+                                    <div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][old][<?=$key?>]" value="<?php echo $tag; ?>" class="form-control col-md-12 SurveyOption" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;"
                                     value="<?=$key?>" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>
                                 <?php }
                             }
@@ -209,7 +209,7 @@ if (isset($this->request->data['Tour']['id'])) {
         jQuery('#AddMoreOptions').on('click', function(e) {
 
                 e.preventDefault();
-                var highlights ='<div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][new][]" class="form-control col-md-11 SurveyOption" placeholder="Enter Highlight Title" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>';
+                var highlights ='<div class="removeclass"><div class="col-md-10"><input name="data[Highlight][name][new][]" class="form-control col-md-12 SurveyOption" placeholder="Enter Highlight Title" dir="ltr" maxlength="250" type="text"></div>  <div class="col-md-1"  style="margin-bottom: 5px;">  <button type="button" style="margin-left: -3px;float:left;" onclick="return removeOptionItem(this); " class="btn btn-danger">x</button><br></div></div>';
                 jQuery('#appendTagName').append(highlights);
             });
         $('#TourStateId').multiselect();   

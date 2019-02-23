@@ -2840,30 +2840,6 @@ img.img {
     max-width: 90px;
 	margin: 0 auto 17px;
 }
-/*#customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
-#customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
-    background: #340034;
-    transform: translate3d(0px, -50%, 0px) scale(0.7);
-}
-#customers-testimonials.owl-carousel .owl-dots{
-	display: inline-block;
-	width: 100%;
-	text-align: center;
-}
-#customers-testimonials.owl-carousel .owl-dots .owl-dot{
-	display: contents;
-}
-#customers-testimonials.owl-carousel .owl-dots .owl-dot span {
-    background:  #340034;
-    display: inline-block;
-    height: 20px;
-    margin: 0 2px 5px;
-    transform: translate3d(0px, -50%, 0px) scale(0.3);
-    transform-origin: 50% 50% 0;
-    transition: all 250ms ease-out 0s;
-    width: 20px;
-}*/
-
 
 h2.visible-title{
 	color:#eb524a;
@@ -2975,4 +2951,134 @@ h3.visible-title{
 #testimonials i.fa.fa-long-arrow-right{
     text-align: center;
     border-radius: 100%;
+}
+
+/*********** ABOUT US PAGE ************/
+
+#abt-cnt-2-img img{
+	max-height:450px;
+}
+
+#abt-cnt-2-text h2 {
+	text-transform:uppercase;
+	font-size:27px;
+	color:#340034;
+	font-family: 'Dancing Script', cursive;
+}
+
+#abt-cnt-2-text h2 > span{
+	font-weight:900;
+	font-size:32px;
+	display:block;
+	margin-top:10px;
+}
+
+#abt-cnt-2-text p{
+	font-size:25px;
+	margin:30px 0px 25px;
+	color:#340034;
+	font-family: 'Dancing Script', cursive;
+}
+
+.abt-cnt-2-ftr{
+	margin-top:20px;
+}
+
+.abt-cnt-2-ftr .fa{
+	font-size:28px;
+	height:60px;
+	width:60px;
+	text-align:center;
+	padding-top:15px;
+	margin-bottom:10px;
+}
+
+#why-us-tabs .nav-tabs li a{
+	padding:10px 20px;
+	font-size:16px;
+	margin-bottom:1px;
+}
+
+#why-us-tabs .nav-tabs li a span{
+	margin-right:10px;	
+	font-size:18px;
+}
+
+#why-us-tabs .tab-content .tab-pane{
+	padding:20px 20px 35px;
+}
+
+#why-us-tabs .tab-content .tab-pane a{
+	margin-top:14px;
+	display:inline-block;
+	font-weight:bold;
+	font-size:15px;
+	text-transform:uppercase;
+}
+
+#why-us-tabs .tab-content .tab-pane a span{
+	margin-left:10px;
+}
+
+#progress-bars .progress{
+	overflow:visible;
+}
+
+#progress-bars .progress-bar span{
+	position:relative;
+	float:right;
+	padding:0px 5px;
+	margin-top:-27px;
+}
+
+#progress-bars .progress-bar span::after{
+	position: absolute;
+	content: "";
+	border-width: 6px 4px 0 4px;
+	left: 50%;
+	bottom: -6px;
+	margin-left: -4px;
+}
+
+#company-logos{
+	margin-top:80px;
+}
+
+#company-logos h3{
+	margin-bottom:4px;
+}
+
+#owl-company-logo .item{
+	margin:2px 0px;
+}
+
+#owl-company-logo .item img {
+    max-width: 100%;
+    max-height: 130px;
+    display: inline-block;
+}
+
+.abt-cnt-2-ftr .fa {
+    background: #340034;
+    border-radius: 100%;
+    color: white;
+}
+
+.abt-cnt-2-ftr .fa {
+    background: #340034;
+    border-radius: 100%;
+    color: white;
+}
+
+.abt-cnt-2-ftr .fa {
+    background: #340034;
+    border-radius: 100%;
+    color: white;
+}
+.abt-cnt-2-ftr h3.visible-title{
+	text-transform:uppercase;
+	font-weight: 600;
+	font-size:20px;
+	color:#340034;
+	font-family: 'Dancing Script', cursive;
 }

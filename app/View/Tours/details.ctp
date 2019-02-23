@@ -117,7 +117,9 @@
             <div class="col-xs-12">
                <div class="page-title text-center" id="">
                   <h1><?php echo $tour['Tour']['name'];?></h1>
-                  <h2><?php echo "City: ".$tour['City']['name'];?></h2>
+                  <h2><?php echo "City: ".$this->Text->truncate($tour['City']['name'],'50',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h2>
                   <h2><?php echo "Price: ".$tour['Tour']['price'];?></h2>
                </div>
             </div>
@@ -411,7 +413,9 @@
                   </a>
                </div>
                 <div class="post-bottom">
-                  <h3><?php echo $blog['State']['name'];?></h3>
+                  <h3><?php echo $this->Text->truncate($blog['State']['name'],'20',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h3>
                   <p><?php echo $blog['Tour']['name'];?></p>
                 </div>
             </div>

@@ -13,13 +13,14 @@
 		<div class="box-body box-content">
 			<?php
 			echo $this->Form->input('id',array('type'=>'hidden'));
-			echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group')));		
-			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('train_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+			echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));		
+			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('train_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			?>
 		</div>
 		<div class="form-action">
@@ -36,6 +37,7 @@
 				'source' => array('required' => 1),
 				'destination' => array('required' => 1),
 				'company_name' => array('required' => 1),
+				'payment_received' => array('required' => 1),
 
 			),
 			'Messages' => array(
@@ -44,6 +46,7 @@
 				'source' => array('required' => __('Please enter Source.')),
 				'destination' => array('required' => __('Please enter Destination.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),
+				'payment_received' => array('required' => __('Please enter Payment Received.')),
 				'pnr_no' => array('required' => __('Please enter Pnr No.')),));
 
 

@@ -117,6 +117,9 @@
                                 <li>
                                     <a class="page-scroll" href="#contact">Contact Us</a>
                                 </li>
+                                <li>
+                                    <a class="page-scroll" href="#about-us">About Us</a>
+                                </li>
                                 <?php if($this->Session->read('Auth.User.id')){ 
                                     $logUserName = $this->Session->read('Auth.User.name');
                                 ?>
@@ -198,7 +201,7 @@
                         <div class="carousel-caption">
                             <h2><?php echo $slider['Slider']['title'];?> </h2>
                             <h4><?php echo $slider['Slider']['description']; ?></h4>
-                            <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                            <h4><?php echo $slider['Slider']['price_text']; ?> &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
                             <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -245,7 +248,9 @@
                                         <img src="<?php echo $special['Tour']['img']; ?>" alt="" />
                                     </div>
                                     <div class="discount-info">
-                                        <h3 class="text-white"><?php echo $special['City']['name']; ?></h3>
+                                        <h3 class="text-white"><?php echo $this->Text->truncate( $special['City']['name'],'20',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h3>
                                         <a class="" href="tours/details/<?php echo $special['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -262,7 +267,7 @@
     </section>
     <!-- end Packages -->
     <!-- Hot Deals Section -->
-    <section id="hot-deals" class="padding inverse">
+    <section id="hot-deals" class="inverse">
         <!-- <hr> -->
         <div class="container">
             <div class="row">
@@ -382,7 +387,9 @@
                                         <span class="regular-price">&#x20b9;<?php echo $discount['Tour']['discount']; ?></span>
                                         <span class="sale-price">&#x20b9;<?php echo $discount['Tour']['price']; ?></span>
                                     </div>
-                                    <h3><?php echo $discount['City']['name']; ?></h3>
+                                    <h3><?php echo $this->Text->truncate($discount['City']['name'],'20',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h3>
                                     <p><?php echo $discount['Tour']['description']; ?></p>
                                     <a href="tours/details/<?php echo $discount['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
@@ -526,7 +533,9 @@
                                         <img src="<?php echo $blog['Tour']['img']; ?>" alt="" />
                                     </div>
                                     <div class="discount-info">
-                                        <h3 class="text-white"><?php echo $blog['City']['name']; ?></h3>
+                                        <h3 class="text-white"><?php echo $this->Text->truncate( $blog['City']['name'],'20',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h3>
                                         <a class="" href="tours/details/<?php echo $blog['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -616,7 +625,7 @@
         </div>
     </section>
     <!--end testimonials-->
-
+        
     <section id="contact" style="padding: 0px">
         <div class="contact-section">
             <div class="container">
@@ -644,7 +653,6 @@
                             <h3>Send a message</h3>
                             <div class="status alert alert-success" style="display: none"></div>
                             <?php echo $this->Form->create('Contact',array('controller'=>'contacts','action'=>'add')); ?>
-                            <!-- <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="#"> -->
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" required="required" placeholder="Name">
                                 </div>
@@ -663,8 +671,64 @@
                 </div>
             </div>
         </div>
+    </section>
+    <!--end contatcus-->
+
+    <section id="about-us" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/f4/ac/6a/f4ac6aac3afb587f6cae04155656fca3.jpg')">
+        <div class="container">
+            <!-- <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center" style="padding: 0px;">
+                        <h1 class="visible-title">About Us</h1>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+                    <div id="abt-cnt-2-img">
+                        <img src="images/bg_img/about-content.png" class="img-responsive" alt="about-img">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8" style="padding-bottom: 50px;"">
+                    <div id="abt-cnt-2-text">
+                        <h2>Welcome to<span><span><i class="fa fa-plane"></i> SilShine</span>&nbsp;&nbsp;Tours And Travels</span></h2>
+                        <p>    SilShine trip is Travel Company which motive to Innovation in Travel Industry. This is most
+                            powerful Travel company give to customer a best service in traveling which made only for
+                            customer to give Help in tourism in the sense of whose doesn’t know about the tourism. We
+                            Give an Affordable tour with Beauty of Nature to our Customer.
+                            <br/><br/>
+                            SilShine trip is give a product of the Train ticket Booking , Flight ticket Booking , Hotel
+                            booking, Cab Booking, Customize Tour Package, Group Tour Package, Bus ticket Booking etc.
+                            Our Aim to become a number One travel company in the world. Which is do with ours best.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-diamond"></i></span>
+                                    <h3 class="visible-title">Best Service</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-clock-o"></i></span>
+                                    <h3 class="visible-title">24/7 Availability</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="abt-cnt-2-ftr">
+                                    <span><i class="fa fa-star"></i></span>
+                                    <h3 class="visible-title">5 Star Rating</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div  class="no-padding" style="width:100%;margin-bottom: -5px;">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7438.906951197761!2d72.77224493252278!3d21.21385909032098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c41f49e790b%3A0xc794ddaa38573360!2sBhakti+Dharm+Township!5e0!3m2!1sen!2sin!4v1549383934402" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </section>    
+        </div>  
+    </section>   
  

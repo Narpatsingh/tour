@@ -23,6 +23,7 @@ public $components = array('Auth','Paginator','Session');
 public function beforeFilter()
 {
     parent::beforeFilter();
+    $this->Auth->allow('get_tours');
     $this->_checkLogin();
 }
 
@@ -162,7 +163,7 @@ public function get_tours($id = null) {
         $this->render = false;
         $packages = $this->Tour->find('list',
                 array('conditions'=>
-                    array('Tour.state_id LIKE' => '%'.$id.'%')
+                    array('Tour.city_id LIKE' => '%'.$id.'%')
                 ));
         echo json_encode($packages);
         exit;

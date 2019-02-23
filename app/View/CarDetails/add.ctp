@@ -14,12 +14,13 @@ $this->end();
 			<?php
 			echo $this->Form->input('id',array('type'=>'hidden'));
 			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('car_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('car_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			?>
 		</div>
 		<div class="form-action">
@@ -37,6 +38,7 @@ $this->end();
 				'price' => array('required' => 1),
 				'source' => array('required' => 1),
 				'destination' => array('required' => 1),
+				'payment_received' => array('required' => 1),
 
 			),
 			'Messages' => array(
@@ -46,6 +48,7 @@ $this->end();
 				'pnr_no' => array('required' => __('Please enter Pnr No')),
 				'price' => array('required' => __('Please enter Price')),
 				'source' => array('required' => __('Please enter Source')),
+				'payment_received' => array('required' => __('Please enter Payment Received.')),
 				'destination' => array('required' => __('Please enter Destination')),));
 		
 		echo $this->Form->setValidation($arrValidation); ?>
