@@ -95,7 +95,6 @@ public function add($id=null) {
         $id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
     if ($this->request->is('post')) {
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
-
         $config_gst = Configure::read('Site.gst_percent');
         $gst_percent = empty($config_gst)?10:$config_gst;
         $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
@@ -145,7 +144,7 @@ public function add($id=null) {
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
-            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
+            //$this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
             $this->Message->setSuccess(__('The voucher has been saved.'));
             return $this->redirect(array('controller' => 'bookings','action' => 'index'));
         } else {

@@ -95,4 +95,6 @@ app/Controller/EnquiriesController.php app/Controller/UsersController.php app/Mo
 -Booking management save detail not working. - Done
 -Add date picker in Member Dob(Booking management). - Done
 
-manual_bus
+- booking form design changes.
+- voucher design changes.
+- reciept display multiple tour list.

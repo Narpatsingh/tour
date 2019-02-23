@@ -13,7 +13,8 @@
             <?php echo $this->Form->create('Booking', array('class' => 'form-validate','type'=>'file')); ?>
             <div class="box-body box-content">
                 	<?php
-		echo $this->Form->input('id',array('type'=>'hidden'));
+		echo $this->Form->input('id',array('type'=>'hidden','value'=>$pcount));
+		echo $this->Form->input('package_count',array('type'=>'hidden'));
 		echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -83,7 +84,7 @@
 		echo $this->Form->input('customer_valid_id_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
 		<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
 <?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
-<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'before' => '<label for="BookingProofFile" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Id-proof file') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
+<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
 <?php	echo $this->Form->input('total_tour_member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 		echo "<div id='guest_members'>";
 		if(!empty($this->request->data['Booking']['total_tour_member'])){

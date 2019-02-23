@@ -80,45 +80,14 @@ public function view($id = null) {
 * @return void
 */
 public function add($id=null) {
-    if(!empty($id)){
-        $id = decrypt($id);
-        $this->loadModel("Tour");$this->loadModel("Enquiry");$this->loadModel("GuestMember");
-        $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $id));
-        $enquiries = $this->Enquiry->find('first', $options);
-        $tour_id = explode( ',', $enquiries['Customer']['multi_package'] );
-        $pcount = count( $tour_id );
-        $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
-        $packages = $this->Tour->find('all', $toptions);
-        foreach ($packages as $key => $package) {
-        $apn = empty($key)?'':$key+1;
-
-        $this->loadModel('Place');
-        $place_id = explode(',', $package['Tour']['place_id']);
-        $place_name = $this->Place->findById($place_id[0],'name');
-
-        $this->request->data['Booking']['place_name'.$apn] =  $place_name['Place']['name'];
-        $this->request->data['Booking']['tour_photo'.$apn] =  $package['Tour']['img'];
-        $this->request->data['Booking']['total_payment'.$apn] =  $package['Tour']['price'];
-        $this->request->data['Booking']['customer_tour_name'.$apn] = $package['Tour']['name'];
-        }
-        $this->request->data['Booking']['customer_full_name'] = $enquiries['Customer']['name'];
-        $this->request->data['Booking']['customer_date_of_birth'] = $enquiries['Customer']['dob'];
-        $this->request->data['Booking']['customer_contact_no'] = $enquiries['Customer']['mobile'];
-        $this->request->data['Booking']['customer_email_id'] = $enquiries['Customer']['email'];
-        $this->request->data['Booking']['total_tour_member '] = $enquiries['Enquiry']['number_of_guest'];
-        $this->request->data['Booking']['customer_emergency_contact_no'] =  $enquiries['Customer']['emergency_mobile'];
-        $this->request->data['Booking']['customer_valid_id_proof'] = $enquiries['Customer']['dob_proof'];
-        $this->request->data['Booking']['customer_tour_date'] = $enquiries['Enquiry']['travel_date'];
-        $this->request->data['Booking']['total_tour_member'] = $enquiries['Enquiry']['number_of_guest'];
-        $this->request->data['Booking']['package_count'] = $pcount;
-    }
+    
     if ($this->request->is('post')) {
-
         $this->Booking->create();
-        $this->request->data['Booking']['enquiry_id'] = $id;
+        $this->request->data['Booking']['enquiry_id'] = decrypt($id);
         if ($this->Booking->save($this->request->data)) {
             if(!empty($this->request->data['GuestMember'])){
             $this->request->data['GuestMember']['booking_id'] = $this->Booking->getLastInsertID();
+            $this->loadModel("GuestMember");
             $this->GuestMember->save($this->request->data['GuestMember']);            
 
             $arrData['Customer']['text'] = 'Tour ';
@@ -132,6 +101,37 @@ public function add($id=null) {
             $this->Message->setWarning(__('The booking could not be saved. Please, try again.'));
         }
     }else{
+        if(!empty($id)){
+            $id = decrypt($id);
+            $this->loadModel("Tour");$this->loadModel("Enquiry");$this->loadModel("GuestMember");
+            $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $id));
+            $enquiries = $this->Enquiry->find('first', $options);
+            $tour_id = explode( ',', $enquiries['Customer']['multi_package'] );
+            $pcount = count( $tour_id );
+            $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
+            $packages = $this->Tour->find('all', $toptions);
+            foreach ($packages as $key => $package) {
+            $apn = empty($key)?'':$key+1;
+
+            $this->loadModel('Place');
+            $place_id = explode(',', $package['Tour']['place_id']);
+            $place_name = $this->Place->findById($place_id[0],'name');
+            $this->request->data['Booking']['place_name'.$apn] =  $place_name['Place']['name'];
+            $this->request->data['Booking']['tour_photo'.$apn] =  $package['Tour']['img'];
+            $this->request->data['Booking']['total_payment'.$apn] =  $package['Tour']['price'];
+            $this->request->data['Booking']['customer_tour_name'.$apn] = $package['Tour']['name'];
+            }
+            $this->request->data['Booking']['customer_full_name'] = $enquiries['Customer']['name'];
+            $this->request->data['Booking']['customer_date_of_birth'] = $enquiries['Customer']['dob'];
+            $this->request->data['Booking']['customer_contact_no'] = $enquiries['Customer']['mobile'];
+            $this->request->data['Booking']['customer_email_id'] = $enquiries['Customer']['email'];
+            $this->request->data['Booking']['total_tour_member '] = $enquiries['Enquiry']['number_of_guest'];
+            $this->request->data['Booking']['customer_emergency_contact_no'] =  $enquiries['Customer']['emergency_mobile'];
+            $this->request->data['Booking']['customer_valid_id_proof'] = $enquiries['Customer']['dob_proof'];
+            $this->request->data['Booking']['customer_tour_date'] = $enquiries['Enquiry']['travel_date'];
+            $this->request->data['Booking']['total_tour_member'] = $enquiries['Enquiry']['number_of_guest'];
+            $this->request->data['Booking']['package_count'] = $pcount;
+        }        
         $this->request->data['Booking']['id'] = 0;
         $this->request->data['Booking']['proof_file'] = '';
     }

@@ -6,6 +6,9 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+23-02-2019 ~ Ajay
+ALTER TABLE `customers` CHANGE `dob` `dob` DATE NULL;
+
 23-02-2019 ~ Narpat
 ALTER TABLE `bookings` CHANGE `total_tour_member` `total_tour_member` INT(250) NULL;
 ALTER TABLE `bus_details` ADD `payment_received` INT NULL AFTER `price`;
