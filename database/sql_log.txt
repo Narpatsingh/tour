@@ -5,6 +5,15 @@ d-- phpMyAdmin SQL Dump
 --
 -- Database: `silshlrp_tour`
 --
+--------------------------------------------------------
+23-02-2019 ~ Narpat
+ALTER TABLE `bookings` CHANGE `total_tour_member` `total_tour_member` INT(250) NULL;
+ALTER TABLE `bus_details` ADD `payment_received` INT NULL AFTER `price`;
+ALTER TABLE `car_details` ADD `payment_received` INT NULL AFTER `price`;
+ALTER TABLE `flight_details` ADD `payment_received` INT NULL AFTER `price`;
+ALTER TABLE `train_details` ADD `payment_received` INT NULL AFTER `price`;
+ALTER TABLE `hotel_booking` ADD `payment_received` INT NULL AFTER `price`;
+ALTER TABLE `slider` ADD `price_text` VARCHAR(250) NOT NULL DEFAULT 'Full Tour Package Only' AFTER `title`;
 
 --------------------------------------------------------
 21-02-2019 ~ Ajay
