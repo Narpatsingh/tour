@@ -248,7 +248,7 @@ class UsersController extends AppController {
         $this->loadModel('City');
         $this->loadModel('Hotel');
         $this->loadModel('Slider');
-        $hotels = $this->Hotel->find('all');
+        $hotels = $this->Hotel->find('all',array('limit'=>5,'order' => array('Hotel.id' => 'DESC')));
         $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
         $cities = $this->City->find('list');
         $destination = $this->Tour->find('list',array('fields' => array('name','name')));

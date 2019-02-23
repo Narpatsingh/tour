@@ -167,14 +167,11 @@
 </script>      
  
 <style type="text/css">
-    /*div.error{
-        margin-right: 15px;
-        float:left;
-        position: relative;
-        min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
-    }*/
+    p.font-bold:after {
+        color: #e32;
+        content: '*';
+        display: inline;
+    }
 </style>    
 
 </body>

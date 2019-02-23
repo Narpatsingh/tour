@@ -136,10 +136,10 @@
                   <a class="single-page-scroll" href="#Overview">Overview</a>
                </li>
                <li class="nav-item">
-                  <a class="single-page-scroll" href="#Itinerary">Itinerary</a>
+                  <a class="single-page-scroll" href="#Highlights">Highlights</a>
                </li>
                <li class="nav-item">
-                  <a class="single-page-scroll" href="#Highlights">Highlights</a>
+                  <a class="single-page-scroll" href="#Itinerary">Itinerary</a>
                </li>
                <li class="nav-item">
                   <a class="single-page-scroll" href="#special_package">Hotel Information</a>
@@ -185,6 +185,24 @@
     </div>
   </div>
 </section>
+<section id="Highlights">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 mx-auto">
+            <h2>Highlights</h2>
+            <p class="lead">
+               <?php if(!empty($tour['Highlight'])){
+               foreach ($tour['Highlight'] as $highlight) { ?>
+                <ul>
+                    <li><?php echo $highlight['title']; ?></li>
+                </ul>
+            <?php } 
+            } ?>
+            </p>
+         </div>
+      </div>
+   </div>
+</section>
 <section id="Itinerary" class="bg-light">
    <div class="container">
       <div class="row">
@@ -207,24 +225,6 @@
                <?php }
                } ?>   
             </div> 
-         </div>
-      </div>
-   </div>
-</section>
-<section id="Highlights">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-8 mx-auto">
-            <h2>Highlights</h2>
-            <p class="lead">
-               <?php if(!empty($tour['Highlight'])){
-               foreach ($tour['Highlight'] as $highlight) { ?>
-                <ul>
-                    <li><?php echo $highlight['title']; ?></li>
-                </ul>
-            <?php } 
-            } ?>
-            </p>
          </div>
       </div>
    </div>
