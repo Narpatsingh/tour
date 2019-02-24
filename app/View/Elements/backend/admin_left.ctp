@@ -58,6 +58,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('accounts')) ?>">
                     <?php echo $this->Html->link(__('Finance Management'),array('controller' => 'accounts', 'action' => 'index'), array('icon' => 'fa-tachometer ')) ?>
                 </li>               
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('vouchers')) ?>">
+                    <?php echo $this->Html->link(__('Vouchers Management'),array('controller' => 'vouchers', 'action' => 'index'), array('icon' => 'fa-file-text ')) ?>
+                </li>               
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('contacts')) ?>">
                     <?php echo $this->Html->link(__('Contact Management'),array('controller' => 'contacts', 'action' => 'index'), array('icon' => 'fa-phone ')) ?>
                 </li>                

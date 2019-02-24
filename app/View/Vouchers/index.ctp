@@ -86,7 +86,7 @@
 		<td><?php echo h($voucher['Voucher']['created']); ?>&nbsp;</td>
 		<td><?php echo h($voucher['Voucher']['updated']); ?>&nbsp;</td>
 		<td class="actions text-center">
-			<?php echo $this->Html->link(__(''), array('action' => 'view', $voucher['Voucher']['id']), array('icon'=>'view','title' => __('Click here to view this Voucher'))); ?>
+			<?php //echo $this->Html->link(__(''), array('action' => 'view', $voucher['Voucher']['id']), array('icon'=>'view','title' => __('Click here to view this Voucher'))); ?>
 			<?php echo $this->Html->link(__(''), array('action' => 'edit', $voucher['Voucher']['id']), array('icon'=>'edit','title' => __('Click here to edit this Voucher'))); ?>
 			<?php echo $this->Html->link(__(''), array('action' => 'delete', $voucher['Voucher']['id']), array('icon'=>'delete','title' => __('Click here to delete this Voucher')), __('Are you sure you want to delete Voucher?')); ?>
 		</td>
