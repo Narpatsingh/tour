@@ -104,7 +104,7 @@ public function add($id=null) {
             $account_data['payment_receivable'] = $this->request->data['Booking']['final_payment_with_gst'] - $this->request->data['Booking']['payment_recieved'];
             $this->Account->save($account_data);
             $ac_id = $this->Account->getLastInsertID();
-            $this->Booking->id = $id;
+            $this->Booking->id = $this->Booking->getLastInsertID();
             $this->Booking->saveField('ac_id',$ac_id);
             if(!empty($this->request->data['GuestMember'])){
             $this->request->data['GuestMember']['booking_id'] = $this->Booking->getLastInsertID();
