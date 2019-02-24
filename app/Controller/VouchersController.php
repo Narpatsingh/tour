@@ -94,6 +94,7 @@ public function view($id = null) {
 public function add($id=null) {
         $id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
     if ($this->request->is('post')) {
+
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
         $config_gst = Configure::read('Site.gst_percent');
         $gst_percent = empty($config_gst)?10:$config_gst;
@@ -142,7 +143,7 @@ public function add($id=null) {
             //$booking =  $this->Enquiry->find('first', $options);            
             
             $arrData['Customer']['text'] = 'Tour'. $invoice_no;
-            $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
             //$this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
@@ -160,6 +161,7 @@ public function add($id=null) {
             $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id'];
             $this->request->data['Voucher']['enc_id'] = $bookings['Booking']['enquiry_id'];
             $this->request->data['Voucher']['customer_tour_type'] = $bookings['Booking']['tour_type'];
+            $this->request->data['Voucher']['customer_email_id'] = $bookings['Booking']['customer_email_id'];
             $this->request->data['Voucher']['customer_tour_date'] = $bookings['Booking']['travel_date'];
             $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['place_name'];
             $this->request->data['Voucher']['customer_hotel_place_name'] = $bookings['Booking']['place_name'];

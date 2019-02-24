@@ -19,6 +19,7 @@
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
                 echo $this->Form->input('payment_recieved',array('type'=>'hidden'));
+                echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
                 echo $this->Form->input('enc_id',array('type'=>'hidden'));
     			echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
     			echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));

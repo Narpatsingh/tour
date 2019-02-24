@@ -1,12 +1,12 @@
 <?php
 App::import('Vendor','xtcpdf');
-$app = APP.'webroot/img/tour_head_logo.png';
+$app = APP.'webroot/img/voucher_logo.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('Silshine');
-$pdf->SetSubject('Silshine');
+$pdf->SetAuthor('Silshine');
+$pdf->SetTitle('Silshine Invoice');
+$pdf->SetSubject('Silshine Invoice');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // remove default header/footer
@@ -83,194 +83,88 @@ $customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel
 $id = $voucher['booking_id'];
 $html = <<<EOF
 <!-- EXAMPLE OF CSS STYLE -->
-<style>
-	h1 {
-		color: navy;
-		font-family: times;
-		font-size: 24pt;
-		text-decoration: underline;
-	}
-	p.first {
-		color: #003300;
-		font-family: helvetica;
-		font-size: 12pt;
-	}
-	p.first span {
-		color: #006600;
-		font-style: italic;
-	}
-	p#second {
-		color: rgb(00,63,127);
-		font-family: times;
-		font-size: 12pt;
-		text-align: justify;
-	}
-	p#second > span {
-		background-color: #FFFFAA;
-	}
-	table.first {
-		color: #003300;
-		font-family: helvetica;
-		font-size: 8pt;
-		border-left: 2px solid #800080;
-		border-right: 2px solid #800080;
-		border-top: 2px solid #800080;
-		border-bottom: 2px solid #800080;
-		background-color: #ccffcc;
-	}
-	td {
-		border: none;
-		background-color: #ffffee;
-	}
-	td.second {
-		border: 2px dashed green;
-	}
-	
-	.innerTable{
-		border: none;
-		margin-top:-500px;
-		padding:5px;
-	}
-
-	.innerTable td {
-		border: none;
-		background-color: #ffffee;
-		padding:2px;
-		font-family: helvetica;
-		font-size: 8pt;		
-	}
-	.innerTable td.second {
-		border: none;
-	}
-
-	div.test {
-		color: #CC0000;
-		background-color:#800080;
-		font-family: helvetica;
-		font-size: 10pt;
-		border-style: solid solid solid solid;
-		border-width: 2px 2px 2px 1px;
-		border-color: #800080 #800080 #800080 #800080;
-	}
-	.lowercase {
-		text-transform: lowercase;
-	}
-	.uppercase {
-		text-transform: uppercase;
-	}
-	.capitalize {
-		text-transform: capitalize;
-	}
-	.package_photo{
-		margin-top:12px;margin-right:25px;width:300px;height:180px;
-	}
-	.PackageTable{
-		border:1px solid #800080;
-		border-right:1px solid #800080;
-		padding:5px;
-
-	}
-	.PackageTable td{
-		border:1px solid #800080;
-		padding:2px;		
-	}	
-
-</style>
-<body style="border:2px solid #800080;">
 <div><img src="$app">
 </div>
-
-<br />
+<table style="width:100%;">
+	<tr>
+		<td><b>Customer Name</b> </td>
+		<td> <b>:</b> $customer_full_name </td>
+		<td><b>Tour Manager Contact</b></td>
+		<td> <b>:</b> $tour_manager_contact_no</td>
+		<td><b>Customer Contact</b></td>
+		<td> <b>:</b> $customer_contact_no</td>
+	</tr>	
+</table>
+<table style="width:100%;">
+	<tr>
+		<td><b>Emergency Contact </b> </td>
+		<td><b> :</b> $emergency_contact_no </td>
+		<td><b>Tour Manager Name</b></td>
+		<td> <b>:</b> $tour_manager_name </td>
+		<td><b>Generated Date</b></td>
+		<td> <b>:</b> $date</td>
+	</tr>
+</table>
+		<br><br>
 		<table width="100%"  class="innerTable">
 		<tr>
-			<td width="20%">
-				<img src="$package_photo" class="package_photo" width="300px" height="180px">
-			</td>
-			<td width="2%"></td>
-			<td width="400px" >
-	
-
-	<table class="PackageTable">
-					<tr>
-						<td width="40%"> 
-							Date
-						</td>
-						<td width="40%"> $date </td>
-					</tr>
-					<tr>
-						<td width="40%"> Customer Name </td>
-						<td width="40%"> $customer_full_name </td>
-					</tr>
-					<tr>
-						<td width="40%"> Customer Contact </td>
-						<td width="40%"> $customer_contact_no </td>
-					</tr>
-					<tr>
-						<td width="40%"> Tour Manager Name </td>
-						<td width="40%"> $tour_manager_name </td>
-					</tr>
-					<tr>
-						<td width="40%"> Tour Manager Contact </td>
-						<td width="40%"> $tour_manager_contact_no </td>
-					</tr>
-					<tr>
-						<td width="40%"> Emergency Contact No </td>
-						<td width="40%"> $emergency_contact_no </td>
-					</tr>
-		</table>
-
+			<td style="margin-right:12px; padding-top:10px; padding-bottom:20px;">
+				<img src="$package_photo" class="package_photo" width="940px" height="200px">
 			</td>
 		</tr>
-	</table>
-	<br>
-	<br>
-	<br>
-	<br>
-
-<table class="first" cellpadding="4" cellspacing="6">
+		</table>
+	<br><br>
+	
+<table class="first" border="1" style="padding:5px;" nobr="true">
+ <thead>
  <tr>
-  <td width="30" align="center"><b>No.</b></td>
-  <td width="140" align="center"><b>Tour Type</b></td>
-  <td width="140" align="center"><b>Tour Name</b></td>
-  <td width="80" align="center"> <b>Tour Date</b></td>
-  <td width="80" align="center"><b>Meal Plan</b></td>
-  <td width="90" align="center"><b>Travel Type</b></td>
+  <th width="35" align="center"><b>No.</b></th>
+  <th width="70" align="center"><b>Tour Type</b></th>
+  <th width="100" align="center"><b>Tour Name</b></th>
+  <th width="85" align="center"> <b>Tour Date</b></th>
+  <th width="50" align="center"><b>Meal Plan</b></th>
+  <th width="60" align="center"><b>Travel Type</b></th>
+  <th width="90" align="center"><b>Hotel Name</b></th>
+  <th width="115"><b>Place Name</b></th>
+  <th width="80"><b>Hotel Contact</b></th>
+  <th width="75" align="center"><b>Room Type</b></th>
+  <th width="90"><b>Check in Date</b></th>
+  <th width="90"><b>Check Out Date</b></th>
  </tr>
+ </thead>
+ <tbody>
  <tr>
-  <td width="30" align="center">1.</td>
-  <td width="140">$customer_tour_type</td>
-  <td width="140">$customer_tour_name</td>
-  <td width="80">$customer_tour_date</td>
-  <td width="80">$meal_plan</td>
-  <td align="center" width="90">$customer_travel_type</td>
- </tr>
- <tr style="border:none"></tr><tr style="border:none"></tr>
- <tr>
-  <td width="90" align="center"><b>Hotel Name</b></td>
-  <td width="115"><b>Place Name</b></td>
-  <td width="100"><b>Hotel Contact No</b></td>
-  <td width="75" align="center"><b>Room Type</b></td>
-  <td width="90"><b>Check in Date</b></td>
-  <td width="90"><b>Check Out Date</b></td>
- </tr>
-<tr>
+  <td width="35" align="center">1</td>
+  <td width="70">$customer_tour_type</td>
+  <td width="100">$customer_tour_name</td>
+  <td width="85">$customer_tour_date</td>
+  <td width="50">$meal_plan</td>
+  <td align="center" width="60">$customer_travel_type</td>
   <td width="90" align="center">$customer_hotel_name</td>
   <td width="115">$customer_hotel_place_name</td>
-  <td width="100">$hotel_contact_no</td>
+  <td width="80">$hotel_contact_no</td>
   <td align="center" width="75">$customer_room_type</td>
   <td width="90">$customer_hotel_check_in_date</td>
   <td width="90">$customer_hotel_check_out_date</td>
  </tr>
+ </tbody>
+ <tr style="border:none"></tr><tr style="border:none"></tr>
 </table>
 	<br>
 	<br>
+<table style="line-height:10px;width: 120%;">
+	<tr>
+	<td style="float:left;">	
+	Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
+	</td>
+	<td style="float:right;">	
+	Company  Signature :  <b><i><u>$company_signature</u>.</i></b>
+	</td>
+	</tr>
+</table>
 	<br>
-	<br>
-
-Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
-	<br>
-Company  Signature :  <b><i><u>$company_signature</u>.</i></b> 
-</body>
+<hr>
+<p>This form is auto generated by system.</p>
 EOF;
 
 // output the HTML content

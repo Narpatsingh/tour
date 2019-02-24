@@ -1,6 +1,6 @@
 <?php
 App::import('Vendor','xtcpdf');
-$app = APP.'webroot/img/tour_head_logo.png';
+$app = APP.'webroot/img/voucher_logo.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -249,5 +249,4 @@ $pdf->lastPage();
 $pdf_path = APP . 'webroot/files/voucher' . DS . $id;
 createFolder($pdf_path); 
 $pdf->Output($pdf_path . DS .''.'file.pdf', 'F');
-echo $html; exit;
 ?>
