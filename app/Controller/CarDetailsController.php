@@ -94,7 +94,7 @@ public function view($id = null) {
 public function add() {
     if ($this->request->is('post')) {
         $this->CarDetail->create();
-        $this->request->data['CarDetail']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['CarDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->CarDetail->save($this->request->data)) {
 
         $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
@@ -125,6 +125,7 @@ public function add() {
         $account_data['ac_type'] = 'car';
         $account_data['cus_id'] = $customer_data['Customer']['id'];
         $account_data['ac_type_id'] = $this->CarDetail->getLastInsertID();
+        $account_data['invoice_no'] = $invoice_no;
         $account_data['payment_recieved'] = $voucher['payment_recieved'];
         $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
         $this->Account->save($account_data);
@@ -138,6 +139,7 @@ public function add() {
         $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
         $arrData['Customer']['text'] = 'Car '. $this->request->data['CarDetail']['pnr_no'];
         $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+        $arrData['Customer']['name'] = $customer_data['Customer']['name'];
         $arrData['Customer']['booking_type'] = 'Car Ticket';
         $this->sendNewFormateMail($arrData,'Car Booking',$pdfpath);
 

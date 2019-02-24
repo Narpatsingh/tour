@@ -691,7 +691,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8" style="padding-bottom: 50px;"">
                     <div id="abt-cnt-2-text">
-                        <h2>About Us<span><span><i class="fa fa-plane"></i> SilShine</span>Trip</span></h2>
+                        <h2>About Us<span><span><i class="fa fa-plane"></i> SilShine</span> Trip</span></h2>
                         <p>    SilShine trip is Travel Company which motive to Innovation in Travel Industry. This is most
                             powerful Travel company give to customer a best service in traveling which made only for
                             customer to give Help in tourism in the sense of whose doesn’t know about the tourism. We

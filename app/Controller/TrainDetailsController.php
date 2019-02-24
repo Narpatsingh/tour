@@ -94,7 +94,7 @@ public function view($id = null) {
 public function add() {
     if ($this->request->is('post')) {
         $this->TrainDetail->create();
-        $this->request->data['TrainDetail']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['TrainDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->TrainDetail->save($this->request->data)) {
 
         $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
@@ -125,6 +125,7 @@ public function add() {
         $account_data['ac_type'] = 'train';
         $account_data['cus_id'] = $customer_data['Customer']['id'];
         $account_data['ac_type_id'] = $this->TrainDetail->getLastInsertID();
+        $account_data['invoice_no'] = $invoice_no;
         $account_data['payment_recieved'] = $voucher['payment_recieved'];
         $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
         $this->Account->save($account_data);
@@ -138,6 +139,7 @@ public function add() {
         $this->render('/Pdf/train_receipt');            
             $arrData['Customer']['text'] = 'Train '. $this->request->data['TrainDetail']['pnr_no'];
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['name'] = $customer_data['Customer']['name'];
             $arrData['Customer']['booking_type'] = 'Train Ticket';
             $this->sendNewFormateMail($arrData,'Train Booking',$pdfpath);            
             return $this->redirect(array('action' => 'index'));

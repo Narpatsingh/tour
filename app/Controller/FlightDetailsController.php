@@ -94,7 +94,7 @@ public function view($id = null) {
 public function add() {
     if ($this->request->is('post')) {
         $this->FlightDetail->create();
-        $this->request->data['FlightDetail']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['FlightDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
     
         if ($this->FlightDetail->save($this->request->data)) {
 
@@ -127,6 +127,7 @@ public function add() {
         $account_data['ac_type'] = 'flight';
         $account_data['cus_id'] = $customer_data['Customer']['id'];
         $account_data['ac_type_id'] = $this->FlightDetail->getLastInsertID();
+        $account_data['invoice_no'] = $invoice_no;
         $account_data['payment_recieved'] = $voucher['payment_recieved'];
         $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
         $this->Account->save($account_data);
@@ -140,6 +141,7 @@ public function add() {
         $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
         $arrData['Customer']['text'] = 'Flight '. $this->request->data['FlightDetail']['pnr_no'];
         $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+        $arrData['Customer']['name'] = $customer_data['Customer']['name'];
         $arrData['Customer']['booking_type'] = 'Flight Ticket';
         $this->sendNewFormateMail($arrData,'Flight Booking',$pdfpath);
 

@@ -67,10 +67,17 @@ $this->end();
                      <td><?php echo h($hotelBooking['HotelBooking']['price']); ?>&nbsp;</td>
                      <td><?php echo h($hotelBooking['HotelBooking']['created']); ?>&nbsp;</td>
                      <td><?php echo h($hotelBooking['HotelBooking']['updated']); ?>&nbsp;</td>
-                     <td class="actions text-center">
+                     <td class="actions text-center"> 
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $hotelBooking['HotelBooking']['id']), array('icon'=>'view','title' => __('Click here to view this Hotel Booking'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'edit', $hotelBooking['HotelBooking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Hotel Booking'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'delete', $hotelBooking['HotelBooking']['id']), array('icon'=>'delete','title' => __('Click here to delete this Hotel Booking')), __('Are you sure you want to delete Hotel Booking?')); ?>
+                        <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $hotelBooking['HotelBooking']['ac_id'],$hotelBooking['HotelBooking']['invoice_no'].'.pdf'),
+                            array(
+                                'icon' => 'fa-file',
+                                'target'=>'_blank',
+                                'class' => 'no-hover-text-decoration',
+                                'title' => __('View Receipt')
+                            )); ?>
                      </td>
                  </tr>
              <?php endforeach; ?>

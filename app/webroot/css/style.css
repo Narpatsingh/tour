@@ -3077,8 +3077,8 @@ h3.visible-title{
 }
 .abt-cnt-2-ftr h3.visible-title{
 	text-transform:uppercase;
-	font-weight: 600;
+	/*font-weight: 600;*/
 	font-size:20px;
 	color:#340034;
-	font-family: 'Dancing Script', cursive;
+	/*font-family: 'Dancing Script', cursive;*/
 }

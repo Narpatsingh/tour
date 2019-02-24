@@ -95,7 +95,7 @@ public function add() {
     if ($this->request->is('post')) {
         $this->BusDetail->create();
 
-        $this->request->data['BusDetail']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['BusDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->BusDetail->save($this->request->data)) {
 
             $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
@@ -126,6 +126,7 @@ public function add() {
             $account_data['cus_id'] = $customer_data['Customer']['id'];
             $account_data['ac_type'] = 'bus';
             $account_data['ac_type_id'] = $this->BusDetail->getLastInsertID();
+            $account_data['invoice_no'] = $invoice_no;
             $account_data['payment_recieved'] = $voucher['payment_recieved'];
             $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
@@ -139,6 +140,7 @@ public function add() {
             $this->render('/Pdf/bus_receipt');
             $arrData['Customer']['text'] = 'BUS '. $this->request->data['BusDetail']['pnr_no'];
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['name'] = $customer_data['Customer']['name'];
             $arrData['Customer']['booking_type'] = 'Bus Ticket';
             $this->sendNewFormateMail($arrData,'Bus Booking',$pdfpath);
             return $this->redirect(array('action' => 'index'));

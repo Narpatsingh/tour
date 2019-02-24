@@ -94,7 +94,7 @@ public function view($id = null) {
 public function add() {
     if ($this->request->is('post')) {
         $this->HotelBooking->create();
-        $this->request->data['HotelBooking']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['HotelBooking']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->HotelBooking->save($this->request->data)) {
 
             $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
@@ -124,6 +124,7 @@ public function add() {
             $account_data['ac_type'] = 'hotel';
             $account_data['cus_id'] = $customer_data['Customer']['id'];
             $account_data['ac_type_id'] = $this->HotelBooking->getLastInsertID();
+            $account_data['invoice_no'] = $invoice_no;
             $account_data['payment_recieved'] = $voucher['payment_recieved'];
             $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
@@ -137,6 +138,7 @@ public function add() {
             $this->render('/Pdf/hotel_receipt');
             $arrData['Customer']['text'] = 'Hotel '. $invoice_no;
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+            $arrData['Customer']['name'] = $customer_data['Customer']['name'];
             $arrData['Customer']['booking_type'] = 'hotel';
             $this->sendNewFormateMail($arrData,'Hotel Booking',$pdfpath);            
 

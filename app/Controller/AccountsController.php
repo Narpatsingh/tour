@@ -121,13 +121,14 @@ public function edit($id = null) {
             $total_payment_with_gst = $this->Account->get_total_payment_with_gst($id);
             $this->request->data['Account']['payment_receivable'] = $total_payment_with_gst - $this->request->data['Account']['payment_recieved'];
         }
-        if ($this->Account->save($this->request->data)) {
+        $invoice_day =  $this->Account->find('first',array('order' => array("Account.updated DESC"),'fields' => array('Account.invoice_no')));
+        if ($this->Account->save($this->request->data)) {   
             $cus_id = $account_detail['Account']['cus_id'];
             $module_id = $account_detail['Account']['ac_type_id'];
             $this->request->data['Account']['payment_amount'] = $account_detail['Account']['payment_amount'];
             $this->request->data['Account']['total_payment_with_gst'] = $account_detail['Account']['total_payment_with_gst'];
             if(!empty($this->request->data['Account']['generate_receipt'])){
-                $this->generateReceipt($cus_id,$module_id,$this->request->data['Account']);
+                $this->generateReceipt($cus_id,$module_id,$this->request->data['Account'],$invoice_day['Account']['invoice_no']);
             }
 
             $this->Message->setSuccess(__('The account has been updated.'));
@@ -165,12 +166,12 @@ public function delete($id = null) {
     return $this->redirect(array('action' => 'index'));
 }
 
-public function generateReceipt($cus_id='',$module_id='',$account_data='')
+public function generateReceipt($cus_id='',$module_id='',$account_data='',$old_invoice_no='')
 {
     $this->loadModel("Customer");
     $this->loadModel("Tour");
     $this->loadModel("Account"); 
-    $invoice_no = get_invoice_no();
+    $invoice_no = $this->get_invoice_no($old_invoice_no);
     $voucher['company_signature'] = Configure::read('Site.Name');
     $tour_types = Configure::read('tour_types');
     $config_gst = Configure::read('Site.gst_percent');
@@ -247,6 +248,8 @@ public function generateReceipt($cus_id='',$module_id='',$account_data='')
         $this->HotelBooking->saveField('invoice_no',$invoice_no); 
         $render = '/Pdf/hotel_receipt';
     }
+    $this->Account->id = $account_data['id'];
+    $this->Account->saveField('invoice_no',$invoice_no);
 
     $this->set(compact('voucher'));
     $this->layout = 'pdf';
