@@ -107,6 +107,7 @@ public function add($id=null) {
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {
 
+            /*
             $this->loadModel("Account");$this->loadModel("Booking");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
@@ -146,7 +147,9 @@ public function add($id=null) {
             $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
-            //$this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
+            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
+            */
+
             $this->Message->setSuccess(__('The voucher has been saved.'));
             return $this->redirect(array('controller' => 'bookings','action' => 'index'));
         } else {

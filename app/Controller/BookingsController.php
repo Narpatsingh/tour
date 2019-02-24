@@ -84,16 +84,46 @@ public function add($id=null) {
     if ($this->request->is('post')) {
         $this->Booking->create();
         $this->request->data['Booking']['enquiry_id'] = decrypt($id);
+        $this->request->data['Booking']['invoice_no'] = $invoice_no = get_invoice_no();
         if ($this->Booking->save($this->request->data)) {
+            //ToDo : Generate Receipt.
+            $config_gst = Configure::read('Site.gst_percent');
+            $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;
+            $payment2 = empty($this->request->data['Booking']['total_payment2'])?0:$this->request->data['Booking']['total_payment2'];
+            $payment3 = empty($this->request->data['Booking']['total_payment3'])?0:$this->request->data['Booking']['total_payment3'];
+            $this->request->data['Booking']['total_payment_sum'] = $total_payment_sum = $this->request->data['Booking']['total_payment'] + $payment2 + $payment3;        
+            $this->request->data['Booking']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+            $this->request->data['Booking']['gst_percent'] = $gst_percent;
+            $this->loadModel("Account");
+            $account_data['booking_id'] = $this->Booking->getLastInsertID();
+            $account_data['payment_amount'] = $total_payment_sum;
+            $account_data['ac_type'] = 'tour';
+            $account_data['cus_id'] = $this->request->data['Booking']['customer_id'];
+            $account_data['total_payment_with_gst'] = $this->request->data['Booking']['final_payment_with_gst'];
+            $account_data['payment_recieved'] = $this->request->data['Booking']['payment_recieved'];
+            $account_data['payment_receivable'] = $this->request->data['Booking']['final_payment_with_gst'] - $this->request->data['Booking']['payment_recieved'];
+            $this->Account->save($account_data);
+            $ac_id = $this->Account->getLastInsertID();
+            $this->Booking->id = $id;
+            $this->Booking->saveField('ac_id',$ac_id);
             if(!empty($this->request->data['GuestMember'])){
             $this->request->data['GuestMember']['booking_id'] = $this->Booking->getLastInsertID();
             $this->loadModel("GuestMember");
-            $this->GuestMember->save($this->request->data['GuestMember']);            
-
+            $this->GuestMember->save($this->request->data['GuestMember']);
+            $voucher = $this->request->data['Booking'];
+            $voucher['ac_id'] = $ac_id;            
+            $pdfpath = '';
+            if(!empty($this->request->data['Booking']['generate_receipt'])){
+            $this->set(compact('voucher'));    
+            $this->render('/Pdf/tour_receipt'); 
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
+            }
             $arrData['Customer']['text'] = 'Tour ';
             $arrData['Customer']['email'] = $this->request->data['Booking']['customer_email_id'];
+            $arrData['Customer']['name'] = $this->request->data['Booking']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour Booking';
-            $this->sendNewFormateMail($arrData,'Tour Booking');            
+            $this->sendNewFormateMail($arrData,'Tour Booking',$pdfpath);
+
             }
             $this->Message->setSuccess(__('The booking has been saved.'));
             return $this->redirect(array('action' => 'index'));
@@ -121,15 +151,15 @@ public function add($id=null) {
             $this->request->data['Booking']['total_payment'.$apn] =  $package['Tour']['price'];
             $this->request->data['Booking']['customer_tour_name'.$apn] = $package['Tour']['name'];
             }
+            $this->request->data['Booking']['customer_id'] = $enquiries['Customer']['id'];
             $this->request->data['Booking']['customer_full_name'] = $enquiries['Customer']['name'];
             $this->request->data['Booking']['customer_date_of_birth'] = $enquiries['Customer']['dob'];
             $this->request->data['Booking']['customer_contact_no'] = $enquiries['Customer']['mobile'];
             $this->request->data['Booking']['customer_email_id'] = $enquiries['Customer']['email'];
-            $this->request->data['Booking']['total_tour_member '] = $enquiries['Enquiry']['number_of_guest'];
+            $this->request->data['Booking']['total_tour_member'] = $enquiries['Customer']['member'];
             $this->request->data['Booking']['customer_emergency_contact_no'] =  $enquiries['Customer']['emergency_mobile'];
             $this->request->data['Booking']['customer_valid_id_proof'] = $enquiries['Customer']['dob_proof'];
             $this->request->data['Booking']['customer_tour_date'] = $enquiries['Enquiry']['travel_date'];
-            $this->request->data['Booking']['total_tour_member'] = $enquiries['Enquiry']['number_of_guest'];
             $this->request->data['Booking']['package_count'] = $pcount;
         }        
         $this->request->data['Booking']['id'] = 0;
