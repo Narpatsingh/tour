@@ -107,7 +107,7 @@ public function add($id=null) {
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
         if ($this->Voucher->save($this->request->data)) {
 
-            /*
+            
             $this->loadModel("Account");$this->loadModel("Booking");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
@@ -115,8 +115,8 @@ public function add($id=null) {
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];
-            $this->Account->save($account_data);
-            $ac_id = $this->Account->getLastInsertID();    
+           // $this->Account->save($account_data);
+            $ac_id =  $this->request->data['Voucher']['ac_id'];   
             $this->Booking->id = $id;
             $this->Booking->saveField('ac_id',$ac_id);
             $voucher = $this->request->data['Voucher'];
@@ -148,7 +148,7 @@ public function add($id=null) {
             $arrData['Customer']['booking_type'] = 'Tour';
 
             $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
-            */
+            
 
             $this->Message->setSuccess(__('The voucher has been saved.'));
             return $this->redirect(array('controller' => 'bookings','action' => 'index'));
@@ -163,6 +163,7 @@ public function add($id=null) {
             $this->request->data['Voucher'] = $bookings['Booking'];
             $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id'];
             $this->request->data['Voucher']['enc_id'] = $bookings['Booking']['enquiry_id'];
+            $this->request->data['Voucher']['ac_id'] = $bookings['Booking']['ac_id'];
             $this->request->data['Voucher']['customer_tour_type'] = $bookings['Booking']['tour_type'];
             $this->request->data['Voucher']['customer_email_id'] = $bookings['Booking']['customer_email_id'];
             $this->request->data['Voucher']['customer_tour_date'] = $bookings['Booking']['travel_date'];

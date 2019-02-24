@@ -21,6 +21,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
+                echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
                 echo $this->Form->input('payment_recieved',array('type'=>'hidden'));
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
@@ -136,6 +137,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
+                echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
                 echo $this->Form->input('payment_recieved',array('type'=>'hidden'));
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
@@ -308,6 +310,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
+                echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
                 echo $this->Form->input('payment_recieved',array('type'=>'hidden'));
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
