@@ -105,8 +105,8 @@ class AppController extends Controller
             $Email->config(array(
                 'host' => 'ssl://smtp.gmail.com',
                 'port' => 465,
-                'username' => 'Silshinetripbooking@gmail.com',
-                'password' => 'minpis12',
+                'username' => 'jnarpat46@gmail.com',
+                'password' => 'narpat991333',
                 'transport' => 'Smtp'
             ));
             
@@ -114,8 +114,8 @@ class AppController extends Controller
                 $Email->attachments($attachment);
             }
 
-            $Email->from(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
-                ->sender(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
+            $Email->from(array('jnarpat46@gmail.com' => 'SilShine Trip'))
+                ->sender(array('jnarpat46@gmail.com' => 'SilShine Trip'))
                 ->to($to)
                 ->cc($cc)
                 ->emailFormat('both')

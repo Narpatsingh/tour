@@ -267,6 +267,7 @@ public function sendReceipt($ac_id='')
      $this->loadModel("Customer");
     $customer_data = $this->Customer->find('first', array('conditions' => array('Customer.' . $this->Customer->primaryKey => $account_detail['Account']['cus_id'])));
     $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+    $arrData['Customer']['name'] = $customer_data['Customer']['name'];
     if($type == 'bus'){
         $this->loadModel("BusDetail");
         $details =  $this->BusDetail->find('first', array('conditions' => array('BusDetail.id'=> $module_id)));

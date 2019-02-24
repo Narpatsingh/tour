@@ -117,9 +117,9 @@ $html = <<<EOF
 		<th style="width:35px">No.</th>
 		<th>Tour Name</th>
 		<th>Payment Type</th>
-		<th>Invoice Amount</th>
-		<th>Amount Recieved</th>
-		<th style="width:30%">Invoice Amount with GST($gst_percent%)</th>
+		<th>Unit Amount</th>
+		<th>Amount Paid</th>
+		<th style="width:30%">GST($gst_percent%)</th>
 		</tr>
 	</thead>
 	<tbody>
