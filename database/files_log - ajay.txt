@@ -98,3 +98,22 @@ app/Controller/EnquiriesController.php app/Controller/UsersController.php app/Mo
 - booking form design changes.
 - voucher design changes.
 - reciept display multiple tour list.
+
+Pending
+
+-add calendar to member dob in booking management
+
+-add total amount after tour in booking
+
+-In booking management, show different packages with their respective field. Like admin has to fill up 
+package one details first and then package 2 and so on. Each details will be in separate box and with the tour title
+
+-When filling out voucher form, diverse each packages with their respective field as in task 87
+
+-No booking form is attached with the mail 
+
+-Receipt should be attached with the first email when booking is confirmed
+
+-I booked a tour with test jay name, and it is not showing in finance management.
+
+-add a voucher management functionality , which edits and sends voucher again to customer.
