@@ -6,6 +6,11 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+24-02-2019 ~ Narpat
+ALTER TABLE `accounts` ADD `cus_id` INT NULL AFTER `voucher_id`;
+ALTER TABLE `accounts` ADD `ac_type_id` INT NULL AFTER `ac_type`;
+
+
 23-02-2019 ~ Ajay
 ALTER TABLE `customers` CHANGE `dob` `dob` DATE NULL;
 
