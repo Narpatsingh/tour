@@ -134,7 +134,7 @@ $html = <<<EOF
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
-		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>TOTAL AMOUNT PAYABLE THIS INVOICE</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$grand_total</td>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>AMOUNT REMAINING</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$grand_total</td>
 	</tr>	
 </table>
 <br>
