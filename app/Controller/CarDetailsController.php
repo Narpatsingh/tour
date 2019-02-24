@@ -119,10 +119,13 @@ public function add() {
         $voucher['source'] = $this->request->data['CarDetail']['source'];
         $voucher['destination'] = $this->request->data['CarDetail']['destination'];
         $voucher['pnr_no'] = $this->request->data['CarDetail']['pnr_no'];
-        $voucher['company_name'] = $this->request->data['CarDetail']['company_name'];        
+        $voucher['company_name'] = $this->request->data['CarDetail']['company_name']; 
+        $voucher['payment_recieved']  = $this->request->data['CarDetail']['payment_received'];       
         $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
         $account_data['ac_type'] = 'car';
-        $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
+        $account_data['cus_id'] = $customer_data['Customer']['id'];
+        $account_data['ac_type_id'] = $this->CarDetail->getLastInsertID();
+        $account_data['payment_recieved'] = $voucher['payment_recieved'];
         $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
         $this->Account->save($account_data);
         $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();

@@ -119,9 +119,12 @@ public function add() {
             $this->loadModel('Hotel');
             $hotel_name = $this->Hotel->findById($this->request->data['HotelBooking']['hotel_id'],'name');
             $voucher['hotel_name'] = $hotel_name['Hotel']['name'];
+            $voucher['payment_recieved']  = $this->request->data['HotelBooking']['payment_received'];
             $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
-            $account_data['ac_type'] = 'Hotel';
-            $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
+            $account_data['ac_type'] = 'hotel';
+            $account_data['cus_id'] = $customer_data['Customer']['id'];
+            $account_data['ac_type_id'] = $this->HotelBooking->getLastInsertID();
+            $account_data['payment_recieved'] = $voucher['payment_recieved'];
             $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
             $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();

@@ -121,10 +121,13 @@ public function add() {
         $voucher['source'] = $this->request->data['FlightDetail']['source'];
         $voucher['destination'] = $this->request->data['FlightDetail']['destination'];
         $voucher['pnr_no'] = $this->request->data['FlightDetail']['pnr_no'];
-        $voucher['company_name'] = $this->request->data['FlightDetail']['company_name'];        
+        $voucher['company_name'] = $this->request->data['FlightDetail']['company_name'];
+        $voucher['payment_recieved']  = $this->request->data['FlightDetail']['payment_received'];        
         $account_data['customer_name'] = $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
         $account_data['ac_type'] = 'flight';
-        $account_data['payment_recieved'] = $voucher['payment_recieved'] = 0;
+        $account_data['cus_id'] = $customer_data['Customer']['id'];
+        $account_data['ac_type_id'] = $this->FlightDetail->getLastInsertID();
+        $account_data['payment_recieved'] = $voucher['payment_recieved'];
         $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
         $this->Account->save($account_data);
         $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();

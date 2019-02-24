@@ -109,6 +109,7 @@ public function add($id=null) {
             $this->loadModel("Account");$this->loadModel("Booking");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
+            $account_data['ac_type'] = 'tour';
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];

@@ -47,7 +47,7 @@
                 //echo $this->Form->input('payment_receivable',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 ?>
                 <div class="form-group col-md-6">
-                    <label for="ReceivablePaymentAmount">Payment Receivable</label>
+                    <label for="ReceivablePaymentAmount">Amount Remaining</label>
                     <span class="form-control" disabled="disabled" id="ReceivablePaymentAmount"> <?php echo $this->request->data['Account']['payment_receivable'] ?> </span>
                 </div>
                 <div class="form-group col-md-6">

@@ -113,17 +113,21 @@ public function edit($id = null) {
     if (!$this->Account->exists($id)) {
         $this->Message->setWarning(__('Invalid account'),array('action'=>'index'));
     }
+    $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
+    $account_detail = $this->Account->find('first', $options);
     if ($this->request->is(array('post', 'put'))) {
         if(!empty($this->request->data['Account']['payment_recieved'])){
 
             $total_payment_with_gst = $this->Account->get_total_payment_with_gst($id);
             $this->request->data['Account']['payment_receivable'] = $total_payment_with_gst - $this->request->data['Account']['payment_recieved'];
         }
-
         if ($this->Account->save($this->request->data)) {
-
+            $cus_id = $account_detail['Account']['cus_id'];
+            $module_id = $account_detail['Account']['ac_type_id'];
+            $this->request->data['Account']['payment_amount'] = $account_detail['Account']['payment_amount'];
+            $this->request->data['Account']['total_payment_with_gst'] = $account_detail['Account']['total_payment_with_gst'];
             if(!empty($this->request->data['Account']['generate_receipt'])){
-                echo "HERE"; exit;
+                $this->generateReceipt($cus_id,$module_id,$this->request->data['Account']);
             }
 
             $this->Message->setSuccess(__('The account has been updated.'));
@@ -133,7 +137,7 @@ public function edit($id = null) {
         }
     } else {
         $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
-        $this->request->data = $this->Account->find('first', $options);
+        $this->request->data = $account_detail;
     }
     $vouchers = $this->Account->Voucher->find('list');
     $this->set(compact('vouchers'));
@@ -159,4 +163,148 @@ public function delete($id = null) {
         $this->Message->setWarning(__('The account could not be deleted. Please, try again.'));
     }
     return $this->redirect(array('action' => 'index'));
-}}
+}
+
+public function generateReceipt($cus_id='',$module_id='',$account_data='')
+{
+    $this->loadModel("Customer");
+    $this->loadModel("Tour");
+    $this->loadModel("Account"); 
+    $invoice_no = get_invoice_no();
+    $voucher['company_signature'] = Configure::read('Site.Name');
+    $tour_types = Configure::read('tour_types');
+    $config_gst = Configure::read('Site.gst_percent');
+    $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
+    $customer_data = $this->Customer->find('first', array('conditions' => array('Customer.' . $this->Customer->primaryKey => $cus_id)));
+    $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $customer_data['Customer']['package_id']));
+    $package = $this->Tour->find('first', $toptions);
+    $voucher['all_t_and_c'] = '';
+    $voucher['total_payment_sum'] = $account_data['payment_amount'];
+    $voucher['final_payment_with_gst'] = $account_data['total_payment_with_gst'];
+    $voucher['customer_tour_type'] = $tour_types[$package['Tour']['type']];
+    $voucher['customer_tour_name'] = $package['Tour']['name'];
+    $voucher['customer_contact_no'] = $customer_data['Customer']['mobile'];
+    $voucher['payment_type'] = 'cash';
+    $voucher['invoice_no'] = $invoice_no;
+    $voucher['ac_id'] = $account_data['id'];
+    $voucher['customer_signature'] = $voucher['customer_full_name'] = $customer_data['Customer']['name'];
+    if($account_data['ac_type'] == 'bus'){
+        $this->loadModel("BusDetail");
+        $details =  $this->BusDetail->find('first', array('conditions' => array('BusDetail.id'=> $module_id)));
+        $voucher['bus_no'] = $details['BusDetail']['bus_no'];
+        $voucher['source'] = $details['BusDetail']['source'];
+        $voucher['destination'] = $details['BusDetail']['destination'];
+        $voucher['pnr_no'] = $details['BusDetail']['pnr_no'];
+        $voucher['company_name'] = $details['BusDetail']['company_name'];
+        $voucher['payment_recieved']  = $account_data['payment_recieved'];
+        $this->BusDetail->id = $module_id;
+        $this->BusDetail->saveField('invoice_no',$invoice_no); 
+        $render = '/Pdf/bus_receipt';
+    }elseif($account_data['ac_type'] == 'train'){
+        $this->loadModel("TrainDetail");
+        $details =  $this->TrainDetail->find('first', array('conditions' => array('TrainDetail.id'=> $module_id)));
+        $voucher['train_no'] = $details['TrainDetail']['train_no'];
+        $voucher['source'] = $details['TrainDetail']['source'];
+        $voucher['destination'] = $details['TrainDetail']['destination'];
+        $voucher['pnr_no'] = $details['TrainDetail']['pnr_no'];
+        $voucher['company_name'] = $details['TrainDetail']['company_name'];
+        $voucher['payment_recieved']  = $account_data['payment_recieved'];
+        $this->TrainDetail->id = $module_id;
+        $this->TrainDetail->saveField('invoice_no',$invoice_no); 
+        $render = '/Pdf/train_receipt';
+    }elseif($account_data['ac_type'] == 'car'){
+        $this->loadModel("CarDetail");
+        $details =  $this->CarDetail->find('first', array('conditions' => array('CarDetail.id'=> $module_id)));
+        $voucher['car_no'] = $details['CarDetail']['car_no'];
+        $voucher['source'] = $details['CarDetail']['source'];
+        $voucher['destination'] = $details['CarDetail']['destination'];
+        $voucher['pnr_no'] = $details['CarDetail']['pnr_no'];
+        $voucher['company_name'] = $details['CarDetail']['company_name'];
+        $voucher['payment_recieved']  = $account_data['payment_recieved'];
+        $this->CarDetail->id = $module_id;
+        $this->CarDetail->saveField('invoice_no',$invoice_no); 
+        $render = '/Pdf/car_receipt';
+    }elseif($account_data['ac_type'] == 'flight'){
+        $this->loadModel("FlightDetail");
+        $details =  $this->FlightDetail->find('first', array('conditions' => array('FlightDetail.id'=> $module_id)));
+        $voucher['flight_no'] = $details['FlightDetail']['flight_no'];
+        $voucher['source'] = $details['FlightDetail']['source'];
+        $voucher['destination'] = $details['FlightDetail']['destination'];
+        $voucher['pnr_no'] = $details['FlightDetail']['pnr_no'];
+        $voucher['company_name'] = $details['FlightDetail']['company_name'];
+        $voucher['payment_recieved']  = $account_data['payment_recieved'];
+        $this->FlightDetail->id = $module_id;
+        $this->FlightDetail->saveField('invoice_no',$invoice_no); 
+        $render = '/Pdf/flight_receipt';
+    }elseif($account_data['ac_type'] == 'hotel'){
+        $this->loadModel("HotelBooking");
+        $this->loadModel("Hotel");
+        $HotelBooking_detail = $this->HotelBooking->find('first', array('conditions' => array('HotelBooking.id'=> $module_id)));
+        $hotel_name = $this->Hotel->findById($HotelBooking_detail['HotelBooking']['hotel_id'],'name');
+        $voucher['hotel_name'] = $hotel_name['Hotel']['name'];
+        $voucher['payment_recieved']  = $account_data['payment_recieved'];
+        $this->HotelBooking->id = $module_id;
+        $this->HotelBooking->saveField('invoice_no',$invoice_no); 
+        $render = '/Pdf/hotel_receipt';
+    }
+
+    $this->set(compact('voucher'));
+    $this->layout = 'pdf';
+    $this->render($render);
+    return true;
+}
+
+public function sendReceipt($ac_id='')
+{
+    $id = decrypt($ac_id);
+    $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
+    $account_detail = $this->Account->find('first', $options);
+    $type = $account_detail['Account']['ac_type'];
+    $module_id = $account_detail['Account']['ac_type_id'];
+     $this->loadModel("Customer");
+    $customer_data = $this->Customer->find('first', array('conditions' => array('Customer.' . $this->Customer->primaryKey => $account_detail['Account']['cus_id'])));
+    $arrData['Customer']['email'] = $customer_data['Customer']['email'];
+    if($type == 'bus'){
+        $this->loadModel("BusDetail");
+        $details =  $this->BusDetail->find('first', array('conditions' => array('BusDetail.id'=> $module_id)));
+        $invoice_no = $details['BusDetail']['invoice_no'];
+        $arrData['Customer']['text'] = 'BUS '. $details['BusDetail']['pnr_no'];
+        $arrData['Customer']['booking_type'] = 'Bus Ticket';
+        $title = 'Bus Booking';
+    }elseif($type == 'train'){
+        $this->loadModel("TrainDetail");
+        $details =  $this->TrainDetail->find('first', array('conditions' => array('TrainDetail.id'=> $module_id)));
+        $invoice_no = $details['TrainDetail']['invoice_no'];
+        $arrData['Customer']['text'] = 'Train '. $details['TrainDetail']['pnr_no'];
+        $arrData['Customer']['booking_type'] = 'Train Ticket';
+        $title = 'Train Booking';
+    }elseif($type == 'car'){
+        $this->loadModel("CarDetail");
+        $details =  $this->CarDetail->find('first', array('conditions' => array('CarDetail.id'=> $module_id)));
+        $invoice_no = $details['CarDetail']['invoice_no'];
+        $arrData['Customer']['text'] = 'Car '. $details['CarDetail']['pnr_no'];
+        $arrData['Customer']['booking_type'] = 'Car Ticket';
+        $title = 'Car Booking';
+    }elseif($type == 'flight'){
+        $this->loadModel("FlightDetail");
+        $details =  $this->FlightDetail->find('first', array('conditions' => array('FlightDetail.id'=> $module_id)));
+        $invoice_no = $details['FlightDetail']['invoice_no'];
+        $arrData['Customer']['text'] = 'Flight '. $details['FlightDetail']['pnr_no'];
+        $arrData['Customer']['booking_type'] = 'Flight Ticket';
+        $title = 'Flight Booking';
+    }elseif($type == 'hotel'){
+        $this->loadModel("HotelBooking");
+        $details = $this->HotelBooking->find('first', array('conditions' => array('HotelBooking.id'=> $module_id)));
+        $invoice_no = $details['HotelBooking']['invoice_no'];
+        $arrData['Customer']['text'] = 'Hotel '. $details['HotelBooking']['invoice_no'];
+        $arrData['Customer']['booking_type'] = 'Hotel Ticket';
+        $title = 'Hotel Booking';
+    }
+    $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$id.DS.$invoice_no.'.pdf');
+    $this->sendNewFormateMail($arrData,$title,$pdfpath);
+    $this->Message->setSuccess(__('The receipt has been send to customer.'));
+    return $this->redirect(array('action' => 'index'));
+}
+
+
+}

@@ -248,7 +248,7 @@
                                         <img src="<?php echo $special['Tour']['img']; ?>" alt="" />
                                     </div>
                                     <div class="discount-info">
-                                        <h3 class="text-white"><?php echo $this->Text->truncate( $special['City']['name'],'20',array(
+                                        <h3 class="text-white"><?php echo $this->Text->truncate( $special['City']['name'],'30',array(
                                                                                       'ending' => '...', 
                                                                                       'exact' => true));?></h3>
                                         <a class="" href="tours/details/<?php echo $special['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
@@ -418,7 +418,7 @@
                         <li>
                             <i class="fa fa-bed"></i>
                             <h2><span class="counter count">350</span></h2>
-                            <h4>Popular Hotes</h4>
+                            <h4>Popular Hotels</h4>
                         </li>
                         <li>
                             <i class="fa fa-flag-checkered"></i>
@@ -533,7 +533,7 @@
                                         <img src="<?php echo $blog['Tour']['img']; ?>" alt="" />
                                     </div>
                                     <div class="discount-info">
-                                        <h3 class="text-white"><?php echo $this->Text->truncate( $blog['City']['name'],'20',array(
+                                        <h3 class="text-white"><?php echo $this->Text->truncate( $blog['City']['name'],'30',array(
                                                                                       'ending' => '...', 
                                                                                       'exact' => true));?></h3>
                                         <a class="" href="tours/details/<?php echo $blog['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
@@ -691,7 +691,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8" style="padding-bottom: 50px;"">
                     <div id="abt-cnt-2-text">
-                        <h2>Welcome to<span><span><i class="fa fa-plane"></i> SilShine</span>&nbsp;&nbsp;Tours And Travels</span></h2>
+                        <h2>About Us<span><span><i class="fa fa-plane"></i> SilShine</span>Trip</span></h2>
                         <p>    SilShine trip is Travel Company which motive to Innovation in Travel Industry. This is most
                             powerful Travel company give to customer a best service in traveling which made only for
                             customer to give Help in tourism in the sense of whose doesn’t know about the tourism. We
