@@ -558,7 +558,7 @@ function get_invoice_no()
 function get_gst_amount($amount,$gst_percent)
 {
     $payment_with_gst = ($amount * $gst_percent) / 100;
-    return $payment_with_gst + $amount;
+    return $payment_with_gst;
 }
 
 function get_itinerary_detail($km = null,$hour = null){

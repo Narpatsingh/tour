@@ -116,8 +116,12 @@ $searchPanelArray = array(
                             <tr>
                                 <td> <?php echo $startNo++; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['name']) ? $tour['Tour']['name'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['City']['name']) ? $tour['City']['name'] : ''; ?> </td>
-                                <td> <?php echo isset($tour['Place']['name']) ? $tour['Place']['name'] : ''; ?> </td>
+                                <td> <?php echo isset($tour['City']['name']) ? $this->Text->truncate( $tour['City']['name'],'40',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true)) : ''; ?> </td>
+                                <td> <?php echo isset($tour['Place']['name']) ? $this->Text->truncate( $tour['Place']['name'],'40',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true)) : ''; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['price']) ? $tour['Tour']['price'] : ''; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['days']) ? $tour['Tour']['days'] : ''; ?> </td>
                                 <td> <?php echo isset($tour['Tour']['nights']) ? $tour['Tour']['nights'] : ''; ?> </td>
