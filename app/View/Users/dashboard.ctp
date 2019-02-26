@@ -390,7 +390,7 @@
                                     <h3><?php echo $this->Text->truncate($discount['City']['name'],'20',array(
                                                                                       'ending' => '...', 
                                                                                       'exact' => true));?></h3>
-                                    <p><?php echo $discount['Tour']['description']; ?></p>
+                                    <!-- <p><?php echo $discount['Tour']['description']; ?></p> -->
                                     <a href="tours/details/<?php echo $discount['Tour']['id']; ?>">View Details <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>

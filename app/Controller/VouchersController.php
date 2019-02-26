@@ -167,12 +167,12 @@ public function add($id=null) {
             $this->request->data['Voucher']['customer_tour_type'] = $bookings['Booking']['tour_type'];
             $this->request->data['Voucher']['customer_email_id'] = $bookings['Booking']['customer_email_id'];
             $this->request->data['Voucher']['customer_tour_date'] = $bookings['Booking']['travel_date'];
-            $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['place_name'];
+            $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['customer_tour_name'];
             $this->request->data['Voucher']['customer_hotel_place_name'] = $bookings['Booking']['place_name'];
             for ($i=2; $i <= $bookings['Booking']['package_count']; $i++) { 
             $this->request->data['Voucher']['customer_tour_type'.$i] = $bookings['Booking']['tour_type'.$i];
             $this->request->data['Voucher']['customer_tour_date'.$i] = $bookings['Booking']['travel_date'.$i];
-            $this->request->data['Voucher']['customer_tour_name'.$i] = $bookings['Booking']['place_name'.$i];
+            $this->request->data['Voucher']['customer_tour_name'.$i] = $bookings['Booking']['customer_tour_name'.$i];
             $this->request->data['Voucher']['customer_hotel_place_name'.$i] = $bookings['Booking']['place_name'.$i];
             }
         }
