@@ -55,7 +55,7 @@ $this->end();
 
                 <?php foreach ($carDetails as $carDetail): ?>
                     <tr>
-                      <td><?php echo h($carDetail['CarDetail']['customer_id']); ?>&nbsp;</td>
+                      <td><?php echo h($carDetail['Customer']['name']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['company_name']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['car_no']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['pnr_no']); ?>&nbsp;</td>
