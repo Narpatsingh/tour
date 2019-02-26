@@ -93,8 +93,11 @@ public function view($id = null) {
 */
 public function add() {
     if ($this->request->is('post')) {
+        if($this->request->data['BusDetail']['payment_received'] > $this->request->data['BusDetail']['price']){
+            $this->Message->setWarning(__('Please enter valid payment detail,payment received is more than total payment.'));
+            return $this->redirect(Router::url( $this->referer(), true ));
+        }
         $this->BusDetail->create();
-
         $this->request->data['BusDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->BusDetail->save($this->request->data)) {
 

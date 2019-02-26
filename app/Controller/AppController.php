@@ -131,7 +131,7 @@ class AppController extends Controller
     public  function get_invoice_no($invoiceNumbers = '')
     {
         $char = 'SLT';
-        $account_detail =  ClassRegistry::init("Account")->find('first',array('fields' => array('MAX(Account.updated) AS updated', 'invoice_no')));
+        $account_detail =  ClassRegistry::init("Account")->find('first',array('order' => array("Account.updated DESC"),'fields' => array('Account.invoice_no')));
         if(empty($invoiceNumbers)){
             if(!empty($account_detail)){
                $invoiceNumbers = $account_detail['Account']['invoice_no'];
@@ -139,7 +139,6 @@ class AppController extends Controller
                 $invoiceNumbers = '';
             }
         }
-
         if($invoiceNumbers==null || (date('z') == 0))
         {
             $invoiceNumbers = $char.date("Y").date("m")."0002";

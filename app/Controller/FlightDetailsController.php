@@ -93,6 +93,10 @@ public function view($id = null) {
 */
 public function add() {
     if ($this->request->is('post')) {
+        if($this->request->data['FlightDetail']['payment_received'] > $this->request->data['FlightDetail']['price']){
+            $this->Message->setWarning(__('Please enter valid payment detail,payment received is more than total payment.'));
+            return $this->redirect(Router::url( $this->referer(), true ));
+        }
         $this->FlightDetail->create();
         $this->request->data['FlightDetail']['invoice_no'] = $invoice_no = $this->get_invoice_no();
     

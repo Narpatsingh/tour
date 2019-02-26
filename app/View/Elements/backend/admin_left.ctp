@@ -35,7 +35,7 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('hotelBookings')) ?>">
                     <?php echo $this->Html->link(__('Hotel Bookings'),array('controller' => 'hotelBookings', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
-                <li class="treeview <?php echo $this->Html->getActiveClass(array('bus_details','train_details','flight_details'),array('index','add','edit','view'), 'all') ?>">
+                <li class="treeview <?php echo $this->Html->getActiveClass(array('bus_details','car_details','train_details','flight_details'),array('index','add','edit','view'), 'all') ?>">
                     <?php echo $this->Html->link('Travel Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa fa-plane')); ?>
                     <ul class="treeview-menu">
                         <li class="<?php echo $this->Html->getActiveClass(array('bus_details'), array('index','add','edit','view')) ?>">
