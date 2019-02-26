@@ -118,7 +118,7 @@ $html = <<<EOF
 		<th style="width:35px">No.</th>
 		<th>Company Name</th>
 		<th>Payment Type</th>
-		<th>Unit Amount</th>
+		<th>Payable Amount</th>
 		<th>GST($gst_percent%)</th>
 		<th style="width:200px">Amount Paid</th>
 		<th style="width:173px">Total</th>

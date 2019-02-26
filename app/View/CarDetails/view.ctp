@@ -15,7 +15,43 @@
         <div class="box box-primary">
             <div class="overflow-hide-break">
                 <div class="box-body userViewPage">
-                    		<div class='col-xs-12 col-sm-9 detailBox'>			<div class='row'>				<div class='col-md-12 col-sm-12 innerBox'>					<div class='dl-horizontal'>						<ul>							<li>								<span class='col-xs-12'>									<div class='row'>										Car Detail Detail									</div>								</span>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Id'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['id']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Customer Id'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['customer_id']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Company Name'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['company_name']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Car No'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['car_no']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Pnr No'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['pnr_no']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Price'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['price']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Source'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['source']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Destination'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['destination']; ?>							</li>						</ul>						<ul>							<li class='innreicons'>								<?php //echo __('Created'); ?><i class='fa fa-hand-o-right'>								</i>							</li><li>								<?php echo $carDetail['CarDetail']['created']; ?>							</li>						</ul>					</div>				</div>			</div>		</div>                </div>
+                    <div class="col-md-9">
+                        <div class="table-responsive-lg table-responsive-sm table-responsive-md table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th><?php echo __('Company Name'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['company_name']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Car No'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['car_no']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Source'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['source']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Destination'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['destination']; ?></p></td>
+                                    </tr>
+                               		<tr>
+                                        <th><?php echo __('Price'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['price']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?php echo __('Pnr No'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['pnr_no']; ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th> <?php echo __('Created'); ?></th>
+                                        <td><p><?php echo $carDetail['CarDetail']['created']; ?></p></t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
             </div>
         </div>
     </div>

@@ -18,6 +18,7 @@
 			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));		
 			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('train_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+			echo $this->Form->input('seat_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
@@ -33,6 +34,7 @@
 			'Rules' => array(
 				'customer_id' => array('required' => 1),
 				'train_no' => array('required' => 1),
+				'seat_no' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
 				'source' => array('required' => 1),
 				'destination' => array('required' => 1),
@@ -43,6 +45,7 @@
 			'Messages' => array(
 				'customer_id' => array('required' => __('Please select Customer.')),
 				'train_no' => array('required' => __('Please enter Train No.')),
+				'seat_no' => array('required' => __('Please enter Seat No.')),
 				'source' => array('required' => __('Please enter Source.')),
 				'destination' => array('required' => __('Please enter Destination.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),

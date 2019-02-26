@@ -5,8 +5,8 @@ $rupee = APP.'webroot/img/rupee.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Silshine');
-$pdf->SetTitle('Silshine');
+$pdf->SetAuthor('SilShine');
+$pdf->SetTitle('SilShine');
 $pdf->SetSubject('Invoice Receipt');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -117,7 +117,7 @@ $html = <<<EOF
 		<th style="width:35px">No.</th>
 		<th>Tour Name</th>
 		<th>Payment Type</th>
-		<th>Unit Amount</th>
+		<th>Payable Amount</th>
 		<th>Amount Paid</th>
 		<th style="width:30%">GST($gst_percent%)</th>
 		</tr>

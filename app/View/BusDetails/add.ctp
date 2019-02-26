@@ -20,6 +20,7 @@ $this->end();
 			echo "</div>";
 			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 			echo $this->Form->input('bus_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+			echo $this->Form->input('seat_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 			echo $this->Form->input('city_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
@@ -40,6 +41,7 @@ $this->end();
 				'company_name' => array('required' => 1),
 				'booking_type' => array('required' => 1),
 				'bus_no' => array('required' => 1),
+				'seat_no' => array('required' => 1),
 				'city_name' => array('required' => 1),
 				'price' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
@@ -52,6 +54,7 @@ $this->end();
 				'customer_id' => array('required' => __('Please select Customer.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),
 				'bus_no' => array('required' => __('Please enter Bus No.')),
+				'seat_no' => array('required' => __('Please enter Seat No.')),
 				'booking_type' => array('required' => __('Please select Booking Type.')),
 				'city_name' => array('required' => __('Please enter City Name.')),
 				'price' => array('required' => __('Please enter Price.')),
