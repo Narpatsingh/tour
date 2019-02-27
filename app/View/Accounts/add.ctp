@@ -50,6 +50,9 @@
                     <label for="ReceivablePaymentAmount">Amount Remaining</label>
                     <span class="form-control" disabled="disabled" id="ReceivablePaymentAmount"> <?php echo $this->request->data['Account']['payment_receivable'] ?> </span>
                 </div>
+                <div class="form-group col-md-12">
+                    <?php echo $this->Form->input('reason',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group required'))); ?>
+                </div>
                 <div class="form-group col-md-6">
                 <?php echo $this->Form->input('generate_receipt',array('type'=>'checkbox')); ?>
                 </div>
@@ -66,15 +69,17 @@
     				'payment_amount' => array('required' => 1),
     				'total_payment_with_gst' => array('required' => 1),
     				'payment_recieved' => array('required' => 1),
-    				'payment_receivable' => array('required' => 1),
+                    'payment_recieved' => array('required' => 1),
+    				'reason' => array('required' => 1),
 
     			),
     			'Messages' => array(
-    				'voucher_id' => array('required' => __('Please enter Voucher Id')),
-    				'payment_amount' => array('required' => __('Please enter Payment Amount')),
-    				'total_payment_with_gst' => array('required' => __('Please enter Total Payment With Gst')),
-    				'payment_recieved' => array('required' => __('Please enter Payment Recieved')),
-    				'payment_receivable' => array('required' => __('Please enter Payment Receivable')),));
+    				'voucher_id' => array('required' => __('Please enter Voucher Id.')),
+    				'payment_amount' => array('required' => __('Please enter Payment Amount.')),
+    				'total_payment_with_gst' => array('required' => __('Please enter Total Payment With Gst.')),
+    				'payment_recieved' => array('required' => __('Please enter Payment Recieved.')),
+                    'reason' => array('required' => __('Please enter Reason.')),
+    				'payment_receivable' => array('required' => __('Please enter Payment Receivable.')),));
 
 
 

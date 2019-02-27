@@ -211,7 +211,7 @@
                         <div class="carousel-caption">
                             <h2><?php echo $slider['Slider']['title'];?> </h2>
                             <h4><?php echo $slider['Slider']['description']; ?></h4>
-                            <h4>full tour package only &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
+                            <h4><?php echo $slider['Slider']['price_text']; ?> &#x20b9;<?php echo $slider['Tour']['price']; ?></h4>
                             <a href="tours/details/<?php echo $slider['Tour']['id']; ?>" >View Package <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>

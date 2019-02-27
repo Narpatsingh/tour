@@ -17,6 +17,8 @@ $this->end();
             echo $this->Form->input('city_id',array('class' => 'form-control','empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
 			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
 			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+            echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+            echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
             echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 			?>
@@ -34,16 +36,20 @@ $this->end();
 				'hotel_id' => array('required' => 1),
 				'customer_id' => array('required' => 1),
 				'price' => array('required' => 1),
+                'room_type' => array('required' => 1),
+                'meal_type' => array('required' => 1),
                 'payment_received' => array('required' => 1),
 
 			),
 			'Messages' => array(
-				'city_id' => array('required' => __('Please enter City')),
-				'state_id' => array('required' => __('Please enter State')),
-				'hotel_id' => array('required' => __('Please enter Hotel')),
-				'customer_id' => array('required' => __('Please enter Customer')),
+				'city_id' => array('required' => __('Please enter City.')),
+				'state_id' => array('required' => __('Please enter State.')),
+				'hotel_id' => array('required' => __('Please enter Hotel.')),
+				'customer_id' => array('required' => __('Please enter Customer.')),
                 'payment_received' => array('required' => __('Please enter Payment Received.')),
-				'price' => array('required' => __('Please enter Price')),));
+				'price' => array('required' => __('Please enter Price.')),
+                'meal_type' => array('required' => __('Please enter Meal Type.')),
+                'room_type' => array('required' => __('Please enter Room Type.')),));
 
 			echo $this->Form->setValidation($arrValidation); ?>
 
