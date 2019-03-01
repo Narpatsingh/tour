@@ -192,6 +192,14 @@ public function edit($id = null) {
     }
     if ($this->request->is(array('post', 'put'))) {
         if ($this->Voucher->save($this->request->data)) {
+            $config_gst = Configure::read('Site.gst_percent');
+            $gst_percent = empty($config_gst)?10:$config_gst;
+            $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
+            $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];
+            $this->request->data['Voucher']['total_payment_sum'] = $total_payment_sum = $this->request->data['Voucher']['total_payment'] + $payment2 + $payment3;        
+            $this->request->data['Voucher']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+            $this->request->data['Voucher']['gst_percent'] = $gst_percent;
+            $this->request->data['Voucher']['invoice_no'] = $invoice_no = $this->get_invoice_no();
 
             $this->loadModel("Account");$this->loadModel("Booking");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
@@ -200,9 +208,10 @@ public function edit($id = null) {
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];
-            $this->Account->save($account_data);
-            $ac_id = $this->Account->getLastInsertID();    
-            $this->Booking->id = $id;
+            // $this->Account->save($account_data);
+            $booking_id = $this->request->data['Voucher']['booking_id'];
+            $ac_id =  $this->request->data['Voucher']['ac_id'];       
+            $this->Booking->id = $booking_id;
             $this->Booking->saveField('ac_id',$ac_id);
             $voucher = $this->request->data['Voucher'];
             $voucher['ac_id'] = $ac_id;
@@ -216,13 +225,13 @@ public function edit($id = null) {
             $this->render('/Pdf/generate_voucher'.$pcount);         
             }
 
-            $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
+            $pdfpath = ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->loadModel("Booking");
-            $this->Booking->id = $id;
+            $this->Booking->id = $booking_id;
             $this->Booking->saveField('invoice_no',$invoice_no);                
             $this->render('/Pdf/tour_receipt'); 
-            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE );
             }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
@@ -230,10 +239,10 @@ public function edit($id = null) {
             
             $arrData['Customer']['text'] = 'Tour'. $invoice_no;
             $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
+            $arrData['Customer']['name'] = $this->request->data['Voucher']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
-            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
-                        
+            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);         
             $this->Message->setSuccess(__('The voucher has been updated.'));
             return $this->redirect(array('action' => 'index'));
         } else {

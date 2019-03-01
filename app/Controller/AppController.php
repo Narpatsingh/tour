@@ -124,6 +124,7 @@ class AppController extends Controller
            
             return true;
         } catch (Exception $e) {
+            debug($e); exit;
             return false;
         }
     }

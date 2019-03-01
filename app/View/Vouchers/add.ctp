@@ -16,10 +16,11 @@
       
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('action'=>'add','method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
+                echo $this->Form->input('id',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
@@ -34,6 +35,7 @@
        <?php
        /*Middle start*/ 
                 echo $this->Form->input('tour_photo',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -132,10 +134,11 @@
 
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('action'=>'add','method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
+                echo $this->Form->input('id',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
@@ -157,6 +160,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name']."</b></center><br>";
                 echo $this->Form->input('tour_photo',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -181,6 +185,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name2']."</b></center><br>";                
                 echo $this->Form->input('tour_photo2',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
@@ -241,6 +246,7 @@
                         'customer_signature' => array('required' => 1),
                         'payment_type' => array('required' => 1),
                         'total_payment' => array('required' => 1),
+                        'total_payment2' => array('required' => 1),
                         'payment_recieved' => array('required' => 1),
                         'customer_tour_type2' => array('required' => 1),
                         'customer_tour_name2' => array('required' => 1),
@@ -275,6 +281,7 @@
                         'customer_signature' => array('required' => __('Please enter Customer Signature')),
                         'payment_type' => array('required' => __('Please select payment type')),
                         'total_payment' => array('required' => __('Please enter total payment')),
+                        'total_payment2' => array('required' => __('Please enter total payment')),
                         'payment_recieved' => array('required' => __('Please enter payment recieved amount.')),
                         'customer_tour_type2' => array('required' => __('Please enter Customer Tour Type')),
                         'customer_tour_name2' => array('required' => __('Please enter Customer Tour Name')),
@@ -305,10 +312,11 @@
 
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('action'=>'add','method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
+                echo $this->Form->input('id',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
@@ -330,6 +338,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name']."</b></center><br>";
                 echo $this->Form->input('tour_photo',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -354,6 +363,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name2']."</b></center><br>";                
                 echo $this->Form->input('tour_photo2',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
@@ -378,6 +388,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name3']."</b></center><br>";                
                 echo $this->Form->input('tour_photo3',array('type'=>'hidden'));
+                echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type3',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name3',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name3',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
@@ -439,6 +450,8 @@
                         'customer_signature' => array('required' => 1),
                         'payment_type' => array('required' => 1),
                         'total_payment' => array('required' => 1),
+                        'total_payment2' => array('required' => 1),
+                        'total_payment3' => array('required' => 1),
                         'payment_recieved' => array('required' => 1),
                         'customer_tour_type2' => array('required' => 1),
                         'customer_tour_name2' => array('required' => 1),
@@ -484,6 +497,8 @@
                         'customer_signature' => array('required' => __('Please enter Customer Signature')),
                         'payment_type' => array('required' => __('Please select payment type')),
                         'total_payment' => array('required' => __('Please enter total payment')),
+                        'total_payment2' => array('required' => __('Please enter total payment')),
+                        'total_payment3' => array('required' => __('Please enter total payment')),
                         'payment_recieved' => array('required' => __('Please enter payment recieved amount.')),
                         'customer_tour_type2' => array('required' => __('Please enter Customer Tour Type')),
                         'customer_tour_name2' => array('required' => __('Please enter Customer Tour Name')),
