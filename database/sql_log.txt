@@ -6,6 +6,27 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+01-03-2019 ~ Narpat
+
+ALTER TABLE `bus_details` ADD `seat_no` VARCHAR(10) NULL AFTER `bus_no`;
+ALTER TABLE `train_details` ADD `seat_no` VARCHAR(10) NULL AFTER `train_no`;
+ALTER TABLE `flight_details` ADD `seat_no` VARCHAR(10) NULL AFTER `flight_no`;
+
+ALTER TABLE `accounts` ADD `reason` TEXT NULL AFTER `customer_name`;
+
+ALTER TABLE `hotel_booking` ADD `room_type` VARCHAR(100) NULL AFTER `price`;
+ALTER TABLE `hotel_booking` ADD `meal_type` VARCHAR(100) NULL AFTER `price`;
+
+
+CREATE TABLE `gallery_type` ( `id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(100) NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `galleries` CHANGE `title` `gallery_type_id` INT NULL DEFAULT NULL;
+
+INSERT INTO `gallery_type` (`id`, `title`, `created`, `updated`) VALUES (NULL, 'Hotel', '2019-02-27 00:00:00', '2019-02-27 00:00:00'), (NULL, 'Tour', '2019-02-27 00:00:00', '2019-02-27 00:00:00');
+
+INSERT INTO `gallery_type` (`id`, `title`, `created`, `updated`) VALUES (NULL, 'Cruise', '2019-02-27 00:00:00', '2019-02-27 00:00:00');
+
+
 24-02-2019 ~ Narpat
 ALTER TABLE `accounts` ADD `cus_id` INT NULL AFTER `voucher_id`;
 ALTER TABLE `accounts` ADD `ac_type_id` INT NULL AFTER `ac_type`;
