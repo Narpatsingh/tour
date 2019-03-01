@@ -60,6 +60,17 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 </li>               
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('vouchers')) ?>">
                     <?php echo $this->Html->link(__('Vouchers Management'),array('controller' => 'vouchers', 'action' => 'index'), array('icon' => 'fa-file-text ')) ?>
+                </li> 
+                 <li class="treeview <?php echo $this->Html->getActiveClass(array('galleries'),array('index','add','edit','view','types','editTypes'), 'all') ?>">
+                    <?php echo $this->Html->link('Gallery Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa-file-text')); ?>
+                    <ul class="treeview-menu">
+                        <li class="<?php echo $this->Html->getActiveClass(array('galleries'), array('types','add','edit','view')) ?>">
+                            <?php echo $this->Html->link(__('Gallery Types'),array('controller' => 'galleries', 'action' => 'types'),array('icon' => 'fa-file-text')); ?>
+                        </li>
+                        <li class="<?php echo $this->Html->getActiveClass(array('galleries'), array('index','add','edit','view')) ?>">
+                            <?php echo $this->Html->link(__('Gallery Management'),array('controller' => 'galleries', 'action' => 'index'),array('icon' => 'fa-file-text')); ?>
+                        </li>                                               
+                    </ul>
                 </li>               
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('contacts')) ?>">
                     <?php echo $this->Html->link(__('Contact Management'),array('controller' => 'contacts', 'action' => 'index'), array('icon' => 'fa-phone ')) ?>

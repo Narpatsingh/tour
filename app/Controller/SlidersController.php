@@ -79,20 +79,20 @@ public function view($id = null) {
 *
 * @return void
 */
-public function add() {
-    if ($this->request->is('post')) {
-        $this->Slider->create();
-        if ($this->Slider->save($this->request->data)) {
-            $this->Message->setSuccess(__('The slider has been saved.'));
-            return $this->redirect(array('action' => 'index'));
-        } else {
-            $this->Message->setWarning(__('The slider could not be saved. Please, try again.'));
-        }
-    }
-    $this->loadModel("Tour");
-    $tour_list = $this->Tour->get_list();
-    $this->set('tour_id',$tour_list);
-}
+// public function add() {
+//     if ($this->request->is('post')) {
+//         $this->Slider->create();
+//         if ($this->Slider->save($this->request->data)) {
+//             $this->Message->setSuccess(__('The slider has been saved.'));
+//             return $this->redirect(array('action' => 'index'));
+//         } else {
+//             $this->Message->setWarning(__('The slider could not be saved. Please, try again.'));
+//         }
+//     }
+//     $this->loadModel("Tour");
+//     $tour_list = $this->Tour->get_list();
+//     $this->set('tour_id',$tour_list);
+// }
 
 /**
 * edit method

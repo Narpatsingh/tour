@@ -25,6 +25,13 @@ class Gallery extends AppModel {
         'Containable'
     );
 
+    public $belongsTo = array(
+		'GalleryType' => array(
+			'className' => 'GalleryType',
+			'foreignKey' => 'gallery_type_id',
+		)
+	);
+
 /**
  * Validation rules
  *

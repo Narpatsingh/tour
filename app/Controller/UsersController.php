@@ -248,6 +248,11 @@ class UsersController extends AppController {
         $this->loadModel('City');
         $this->loadModel('Hotel');
         $this->loadModel('Slider');
+        $this->loadModel('GalleryType');
+        $this->loadModel('Gallery');
+        $galleryTypes = $this->GalleryType->find('list');
+        $gallerys = $this->Gallery->find('all',array('order' => array('Gallery.gallery_type_id' => 'ASC')));
+       // debug($gallerys);exit;
         $hotels = $this->Hotel->find('all',array('limit'=>5,'order' => array('Hotel.id' => 'DESC')));
         $states = $this->State->find('all', array('fields'=>array('name'),'contain' => false));
         $cities = $this->City->find('list');
@@ -257,7 +262,7 @@ class UsersController extends AppController {
         $discounts = $this->getTourDetails($this->Tour->find('all', array('contain' => false, 'conditions' => array('Tour.type' => '3'))));
         $blogs = $this->getTourDetails($this->Tour->find('all', array('contain' => false, 'limit'=>6,'order' => array('Tour.id' => 'DESC'))));
         $sliders = $this->Slider->find('all');
-        $this->set(compact('specials','hots','discounts','states','cities','hotels','blogs','destination','sliders')); 
+        $this->set(compact('specials','hots','discounts','states','cities','hotels','blogs','destination','sliders','galleryTypes','gallerys')); 
     }
 
     public function maintainace()

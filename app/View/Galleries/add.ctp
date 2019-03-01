@@ -19,7 +19,7 @@ if (isset($this->request->data['Gallery']['id'])) {
         <div class="box-body box-content">
             <?php
             echo $this->Form->input('id',array('type'=>'hidden'));
-            echo $this->Form->input('title',array('class' => 'form-control','options'=>array('hotels'=>'Hotel','tours'=>'Tour','cruises'=>'Cruise'), 'div' => array('class' => 'form-group')));
+            echo $this->Form->input('gallery_type_id',array('class' => 'form-control','options'=>$gallery_types, 'div' => array('class' => 'form-group')));
             echo $this->Form->input('description',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
             ?>
             <label class="form-group" style="margin-bottom: 10px">Gallery Photo</label>

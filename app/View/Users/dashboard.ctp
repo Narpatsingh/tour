@@ -452,54 +452,28 @@
                 <div class="col-xs-12">
                     <ul id="filter-list">
                         <li class="filter" data-filter="all">ALL</li>
-                        <li class="filter" data-filter="tours">tours</li>
-                        <li class="filter" data-filter="cruises">cruises</li>
-                        <li class="filter" data-filter="hotels">hotels</li>
+                        <?php foreach ($galleryTypes as $key => $value) { ?>
+                            <li class="filter" data-filter="<?php echo  $value; ?>"><?php echo  $value; ?></li>    
+                        <?php } ?>
                     </ul><!-- @end #filter-list -->
                 </div>
             </div>
             <div class="row" style="overflow: hidden;">
                 <ul class="gallery-item">
-                    <?php foreach ($hotels as $key => $hotel) {  ?>
-                    <li class="gallery hotels mix_all">
+                    <?php foreach ($gallerys as $key => $gallery) { ?>
+                    <li class="gallery <?php echo $gallery['GalleryType']['title'] ?> mix_all">
                         <div class="thumb">
-                            <img src="<?php echo $hotel['Hotel']['photo']; ?>" alt="" />
+                            <?php echo $this->Html->image(GALLERY_IMAGE.$gallery['Gallery']['id'].'/'.$gallery['Gallery']['photo'])?>
+                            <!-- <img src="<?php echo $gallery['Gallery']['photo']; ?>" alt="" /> -->
                             <div class="gallery-overlay">
                                 <div class="gallery-overlay-inner">
-                                    <h2><?php echo $hotel['Hotel']['name']; ?></h2>
-                                    <a href="<?php echo $hotel['Hotel']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
-                                </div>
-                            </div>
-                        </div><!--end post thumb-->
-                    </li>
-                    <?php } ?>  
-                    <?php for ($x = 1; $x <= 2; $x++) { ?>
-                    <li class="gallery tours mix_all">
-                        <div class="thumb">
-                            <img src="img/gallery/5.jpg" alt="" />
-                            <div class="gallery-overlay">
-                                <div class="gallery-overlay-inner">
-                                    <h2>Gallery <?php echo $x; ?></h2>
-                                    <a href="img/gallery/8.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
+                                    <h2><?php echo $gallery['Gallery']['description']; ?></h2>
+                                    <a href="<?php echo GALLERY_IMAGE_LINK.$gallery['Gallery']['id'].'/'.$gallery['Gallery']['photo']; ?>" class="fancybox"><i class="fa fa-camera"></i></a>
                                 </div>
                             </div>
                         </div><!--end post thumb-->
                     </li>
                     <?php } ?>
-                    <?php for ($x = 1; $x <= 2; $x++) { ?>
-                    <li class="gallery cruises mix_all">
-                        <div class="thumb">
-                            <img src="img/gallery/9.jpg" alt="" />
-                            <div class="gallery-overlay">
-                                <div class="gallery-overlay-inner">
-                                    <h2>Gallery <?php echo $x; ?></h2>
-                                    <a href="img/gallery/9.jpg" class="fancybox"><i class="fa fa-camera"></i></a>
-                                </div>
-                            </div>
-                        </div><!--end post thumb-->
-                    </li>
-                    <?php } ?>
-                    
                 </ul>
             </div>   
         </div>     

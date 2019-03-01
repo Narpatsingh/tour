@@ -131,7 +131,8 @@ public function add() {
             $account_data['ac_type_id'] = $this->BusDetail->getLastInsertID();
             $account_data['invoice_no'] = $invoice_no;
             $account_data['payment_recieved'] = $voucher['payment_recieved'];
-            $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
+            $voucher['grant_total'] = $account_data['total_payment_with_gst'] + $total_payment_sum;
+            $account_data['payment_receivable'] = $voucher['grant_total'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
             $voucher['ac_id'] = $ac_id = $this->Account->getLastInsertID();
             $this->BusDetail->id = $this->BusDetail->getLastInsertID();
