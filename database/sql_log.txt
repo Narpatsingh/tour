@@ -6,6 +6,10 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+28-02-2019 ~ Ajay
+ALTER TABLE `vouchers` ADD `booking_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `vouchers` ADD `customer_email_id` VARCHAR(250) NOT NULL AFTER `customer_full_name`;
+
 01-03-2019 ~ Narpat
 
 ALTER TABLE `bus_details` ADD `seat_no` VARCHAR(10) NULL AFTER `bus_no`;
