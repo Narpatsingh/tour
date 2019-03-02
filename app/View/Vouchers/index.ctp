@@ -88,8 +88,9 @@
 		<td class="actions text-center">
 			<?php //echo $this->Html->link(__(''), array('action' => 'view', $voucher['Voucher']['id']), array('icon'=>'view','title' => __('Click here to view this Voucher'))); ?>
 			<?php echo $this->Html->link(__(''), array('action' => 'edit', $voucher['Voucher']['id']), array('icon'=>'edit','title' => __('Click here to edit this Voucher'))); ?>
-			<?php echo $this->Html->link(__(''), array('action' => 'delete', $voucher['Voucher']['id']), array('icon'=>'delete','title' => __('Click here to delete this Voucher')), __('Are you sure you want to delete Voucher?')); ?>
-		</td>
+		    <?php echo $this->Html->link(__(''), array('action' => 'sendVoucher',$voucher['Voucher']['booking_id'] ), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send voucher again.'))); ?> 
+            <?php echo $this->Html->link(__(''), array('action' => 'delete', $voucher['Voucher']['id']), array('icon'=>'delete','title' => __('Click here to delete this Voucher')), __('Are you sure you want to delete Voucher?')); ?>
+        </td>
 	</tr>
 <?php endforeach; ?>
 <?php }?>			

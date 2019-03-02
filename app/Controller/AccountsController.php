@@ -91,6 +91,7 @@ public function add() {
     if ($this->request->is('post')) {
         $this->Account->create();
         if ($this->Account->save($this->request->data)) {
+ 
             $this->Message->setSuccess(__('The account has been saved.'));
             return $this->redirect(array('action' => 'index'));
         } else {
@@ -123,6 +124,8 @@ public function edit($id = null) {
         }
         $invoice_day =  $this->Account->find('first',array('order' => array("Account.updated DESC"),'fields' => array('Account.invoice_no')));
         if ($this->Account->save($this->request->data)) {   
+            $this->loadModel("AccountHistory");
+            $this->AccountHistory->ManageLog($this->request->data['Account']);            
             $cus_id = $account_detail['Account']['cus_id'];
             $module_id = $account_detail['Account']['ac_type_id'];
             $this->request->data['Account']['payment_amount'] = $account_detail['Account']['payment_amount'];
@@ -310,5 +313,42 @@ public function sendReceipt($ac_id='')
     return $this->redirect(array('action' => 'index'));
 }
 
+/**
+ * view Account History method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+public function viewHistory($id = null)
+{
+    $remove_id=array('id');
+    
+    $this->loadModel('AccountHistory');
+    //if ($this->request->is('ajax')) {
+        $this->layout = 'ajax';
+        $this->autoRender = false;
+        $this->autoLayout = false;
+
+        if (!$this->AccountHistory->exists($id)) {
+            throw new NotFoundException(__('Invalid audit log'));
+        }
+
+        $conditions = array(
+            'AccountHistory.account_id' => $id
+        );
+        $account_histories = $this->AccountHistory->find('all', array(
+                'conditions' => $conditions,
+                'contain' => array('User')
+            )
+        );
+
+        //debug($account_histories); exit;
+        $this->set(compact('account_histories','remove_id'));
+        $renderData = $this->render('/Accounts/account_histories')->body();
+    // }else{
+    //     return $this->redirect(array('controller'=>'reports', 'action' => 'audit_log'));
+    // }
+}
 
 }

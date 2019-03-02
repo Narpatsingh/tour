@@ -105,6 +105,10 @@ public function add() {
             $voucher['company_signature'] = Configure::read('Site.Name');
             $tour_types = Configure::read('tour_types');
             $config_gst = Configure::read('Site.gst_percent');
+            $this->loadModel('GstParameter');
+            $gst_value = $this->GstParameter->findByName('bus');
+            $config_gst = $gst_value['GstParameter']['value'];
+
             $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
             $this->loadModel("Customer");$this->loadModel("Tour");$this->loadModel("Account");
             $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $this->request->data['BusDetail']['customer_id']));

@@ -115,7 +115,12 @@ public function add($id=null) {
             $pdfpath = '';
             if(!empty($this->request->data['Booking']['generate_receipt'])){
             $this->set(compact('voucher'));    
-            $this->render('/Pdf/tour_receipt'); 
+            $pcount = $this->request->data['Booking']['package_count'];
+            if($pcount==1){
+            $this->render('/Pdf/tour_receipt');     
+            }else{
+            $this->render('/Pdf/tour_receipt'.$pcount);         
+            }
             $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
             }
             $arrData['Customer']['text'] = 'Tour ';

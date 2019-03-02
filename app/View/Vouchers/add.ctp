@@ -21,6 +21,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('id',array('type'=>'hidden'));
+                echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
@@ -139,6 +140,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('id',array('type'=>'hidden'));
+                echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));
@@ -317,6 +319,7 @@
        <?php
        /*Upper start*/ 
                 echo $this->Form->input('id',array('type'=>'hidden'));
+                echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
                 echo $this->Form->input('booking_id',array('type'=>'hidden'));
                 echo $this->Form->input('ac_id',array('type'=>'hidden'));
                 echo $this->Form->input('package_count',array('type'=>'hidden'));

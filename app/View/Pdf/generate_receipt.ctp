@@ -9,7 +9,7 @@ $pdf->SetTitle('TCPDF Example 061');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-// remove default header/footer
+// remove default header/footer 
 $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 

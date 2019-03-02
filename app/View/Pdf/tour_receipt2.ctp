@@ -6,7 +6,7 @@ $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);
 // set document information 
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SilShine');
-$pdf->SetTitle('SilShine Receipt');
+$pdf->SetTitle('SilShine');
 $pdf->SetSubject('Invoice Receipt');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -69,23 +69,25 @@ $customer_signature = $voucher['customer_signature'];
 $company_signature = $voucher['company_signature'];
 $customer_full_name = $voucher['customer_full_name'];
 $invoice_no = $voucher['invoice_no'];
-$train_no = $voucher['train_no'];
 $customer_tour_type = $voucher['customer_tour_type'];
 $customer_tour_name = $voucher['customer_tour_name'];
-$customer_company_name = $voucher['company_name'];
+$customer_tour_name2 = $voucher['customer_tour_name2'];
+$cus_total_payment = $voucher['total_payment'];
+$cus_total_payment2 = $voucher['total_payment2'];
 $customer_contact_no = $voucher['customer_contact_no'];
 $payment_type = $voucher['payment_type'];
 $total_payment = $voucher['total_payment_sum'];
 $final_total_payment = $voucher['final_payment_with_gst'];
 $gst_percent = $voucher['gst_percent'];
+$id = $voucher['booking_id'];
 $ac_id = $voucher['ac_id'];
-// $gst_amount = $final_total_payment-$total_payment;
-// $grand_total = $final_total_payment-$payment_recieved;
-$source =  $voucher['source']; 
-$destination =  $voucher['destination']; 
-$pnr_no =  $voucher['pnr_no'];
-$total = $total_payment + $final_total_payment;
-$grand_total = $total-$payment_recieved;
+$redirect = $voucher['redirect'];
+$gst_amount = $final_total_payment-$total_payment;
+$gst_total = get_total_gst($cus_total_payment,$gst_percent);
+$gst_total2 = get_total_gst($cus_total_payment2,$gst_percent);
+$cus_final_total_payment = get_gst_amount($cus_total_payment,$gst_percent);
+$cus_final_total_payment2 = get_gst_amount($cus_total_payment2,$gst_percent);
+$grand_total = $final_total_payment-$payment_recieved;
 // define some HTML content with style
 $html = <<<EOF
 <img src="$app">
@@ -93,31 +95,23 @@ $html = <<<EOF
 <table style"width:120%;">
 	<tr>
 		<td><b>Invoice No</b></td>
-		<td> <b>:</b> $invoice_no</td>
+		<td colspan="2"> <b>:</b> $invoice_no</td>
 		<td><b>Customer Name</b></td>
 		<td> <b>:</b> $customer_full_name</td>
 	</tr>	
 </table>
 <table style"width:120%;">
 	<tr>
-		<td><b>Train No</b></td>
-		<td> <b>:</b> $train_no</td>
-		<td><b>PNR No</b></td>
-		<td> <b>:</b> $pnr_no</td>
-	</tr>	
-</table>
-<table style"width:120%;">
-	<tr>
-		<td><b>Source</b></td>
-		<td> <b>:</b> $source</td>
+		<td><b>Customer Tour Type</b></td>
+		<td  colspan="2"> <b>:</b> $customer_tour_type</td>
 		<td><b>Contact Number</b></td>
 		<td> <b>:</b> $customer_contact_no</td>
-	</tr>	
+	</tr>
 </table>
 <table style"width:120%;">
 <tr>
-		<td><b>Destination</b></td>
-		<td> <b>:</b> $destination</td>
+		<td> </td>
+		<td  colspan="2"> </td>
 		<td><b>Date</b></td>
 		<td> <b>:</b> $date</td>
 </tr>
@@ -128,29 +122,40 @@ $html = <<<EOF
 	<thead>
 		<tr>
 		<th style="width:35px">No.</th>
-		<th>Company Name</th>
+		<th style="width:25%">Tour Name</th>
 		<th>Payment Type</th>
 		<th>Payable Amount</th>
 		<th>GST($gst_percent%)</th>
-		<th style="width:200px">Amount Paid</th>
-		<th style="width:173px">Total</th>
+		<th style="width:21.5%">Total</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 		<td style="width:35px;">1</td>
-		<td>$customer_company_name</td>
+		<td style="width:25%">$customer_tour_name</td>
 		<td class="pad-two">$payment_type</td>
-		<td>$total_payment</td>
-		<td>$final_total_payment</td>
-		<td style="width:200px">$payment_recieved</td>
-		<td style="width:173px;text-align: end;">$total</td>
+		<td>$cus_total_payment</td>
+		<td>$gst_total</td>
+		<td style="width:21.5%">$cus_final_total_payment</td>
+		</tr>
+		<tr>
+		<td style="width:35px;">2</td>
+		<td style="width:25%">$customer_tour_name2</td>
+		<td class="pad-two">$payment_type</td>
+		<td>$cus_total_payment2</td>
+		<td>$gst_total2</td>
+		<td style="width:21.5%">$cus_final_total_payment2</td>
 		</tr>
 	</tbody>
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
-		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$total</td>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$final_total_payment</td>
+	</tr>	
+</table>
+<table style="border:1px solid black; width:100.3%; padding:5px;">
+	<tr>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>AMOUNT PAID</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$payment_recieved</td>
 	</tr>	
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">

@@ -35,6 +35,9 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('hotelBookings')) ?>">
                     <?php echo $this->Html->link(__('Hotel Bookings'),array('controller' => 'hotelBookings', 'action' => 'index'), array('icon' => 'fas fa-hotel ')) ?>
                 </li>
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('gst_parameters')) ?>">
+                    <?php echo $this->Html->link(__('GST Management'),array('controller' => 'gst_parameters', 'action' => 'index'), array('icon' => 'fa-rupee ')) ?>
+                </li>                
                 <li class="treeview <?php echo $this->Html->getActiveClass(array('bus_details','car_details','train_details','flight_details'),array('index','add','edit','view'), 'all') ?>">
                     <?php echo $this->Html->link('Travel Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa fa-plane')); ?>
                     <ul class="treeview-menu">
@@ -55,12 +58,12 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('bookings')) ?>">
                     <?php echo $this->Html->link(__('Booking Management'),array('controller' => 'bookings', 'action' => 'index'), array('icon' => 'fa-file ')) ?>
                 </li>
-                <li class="<?php echo $this->Html->getActiveOpenClass(array('accounts')) ?>">
-                    <?php echo $this->Html->link(__('Finance Management'),array('controller' => 'accounts', 'action' => 'index'), array('icon' => 'fa-tachometer ')) ?>
-                </li>               
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('vouchers')) ?>">
                     <?php echo $this->Html->link(__('Vouchers Management'),array('controller' => 'vouchers', 'action' => 'index'), array('icon' => 'fa-file-text ')) ?>
                 </li> 
+                <li class="<?php echo $this->Html->getActiveOpenClass(array('accounts')) ?>">
+                    <?php echo $this->Html->link(__('Finance Management'),array('controller' => 'accounts', 'action' => 'index'), array('icon' => 'fa-tachometer ')) ?>
+                </li>                
                  <li class="treeview <?php echo $this->Html->getActiveClass(array('galleries'),array('index','add','edit','view','types','editTypes'), 'all') ?>">
                     <?php echo $this->Html->link('Gallery Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa-file-text')); ?>
                     <ul class="treeview-menu">

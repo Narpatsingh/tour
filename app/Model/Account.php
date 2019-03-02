@@ -56,6 +56,12 @@ class Account extends AppModel {
 			'order' => ''
 		)
 	);
+	public function afterSave($created, $options = array()){
+    if($created) {
+	$accountHistory = ClassRegistry::init("AccountHistory");
+	$accountHistory->ManageLog($this->data['Account']);
+    }
+	}
 
 	public function get_total_payment_with_gst($id='')
 	{

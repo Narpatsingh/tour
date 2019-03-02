@@ -92,7 +92,7 @@ public function view($id = null) {
 * @return void
 */
 public function add($id=null) {
-        $id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
+    $id = $booking_id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
     if ($this->request->is('post')) {
 
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
@@ -103,8 +103,10 @@ public function add($id=null) {
         $this->request->data['Voucher']['total_payment_sum'] = $total_payment_sum = $this->request->data['Voucher']['total_payment'] + $payment2 + $payment3;        
         $this->request->data['Voucher']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
         $this->request->data['Voucher']['gst_percent'] = $gst_percent;
+        $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
+
         if ($this->Voucher->save($this->request->data)) {
 
             
@@ -136,8 +138,19 @@ public function add($id=null) {
             $this->loadModel("Booking");
             $this->Booking->id = $id;
             $this->Booking->saveField('invoice_no',$invoice_no);                
-            $this->render('/Pdf/tour_receipt'); 
+
+            if($pcount==1){
+            $this->render('/Pdf/tour_receipt');     
+            }else{
+            $this->render('/Pdf/tour_receipt'.$pcount);         
+            }            
             $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE );
+            if(!empty($this->request->data['Voucher']['all_t_and_c'])){
+            $this->layout = 'pdf';
+            $this->set(compact('voucher'));
+            $this->render('/Pdf/generate_terms_and_conditions');    
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE , ROOT_DIR.TNCPATH.$booking_id.TNC_FILE );
+            }            
             }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
@@ -145,6 +158,7 @@ public function add($id=null) {
             
             $arrData['Customer']['text'] = 'Tour'. $invoice_no;
             $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
+            $arrData['Customer']['name'] = $this->request->data['Voucher']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
             $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
@@ -161,7 +175,7 @@ public function add($id=null) {
             $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $id));
             $bookings = $this->Booking->find('first', $options);        
             $this->request->data['Voucher'] = $bookings['Booking'];
-            $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id'];
+            $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id']; unset($this->request->data['Voucher']['id']);
             $this->request->data['Voucher']['enc_id'] = $bookings['Booking']['enquiry_id'];
             $this->request->data['Voucher']['ac_id'] = $bookings['Booking']['ac_id'];
             $this->request->data['Voucher']['customer_tour_type'] = $bookings['Booking']['tour_type'];
@@ -224,14 +238,25 @@ public function edit($id = null) {
             }else{
             $this->render('/Pdf/generate_voucher'.$pcount);         
             }
-
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->loadModel("Booking");
             $this->Booking->id = $booking_id;
             $this->Booking->saveField('invoice_no',$invoice_no);                
-            $this->render('/Pdf/tour_receipt'); 
+            if($pcount==1){
+            $this->render('/Pdf/tour_receipt');     
+            }else{
+            $this->render('/Pdf/tour_receipt'.$pcount);         
+            }
             $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE );
+
+            if(!empty($this->request->data['Voucher']['all_t_and_c'])){
+            $this->layout = 'pdf';
+            $this->set(compact('voucher'));
+            $this->render('/Pdf/generate_terms_and_conditions');    
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE , ROOT_DIR.TNCPATH.$booking_id.TNC_FILE );
+            }
+
             }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
@@ -242,7 +267,8 @@ public function edit($id = null) {
             $arrData['Customer']['name'] = $this->request->data['Voucher']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour';
 
-            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);         
+            $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);    
+
             $this->Message->setSuccess(__('The voucher has been updated.'));
             return $this->redirect(array('action' => 'index'));
         } else {
@@ -298,4 +324,24 @@ public function save_jspdf_file($id,$invoice_no) {
         return $this->redirect('index');
     }
 }
+
+public function sendVoucher($id)
+{
+    if (empty($id)) {
+        $this->Message->setWarning(__('The voucher could not be found. Please, try again.'));
+    } else {
+        $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
+        $this->loadModel('Booking');
+        $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $id));
+        $booking = $this->Booking->find('first', $options);
+        $arrData['Customer']['text'] = 'Voucher';
+        $arrData['Customer']['email'] = $booking['Booking']['customer_email_id'];
+        $arrData['Customer']['name'] = $booking['Booking']['customer_full_name'];
+        $arrData['Customer']['booking_type'] = 'Tour';
+        $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);        
+        $this->Message->setSuccess(__('The voucher has been sent successfully.'));
+    }
+    return $this->redirect(array('action' => 'index'));     
+}
+
 }

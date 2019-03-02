@@ -101,8 +101,6 @@ app/Controller/EnquiriesController.php app/Controller/UsersController.php app/Mo
 
 Pending
 
--add calendar to member dob in booking management
-
 -add total amount after tour in booking
 
 -In booking management, show different packages with their respective field. Like admin has to fill up 
@@ -117,3 +115,50 @@ package one details first and then package 2 and so on. Each details will be in 
 -I booked a tour with test jay name, and it is not showing in finance management.
 
 -add a voucher management functionality , which edits and sends voucher again to customer.
+
+Three tasks:
+
+- On edit voucher need to generate receipt & send in mail.
+- In Accounts, manage the tour entries.
+- Booking
+- create send button in tour.
+- create multiple tour in invoice.
+
+Task
+
+-Send terms and condtions with the voucher that is filled by customer in booking form. (PDF) - Done
+-add an action button that will show all the transactions of the customer. - Done
+-Implement resend voucher in voucher management. - Done
+-send receipt again for tour. - Done
+-multiple tour display in tour receipt. - Done
+-When viewing receipt pdf from booking management it shows error. Done
+-Issue Photo not diplay in voucher pdf. - Done
+-make gst management in which admin can manually add gst for flight, car, bus, tours and other related receipts(For example, if a receipt of any tour is made then gst is fetched from this table and receipt is generated) - Done
+-Manage grant total issue in tour booking.(i am fix it in all travel module) - Done
+
+
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+
+TERMS AND CONDITIONS
+
+Terms And Conditions
+terms_and_conditions
+
+Voucher
+
+account_histories
+
+id
+account_id
+payment_recieved
+reason
+
+Account History
+
+
+gst_parameters
+id
+name
+created
+updated

@@ -63,6 +63,7 @@ $this->Custom->addCrumb(__('Accounts'));
                      <td><?php echo empty($account['Account']['payment_receivable'])?'N/A':$account['Account']['payment_receivable']; ?>&nbsp;</td>
                      <td class="actions text-center">
                         <?php //echo $this->Html->link(__(''), array('action' => 'view', $account['Account']['id']), array('icon'=>'view','title' => __('Click here to view this Account'))); ?>
+                        <?php echo $this->Html->link(__(''), array('controller' => 'Accounts','action' => 'viewHistory', $account['Account']['id']), array('data-reqtitle' => $account['Account']['ac_type'],'icon' => 'view', 'class' => 'viewAccountHistory no-hover-text-decoration', 'title' => __('Click here to view this Account History.'))); ?>
                         <?php echo $this->Html->link(__(''), array('action' => 'edit',encrypt( $account['Account']['id'] )), array('icon'=>'edit','title' => __('Click here to edit this Account'))); ?>
                         <?php echo $this->Html->link(__(''), array('action' => 'sendReceipt',encrypt( $account['Account']['id'] )), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send receipt again.'))); ?>
                         <?php echo $this->Html->link(__(''), array('action' => 'delete', $account['Account']['id']), array('icon'=>'delete','title' => __('Click here to delete this Account')), __('Are you sure you want to delete Account?')); ?>
@@ -77,3 +78,25 @@ $this->Custom->addCrumb(__('Accounts'));
     <?php echo $this->element('pagination'); ?>
 </div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+
+        jQuery('.viewAccountHistory').on('click', function (e) {
+            e.preventDefault();
+            var title = $(this).data('reqtitle');
+            var Url = $(this).attr("href");
+            jQuery.ajax({
+                url: Url,
+                type: 'post',
+                success: function (response) {
+                    jQuery('#appendModelContent').html('');
+                    jQuery('#appendModelContent').append(response);
+                    $('#commonModel').modal('show');
+                },
+                error: function (e) {
+
+                }
+            });
+        });
+    });
+</script>

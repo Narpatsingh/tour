@@ -3,10 +3,10 @@ App::import('Vendor','xtcpdf');
 $app = APP.'webroot/img/tour_head_logo.png';
 $rupee = APP.'webroot/img/rupee.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
-// set document information
+// set document information 
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Silshine');
-$pdf->SetTitle('Silshine');
+$pdf->SetTitle('Silshine Receipt');
 $pdf->SetSubject('Invoice Receipt');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -138,7 +138,7 @@ $html = <<<EOF
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
-		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRANT TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$total</td>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$total</td>
 	</tr>	
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">

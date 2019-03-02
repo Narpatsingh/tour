@@ -3,7 +3,7 @@ App::import('Vendor','xtcpdf');
 $app = APP.'webroot/img/tour_head_logo.png';
 $rupee = APP.'webroot/img/rupee.png';
 $pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false); 
-// set document information
+// set document information 
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SilShine');
 $pdf->SetTitle('SilShine');
@@ -80,6 +80,7 @@ $id = $voucher['booking_id'];
 $ac_id = $voucher['ac_id'];
 $redirect = $voucher['redirect'];
 $gst_amount = $final_total_payment-$total_payment;
+$gst_total = $final_total_payment-$total_payment;
 $grand_total = $final_total_payment-$payment_recieved;
 // define some HTML content with style
 $html = <<<EOF
@@ -115,23 +116,30 @@ $html = <<<EOF
 	<thead>
 		<tr>
 		<th style="width:35px">No.</th>
-		<th>Tour Name</th>
+		<th style="width:25%">Tour Name</th>
 		<th>Payment Type</th>
 		<th>Payable Amount</th>
+		<th>GST($gst_percent%)</th>
 		<th>Amount Paid</th>
-		<th style="width:30%">GST($gst_percent%)</th>
+		<th>Total</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 		<td style="width:35px;">1</td>
-		<td>$customer_tour_name</td>
+		<td style="width:25%">$customer_tour_name</td>
 		<td class="pad-two">$payment_type</td>
 		<td>$total_payment</td>
+		<td>$gst_total</td>
 		<td>$payment_recieved</td>
-		<td style="width:30%">$final_total_payment</td>
+		<td>$final_total_payment</td>
 		</tr>
 	</tbody>
+</table>
+<table style="border:1px solid black; width:100.3%; padding:5px;">
+	<tr>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$final_total_payment</td>
+	</tr>	
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
