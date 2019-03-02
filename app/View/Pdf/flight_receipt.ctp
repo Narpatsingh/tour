@@ -86,6 +86,9 @@ $destination =  $voucher['destination'];
 $pnr_no =  $voucher['pnr_no'];
 $total = $total_payment + $final_total_payment;
 $grand_total = $total-$payment_recieved;
+$total_gst = $final_total_payment-$total_payment;
+$amount_remaining = $final_total_payment - $payment_recieved;
+
 // define some HTML content with style
 $html = <<<EOF
 <img src="$app">
@@ -130,7 +133,7 @@ $html = <<<EOF
 		<th style="width:35px">No.</th>
 		<th>Company Name</th>
 		<th>Payment Type</th>
-		<th>Payable Amount</thS
+		<th>Payable Amount</th>
 		<th>GST($gst_percent%)</th>
 		<th style="width:200px">Amount Paid</th>
 		<th style="width:173px">Total</th>
@@ -142,20 +145,20 @@ $html = <<<EOF
 		<td>$customer_company_name</td>
 		<td class="pad-two">$payment_type</td>
 		<td>$total_payment</td>
-		<td>$final_total_payment</td>
+		<td>$total_gst</td>
 		<td style="width:200px">$payment_recieved</td>
-		<td style="width:173px;text-align: end;">$total</td>
+		<td style="width:173px;text-align: end;">$final_total_payment</td>
 		</tr>
 	</tbody>
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
-		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$total</td>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>GRAND TOTAL</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$final_total_payment</td>
 	</tr>	
 </table>
 <table style="border:1px solid black; width:100.3%; padding:5px;">
 	<tr>
-		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>AMOUNT REMAINING</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$grand_total</td>
+		<td colspan="6" align="right" style="padding:25px; text-align:right;"><b>AMOUNT REMAINING</b>: &nbsp;&nbsp;<img src="$rupee" width="10" height="10">&nbsp;$amount_remaining</td>
 	</tr>	
 </table>
 <br>

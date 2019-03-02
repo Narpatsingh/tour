@@ -87,7 +87,7 @@ $total = $total_payment + $final_total_payment;
 $grand_total = $total-$payment_recieved;
 $total_gst = $final_total_payment-$total_payment;
 $amount_remaining = $final_total_payment - $payment_recieved;
-// define some HTML content with style
+// define some HTML content with style 
 $html = <<<EOF
 <img src="$app">
 <br><br>

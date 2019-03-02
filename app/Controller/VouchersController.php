@@ -97,6 +97,9 @@ public function add($id=null) {
 
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
         $config_gst = Configure::read('Site.gst_percent');
+        $this->loadModel('GstParameter');
+        $gst_value = $this->GstParameter->findByName('tour');
+        $config_gst = $gst_value['GstParameter']['value'];        
         $gst_percent = empty($config_gst)?10:$config_gst;
         $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
         $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];
@@ -207,6 +210,9 @@ public function edit($id = null) {
     if ($this->request->is(array('post', 'put'))) {
         if ($this->Voucher->save($this->request->data)) {
             $config_gst = Configure::read('Site.gst_percent');
+            $this->loadModel('GstParameter');
+            $gst_value = $this->GstParameter->findByName('tour');
+            $config_gst = $gst_value['GstParameter']['value'];            
             $gst_percent = empty($config_gst)?10:$config_gst;
             $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
             $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];

@@ -2,7 +2,7 @@
 	$this->assign('pagetitle', __('Gst Parameters'));
 	$this->Custom->addCrumb(__('Gst Parameters'));
 	$this->start('top_links');
-		echo $this->Html->link(__('Add Gst Parameter'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Gst Parameter'),'class'=>'btn btn-primary','escape'=>false));
+		//echo $this->Html->link(__('Add Gst Parameter'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Gst Parameter'),'class'=>'btn btn-primary','escape'=>false));
 	$this->end();
 ?>
 <div class="row">

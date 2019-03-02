@@ -108,6 +108,9 @@ public function add() {
             $this->loadModel('GstParameter');
             $gst_value = $this->GstParameter->findByName('hotel');
             $config_gst = $gst_value['GstParameter']['value'];            
+            $this->loadModel('GstParameter');
+            $gst_value = $this->GstParameter->findByName('hotel');
+            $config_gst = $gst_value['GstParameter']['value'];            
             $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
             $this->loadModel("Customer");$this->loadModel("Tour");$this->loadModel("Account");
             $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $this->request->data['HotelBooking']['customer_id']));
