@@ -84,7 +84,7 @@ public function add($id=null) {
     if ($this->request->is('post')) {
         $this->Booking->create();
         $this->request->data['Booking']['enquiry_id'] = decrypt($id);
-        $this->request->data['Booking']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['Booking']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->Booking->save($this->request->data)) {
             //ToDo : Generate Receipt.
             $config_gst = Configure::read('Site.gst_percent');
