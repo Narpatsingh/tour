@@ -80,6 +80,7 @@ class EnquiriesController extends AppController {
         $tour_id = $enquiries['Customer']['package_id'];
         $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $tour_id));
         $package = $this->Tour->find('first', $toptions);
+        $package = $this->getSingleDetails($package);
         $this->set(compact('package','enquiries'));
     }
 
@@ -191,4 +192,59 @@ class EnquiriesController extends AppController {
         }
         return $this->redirect(array('action' => 'index'));
     }   
+
+    public function getSingleDetails($tour_data='')
+    {
+        $this->loadModel('Place');
+        $this->loadModel('State');
+        $this->loadModel('City');
+        $this->loadModel('Hotel');
+        if(!empty($tour_data['Tour']['city_id'])){
+            $cities = [];
+            $cityIds = explode(',', $tour_data['Tour']['city_id']);
+            $City_detail = $this->City->find('all',array('conditions' => array('City.id'=> $cityIds),'fields'=>array('City.id','City.name')));
+            foreach ($City_detail as $key => $city_value) {
+               $cities[] = $city_value['City']['name'];
+            }
+            if(!empty($cities)){
+                $tour_data['City']['name'] = implode(',', $cities);
+            }
+        }
+        if(!empty($tour_data['Tour']['state_id'])){
+            $states = [];
+            $state_Ids = explode(',', $tour_data['Tour']['state_id']);
+            $states_detail = $this->State->find('all',array('conditions' => array('State.id'=> $state_Ids),'fields'=>array('State.id','State.name')));
+            if(!empty($states_detail)){
+                foreach ($states_detail as $key => $state_value) {
+                   $states[] = $state_value['State']['name'];
+                }
+                if(!empty($states)){
+                    $tour_data['State']['name'] = implode(',', $states);
+                }
+            }
+        }
+        if(!empty($tour_data['Tour']['multi_hotel'])){
+            $hotels = [];
+            $hotelIds = explode(',', $tour_data['Tour']['multi_hotel']);
+            $hotel_detail = $this->Hotel->find('all',array('conditions' => array('Hotel.id'=> $hotelIds),'fields'=>array('Hotel.id','Hotel.name')));
+            foreach ($hotel_detail as $key => $hotel_value) {
+               $hotels[] = $hotel_value['Hotel']['name'];
+            }
+            if(!empty($hotels)){
+                $tour_data['Hotel']['name'] = implode(',', $hotels);
+            }
+        }
+        if(!empty($tour_data['Tour']['place_id'])){
+            $Places = [];
+            $placeIds = explode(',', $tour_data['Tour']['place_id']);
+            $Place_detail = $this->Place->find('all',array('conditions' => array('Place.id'=> $placeIds),'fields'=>array('Place.id','Place.name')));
+            foreach ($Place_detail as $key => $Place_value) {
+               $Places[] = $Place_value['Place']['name'];
+            }
+            if(!empty($Places)){
+                $tour_data['Place']['name'] = implode(',', $Places);
+            }
+        }
+        return $tour_data;
+    }    
 }

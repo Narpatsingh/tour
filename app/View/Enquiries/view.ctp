@@ -55,7 +55,7 @@
                                  <li><label>Package Type</label> <b>:</b><?php echo $package['Tour']['type']; ?></li>
                                  <li><label>Package City</label> <b>:</b><?php echo $package['City']['name']; ?></li>
                                  <li><label>Package State</label> <b>:</b><?php echo $package['State']['name']; ?></li>
-                                 <li><label>Package Place</label> <b>:</b><?php echo $package['Tour']['place']; ?></li>
+                                 <li><label>Package Place</label> <b>:</b><?php echo $package['Place']['name']; ?></li>
                                  <li><label>Package Cost</label> <b>:</b><?php echo $package['Tour']['price']; ?></li>
                                  <li><label>Package Discount</label> <b>:</b><?php echo empty($package['Tour']['discount'])?'N\A':$package['Tour']['discount']; ?></li>
                                  <li><label>Package Description</label> <b>:</b><?php echo $package['Tour']['description']; ?></li>
