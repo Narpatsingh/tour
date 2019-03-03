@@ -11,17 +11,24 @@ $this->end();
 	<div class="overflow-hide-break">
 		<?php echo $this->Form->create('HotelBooking', array('class' => 'form-validate','type'=>'file')); ?>
 		<div class="box-body box-content">
-			<?php
-			echo $this->Form->input('id',array('type'=>'hidden'));
-			echo $this->Form->input('state_id',array('class' => 'form-control','empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
-            echo $this->Form->input('city_id',array('class' => 'form-control','empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
-			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-            echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-            echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-            echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			?>
+            <div class="row no-margin">
+                <div class="col-md-6">
+    			<?php
+    			echo $this->Form->input('id',array('type'=>'hidden'));
+    			echo $this->Form->input('state_id',array('class' => 'form-control','empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
+                echo $this->Form->input('city_id',array('class' => 'form-control','empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
+    			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
+    			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
+                </div>
+                <div class="col-md-6">
+                <?php
+                echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+    			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+    			?>
+                </div>
+            </div>
 		</div>
 		<div class="form-action">
 			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>

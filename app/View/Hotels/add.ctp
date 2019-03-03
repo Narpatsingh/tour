@@ -15,32 +15,37 @@
     	<div class="overflow-hide-break">
     		<?php echo $this->Form->create('Hotel', array('class' => 'form-validate','type'=>'file')); ?>
     		<div class="box-body box-content">
-    			<?php
-    			echo $this->Form->input('id',array('type'=>'hidden'));
-    			echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
-                echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
-    			echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-    			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-    			echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-    			?>
-                <label class="form-group" style="margin-bottom: 10px">Hotel Photo</label>
-                <div class="form-group row">
-                    <div id='photoId' class='col-md-4'>
-                        <?php if(!empty($photo)){
-                            echo $this->Html->image('../'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'width: 300px;height: 220px;'));
-                        }else{
-                            echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
-                        }?>
+                <div class="row no-margin">
+                    <div class="col-md-6">
+        			<?php
+        			echo $this->Form->input('id',array('type'=>'hidden'));
+        			echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
+                    echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
+        			echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));?>
+                    <label class="form-group" style="margin-bottom: 10px">Hotel Photo</label>
+                        <div class="form-group row">
+                            <div id='photoId' class='col-md-6'>
+                                <?php if(!empty($photo)){
+                                    echo $this->Html->image('../'.$photo, array('class' => 'thumbnail img-responsive', 'style' => 'width: 300px;height: 220px;'));
+                                }else{
+                                    echo $this->Html->image(NO_IMAGE, array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px'));
+                                }?>
+                            </div>
+                            <?php echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', /*'before' => '<label for="PlacePhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo',*/ 'div' => array('class' => 'col-md-10'))) ?>
+                            <div for='PlacePhoto' generated='true' class='error' style='display: none'>
+                                <span class="errorDV"> </span>
+                            </div>
+                        </div>
                     </div>
-                    <?php echo $this->Form->input('photo', array('required' => false, 'label' => false, 'type' => 'file', /*'before' => '<label for="PlacePhoto" class="btn btn-info"><i class="fa fa-upload">&nbsp;</i>' . __('Select Photo') . '</label>', 'after' => '<span id="photo-name" style="margin-left: 15px"></span>', 'class' => 'hidden photo',*/ 'div' => array('class' => 'col-md-10'))) ?>
-                    <div for='PlacePhoto' generated='true' class='error' style='display: none'>
-                        <span class="errorDV"> </span>
+                    <div class="col-md-6">
+                    <?php
+        			echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+        			echo $this->Form->input('type',array('label' => __('Type'), 'class' => 'form-control','options'=>$types,'empty' => __('Select Star'), 'div' => array('class' => 'form-group required')));
+                    echo $this->Form->input('meal_plan',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                    echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                    ?>
                     </div>
-                </div>
-                <?php
-                echo $this->Form->input('type',array('label' => __('Type'), 'class' => 'form-control','options'=>$types,'empty' => __('Select Star'), 'div' => array('class' => 'form-group required')));
-                echo $this->Form->input('meal_plan',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                ?>
+                 </div>   
     		</div>
     		<div class="form-action">
     			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>

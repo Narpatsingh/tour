@@ -78,8 +78,8 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('contacts')) ?>">
                     <?php echo $this->Html->link(__('Contact Management'),array('controller' => 'contacts', 'action' => 'index'), array('icon' => 'fa-phone ')) ?>
                 </li>                
-				<li class="<?php //echo $this->Html->getActiveOpenClass(array('')) ?>">
-					<?php //echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
+				<li class="<?php echo $this->Html->getActiveOpenClass(array('')) ?>">
+					<?php echo $this->Html->link(__('Audit Log'),array('controller' => 'reports', 'action' => 'audit_log'), array('icon' => 'fa-book ')) ?>
 				</li>			
             <?php endif; ?>    
 

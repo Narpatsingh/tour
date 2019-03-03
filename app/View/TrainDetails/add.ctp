@@ -10,19 +10,25 @@
 <div class="box box-primary">
 	<div class="overflow-hide-break">
 		<?php echo $this->Form->create('TrainDetail', array('class' => 'form-validate','type'=>'file')); ?>
-		<div class="box-body box-content">
-			<?php
-			echo $this->Form->input('id',array('type'=>'hidden'));
-			echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));		
-			echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('train_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('seat_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-			echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-			?>
+		<div class="box-body box-content">\
+			<div class="row no-margin">
+                <div class="col-md-6">
+				<?php
+				echo $this->Form->input('id',array('type'=>'hidden'));
+				echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));		
+				echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('train_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); ?>
+				</div>
+				<div class="col-md-6">
+				<?php
+				echo $this->Form->input('seat_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				?>
+			</div>
 		</div>
 		<div class="form-action">
 			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>

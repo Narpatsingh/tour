@@ -13,7 +13,7 @@ class AppController extends Controller
         'Message',
         'SendEmail',
         'Siteconfig',
-        'AutoPaginate' => array('options' => array(10, 20, 50, 100, 250), 'defaultLimit' => 10)
+        'AutoPaginate' => array('options' => array(10, 20, 50, 100, 250), 'defaultLimit' => 20)
     );
     public $helpers = array(
         'Html' => array('className' => 'Custom'),

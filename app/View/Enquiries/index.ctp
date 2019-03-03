@@ -3,8 +3,8 @@ $formParamter = '';
 $this->assign('pagetitle', __('Manage Enquiry'));
 $this->Custom->addCrumb(__('Manage Enquiry'));
 $this->start('top_links');
-echo $this->Html->link(__('Add Enquiry'), array('controller' => $this->params['controller'], 'action' => 'add'),
-    array('icon' => 'add', 'title' => __('Add Enquiry'), 'class' => 'btn btn-primary', 'escape' => false));
+// echo $this->Html->link(__('Add Enquiry'), array('controller' => $this->params['controller'], 'action' => 'add'),
+//     array('icon' => 'add', 'title' => __('Add Enquiry'), 'class' => 'btn btn-primary', 'escape' => false));
 
 
 $this->end();

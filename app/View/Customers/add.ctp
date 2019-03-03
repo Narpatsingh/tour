@@ -11,17 +11,24 @@
         <div class="overflow-hide-break">
             <?php echo $this->Form->create('Customer', array('class' => 'form-validate','type'=>'file')); ?>
             <div class="box-body box-content">
+            	<div class="row no-margin">
+                	<div class="col-md-6">
                 	<?php
-		echo $this->Form->input('id',array('type'=>'hidden'));
-		echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('package_id',array('class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('dob',array('type'=>'text', 'label'=>'Date of birth','class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('emergency_mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-		echo $this->Form->input('dob_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-	?>
+						echo $this->Form->input('id',array('type'=>'hidden'));
+						echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('package_id',array('class' => 'form-control','multiple' => true, 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
+					</div>
+					<div class="col-md-6">
+                	<?php		
+						echo $this->Form->input('dob',array('type'=>'text', 'label'=>'Date of birth','class' => 'form-control', 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('emergency_mobile',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+						echo $this->Form->input('dob_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					?>
+					</div>
+				</div>			
             </div>
             <div class="form-action">
                 <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
