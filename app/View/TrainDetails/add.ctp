@@ -10,7 +10,7 @@
 <div class="box box-primary">
 	<div class="overflow-hide-break">
 		<?php echo $this->Form->create('TrainDetail', array('class' => 'form-validate','type'=>'file')); ?>
-		<div class="box-body box-content">\
+		<div class="box-body box-content">
 			<div class="row no-margin">
                 <div class="col-md-6">
 				<?php
