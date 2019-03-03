@@ -65,15 +65,15 @@ $this->Custom->addCrumb(__('Accounts'));
                         <?php //echo $this->Html->link(__(''), array('action' => 'view', $account['Account']['id']), array('icon'=>'view','title' => __('Click here to view this Account'))); ?>
                         <?php echo $this->Html->link(__(''), array('controller' => 'Accounts','action' => 'viewHistory', $account['Account']['id']), array('data-reqtitle' => $account['Account']['ac_type'],'icon' => 'view', 'class' => 'viewAccountHistory no-hover-text-decoration', 'title' => __('Click here to view this Account History.'))); 
                             if($account['Account']['ac_type']=='bus'){
-                                echo $this->Html->link(__(''), array('controller' => 'BusDetails','action' => 'view', $account['Account']['ac_type_id']), array('icon'=>'fa fa-eye','title' => __('Click here to view details')));
+                                echo $this->Html->link(__(''), array('controller' => 'BusDetails','action' => 'view', $account['Account']['ac_type_id']), array('target' => '_blank','icon'=>'fa fa-eye','title' => __('Click here to view details')));
                             }elseif($account['Account']['ac_type']=='hotel'){
-                                echo $this->Html->link(__(''), array('controller' => 'HotelBooking','action' => 'view', $account['Account']['ac_type_id']), array('icon'=>'fa fa-eye','title' => __('Click here to view details')));
+                                echo $this->Html->link(__(''), array('controller' => 'HotelBooking','action' => 'view', $account['Account']['ac_type_id']), array('target' => '_blank','icon'=>'fa fa-eye','title' => __('Click here to view details')));
                             }elseif($account['Account']['ac_type']=='car'){
-                                echo $this->Html->link(__(''), array('controller' => 'CarDetails','action' => 'view', $account['Account']['ac_type_id']), array('icon'=>'fa fa-eye','title' => __('Click here to view details')));                
+                                echo $this->Html->link(__(''), array('controller' => 'CarDetails','action' => 'view', $account['Account']['ac_type_id']), array('target' => '_blank','icon'=>'fa fa-eye','title' => __('Click here to view details')));                
                             }elseif($account['Account']['ac_type']=='train'){
-                                echo $this->Html->link(__(''), array('controller' => 'TrainDetails','action' => 'view', $account['Account']['ac_type_id']), array('icon'=>'fa fa-eye','title' => __('Click here to view details')));             
+                                echo $this->Html->link(__(''), array('controller' => 'TrainDetails','action' => 'view', $account['Account']['ac_type_id']), array('target' => '_blank','icon'=>'fa fa-eye','title' => __('Click here to view details')));             
                             }elseif($account['Account']['ac_type']=='flight'){
-                                echo $this->Html->link(__(''), array('controller' => 'FlightDetails','action' => 'view', $account['Account']['ac_type_id']), array('icon'=>'fa fa-eye','title' => __('Click here to view details')));        
+                                echo $this->Html->link(__(''), array('controller' => 'FlightDetails','action' => 'view', $account['Account']['ac_type_id']), array('target' => '_blank','icon'=>'fa fa-eye','title' => __('Click here to view details')));        
                             }
                             echo $this->Html->link(__(''), array('action' => 'edit',encrypt( $account['Account']['id'] )), array('icon'=>'edit','title' => __('Click here to edit this Account'))); 
                             echo $this->Html->link(__(''), array('action' => 'sendReceipt',encrypt( $account['Account']['id'] )), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send receipt again.'))); 
