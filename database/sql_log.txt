@@ -12,9 +12,9 @@ d-- phpMyAdmin SQL Dump
 
 ALTER TABLE `vouchers` ADD `all_t_and_c` TEXT NULL AFTER `invoice_no`;
 ALTER TABLE `bookings` ADD `customer_tour_name2` VARCHAR(250) NULL AFTER `customer_tour_name`, ADD `customer_tour_name3` VARCHAR(250) NULL AFTER `customer_tour_name2`;
-CREATE TABLE `silshlrp_tour`.`account_histories` ( `id` INT NOT NULL AUTO_INCREMENT , `account_id` INT NOT NULL , `payment_recieved` INT NOT NULL , `reason` TEXT NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `account_histories` ( `id` INT NOT NULL AUTO_INCREMENT , `account_id` INT NOT NULL , `payment_recieved` INT NOT NULL , `reason` TEXT NOT NULL , `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `account_histories` ADD `detail` TEXT NULL AFTER `reason`;
-CREATE TABLE `silshlrp_tour`.`gst_parameters` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(20) NOT NULL ,`value` BIGINT NOT NULL, `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `gst_parameters` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(20) NOT NULL ,`value` BIGINT NOT NULL, `created` DATETIME NOT NULL , `updated` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 28-02-2019 ~ Ajay
 ALTER TABLE `vouchers` ADD `booking_id` INT NOT NULL AFTER `id`;
