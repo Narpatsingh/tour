@@ -96,7 +96,7 @@ public function add($id=null) {
             $this->request->data['Booking']['gst_percent'] = $gst_percent;
             $this->loadModel("Account");
             $account_data['customer_name'] = $this->request->data['Booking']['customer_full_name'];
-            $account_data['booking_id'] = $this->Booking->getLastInsertID();
+            $account_data['ac_type_id'] = $this->Booking->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['ac_type'] = 'tour';
             $account_data['cus_id'] = $this->request->data['Booking']['customer_id'];

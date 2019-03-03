@@ -177,7 +177,9 @@ public function generateReceipt($cus_id='',$module_id='',$account_data='',$old_i
     $invoice_no = $this->get_invoice_no($old_invoice_no);
     $voucher['company_signature'] = Configure::read('Site.Name');
     $tour_types = Configure::read('tour_types');
-    $config_gst = Configure::read('Site.gst_percent');
+    $this->loadModel('GstParameter');
+    $gst_value = $this->GstParameter->findByName('bus');
+    $config_gst = $gst_value['GstParameter']['value'];    
     $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
     $customer_data = $this->Customer->find('first', array('conditions' => array('Customer.' . $this->Customer->primaryKey => $cus_id)));
     $toptions = array('conditions' => array('Tour.' . $this->Tour->primaryKey => $customer_data['Customer']['package_id']));
@@ -250,10 +252,38 @@ public function generateReceipt($cus_id='',$module_id='',$account_data='',$old_i
         $this->HotelBooking->id = $module_id;
         $this->HotelBooking->saveField('invoice_no',$invoice_no); 
         $render = '/Pdf/hotel_receipt';
+    }elseif($account_data['ac_type'] == 'tour'){
+
+        $this->loadModel("Booking");
+        $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $module_id));
+        $voucher = $this->Booking->find('first', $options);
+        $voucher  = $voucher['Booking'];
+        $pcount = $voucher['package_count'];
+        $payment2 = empty($voucher['total_payment2'])?0:$voucher['total_payment2'];
+        $payment3 = empty($voucher['total_payment3'])?0:$voucher['total_payment3'];        
+        $voucher['total_payment_sum'] = $total_payment_sum = $voucher['total_payment'] + $payment2 + $payment3;        
+        $voucher['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+        $voucher['booking_id'] = $voucher['id']; $voucher['redirect'] = 'tours';
+        $voucher['gst_percent'] = $gst_percent;        
+        $voucher['customer_tour_type'] = $voucher['tour_type'];
+        $voucher['customer_tour_date'] = $voucher['travel_date'];
+        $voucher['customer_tour_name'] = $voucher['customer_tour_name'];
+        $voucher['customer_hotel_place_name'] = $voucher['place_name'];
+        for ($i=2; $i <= $pcount; $i++) { 
+        $voucher['customer_tour_type'.$i] = $voucher['tour_type'.$i];
+        $voucher['customer_tour_date'.$i] = $voucher['travel_date'.$i];
+        $voucher['customer_tour_name'.$i] = $voucher['customer_tour_name'.$i];
+        $voucher['customer_hotel_place_name'.$i] = $voucher['place_name'.$i];
+        }
+        if($pcount==1){
+        $render = '/Pdf/tour_receipt';
+        }else{   
+        $render = '/Pdf/tour_receipt'.$pcount;
+        }    
     }
+
     $this->Account->id = $account_data['id'];
     $this->Account->saveField('invoice_no',$invoice_no);
-
     $this->set(compact('voucher'));
     $this->layout = 'pdf';
     $this->render($render);
@@ -307,6 +337,14 @@ public function sendReceipt($ac_id='')
         $arrData['Customer']['booking_type'] = 'Hotel Ticket';
         $title = 'Hotel Booking';
     }
+    elseif($type == 'tour'){
+            $this->loadModel("Booking");
+            $details = $this->Booking->find('first', array('conditions' => array('Booking.id'=> $module_id)));
+            $invoice_no = $details['Booking']['invoice_no'];
+            $arrData['Customer']['text'] = 'Tour '. $details['Booking']['invoice_no'];
+            $arrData['Customer']['booking_type'] = 'Tour ';
+            $title = 'Tour';
+        }
     $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$id.DS.$invoice_no.'.pdf');
     $this->sendNewFormateMail($arrData,$title,$pdfpath);
     $this->Message->setSuccess(__('The receipt has been send to customer.'));

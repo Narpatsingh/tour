@@ -104,7 +104,7 @@ public function add($id=null) {
         $payment2 = empty($this->request->data['Voucher']['total_payment2'])?0:$this->request->data['Voucher']['total_payment2'];
         $payment3 = empty($this->request->data['Voucher']['total_payment3'])?0:$this->request->data['Voucher']['total_payment3'];
         $this->request->data['Voucher']['total_payment_sum'] = $total_payment_sum = $this->request->data['Voucher']['total_payment'] + $payment2 + $payment3;        
-        $this->request->data['Voucher']['final_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
+        $this->request->data['Voucher']['final_payment_with_gst'] = $this->get_gst_amount($total_payment_sum,$gst_percent);
         $this->request->data['Voucher']['gst_percent'] = $gst_percent;
         $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
@@ -340,7 +340,7 @@ public function sendVoucher($id)
         $this->loadModel('Booking');
         $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $id));
         $booking = $this->Booking->find('first', $options);
-        $arrData['Customer']['text'] = 'Voucher';
+        $arrData['Customer']['text'] = 'Tour ';
         $arrData['Customer']['email'] = $booking['Booking']['customer_email_id'];
         $arrData['Customer']['name'] = $booking['Booking']['customer_full_name'];
         $arrData['Customer']['booking_type'] = 'Tour';

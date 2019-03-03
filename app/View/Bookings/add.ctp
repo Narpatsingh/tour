@@ -32,6 +32,7 @@ echo $this->fetch('script');
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));					
 					echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));	        		
@@ -173,6 +174,7 @@ echo $this->fetch('script');
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));					
 					echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					/*Upper End*/
@@ -380,6 +382,7 @@ echo $this->fetch('script');
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));					
 					echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					/*Upper End*/

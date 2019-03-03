@@ -7,6 +7,8 @@ d-- phpMyAdmin SQL Dump
 --
 --------------------------------------------------------
 
+03-03-2019 ~ Ajay
+ALTER TABLE `bookings` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `invoice_no`;
 
 01-03-2019 ~ Ajay
 
