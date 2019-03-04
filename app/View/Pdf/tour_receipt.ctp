@@ -89,26 +89,18 @@ $html = <<<EOF
 <table style"width:120%;">
 	<tr>
 		<td><b>Invoice No</b></td>
-		<td colspan="2"> <b>:</b> $invoice_no</td>
+		<td><b>: </b> $invoice_no</td>
 		<td><b>Customer Name</b></td>
-		<td> <b>:</b> $customer_full_name</td>
+		<td><b>: </b>$customer_full_name</td>
 	</tr>	
 </table>
 <table style"width:120%;">
 	<tr>
-		<td><b>Customer Tour Type</b></td>
-		<td  colspan="2"> <b>:</b> $customer_tour_type</td>
 		<td><b>Contact Number</b></td>
-		<td> <b>:</b> $customer_contact_no</td>
-	</tr>
-</table>
-<table style"width:120%;">
-<tr>
-		<td> </td>
-		<td  colspan="2"> </td>
+		<td><b>: </b>$customer_contact_no</td>
 		<td><b>Date</b></td>
-		<td> <b>:</b> $date</td>
-</tr>
+		<td><b>: </b>$date</td>
+	</tr>
 </table>
 <br>
 <br>

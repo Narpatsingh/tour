@@ -97,7 +97,7 @@ define('PDF_PATH', '/files/pdf/');
 define('RECEIPT_PATH', '/files/receipt/');
 define('VOUCHER_PATH', '/files/voucher/');
 define('TNCPATH', '/files/terms_and_conditions/');
-define('PDF_FILE', '/file.pdf');
+define('PDF_FILE', '/voucher.pdf');
 define('TNC_FILE', '/terms_and_conditions.pdf');
 define('LOGO_IMAGE', '/files/logo/');
 define('USER_IMAGE', '/files/user/photo/');

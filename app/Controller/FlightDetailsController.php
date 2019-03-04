@@ -125,6 +125,7 @@ public function add() {
         $voucher['redirect'] = 'flight_details';
         $voucher['invoice_no'] = $invoice_no;
         $voucher['flight_no'] = $this->request->data['FlightDetail']['flight_no'];
+        $voucher['seat_no'] = $this->request->data['FlightDetail']['seat_no'];
         $voucher['source'] = $this->request->data['FlightDetail']['source'];
         $voucher['destination'] = $this->request->data['FlightDetail']['destination'];
         $voucher['pnr_no'] = $this->request->data['FlightDetail']['pnr_no'];

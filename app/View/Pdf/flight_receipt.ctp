@@ -70,6 +70,7 @@ $company_signature = $voucher['company_signature'];
 $customer_full_name = $voucher['customer_full_name'];
 $invoice_no = $voucher['invoice_no'];
 $flight_no = $voucher['flight_no'];
+$seat_no = $voucher['seat_no'];
 $customer_tour_type = $voucher['customer_tour_type'];
 $customer_tour_name = $voucher['customer_tour_name'];
 $customer_company_name = $voucher['company_name'];
@@ -95,7 +96,7 @@ $html = <<<EOF
 <br><br>
 <table style"width:120%;">
 	<tr>
-		<td><b>Invoice No</b></td>
+		<td><b>Invoice Number</b></td>
 		<td> <b>:</b> $invoice_no</td>
 		<td><b>Customer Name</b></td>
 		<td> <b>:</b> $customer_full_name</td>
@@ -103,24 +104,32 @@ $html = <<<EOF
 </table>
 <table style"width:120%;">
 	<tr>
-		<td><b>Flight No</b></td>
+		<td><b>Flight Number</b></td>
 		<td> <b>:</b> $flight_no</td>
-		<td><b>PNR No</b></td>
-		<td> <b>:</b> $pnr_no</td>
-	</tr>	
-</table>
-<table style"width:120%;">
-	<tr>
-		<td><b>Source</b></td>
-		<td> <b>:</b> $source</td>
 		<td><b>Contact Number</b></td>
 		<td> <b>:</b> $customer_contact_no</td>
 	</tr>	
 </table>
 <table style"width:120%;">
+	<tr>
+		<td><b>Seat Number</b></td>
+		<td> <b>:</b> $seat_no</td>	
+		<td><b>PNR Number</b></td>
+		<td> <b>:</b> $pnr_no</td>
+	</tr>	
+</table>
+<table style"width:120%;">
 <tr>
+		<td><b>Source</b></td>
+		<td> <b>:</b> $source</td>
 		<td><b>Destination</b></td>
 		<td> <b>:</b> $destination</td>
+</tr>
+</table>
+<table style"width:120%;">
+<tr>
+		<td><b></b></td>
+		<td> <b></b></td>
 		<td><b>Date</b></td>
 		<td> <b>:</b> $date</td>
 </tr>

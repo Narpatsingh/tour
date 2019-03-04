@@ -102,7 +102,7 @@ public function add() {
         if ($this->HotelBooking->save($this->request->data)) {
 
             $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
-            $voucher['company_signature'] = Configure::read('Site.Name');
+            $voucher['company_signature'] = $voucher['company_name'] = Configure::read('Site.Name');
             $tour_types = Configure::read('tour_types');
             $config_gst = Configure::read('Site.gst_percent');
             $this->loadModel('GstParameter');
@@ -121,6 +121,8 @@ public function add() {
             $voucher['final_payment_with_gst'] = $account_data['total_payment_with_gst'] = get_gst_amount($total_payment_sum,$gst_percent);
             $voucher['customer_tour_type'] = $tour_types[$package['Tour']['type']];
             $voucher['customer_tour_name'] = $package['Tour']['name'];
+            $voucher['meal_type'] = $this->request->data['HotelBooking']['meal_type'];
+            $voucher['room_type'] = $this->request->data['HotelBooking']['room_type'];
             $voucher['customer_contact_no'] = $customer_data['Customer']['mobile'];
             $voucher['payment_type'] = 'cash';
             $voucher['redirect'] = 'hotel_details';

@@ -248,5 +248,5 @@ $pdf->lastPage();
 //Close and output PDF document
 $pdf_path = APP . 'webroot/files/voucher' . DS . $id;
 createFolder($pdf_path); 
-$pdf->Output($pdf_path . DS .''.'file.pdf', 'F');
+$pdf->Output($pdf_path . DS .''.'voucher.pdf', 'F');
 ?>

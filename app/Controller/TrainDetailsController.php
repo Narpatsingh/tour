@@ -123,6 +123,7 @@ public function add() {
         $voucher['redirect'] = 'train_details';
         $voucher['invoice_no'] = $invoice_no;
         $voucher['train_no'] = $this->request->data['TrainDetail']['train_no'];
+        $voucher['seat_no'] = $this->request->data['TrainDetail']['seat_no'];
         $voucher['source'] = $this->request->data['TrainDetail']['source'];
         $voucher['destination'] = $this->request->data['TrainDetail']['destination'];
         $voucher['pnr_no'] = $this->request->data['TrainDetail']['pnr_no'];

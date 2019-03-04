@@ -81,6 +81,8 @@ $gst_percent = $voucher['gst_percent'];
 $id = $voucher['booking_id'];
 $ac_id = $voucher['ac_id'];
 $hotel_name = $voucher['hotel_name'];
+$meal_type = $voucher['meal_type'];
+$room_type = $voucher['room_type'];
 $redirect = $voucher['redirect'];
 // $gst_amount = $final_total_payment-$total_payment;
 // $grand_total = $final_total_payment-$payment_recieved;
@@ -97,10 +99,19 @@ $html = <<<EOF
 <br><br>
 <table style"width:120%;">
 	<tr>
-		<td><b>Invoice No</b></td>
+		<td><b>Invoice Number</b></td>
 		<td> <b>:</b> $invoice_no</td>
 		<td><b>Customer Name</b></td>
 		<td> <b>:</b> $customer_full_name</td>
+	</tr>	
+</table>
+
+<table style"width:120%;">
+	<tr>
+		<td><b>Meal Type</b></td>
+		<td> <b>:</b> $meal_type</td>
+		<td><b>Room Type</b></td>
+		<td> <b>:</b> $room_type</td>
 	</tr>	
 </table>
 
