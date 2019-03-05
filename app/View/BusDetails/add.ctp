@@ -32,6 +32,7 @@ $this->end();
 				echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -88,4 +89,13 @@ $this->end();
 					}
 				});
 			});
+
+			var gst = '<?php echo $config_gst; ?>';
+	    	$( document ).on('keyup','#BusDetailPrice', function(e) {
+				var amount = parseInt($(this).val());
+				var payment_with_gst = parseInt((amount * gst) / 100);
+				var total_payment = (amount + payment_with_gst);
+				$('#BusDetailPaymentWithGst').val(total_payment);
+			});
+
 		</script>

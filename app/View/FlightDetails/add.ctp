@@ -26,6 +26,7 @@ $this->end();
 				echo $this->Form->input('seat_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -66,3 +67,15 @@ $this->end();
 		<?php echo $this->Form->end(); ?>
 	</div>
 </div>
+
+<script type="text/javascript">
+	var gst = '<?php echo $config_gst; ?>';
+    jQuery(document).ready(function () { 
+    	$( document ).on('keyup','#FlightDetailPrice', function(e) {
+			var amount = parseInt($(this).val());
+			var payment_with_gst = parseInt((amount * gst) / 100);
+			var total_payment = (amount + payment_with_gst);
+			$('#FlightDetailPaymentWithGst').val(total_payment);
+		});
+    });
+</script>
