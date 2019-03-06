@@ -228,3 +228,16 @@ recieved = 750
 enquiry_id = 3
 total_payable = 1500
 recieved = 750
+
+
+TRUNCATE `accounts`;
+TRUNCATE `account_histories`;
+TRUNCATE `bookings`;
+TRUNCATE `bus_details`;
+TRUNCATE `car_details`;
+TRUNCATE `enquiries`;
+TRUNCATE `flight_details`;
+TRUNCATE `guest_members`;
+TRUNCATE `hotel_booking`;
+TRUNCATE `train_details`;
+TRUNCATE `vouchers`;

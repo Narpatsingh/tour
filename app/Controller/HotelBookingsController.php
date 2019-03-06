@@ -92,6 +92,9 @@ public function view($id = null) {
 * @return void
 */
 public function add() {
+    $this->loadModel('GstParameter');
+    $gst_value = $this->GstParameter->findByName('hotel');
+    $config_gst = $gst_value['GstParameter']['value'];            
     if ($this->request->is('post')) {
         if($this->request->data['HotelBooking']['payment_received'] > $this->request->data['HotelBooking']['price']){
             $this->Message->setWarning(__('Please enter valid payment detail,payment received is more than total payment.'));
@@ -104,13 +107,6 @@ public function add() {
             $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
             $voucher['company_signature'] = $voucher['company_name'] = Configure::read('Site.Name');
             $tour_types = Configure::read('tour_types');
-            $config_gst = Configure::read('Site.gst_percent');
-            $this->loadModel('GstParameter');
-            $gst_value = $this->GstParameter->findByName('hotel');
-            $config_gst = $gst_value['GstParameter']['value'];            
-            $this->loadModel('GstParameter');
-            $gst_value = $this->GstParameter->findByName('hotel');
-            $config_gst = $gst_value['GstParameter']['value'];            
             $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
             $this->loadModel("Customer");$this->loadModel("Tour");$this->loadModel("Account");
             $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $this->request->data['HotelBooking']['customer_id']));
@@ -164,7 +160,7 @@ public function add() {
     $cities = [];
     $hotels = [];
     $customers = $this->HotelBooking->Customer->find('list');
-    $this->set(compact('cities', 'states', 'hotels', 'customers'));
+    $this->set(compact('cities', 'states', 'hotels', 'customers','config_gst'));
 }
 
 /**
