@@ -63,6 +63,10 @@
                 <?php echo $this->Html->link('Contact Us', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
                 ?>
               </li>
+               <li>
+                <?php echo $this->Html->link('About Us', array('controller' => 'users', 'action' => 'dashboard'),array('class'=>'page-scroll'));
+                ?>
+              </li>
               <?php if($this->Session->read('Auth.User.id')){ 
                   $logUserName = $this->Session->read('Auth.User.name');
               ?>
@@ -163,27 +167,6 @@
           <?php echo $tour['Tour']['description'];?>
         </p>
       </div>
-         <!-- <div class="col-lg-4 mx-auto">
-            <div class="overview_enquiry px-3 py-3 ">
-               <p class="font-bold">Tell us more about your holiday plans</p>
-               <form action="function.php" method="post" accept-charset="utf-8">
-               <div class="holiday_Guest mt-3 mb-3">
-                  <input type="text" name="month" placeholder="Holidays Month" class="mr-3 mb-3">
-                  <input type="text" name="guest" placeholder="Number of guest " class="mb-3">
-                  <textarea name="experiences" class=" textarea mt-3" placeholder="Additional Experiences"></textarea>
-               </div>
-               <div class="contact_detail mt-3 mb-3">
-                  <p class="font-bold">Your Contact Detail</p>
-                  <input type="text" name="firstname" placeholder="First Name" class="mr-3 mb-3">
-                  <input type="text" name="lastname" placeholder="Last name" class="mb-3">
-                  <input type="number" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3">
-                  <input type="email" name="email" placeholder="Email" class=" mb-3">
-               </div>
-               <div class="send_enquiry mt-3 mb-3">
-                  <button type="submit" class="btn btn-primary btn-sm">Send Enquiry</button>
-               </div>
-            </div>
-         </div> -->
     </div>
   </div>
 </section>
@@ -191,16 +174,14 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-8 mx-auto">
-            <h2>Highlights</h2>
-            <p class="lead">
-               <?php if(!empty($tour['Highlight'])){
-               foreach ($tour['Highlight'] as $highlight) { ?>
-                <ul>
-                    <li><?php echo $highlight['title']; ?></li>
-                </ul>
-            <?php } 
-            } ?>
-            </p>
+            <h2 class="innerpage-heading">Highlights</h2>
+              <ul class="list-unstyled">
+              <?php if(!empty($tour['Highlight'])){
+                foreach ($tour['Highlight'] as $highlight) { ?>
+                  <li><?php echo $highlight['title']; ?></li>
+                <?php } 
+              } ?>
+              </ul>
          </div>
       </div>
    </div>
@@ -213,19 +194,25 @@
             <div class="row">
                <?php if (empty($tour['Itinerary'])) { ?>
                   <div class="col-md-12 col-sm-12">
-                      <h5 style="color: chocolate;"> <?php echo __('No Itinerary found.') ?> </h5>
+                    <h4 style="color: chocolate;"> <?php echo __('No Itinerary found.') ?> </h4>
                   </div>
                <?php } else { ?>
-                  <?php foreach ($tour['Itinerary'] as $itinerary) { ?>
                   <div class="col-md-12 col-sm-12">
-                      <div class="desc">
-                          <h3 style="font-weight: bold;color: #343030;">Day <?php echo $itinerary['day']; ?></h3>
-                          <h3 style="font-weight: bold;color: #343030;">Title : <?php echo $itinerary['title'].get_itinerary_detail($itinerary['km'],$itinerary['hour']); ?></h3>
-                          <p style="padding-right: 60px;font-size: 18px"><b>Description : </b><?php echo $itinerary['description']; ?></p>
+                    <div class="tour_head1 l-info-pack-days days">
+                      <h3></h3>
+                        <ul>
+                        <?php foreach ($tour['Itinerary'] as $itinerary) { ?>
+                          <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <h4>Day : <?php echo $itinerary['day']; ?></h4>
+                            <h4>Title : <?php echo $itinerary['title'].get_itinerary_detail($itinerary['km'],$itinerary['hour']); ?></h4>
+                            <p><?php echo $itinerary['description']; ?></p>
+                          </li>
+                        <?php } ?>
+                        </ul>
                       </div>
+                    </div>
                   </div>
-               <?php }
-               } ?>   
+              <?php } ?>   
             </div> 
          </div>
       </div>
@@ -246,7 +233,7 @@
       <div class="row text-center">
          <div class="col-md-12" data-aos="fade-up">
               <?php if (!count($hotels)) { ?>   
-              <h3 class='text-warning'><?php echo __('No record found.')?></h3>
+              <h4 style="color: chocolate;text-align: left"> <?php echo __('No Hotel found.') ?> </h4>
               <?php } else { ?>
             <div id="package-slider" class="owl-carousel">
               <?php foreach ($hotels as $key => $hotel){ ?>
@@ -286,109 +273,67 @@
       </div>
    </div>
 </section>
-<section id="blog" class="inverse">
+<section id="blog">
    <div class="container">
       <div class="row">
          <div class="col-xs-12">
             <div class="section-title text-center">
-               <h1>Tour Information</h1>
+               <h1 class="visible-title">Tour Information</h1>
             </div>
          </div>
       </div>
       <div class="row">
-         <div class="col-xs-6 col-md-6 mx-auto">
-            <h2>Inclusions</h2>
-            <ul>
-               <li>1) Meals: Breakfast , Dinner (set Menu) as mentioned in the itinerary</li>
-               <li>2) Return transfers by Shared Vehicle to the airport</li>
-               <li>3) 03 Nights accommodation at Kyriad hotel or similar category hotel</li>
-               <li>4) One half day sightseeing of Goa by shared coach on scheduled days</li>
-               <li>5) Boat cruise (subject to weather conditions)</li>
+         <div class="col-xs-12 col-md-9 mx-auto">
+            <h2 class="innerpage-heading">Package Cost Includes</h2>
+            <ul class="list-unstyled">
+              <li>Accommodation on twin sharing basis in above mentioned or similar category hotels, will be confirm at the time of booking.</li>
+              <li>Meals: Daily buffet breakfast & Dinner in hotels restaurant as per meal plan.</li>
+              <li>Complimentary use of the hotels any recreation facility as per hotels terms & conditions. (subject to availability)</li>
+              <li>Surface transportation from pick up till drop as per Itinerary for round trip and local sightseeing as per the itinerary by individual Vehicle as per family and in group tour vehicle will be provided as per group.</li>
+              <li>Vehicle cost is including all fuel charges, Driver allowance, Border tax and Toll Tax, Parking and entry charges which is applicable as on day of quotation.</li>
+              <li>Child below 5 Years is complimentary without extra bed with same meal plan in parent's room.(Child Policy is vary as per hotel policy)</li>
+              <li>Charges for Extra adult and child are including with extra bed and same meal plan with parents room.</li>
+              <li>Maximum 1 Extra bed can be accommodating in each room.</li>
+              <li>All presently applicable hotel & transportation taxes, (Goods & service tax will be extra as applicable)</li>
             </ul>
-            <h2 class="mt-3">Exclusions</h2>
-            <ul>
-               <li>1) Meals: Breakfast , Dinner (set Menu) as mentioned in the itinerary</li>
-               <li>2) Return transfers by Shared Vehicle to the airport</li>
-               <li>3) 03 Nights accommodation at Kyriad hotel or similar category hotel</li>
-               <li>4) One half day sightseeing of Goa by shared coach on scheduled days</li>
-               <li>5) Boat cruise (subject to weather conditions)</li>
+            <h2 class="mt-3 innerpage-heading">Package Cost Does Not Includes</h2>
+            <ul class="list-unstyled">
+              <li>Any Airfare / Train fare is not included in the package cost.</li>
+              <li>Any expenses of personal nature like tips, phone calls, fax, internet, games, sauna, and steam, Jacuzzi, laundry, extra vehicle hire, bar, room heaters, discotheque or any other.</li>
+              <li>Pony/horse rides, boat rides, safaris, rafting charges, skiing/skating, and cable car/ropeway rides etc.</li>
+              <li>Extra food or beverages ordered or taken in hotel restaurant or room except buffet meal plan.</li>
+              <li>Entrance fees at any monument and guide charges, wherever applicable.</li>
+              <li>Additional sightseeing tours and excursions. All major sightseeing will be cover once during sightseeing.</li>
+              <li>Vehicle will be allowed up to parking points & last possible points. (Subject to road & Gov. conditions).</li>
+              <li>Any service not specifically mentioned in the "Package Cost Includes” column.</li>
+              <li>Goods & Service Tax (GST) will be extra on total billing as applicable.</li>
             </ul>
-            <h2 class="mt-3">Remarks</h2>
-            <ul>
-               <li>1) Meals: Breakfast , Dinner (set Menu) as mentioned in the itinerary</li>
-               <li>2) Return transfers by Shared Vehicle to the airport</li>
-               <li>3) 03 Nights accommodation at Kyriad hotel or similar category hotel</li>
-               <li>4) One half day sightseeing of Goa by shared coach on scheduled days</li>
-               <li>5) Boat cruise (subject to weather conditions)</li>
+            <h2 class="mt-3 innerpage-heading">Cancellation Policy</h2>
+            <ul class="list-unstyled">
+              <li>Cancellation before 30 days of start date of tour will be charged processing fee minimum 3500/- p.p (Advance Booking Amount)</li>
+              <li>Cancellations between 20 days to 30 days before start date, 25% of tour cost would be charged as retention;</li>
+              <li>Cancellations between 15 days to 20 days before start date, 50% of tour cost would be charged as retention;</li>
+              <li>Cancellations made within 15 days of start date, entire tour cost shall be charged as retention;</li>
+              <li>Above policy may vary during peak season</li>
             </ul>
-            <h2 class="mt-3">Cancellation Policy</h2>
-            <ul>
-               <li>1) Meals: Breakfast , Dinner (set Menu) as mentioned in the itinerary</li>
-               <li>2) Return transfers by Shared Vehicle to the airport</li>
-               <li>3) 03 Nights accommodation at Kyriad hotel or similar category hotel</li>
-               <li>4) One half day sightseeing of Goa by shared coach on scheduled days</li>
-               <li>5) Boat cruise (subject to weather conditions)</li>
+            <h2 class="mt-3 innerpage-heading">What to know before you book</h2>
+            <ul class="list-unstyled">
+              <li>Hotels are subject to availability.</li>
+              <li>It is mandatory for guests to present valid photo identification at the time of check-in.</li>
+              <li>The identification proofs accepted are Driving License, Voters Card, Passport, Ration Card. Without valid ID the guest will not be allowed to check in. Note- PAN Cards will not be accepted as a valid ID card.</li>
+              <li>All transfers and sightseeing are as per the Itinerary/package and in case of Air Conditioned vehicles, It will be switched off in the hills.</li>
+              <li>The inclusion of extra bed with a booking is facilitated with a folding cot or a mattress as an extra bed.</li>
+              <li>Early check-in or late check-out is subject to availability and may be chargable by the hotel. The standard check-in time is 12:00 PM and the standard check-out time is 10:00 AM.</li>
+              <li>Any kind of personal expenses (Laundry, room service etc..) or optional tours/ extra meals are not inclusive in the package cost.</li>
+              <li>The hotel reserves the right of admission. Accommodation can be denied to guests posing as a couple if suitable proof of identification is not presented at check-in. Vatsalya Holidays will not be responsible for any check-in denied by the hotel due to the aforesaid reason.</li>
+              <li>In case of non-availability of above mentioned hotels similar category hotel will be provided.</li>
             </ul>
-         </div>
-         <div class="col-xs-6 col-md-6 mx-auto">
-            <h2 class="mt-3">Payment policy</h2>
-            <table class="table table-bordered">
-               <tbody>
-                  <tr>
-                     <th>Sector</th>
-                     <th>Booking Payment Schedule</th>
-                     <th>Payment policy</th>
-                  </tr>
-                  <tr>
-                     <td>India &amp; World</td>
-                     <td>Package Price less than
-                        INR 25,000 (Per Person)
-                     </td>
-                     <td>Full Payment</td>
-                  </tr>
-                  <tr>
-                     <td>India</td>
-                     <td>Package Price more than
-                        INR 25,000 (per person)
-                     </td>
-                     <td>INR 25,000 (Registration Amount Per Person)</td>
-                  </tr>
-                  <tr>
-                     <td></td>
-                     <td>45 Days Prior to Departure</td>
-                     <td>Full Payment</td>
-                  </tr>
-                  <tr>
-                     <td>World</td>
-                     <td>Package Price less than INR 50,000 (Per Person)</td>
-                     <td>INR 25000 (Registration Amount Per Person)</td>
-                  </tr>
-                  <tr>
-                     <td></td>
-                     <td>Package Price more than INR 50,000 (Per Person)</td>
-                     <td>INR 50,000 (Registration Amount Per Person)</td>
-                  </tr>
-                  <tr>
-                     <td></td>
-                     <td>45 Days Prior to Departure</td>
-                     <td>Full Payment</td>
-                  </tr>
-                  <tr class="bg-light">
-                     <td colspan="3"><strong>Last Minute Booking – Booking received 45 days prior to departure</strong></td>
-                  </tr>
-                  <tr>
-                     <td></td>
-                     <td>Registration Amount Equal to Package Price</td>
-                     <td>Full Payment</td>
-                  </tr>
-               </tbody>
-            </table>
          </div>
       </div>
    </div>
 </section>
 <!-- Deals and Discounts -->
-<section id="blog" class="inverse">
+<section id="blog">
    <div class="container">
       <div class="row">
          <div class="col-xs-12">
