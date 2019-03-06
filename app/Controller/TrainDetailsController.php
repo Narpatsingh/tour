@@ -96,7 +96,9 @@ public function add() {
     $gst_value = $this->GstParameter->findByName('train');
     $config_gst = $gst_value['GstParameter']['value'];        
     if ($this->request->is('post')) {
-        if($this->request->data['TrainDetail']['payment_received'] > $this->request->data['TrainDetail']['price']){
+        $payment_gst = (int)get_gst_amount($this->request->data['TrainDetail']['price'],$config_gst);
+        $this->request->data['TrainDetail']['payment_with_gst'] = $payment_gst;
+        if($this->request->data['TrainDetail']['payment_received'] > $this->request->data['TrainDetail']['payment_with_gst']){
             $this->Message->setWarning(__('Please enter valid payment detail,payment received is more than total payment.'));
             return $this->redirect(Router::url( $this->referer(), true ));
         }

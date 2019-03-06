@@ -27,7 +27,7 @@ class AppController extends Controller
         if(!$this->Session->check('Auth.User.id')){
             $this->layout = 'login';
         }     
-		//$this->set('users', ClassRegistry::init("User")->getOnlyUserList()); //Set User List
+        //$this->set('users', ClassRegistry::init("User")->getOnlyUserList()); //Set User List
     }
 
     public function _checkLogin()
@@ -40,7 +40,7 @@ class AppController extends Controller
         $this->Auth->authenticate = array(
             'Form' => array(
                 'fields' => array('username' => 'email'),
-				 'scope' => array('User.status !=' => 'deleted')
+                 'scope' => array('User.status !=' => 'deleted')
             )
         );
         $this->Auth->loginAction = array(
@@ -58,33 +58,33 @@ class AppController extends Controller
     //         date_default_timezone_set($timezone);
     //     }
     // }
-	function getSearchCondition($model,$all = null){
-		$conditions = array();
-		if(!empty($this->type)){
-			$conditions['type'] = $this->type;
-		}
-		if ($all == "all") {
-			$this->Session->write($model.'Search'.$this->type, '');
-		}
+    function getSearchCondition($model,$all = null){
+        $conditions = array();
+        if(!empty($this->type)){
+            $conditions['type'] = $this->type;
+        }
+        if ($all == "all") {
+            $this->Session->write($model.'Search'.$this->type, '');
+        }
 
-		if (empty($this->request->data[$model]) && $this->Session->read($model.'Search')) {
-			$this->request->data[$model] = $this->Session->read($model.'Search'.$this->type);
-		}
-		if (!empty($this->request->data[$model])) {
-			$this->request->data[$model] = array_filter($this->request->data[$model]);
-			$this->request->data[$model] = array_map('trim', $this->request->data[$model]);
-			if (!empty($this->request->data)) {
-				if (isset($this->request->data[$model]['user'])) {
-					$conditions[$model.'.user_id'] = $this->request->data[$model]['user'];
-				}
-				if (isset($this->request->data[$model]['date'])) {
-					$conditions[$model.'.date'] = $this->request->data[$model]['date'];
-				}
-			}
-			$this->Session->write($model.'Search'.$this->type, $this->request->data[$model]);
-		}
-		return $conditions;
-	}
+        if (empty($this->request->data[$model]) && $this->Session->read($model.'Search')) {
+            $this->request->data[$model] = $this->Session->read($model.'Search'.$this->type);
+        }
+        if (!empty($this->request->data[$model])) {
+            $this->request->data[$model] = array_filter($this->request->data[$model]);
+            $this->request->data[$model] = array_map('trim', $this->request->data[$model]);
+            if (!empty($this->request->data)) {
+                if (isset($this->request->data[$model]['user'])) {
+                    $conditions[$model.'.user_id'] = $this->request->data[$model]['user'];
+                }
+                if (isset($this->request->data[$model]['date'])) {
+                    $conditions[$model.'.date'] = $this->request->data[$model]['date'];
+                }
+            }
+            $this->Session->write($model.'Search'.$this->type, $this->request->data[$model]);
+        }
+        return $conditions;
+    }
     
 
     public function sendNewFormateMail($data, $subject, $attachment = '') {
@@ -105,8 +105,8 @@ class AppController extends Controller
             $Email->config(array(
                 'host' => 'ssl://smtp.gmail.com',
                 'port' => 465,
-                'username' => 'jnarpat46@gmail.com',
-                'password' => 'narpat991333',
+                'username' => 'Silshinetripbooking@gmail.com',
+                'password' => 'minpis12',
                 'transport' => 'Smtp'
             ));
             
@@ -114,8 +114,8 @@ class AppController extends Controller
                 $Email->attachments($attachment);
             }
 
-            $Email->from(array('jnarpat46@gmail.com' => 'SilShine Trip'))
-                ->sender(array('jnarpat46@gmail.com' => 'SilShine Trip'))
+            $Email->from(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
+                ->sender(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
                 ->to($to)
                 ->cc($cc)
                 ->emailFormat('both')
@@ -124,7 +124,6 @@ class AppController extends Controller
            
             return true;
         } catch (Exception $e) {
-            debug($e); exit;
             return false;
         }
     }
