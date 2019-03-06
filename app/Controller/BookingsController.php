@@ -97,6 +97,7 @@ public function add($id=null) {
             $this->loadModel("Account");
             $account_data['customer_name'] = $this->request->data['Booking']['customer_full_name'];
             $account_data['ac_type_id'] = $this->Booking->getLastInsertID();
+            $account_data['invoice_no'] = $invoice_no;
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['ac_type'] = 'tour';
             $account_data['cus_id'] = $this->request->data['Booking']['customer_id'];
@@ -124,7 +125,7 @@ public function add($id=null) {
             }
             $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
             }
-            $arrData['Customer']['text'] = 'Tour ';
+            $arrData['Customer']['text'] = 'Tour '. $invoice_no;
             $arrData['Customer']['email'] = $this->request->data['Booking']['customer_email_id'];
             $arrData['Customer']['name'] = $this->request->data['Booking']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour Booking';

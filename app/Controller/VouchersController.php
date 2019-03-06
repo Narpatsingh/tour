@@ -108,7 +108,7 @@ public function add($id=null) {
         $this->request->data['Voucher']['gst_percent'] = $gst_percent;
         $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
-        $this->request->data['Voucher']['invoice_no'] = $invoice_no = get_invoice_no();
+        $this->request->data['Voucher']['invoice_no'] = $invoice_no = $this->get_invoice_no();
 
         if ($this->Voucher->save($this->request->data)) {
 
@@ -117,6 +117,7 @@ public function add($id=null) {
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['ac_type'] = 'tour';
+            $account_data['invoice_no'] = $invoice_no;
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];
@@ -225,6 +226,7 @@ public function edit($id = null) {
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['ac_type'] = 'tour';
+            $account_data['invoice_no'] = $invoice_no;
             $account_data['total_payment_with_gst'] = $this->request->data['Voucher']['final_payment_with_gst'];
             $account_data['payment_recieved'] = $this->request->data['Voucher']['payment_recieved'];
             $account_data['payment_receivable'] = $this->request->data['Voucher']['final_payment_with_gst'] - $this->request->data['Voucher']['payment_recieved'];

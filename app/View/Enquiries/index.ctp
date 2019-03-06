@@ -89,7 +89,7 @@ $searchPanelArray = array(
                 <table class="table table-hover table-bordered">
                     <thead>
                     <tr>
-                        <?php $fieldCount = 9; ?>
+                        <?php $fieldCount = 15; ?>
 
                         <th width="5%"> <?php echo __('Sr.'); ?> </th>
                         <th><?php echo $this->Paginator->sort('Customer.name', __('Name')); ?></th>
@@ -113,7 +113,7 @@ $searchPanelArray = array(
                     <?php if (empty($enquiries)) { ?>
                         <tr>
                             <td colspan='<?php echo $fieldCount; ?>'
-                                class='text-warning'><?php echo __('No User found.') ?>
+                                class='text-warning'><?php echo __('No record found.') ?>
 							</td>
                         </tr>
                     <?php } else { ?>
