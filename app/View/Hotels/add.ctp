@@ -13,7 +13,7 @@
     ?>
     <div class="box box-primary">
     	<div class="overflow-hide-break">
-    		<?php echo $this->Form->create('Hotel', array('class' => 'form-validate','type'=>'file')); ?>
+    		<?php echo $this->Form->create('Hotel', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
     		<div class="box-body box-content">
                 <div class="row no-margin">
                     <div class="col-md-6">
@@ -48,7 +48,7 @@
                  </div>   
     		</div>
     		<div class="form-action">
-    			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+    			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
     			&nbsp;&nbsp;
     			<?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
     		</div>
@@ -60,6 +60,9 @@
     				'address' => array('required' => 1),
     				'type' => array('required' => 1),
     				'meal_plan' => array('required' => 1),
+                    'photo' => array(
+                        'accept' => 'jpg|jpeg|png|bmp|gif'
+                    ),
 
     			),
     			'Messages' => array(
@@ -67,6 +70,9 @@
     				'price' => array('required' => __('Please enter Price')),
     				'address' => array('required' => __('Please enter Address')),
     				'type' => array('required' => __('Please enter Type')),
+                    'photo' => array(
+                        'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
+                    ),
     				'meal_plan' => array('required' => __('Please enter Meal Plan')),));
 
 

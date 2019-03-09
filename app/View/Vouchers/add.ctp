@@ -16,7 +16,7 @@
       
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate multiple_save')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
@@ -64,7 +64,7 @@
        ?>
                 </div>
                 <div class="form-action">
-                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
                     &nbsp;&nbsp;
                     <?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
                 </div>
@@ -135,7 +135,7 @@
 
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate multiple_save')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
@@ -221,7 +221,7 @@
        ?>
                 </div>
                 <div class="form-action">
-                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
                     &nbsp;&nbsp;
                     <?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
                 </div>
@@ -314,7 +314,7 @@
 
       <div class="box box-primary">
         <div class="overflow-hide-break">
-            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate')); ?>
+            <?php echo $this->Form->create('Voucher', array('method'=>'POST','class' => 'form-validate multiple_save')); ?>
             <div class="box-body box-content">        
        <?php
        /*Upper start*/ 
@@ -426,7 +426,7 @@
        ?>
                 </div>
                 <div class="form-action">
-                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+                    <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
                     &nbsp;&nbsp;
                     <?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
                 </div>

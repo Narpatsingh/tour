@@ -21,22 +21,18 @@ jQuery(document).ready(function () {
 		}
 	}).trigger("click");
 	jQuery('[readonly="readonly"]').attr("tabindex","-1");
-	/*tcount = 0;
-	ocount = 0;
-	icount = 0;*/
 
-	// $('label[for=SocialMediaDetailTwitter]').next().andSelf().wrapAll('<div class="col-md-3">');
-	// $('.twitterLink').append("<div class='addmore-item-twitter'><div class='col-sm-2 editInnercls11'><label class='mob-show-label'>VVIP ID / Name</label><input type='text' name='Monitoring[twitter]["+tcount+"][field1]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;twitter&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Name</label><input type='text' name='Monitoring[twitter]["+tcount+"][field2]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;twitter&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Url</label><input type='text' name='Monitoring[twitter]["+tcount+"][field3]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;twitter&#39;);' data-id=''></i></div><div class='col-sm-2 editInnercls12'><div class='removeLink'><label class='mob-show-label'>Fake Account Status</label><input type='text' name='Monitoring[twitter]["+tcount+"][field4]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;twitter&#39;);' data-id=''></i></div></div></div>");
-	
-	// $('label[for=SocialMediaDetailInstagram]').next().andSelf().wrapAll('<div class="col-md-3">');
-	// $('.instagramLink').append("<div class='addmore-item-instagram'><div class='col-sm-2 editInnercls11'><label class='mob-show-label'>VVIP ID / Name</label><input type='text' name='Monitoring[instagram]["+icount+"][field1]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;instagram&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Name</label><input type='text' name='Monitoring[instagram]["+icount+"][field2]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;instagram&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Url</label><input type='text' name='Monitoring[instagram]["+icount+"][field3]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;instagram&#39;);' data-id=''></i></div><div class='col-sm-2 editInnercls12'><div class='removeLink'><label class='mob-show-label'>Fake Account Status</label><input type='text' name='Monitoring[instagram]["+icount+"][field4]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;instagram&#39;);' data-id=''></i></div></div></div>");
-	
-	// $('label[for=SocialMediaDetailOther]').next().andSelf().wrapAll('<div class="col-md-3">');
-	// $('.otherLink').append("<div class='addmore-item-other'><div class='col-sm-2 editInnercls11'><label class='mob-show-label'>VVIP ID / Name</label><input type='text' name='Monitoring[other]["+ocount+"][field1]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;other&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Name</label><input type='text' name='Monitoring[other]["+ocount+"][field2]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;other&#39;);' data-id=''></i></div><div class='col-sm-2'><label class='mob-show-label'>Fake Account Url</label><input type='text' name='Monitoring[other]["+ocount+"][field3]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;other&#39;);' data-id=''></i></div><div class='col-sm-2 editInnercls12'><div class='removeLink'><label class='mob-show-label'>Fake Account Status</label><input type='text' name='Monitoring[other]["+ocount+"][field4]' value='' class='form-control'><i class='fa fa-remove' onclick='return removeItem(this,&#39;other&#39;);' data-id=''></i></div></div></div>");
 
-	// $('.twitterLink').append('<a class = "pull-right btn btn-default twitterLinks">Add More <i class="fa fa-plus twitterFa"></i></a>');
-	// $('.instagramLink').append('<a class = "pull-right btn btn-default instagramLinks">Add More <i class="fa fa-plus instagramFa"></i></a>');
-	// $('.otherLink').append('<a class = "pull-right btn btn-default otherLinks">Add More <i class="fa fa-plus otherFa"></i></a>');
+	jQuery(".multiple_save").submit(function(e) {
+		$(".error-message").hide();
+		if($(this).valid()) {
+			$(".btn_dsbl").attr('disabled',true);
+			jQuery('.btn_dsbl').html('<i class="fa fa-spinner fa-spin" style="font-size:12px;"></>&nbsp;&nbsp;');
+		} else {
+			$(".btn_dsbl").attr('disabled',false);
+		}
+	});
+
 	
 });
 
@@ -97,3 +93,6 @@ function socialStatusCount(){
 	jQuery("#SocialMediaDetailReported").val(arrStatus['reported']);
 	jQuery("#SocialMediaDetailShutdown").val(arrStatus['shutdown']);
 }
+
+
+

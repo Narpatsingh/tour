@@ -9,7 +9,7 @@ $this->end();
 ?>
 <div class="box box-primary">
 	<div class="overflow-hide-break">
-		<?php echo $this->Form->create('FlightDetail', array('class' => 'form-validate','type'=>'file')); ?>
+		<?php echo $this->Form->create('FlightDetail', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
 		<div class="box-body box-content">
 			<div class="row no-margin">
                 <div class="col-md-6">
@@ -33,7 +33,7 @@ $this->end();
 			</div>
 		</div>
 		<div class="form-action">
-			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
 			&nbsp;&nbsp;
 			<?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
 		</div>

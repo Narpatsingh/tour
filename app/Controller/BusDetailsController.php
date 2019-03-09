@@ -185,6 +185,10 @@ public function edit($id = null) {
     }
     $this->loadModel("Customer");
     $this->set('customers',$this->Customer->find('list'));
+    $this->loadModel('GstParameter');
+    $gst_value = $this->GstParameter->findByName('bus');
+    $config_gst = $gst_value['GstParameter']['value'];
+    $this->set('config_gst',$config_gst);
     $this->set('edit',1);
     $this->render('add');
 }

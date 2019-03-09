@@ -17,7 +17,7 @@ $this->end();
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-body">
-                <?php echo $this->Form->create('City', array('id' => 'UserEditProfileForm', 'type' => 'file', 'inputDefaults' => array('dir' => 'ltl', 'class' => 'form-control', 'div' => array('class' => 'form-group')))); ?>
+                <?php echo $this->Form->create('City', array('id' => 'UserEditProfileForm','class'=>'multiple_save', 'type' => 'file', 'inputDefaults' => array('dir' => 'ltl', 'class' => 'form-control', 'div' => array('class' => 'form-group')))); ?>
                 <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
                 <div class="row no-margin">
                     <div class="col-md-6">
@@ -29,7 +29,7 @@ $this->end();
                 </div>
                 <div class="form-action">
                     <?php
-                    echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary margin-right10', 'div' => false));
+                    echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary margin-right10 btn_dsbl', 'div' => false));
                     echo $this->Html->link('Cancel', array('action' => 'index'), array('class' => 'btn btn-default', 'icon' => 'cancel'));
                     ?>
                 </div>

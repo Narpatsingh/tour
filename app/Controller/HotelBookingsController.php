@@ -191,7 +191,10 @@ public function edit($id = null) {
     $cities = $this->HotelBooking->City->find('list',array('conditions'=>array('City.state_id' => $this->request->data['HotelBooking']['state_id']))); 
     $hotels = $this->HotelBooking->Hotel->find('list',array('conditions'=>array('Hotel.city_id' => $this->request->data['HotelBooking']['city_id']))); 
     $customers = $this->HotelBooking->Customer->find('list');
-    $this->set(compact('cities', 'states', 'hotels', 'customers'));
+    $this->loadModel('GstParameter');
+    $gst_value = $this->GstParameter->findByName('bus');
+    $config_gst = $gst_value['GstParameter']['value'];
+    $this->set(compact('cities', 'states', 'hotels', 'customers','config_gst'));
     $this->set('edit',1);
     $this->render('add');
 }

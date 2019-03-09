@@ -193,9 +193,6 @@ class ToursController extends AppController {
                     move_uploaded_file($this->data['Tour']['img']['tmp_name'],$filename);
                     $this->request->data['Tour']['img'] = 'images/'.$type.'/'.time().str_replace(" ", "", $this->request->data['Tour']['img']['name']);
                 }
-                else{
-                    $this->request->data['Tour']['img'] = $Tour_data['Tour']['img'];
-                }
                 $hotels = $this->request->data['Tour']['hotel_id'];
                 if(!empty($hotels)){
                     $this->request->data['Tour']['hotel_id'] = $hotels[0];

@@ -14,7 +14,7 @@ if (isset($this->request->data['Place']['id'])) {
 ?>
 <div class="box box-primary">
 	<div class="overflow-hide-break">
-		<?php echo $this->Form->create('Place', array('class' => 'form-validate','type'=>'file')); ?>
+		<?php echo $this->Form->create('Place', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
 		<div class="box-body box-content">
 			<?php
 			echo $this->Form->input('id',array('type'=>'hidden'));
@@ -39,7 +39,7 @@ if (isset($this->request->data['Place']['id'])) {
 			
 		</div>
 		<div class="form-action">
-			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary'));?>
+			<?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
 			&nbsp;&nbsp;
 			<?php echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));?>
 		</div>
@@ -49,12 +49,18 @@ if (isset($this->request->data['Place']['id'])) {
 				'city_id' => array('required' => 1),
 				'state_id' => array('required' => 1),
 				'name' => array('required' => 1),
+				'photo' => array(
+                    'accept' => 'jpg|jpeg|png|bmp|gif'
+                ),
 
 			),
 			'Messages' => array(
 				'city_id' => array('required' => __('Please enter City Id')),
 				'state_id' => array('required' => __('Please enter State Id')),
 				'name' => array('required' => __('Please enter Name')),
+				'photo' => array(
+                    'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
+                ),
 			));
 		
 		echo $this->Form->setValidation($arrValidation); ?>

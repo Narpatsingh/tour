@@ -2,7 +2,7 @@
 $type = empty($edit) ? 'Add' : 'Edit';
 $action = empty($edit) ? 'add' : 'edit';
 $dsbl = empty($edit) ? '' : 'readonly';
-echo $this->Form->create('Itinerary', array('action'=>$action, 'class' => 'form-validate')); ?>
+echo $this->Form->create('Itinerary', array('action'=>$action, 'class' => 'form-validate multiple_save')); ?>
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
   <h4 class="modal-title"><?=$type?> Itinerary</h4>
@@ -59,7 +59,7 @@ echo $this->Form->create('Itinerary', array('action'=>$action, 'class' => 'form-
   <div class="form-group pull-right">
     <?php
       if(empty($edit)){
-        echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary btn-dsbl','id' => 'add_itinerary', 'div' => false)); 
+        echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary btn_dsbl','id' => 'add_itinerary', 'div' => false)); 
       }else{
         echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary', 'div' => false)); 
       } ?>
