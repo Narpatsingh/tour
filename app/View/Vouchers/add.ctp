@@ -7,6 +7,7 @@
     echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
     $this->end();
     $pcount = $this->request->data['Voucher']['package_count'];
+    $pcount = 3;
 ?>
 
 <?php if($pcount==1): ?>    
@@ -29,6 +30,9 @@
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
                 echo $this->Form->input('enc_id',array('type'=>'hidden'));
                 echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
+       ?>
+                <div class="col-md-6">
+       <?php
                 echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
        /*Upper end*/ 
@@ -44,7 +48,11 @@
                 echo $this->Form->input('customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
+       ?>
+                </div>
+                <div class="col-md-6">
+       <?php         
                 echo $this->Form->input('customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('hotel_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -52,6 +60,7 @@
        ?>
        <?php
        /*Bottom start*/ 
+                echo $this->Form->input('customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('tour_manager_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));                
                 echo $this->Form->input('tour_manager_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -59,9 +68,9 @@
                 echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
        /*Bottom end*/ 
        ?>
+                </div>
                 </div>
                 <div class="form-action">
                     <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
@@ -148,10 +157,18 @@
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
                 echo $this->Form->input('enc_id',array('type'=>'hidden'));
                 echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
+       ?>
+                <div class="col-md-6">
+       <?php     
                 echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+       ?>
+                </div>
+                <div class="col-md-6">
+       <?php         
                 echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
        /*Upper end*/ 
-       ?>
+       ?> 
+                </div>
        <?php
        /*Middle start*/ 
        ?>
@@ -207,18 +224,24 @@
        <?php        
        /*Middle end*/ 
        ?>
+                <div class="col-md-6">
        <?php
        /*Bottom start*/ 
                 echo $this->Form->input('tour_manager_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));                
                 echo $this->Form->input('tour_manager_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
+       ?>
+                </div>
+                <div class="col-md-6">
+       <?php         
                 echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
        /*Bottom end*/ 
        ?>
+                </div>
                 </div>
                 <div class="form-action">
                     <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
@@ -327,10 +350,18 @@
                 echo $this->Form->input('customer_email_id',array('type'=>'hidden'));
                 echo $this->Form->input('enc_id',array('type'=>'hidden'));
                 echo $this->Form->input('all_t_and_c',array('type'=>'hidden'));
+       ?>
+                <div class="col-md-6">
+       <?php               
                 echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+       ?>
+                </div>
+                <div class="col-md-6">  
+       <?php         
                 echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
        /*Upper end*/ 
        ?>
+                </div>
        <?php
        /*Middle start*/ 
        ?>
@@ -412,18 +443,24 @@
        <?php        
        /*Middle end*/ 
        ?>
+                <div class="col-md-6">  
        <?php
        /*Bottom start*/ 
                 echo $this->Form->input('tour_manager_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));                
                 echo $this->Form->input('tour_manager_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
+       ?>
+                </div>
+                <div class="col-md-6">  
+       <?php         
                 echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
        /*Bottom end*/ 
        ?>
+                </div>
                 </div>
                 <div class="form-action">
                     <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
