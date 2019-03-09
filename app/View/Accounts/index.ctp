@@ -39,6 +39,7 @@ $this->Custom->addCrumb(__('Accounts'));
                     <th><?php echo $this->Paginator->sort('total_payment_with_gst'); ?></th>
                     <th><?php echo $this->Paginator->sort('payment_recieved'); ?></th>
                     <th><?php echo $this->Paginator->sort('payment_receivable','Amount Remaining'); ?></th>
+                    <th><?php echo $this->Paginator->sort('reason'); ?></th>
                     <th class="actions text-center"><?php echo __('Actions'); ?></th>
                 </tr>			
             </thead>		
@@ -61,6 +62,7 @@ $this->Custom->addCrumb(__('Accounts'));
                      <td><?php echo h($account['Account']['total_payment_with_gst']); ?>&nbsp;</td>
                      <td><?php echo h($account['Account']['payment_recieved']); ?>&nbsp;</td>
                      <td><?php echo empty($account['Account']['payment_receivable'])?'N/A':$account['Account']['payment_receivable']; ?>&nbsp;</td>
+                     <td><?php echo empty($account['Account']['reason'])?'-':$account['Account']['reason']; ?>&nbsp;</td>
                      <td class="actions text-center">
                         <?php //echo $this->Html->link(__(''), array('action' => 'view', $account['Account']['id']), array('icon'=>'view','title' => __('Click here to view this Account'))); ?>
                         <?php echo $this->Html->link(__(''), array('controller' => 'Accounts','action' => 'viewHistory', $account['Account']['id']), array('data-reqtitle' => $account['Account']['ac_type'],'icon' => 'view', 'class' => 'viewAccountHistory no-hover-text-decoration', 'title' => __('Click here to view this Account History.'))); 

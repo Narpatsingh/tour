@@ -127,10 +127,10 @@ class ToursController extends AppController {
                 $this->set('cities', $cities);
                 $this->set('tour', $tour);
             }else{
-                $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+                return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
             }
         }else{
-            $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+            return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
         }
     }
 
@@ -147,10 +147,10 @@ class ToursController extends AppController {
                 $this->set('cities', $cities);
                 $this->set('tour', $tour);
             }else{
-                $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+                return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
             }
         }else{
-            $this->Message->setWarning(__('Invalid Tour'),array('controller'=>'users','action'=>'dashboard'));
+            return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
         }
         $this->render('city_detail');
     }

@@ -41,7 +41,7 @@
             
 			<?php $arrValidation = array(
 						'Rules' => array(
-							'name' => array('required' => 1),
+							'name' => array('required' => 1,'alphabates'=> true),
 							'type' => array('required' => 1),
 							'mobile' => array('required' => 1),
 							'address' => array('required' => 1),

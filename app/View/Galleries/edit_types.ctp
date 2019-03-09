@@ -25,7 +25,7 @@ $this->end();
 
         <?php $arrValidation = array(
             'Rules' => array(
-                'title' => array('required' => 1),
+                'title' => array('required' => 1,'alphabates'=> true),
             ),
             'Messages' => array(
                 'title' => array('required' => __('Please enter Type Name.')),

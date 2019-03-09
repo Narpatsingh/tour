@@ -36,7 +36,8 @@ $this->end();
                 $arrValidation = array(
                     'Rules' => array(
                         'name' => array(
-                            'required' => 1
+                            'required' => 1,
+                            'alphabates'=> true
                         ),
                     ),
                     'Messages' => array(

@@ -116,10 +116,10 @@ if (isset($this->request->data['Tour']['id'])) {
                             'required' => 1
                         ),
                         'title' => array(
-                            'required' => 1
+                            'required' => 1,'alphabates'=> true
                         ),
                         'name' => array(
-                            'required' => 1
+                            'required' => 1,'alphabates'=> true
                         ),
                         'city_id' => array(
                             'required' => 1,

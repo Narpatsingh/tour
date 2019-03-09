@@ -55,7 +55,7 @@
 
     		<?php $arrValidation = array(
     			'Rules' => array(
-    				'name' => array('required' => 1),
+    				'name' => array('required' => 1,'alphabates'=> true),
     				'price' => array('required' => 1),
     				'address' => array('required' => 1),
     				'type' => array('required' => 1),

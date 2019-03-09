@@ -47,15 +47,15 @@ $this->end();
 		<?php $arrValidation = array(
 			'Rules' => array(
 				'customer_id' => array('required' => 1),
-				'company_name' => array('required' => 1),
+				'company_name' => array('required' => 1,'alphabates'=> true),
 				'booking_type' => array('required' => 1),
 				'bus_no' => array('required' => 1),
 				'seat_no' => array('required' => 1),
-				'city_name' => array('required' => 1),
+				'city_name' => array('required' => 1,'alphabates'=> true),
 				'price' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
-				'source' => array('required' => 1),
-				'destination' => array('required' => 1),
+				'source' => array('required' => 1,'alphabates'=> true),
+				'destination' => array('required' => 1,'alphabates'=> true),
 				'payment_received' => array('required' => 1),
 
 			),

@@ -48,7 +48,7 @@ if (isset($this->request->data['Place']['id'])) {
 			'Rules' => array(
 				'city_id' => array('required' => 1),
 				'state_id' => array('required' => 1),
-				'name' => array('required' => 1),
+				'name' => array('required' => 1,'alphabates'=> true),
 				'photo' => array(
                     'accept' => 'jpg|jpeg|png|bmp|gif'
                 ),

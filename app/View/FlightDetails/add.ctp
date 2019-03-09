@@ -41,13 +41,13 @@ $this->end();
 		<?php $arrValidation = array(
 			'Rules' => array(
 				'customer_id' => array('required' => 1),
-				'company_name' => array('required' => 1),
+				'company_name' => array('required' => 1,'alphabates'=> true),
 				'flight_no' => array('required' => 1),
 				'seat_no' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
 				'price' => array('required' => 1),
-				'source' => array('required' => 1),
-				'destination' => array('required' => 1),
+				'source' => array('required' => 1,'alphabates'=> true),
+				'destination' => array('required' => 1,'alphabates'=> true),
 				'payment_received' => array('required' => 1),
 
 			),

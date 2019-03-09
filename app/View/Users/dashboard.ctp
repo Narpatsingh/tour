@@ -608,7 +608,7 @@
                         <div class="contact-text">
                             <h3>Contact</h3>
                             <address>
-                                E-mail : silshinetrip@gmail.com<br>
+                                E-mail : Silshinetripbooking@gmail.com<br>
                                 Contact No : 8733897945,8758368590<br>
                             </address>
                         </div>
