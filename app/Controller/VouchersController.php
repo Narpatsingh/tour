@@ -44,8 +44,8 @@ public function index($all = null) {
         $this->request->data['Voucher'] = array_filter($this->request->data['Voucher']);
         $this->request->data['Voucher'] = array_map('trim', $this->request->data['Voucher']);
         if (!empty($this->request->data)) {
-            if (isset($this->request->data['Voucher']['first_name'])) {
-                $conditions['Voucher.first_name LIKE '] = '%' . $this->request->data['Voucher']['first_name'] . '%';
+            if (isset($this->request->data['Voucher']['customer_full_name'])) {
+                $conditions['Voucher.customer_full_name LIKE '] = '%' . $this->request->data['Voucher']['customer_full_name'] . '%';
             }
             if (isset($this->request->data['Voucher']['last_name'])) {
                 $conditions['Voucher.last_name LIKE '] = '%' . $this->request->data['Voucher']['last_name'] . '%';

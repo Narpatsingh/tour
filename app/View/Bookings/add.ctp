@@ -23,6 +23,7 @@ echo $this->fetch('script');
 	        <div class="overflow-hide-break">
 	        	<?php echo $this->Form->create('Booking', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
 	        	<div class="box-body box-content">
+	        	   	<div class="col-md-6">	
 	        		<?php 
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
@@ -37,16 +38,34 @@ echo $this->fetch('script');
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));	        		
 					/*Upper End*/
-	        		?>
 
-	        		<?php 
 	        		/*Middle Start*/
 					echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('tour_photo',array('type'=>'hidden'));
+	        		?>
+					<?php	echo $this->Form->input('total_tour_member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo "<div id='guest_members'>";
+					if(!empty($this->request->data['Booking']['total_tour_member'])){
+						for ($i=0; $i < $this->request->data['Booking']['total_tour_member']; $i++) { 
+							echo '<hr>';
+							echo "<h6>Member ".$mem++.".</h6>";
+							echo $this->Form->input('member_name',array('name'=>'data[GuestMember]['.$i.'][member_name]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
+							echo $this->Form->input('member_age',array('name'=>'data[GuestMember]['.$i.'][member_age]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
+							echo $this->Form->input('member_dob',array('name'=>'data[GuestMember]['.$i.'][member_dob]', 'class' => 'form-control member_dob', 'div' => array('class' => 'form-group')));
+							echo $this->Form->input('member_gender',array('name'=>'data[GuestMember]['.$i.'][member_gender]', 'options' => array('male'=>'Male','female'=>'Female'),'class' => 'form-control','empty' => 'Select Gender', 'div' => array('class' => 'form-group')));
+							echo $this->Form->input('member_valid_proof',array('name'=>'data[GuestMember]['.$i.'][member_valid_proof]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
+						}
+					}
+					echo "</div>";
+					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
+					?>	        		
+	        		</div>
+	        		<div class="col-md-6">
+	        		<?php 					
+					echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('travel_type',array('options' => array('Bus'=>'Bus','Train'=>'Train','Flight'=>'Flight'),'class' => 'form-control','empty' => 'Select Travel Type', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('travel_number',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -67,23 +86,10 @@ echo $this->fetch('script');
 					<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
 					<?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
 					<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
-					<?php	echo $this->Form->input('total_tour_member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo "<div id='guest_members'>";
-					if(!empty($this->request->data['Booking']['total_tour_member'])){
-						for ($i=0; $i < $this->request->data['Booking']['total_tour_member']; $i++) { 
-							echo '<hr>';
-							echo "<h6>Member ".$mem++.".</h6>";
-							echo $this->Form->input('member_name',array('name'=>'data[GuestMember]['.$i.'][member_name]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
-							echo $this->Form->input('member_age',array('name'=>'data[GuestMember]['.$i.'][member_age]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
-							echo $this->Form->input('member_dob',array('name'=>'data[GuestMember]['.$i.'][member_dob]', 'class' => 'form-control member_dob', 'div' => array('class' => 'form-group')));
-							echo $this->Form->input('member_gender',array('name'=>'data[GuestMember]['.$i.'][member_gender]', 'options' => array('male'=>'Male','female'=>'Female'),'class' => 'form-control','empty' => 'Select Gender', 'div' => array('class' => 'form-group')));
-							echo $this->Form->input('member_valid_proof',array('name'=>'data[GuestMember]['.$i.'][member_valid_proof]', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
-						}
-					}
-					echo "</div>";
-					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));	        		
+	        		<?php
 	        		/*Bottom End*/
 	        		?>
+	        	</div>
 	        	</div>
 	            <div class="form-action">
 	                <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
@@ -93,6 +99,7 @@ echo $this->fetch('script');
 				<?php $arrValidation = array(
 				'Rules' => array(
 				 'customer_full_name' => array('required' => 1),
+				 'payment_type' => array('required' => 1),
 				 'customer_date_of_birth' => array('required' => 1),
 				 'customer_contact_no' => array('required' => 1),
 				 'customer_email_id' => array('required' => 1),
@@ -121,7 +128,8 @@ echo $this->fetch('script');
 				 'all_t_and_c' => array('required' => 1),
 				),
 				'Messages' => array(
-				'customer_full_name' => array('required' => __('Please enter Customer Full Name')),
+				 'customer_full_name' => array('required' => __('Please enter Customer Full Name')),
+				 'payment_type' => array('required' => __('Please Select Payment Type')),
 				 'customer_date_of_birth' => array('required' => __('Please enter Customer Date Of Birth')),
 				 'customer_contact_no' => array('required' => __('Please enter Customer Contact No')),
 				 'customer_email_id' => array('required' => __('Please enter Customer Email Id')),
@@ -166,6 +174,7 @@ echo $this->fetch('script');
 	        <div class="overflow-hide-break">
 	        	<?php echo $this->Form->create('Booking', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
 	        	<div class="box-body box-content">
+	        		<div class="col-md-6">
 	        		<?php 
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
@@ -175,12 +184,17 @@ echo $this->fetch('script');
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					?>
+					</div>
+					<div class="col-md-6">
+					<?php
 					echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));					
 					echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					/*Upper End*/
 	        		?>
-
+	        		</div>
 	        		<?php 
 	        		/*Middle Start*/
 					?>
@@ -239,16 +253,12 @@ echo $this->fetch('script');
 					<?php	        		
 	        		/*Middle End*/
 	        		?>
+	        		<div class="col-md-6">
 	        		<?php 
 	        		/*Bottom Start*/
-					echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo $this->Form->input('all_t_and_c',array('type'=>'textarea','class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo $this->Form->input('customer_valid_id_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
-					<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
-					<?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
-					<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
+					?>
 					<?php	echo $this->Form->input('total_tour_member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo "<div id='guest_members'>";
 					if(!empty($this->request->data['Booking']['total_tour_member'])){
@@ -263,9 +273,20 @@ echo $this->fetch('script');
 						}
 					}
 					echo "</div>";
-					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));	        		
+					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
+					?>					
+					</div>
+					<div class="col-md-6">
+					<?php
+					echo $this->Form->input('all_t_and_c',array('type'=>'textarea','class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('customer_valid_id_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
+					<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
+					<?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
+					<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
+					<?php	        		
 	        		/*Bottom End*/
 	        		?>
+	        		</div>
 	        	</div>
 	            <div class="form-action">
 	                <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
@@ -275,6 +296,7 @@ echo $this->fetch('script');
 				<?php $arrValidation = array(
 				'Rules' => array(
 				 'customer_full_name' => array('required' => 1),
+				 'payment_type' => array('required' => 1),
 				 'customer_date_of_birth' => array('required' => 1),
 				 'customer_contact_no' => array('required' => 1),
 				 'customer_email_id' => array('required' => 1),
@@ -304,10 +326,11 @@ echo $this->fetch('script');
 				 'meal_type2' => array('required' => 1),
 				 'place_name2' => array('required' => 1),
 				 'total_payment2' => array('required' => 1),
-				 'payment_recieved2' => array('required' => 1),
+				 'payment_recieved' => array('required' => 1),
 				 'customer_tour_name2' => array('required' => 1),
 				 'customer_tour_date2' => array('required' => 1),
 				 'travel_type2' => array('required' => 1),
+				 'tour_type2' => array('required' => 1),
 				 'travel_number2' => array('required' => 1),
 				 'travel_date2' => array('required' => 1),
 				 'travel_pnr_no2' => array('required' => 1),
@@ -318,6 +341,7 @@ echo $this->fetch('script');
 				),
 				'Messages' => array(
 				'customer_full_name' => array('required' => __('Please enter Customer Full Name')),
+				'payment_type' => array('required' => __('Please Select Payment Type')),
 				 'customer_date_of_birth' => array('required' => __('Please enter Customer Date Of Birth')),
 				 'customer_contact_no' => array('required' => __('Please enter Customer Contact No')),
 				 'customer_email_id' => array('required' => __('Please enter Customer Email Id')),
@@ -343,11 +367,12 @@ echo $this->fetch('script');
 				 'customer_hotel_type' => array('required' => __('Please enter Customer Hotel Type')),
 				 'customer_signature' => array('required' => __('Please enter Customer Signature')),
 				 'company_signature' => array('required' => __('Please enter Company Signature')),
+				 'tour_type2' => array('required' => __('Please enter Tour Type')),
 				 'all_t_and_c' => array('required' => __('Please enter All T And C')),
 				 'meal_type2' => array('required' => __('Please enter Meal Type')),
 				 'place_name2' => array('required' => __('Please enter Place Name')),
 				 'total_payment2' => array('required' => __('Please enter Total Payment')),
-				 'payment_recieved2' => array('required' => __('Please enter Payment Recieved')),
+				 'payment_recieved' => array('required' => __('Please enter Payment Recieved')),
 				 'customer_tour_name2' => array('required' => __('Please enter Customer Tour Name')),
 				 'customer_tour_date2' => array('required' => __('Please enter Customer Tour Date')),
 				 'travel_type2' => array('required' => __('Please enter Travel Type')),
@@ -376,6 +401,7 @@ echo $this->fetch('script');
 	        <div class="overflow-hide-break">
 	        	<?php echo $this->Form->create('Booking', array('class' => 'form-validate multiple_save','type'=>'file')); ?>
 	        	<div class="box-body box-content">
+	        		<div class="col-md-6">
 	        		<?php 
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
@@ -385,12 +411,17 @@ echo $this->fetch('script');
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					?>
+					</div>
+					<div class="col-md-6">
+					<?php
 					echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));					
 					echo $this->Form->input('customer_email_id',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('car_couch_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					/*Upper End*/
 	        		?>
-
+	        		</div>
 	        		<?php 
 	        		/*Middle Start*/
 					?>
@@ -475,16 +506,12 @@ echo $this->fetch('script');
 					<?php	        		
 	        		/*Middle End*/
 	        		?>
+	        		<div class="col-md-6">
 	        		<?php 
 	        		/*Bottom Start*/
-	        		echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo $this->Form->input('all_t_and_c',array('type'=>'textarea','class' => 'form-control', 'div' => array('class' => 'form-group')));
-					echo $this->Form->input('customer_valid_id_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
-					<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
-					<?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
-					<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
+					?>	
 					<?php	echo $this->Form->input('total_tour_member',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo "<div id='guest_members'>";
 					if(!empty($this->request->data['Booking']['total_tour_member'])){
@@ -499,9 +526,20 @@ echo $this->fetch('script');
 						}
 					}
 					echo "</div>";
-					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));	        		
+					echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));
+					?>					
+					</div>
+					<div class="col-md-6">
+					<?php
+					echo $this->Form->input('all_t_and_c',array('type'=>'textarea','class' => 'form-control', 'div' => array('class' => 'form-group')));
+					echo $this->Form->input('customer_valid_id_proof',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
+					<label class="form-group" style="margin-bottom: 10px">Valid Id Proof</label><div class="form-group row"><div id='photoId' class='col-md-4'>
+					<?php   echo $this->Html->image(getPhoto($this->request->data['Booking']['id'],$this->request->data['Booking']['proof_file'],BOOKING_IMAGE, false,true), array('class' => 'thumbnail img-responsive', 'style' => 'max-width: 250px')) ?></div>
+					<?php 	echo $this->Form->input('proof_file', array('required' => false, 'label' => false, 'type' => 'file', 'class' => 'photo', 'div' => array('class' => 'col-md-10'))) ?><div for='BookingPhoto' generated='true' class='error' style='display: none'><span class="errorDV"> </span></div></div> 
+					<?php	        		
 	        		/*Bottom End*/
 	        		?>
+	        		</div>
 	        	</div>
 	            <div class="form-action">
 	                <?php echo $this->Form->submit(__('Save'), array('div' => false,'class' => 'btn btn-primary btn_dsbl'));?>
@@ -511,6 +549,7 @@ echo $this->fetch('script');
 				<?php $arrValidation = array(
 				'Rules' => array(
 				 'customer_full_name' => array('required' => 1),
+				 'payment_type' => array('required' => 1),
 				 'customer_date_of_birth' => array('required' => 1),
 				 'customer_contact_no' => array('required' => 1),
 				 'customer_email_id' => array('required' => 1),
@@ -538,9 +577,10 @@ echo $this->fetch('script');
 				 'company_signature' => array('required' => 1),
 				 'all_t_and_c' => array('required' => 1),
 				 'meal_type2' => array('required' => 1),
+				 'tour_type2' => array('required' => 1),
 				 'place_name2' => array('required' => 1),
 				 'total_payment2' => array('required' => 1),
-				 'payment_recieved2' => array('required' => 1),
+				 'payment_recieved' => array('required' => 1),
 				 'customer_tour_name2' => array('required' => 1),
 				 'customer_tour_date2' => array('required' => 1),
 				 'travel_type2' => array('required' => 1),
@@ -558,6 +598,7 @@ echo $this->fetch('script');
 				 'customer_tour_name3' => array('required' => 1),
 				 'customer_tour_date3' => array('required' => 1),
 				 'travel_type3' => array('required' => 1),
+				 'tour_type3' => array('required' => 1),
 				 'travel_number3' => array('required' => 1),
 				 'travel_date3' => array('required' => 1),
 				 'travel_pnr_no3' => array('required' => 1),
@@ -568,6 +609,7 @@ echo $this->fetch('script');
 				),
 				'Messages' => array(
 				'customer_full_name' => array('required' => __('Please enter Customer Full Name')),
+				'payment_type' => array('required' => __('Please Select Payment Type')),
 				 'customer_date_of_birth' => array('required' => __('Please enter Customer Date Of Birth')),
 				 'customer_contact_no' => array('required' => __('Please enter Customer Contact No')),
 				 'customer_email_id' => array('required' => __('Please enter Customer Email Id')),
@@ -596,8 +638,9 @@ echo $this->fetch('script');
 				 'all_t_and_c' => array('required' => __('Please enter All T And C')),
 				 'meal_type2' => array('required' => __('Please enter Meal Type')),
 				 'place_name2' => array('required' => __('Please enter Place Name')),
+				 'tour_type2' => array('required' => __('Please enter Tour Type')),
 				 'total_payment2' => array('required' => __('Please enter Total Payment')),
-				 'payment_recieved2' => array('required' => __('Please enter Payment Recieved')),
+				 'payment_recieved' => array('required' => __('Please enter Payment Recieved')),
 				 'customer_tour_name2' => array('required' => __('Please enter Customer Tour Name')),
 				 'customer_tour_date2' => array('required' => __('Please enter Customer Tour Date')),
 				 'travel_type2' => array('required' => __('Please enter Travel Type')),
@@ -609,6 +652,7 @@ echo $this->fetch('script');
 				 'return_travel_pnr_no2' => array('required' => __('Please enter Return Travel Pnr No')),
 				 'customer_hotel_type2' => array('required' => __('Please enter Customer Hotel Type')),
 				 'meal_type3' => array('required' => __('Please enter Meal Type')),
+				 'tour_type3' => array('required' => __('Please enter Tour Type')),
 				 'place_name3' => array('required' => __('Please enter Place Name')),
 				 'total_payment3' => array('required' => __('Please enter Total Payment')),
 				 'payment_recieved3' => array('required' => __('Please enter Payment Recieved')),

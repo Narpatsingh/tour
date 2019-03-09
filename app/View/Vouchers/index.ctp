@@ -11,10 +11,11 @@ $this->end();
             <div class="box-body row">
                 <div class="col-md-12">
                  <?php echo $this->Form->create('Voucher', array('autocomplete' => 'off', 'novalidate' => 'novalidate'));
+                 echo $this->Form->input('customer_full_name', array('label' => __('Customer Name'), 'placeholder' => __('Customer Name'), 'required' => false, 'class' => 'form-control', 'div' => array('class' => 'col-md-3')));                 
                  ?>
 
                  <label>&nbsp</label>
-                 <div class="col-md-12 form-group">
+                 <div class="col-md-9 form-group">
                   <?php echo $this->Form->submit(__('Search'), array('class' => 'btn btn-primary margin-right10', 'div' => false));		echo $this->Html->link(__('Reset Search'), array('action' => 'index', 'all'), array('title' => __('reset search'), 'class' => 'btn btn-default')); ?>
               </div>
 
