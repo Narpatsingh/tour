@@ -42,6 +42,7 @@
         			echo $this->Form->input('address',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
         			echo $this->Form->input('type',array('label' => __('Type'), 'class' => 'form-control','options'=>$types,'empty' => __('Select Star'), 'div' => array('class' => 'form-group required')));
                     echo $this->Form->input('meal_plan',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                    echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
                     echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                     ?>
                     </div>
@@ -57,9 +58,12 @@
     			'Rules' => array(
     				'name' => array('required' => 1,'alphabates'=> true),
     				'price' => array('required' => 1),
+                    'state_id' => array('required' => 1),
+                    'city_id' => array('required' => 1),
     				'address' => array('required' => 1),
     				'type' => array('required' => 1),
     				'meal_plan' => array('required' => 1),
+                    'room_type' => array('required' => 1),
                     'photo' => array(
                         'accept' => 'jpg|jpeg|png|bmp|gif'
                     ),
@@ -68,8 +72,11 @@
     			'Messages' => array(
     				'name' => array('required' => __('Please enter Name')),
     				'price' => array('required' => __('Please enter Price')),
+                    'state_id' => array('required' => __('Please select State')),
+                    'city_id' => array('required' => __('Please select City')),
     				'address' => array('required' => __('Please enter Address')),
     				'type' => array('required' => __('Please enter Type')),
+                    'room_type' => array('required' => __('Please enter Room Type.')),
                     'photo' => array(
                         'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
                     ),

@@ -44,6 +44,7 @@
 				'train_no' => array('required' => 1),
 				'seat_no' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
+				'price' => array('required' => 1),
 				'source' => array('required' => 1,'alphabates'=> true),
 				'destination' => array('required' => 1,'alphabates'=> true),
 				'company_name' => array('required' => 1,'alphabates'=> true),
@@ -57,6 +58,7 @@
 				'source' => array('required' => __('Please enter Source.')),
 				'destination' => array('required' => __('Please enter Destination.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),
+				'price' => array('required' => __('Please enter Price.')),
 				'payment_received' => array('required' => __('Please enter Payment Received.')),
 				'pnr_no' => array('required' => __('Please enter Pnr No.')),));
 

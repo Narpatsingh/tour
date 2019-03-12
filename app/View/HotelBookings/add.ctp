@@ -18,12 +18,12 @@ $this->end();
     			echo $this->Form->input('state_id',array('class' => 'form-control','empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
                 echo $this->Form->input('city_id',array('class' => 'form-control','empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
     			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
-    			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); 
-                echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
+    			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
+                echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); ?>
                 </div>
                 <div class="col-md-6">
                 <?php
-                echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('meal_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
     			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
