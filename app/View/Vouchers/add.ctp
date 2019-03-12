@@ -7,7 +7,6 @@
     echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
     $this->end();
     $pcount = $this->request->data['Voucher']['package_count'];
-    $pcount = 3;
 ?>
 
 <?php if($pcount==1): ?>    
@@ -204,7 +203,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name2']."</b></center><br>";                
                 echo $this->Form->input('tour_photo2',array('type'=>'hidden'));
-                echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('total_payment2',array('class' => 'form-control','label' => 'Total Payment', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
@@ -397,7 +396,7 @@
        <?php
                 echo "<center><b> Tour Title :  ". $this->request->data['Voucher']['customer_tour_name2']."</b></center><br>";                
                 echo $this->Form->input('tour_photo2',array('type'=>'hidden'));
-                echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('total_payment2',array('class' => 'form-control','label' => 'Total Payment', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
