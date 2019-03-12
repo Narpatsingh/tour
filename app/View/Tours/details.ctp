@@ -1,6 +1,6 @@
 
 <title>Detail page</title>
-<body id="page-top details-page">
+<body id="details-page">
   <!--Preload-->
     <div class="preloader">
       <?php echo $this->element('loader/loader') ?>     
@@ -134,11 +134,11 @@
 </section>
 <!-- Navigation -->
 <section class="detail_inner_nav pt-1 pb-1 parallax" >
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
       <div class="container">
-         <div class="collapse navbar-collapse mb-2 remove_add" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-               <li class="nav-item">
+         <div class="collapse navbar-collapse remove_add" id="navbarResponsive">
+            <ul class="nav navbar-nav">
+               <li class="nav-item active">
                   <a class="single-page-scroll" href="#Overview">Overview</a>
                </li>
                <li class="nav-item">
@@ -372,35 +372,18 @@
       </div>
    </div>
 </section>
-<script type="text/javascript">
-  /*START PACKAGE JS*/  
-    $("#package-slider").owlCarousel({
-        loop: true,
-        nav: false,
-        pagination:true,
-        navigation:false,
-        slideSpeed:1000,
-        autoplay: true,
-        responsive: {
-            0: {
-              items: 1
-            },
-            768: {
-              items: 2
-            },
-            1170: {
-              items: 3
-            }
-          }
-    });
-    /*END PACKAGE JS*/
-</script>
+
 <style type="text/css" media="screen">
 .owl-stage-outer{
   height: 260px;
 }  
 .nav-item.active{
-    border-bottom: 1px solid #800080;
-    padding-bottom: 4px;
-  }
+  border-bottom: 1px solid #800080;
+  padding-bottom: 4px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #fffs;
+}
 </style>

@@ -50,7 +50,7 @@
 				event.preventDefault();
 		});
 		 
-		$('body').scrollspy({ 
+		$('#page-top').scrollspy({ 
 			target: '.navbar-collapse',
 			offset: 77
 		}) 

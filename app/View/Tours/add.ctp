@@ -110,94 +110,183 @@ if (isset($this->request->data['Tour']['id'])) {
                     ?>
                 </div>
                 <?php
-                $arrValidation = array(
-                    'Rules' => array(
-                        'type' => array(
-                            'required' => 1
+                if($dbOpration == 'Add'){
+                    $arrValidation = array(
+                        'Rules' => array(
+                            'type' => array(
+                                'required' => 1
+                            ),
+                            'title' => array(
+                                'required' => 1,'alphabates'=> true
+                            ),
+                            'name' => array(
+                                'required' => 1,'alphabates'=> true
+                            ),
+                            'city_id' => array(
+                                'required' => 1,
+                            ),
+                            'state_id' => array(
+                                'required' => 1,
+                            ),
+                            'place' => array(
+                                'required' => 1,
+                            ),
+                            'description' => array(
+                                'required' => 1,
+                            ),
+                            'price' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'days' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'nights' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'hotel_id' => array(
+                                'required' => 1,
+                            ),
+                            'img' => array(
+                                'required' => 1,
+                                'accept' => 'jpg|jpeg|png|bmp|gif'
+                            ),
+                            
                         ),
-                        'title' => array(
-                            'required' => 1,'alphabates'=> true
-                        ),
-                        'name' => array(
-                            'required' => 1,'alphabates'=> true
-                        ),
-                        'city_id' => array(
-                            'required' => 1,
-                        ),
-                        'state_id' => array(
-                            'required' => 1,
-                        ),
-                        'place' => array(
-                            'required' => 1,
-                        ),
-                        'description' => array(
-                            'required' => 1,
-                        ),
-                        'price' => array(
-                            'required' => 1,
-                            'number'=>true
-                        ),
-                        'days' => array(
-                            'required' => 1,
-                            'number'=>true
-                        ),
-                        'nights' => array(
-                            'required' => 1,
-                            'number'=>true
-                        ),
-                        'hotel_id' => array(
-                            'required' => 1,
-                        ),
-                        'img' => array(
-                            'required' => 1,
-                            'accept' => 'jpg|jpeg|png|bmp|gif'
-                        ),
-                        
-                    ),
-                    'Messages' => array(
-                        'type' => array(
-                            'required' => __('Please select type.'),
-                        ),
-                        'title' => array(
-                            'required' => __('Please enter title.'),
-                        ),
-                        'name' => array(
-                            'required' => __('Please enter title.'),
-                        ),
+                        'Messages' => array(
+                            'type' => array(
+                                'required' => __('Please select type.'),
+                            ),
+                            'title' => array(
+                                'required' => __('Please enter title.'),
+                            ),
+                            'name' => array(
+                                'required' => __('Please enter title.'),
+                            ),
 
-                        'description' => array(
-                            'required' => __('Please enter description.'),
+                            'description' => array(
+                                'required' => __('Please enter description.'),
+                            ),
+                            'city_id' => array(
+                                'required' => __('Please select city.'),
+                            ),
+                            'state_id' => array(
+                                'required' => __('Please select state.'),
+                            ),
+                            'place' => array(
+                                'required' => __('Please select place.'),
+                            ),
+                            'price' => array(
+                                'required' => __('Please enter price.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'days' => array(
+                                'required' => __('Please enter days.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'nights' => array(
+                                'required' => __('Please enter nights.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'hotel_id' => array(
+                                'required' => __('Please select hotel.'),
+                            ),
+                            'img' => array(
+                                'required' => __('Please select tour photo.'),
+                                'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
+                            ),
+                        )
+                    );
+                }else{
+                    $arrValidation = array(
+                        'Rules' => array(
+                            'type' => array(
+                                'required' => 1
+                            ),
+                            'title' => array(
+                                'required' => 1,'alphabates'=> true
+                            ),
+                            'name' => array(
+                                'required' => 1,'alphabates'=> true
+                            ),
+                            'city_id' => array(
+                                'required' => 1,
+                            ),
+                            'state_id' => array(
+                                'required' => 1,
+                            ),
+                            'place' => array(
+                                'required' => 1,
+                            ),
+                            'description' => array(
+                                'required' => 1,
+                            ),
+                            'price' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'days' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'nights' => array(
+                                'required' => 1,
+                                'number'=>true
+                            ),
+                            'hotel_id' => array(
+                                'required' => 1,
+                            ),
+                            'img' => array(
+                                'accept' => 'jpg|jpeg|png|bmp|gif'
+                            ),
+                            
                         ),
-                        'city_id' => array(
-                            'required' => __('Please select city.'),
-                        ),
-                        'state_id' => array(
-                            'required' => __('Please select state.'),
-                        ),
-                        'place' => array(
-                            'required' => __('Please select place.'),
-                        ),
-                        'price' => array(
-                            'required' => __('Please enter price.'),
-                            'number'=> __('Please enter number only.'),
-                        ),
-                        'days' => array(
-                            'required' => __('Please enter days.'),
-                            'number'=> __('Please enter number only.'),
-                        ),
-                        'nights' => array(
-                            'required' => __('Please enter nights.'),
-                            'number'=> __('Please enter number only.'),
-                        ),
-                        'hotel_id' => array(
-                            'required' => __('Please select hotel.'),
-                        ),
-                        'img' => array(
-                            'required' => __('Please select tour photo.'),
-                            'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
-                        ),
-                    )
-                );
+                        'Messages' => array(
+                            'type' => array(
+                                'required' => __('Please select type.'),
+                            ),
+                            'title' => array(
+                                'required' => __('Please enter title.'),
+                            ),
+                            'name' => array(
+                                'required' => __('Please enter title.'),
+                            ),
+
+                            'description' => array(
+                                'required' => __('Please enter description.'),
+                            ),
+                            'city_id' => array(
+                                'required' => __('Please select city.'),
+                            ),
+                            'state_id' => array(
+                                'required' => __('Please select state.'),
+                            ),
+                            'place' => array(
+                                'required' => __('Please select place.'),
+                            ),
+                            'price' => array(
+                                'required' => __('Please enter price.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'days' => array(
+                                'required' => __('Please enter days.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'nights' => array(
+                                'required' => __('Please enter nights.'),
+                                'number'=> __('Please enter number only.'),
+                            ),
+                            'hotel_id' => array(
+                                'required' => __('Please select hotel.'),
+                            ),
+                            'img' => array(
+                                'accept' => __('Please choose files having jpg, jpeg, png, bmp, gif extension.')
+                            ),
+                        )
+                    );
+                }
 
                 echo $this->Form->setValidation($arrValidation);
                 echo $this->Form->end();
