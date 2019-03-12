@@ -6,6 +6,8 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+12-03-2019 ~ Ajay
+ALTER TABLE `hotels` ADD `room_type` VARCHAR(100) NULL AFTER `type`;
 
 03-03-2019 ~ Ajay
 ALTER TABLE `bookings` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `invoice_no`;
