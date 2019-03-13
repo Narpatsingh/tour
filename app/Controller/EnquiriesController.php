@@ -59,6 +59,10 @@ class EnquiriesController extends AppController {
             'conditions' => $conditions,
             'recursive'=>2,
         ));
+        $this->loadModel('City');
+        $cities = $this->City->find('list');
+        $this->set('dbOpration',"Add");
+        $this->set('cities',$cities);
         $this->set('enquiries', $this->paginate('Enquiry'));
     }
 
@@ -89,8 +93,7 @@ class EnquiriesController extends AppController {
 *
 * @return void
 */
-    public function add() {
-        
+    public function add($flag='') {
         $this->layout = 'tour';
         if ($this->request->is('post')) {
             if(!empty($this->request->data['travel_date'])){
@@ -117,8 +120,13 @@ class EnquiriesController extends AppController {
                      * #code here
                      *   
                     */
-                    $this->Message->setSuccess(__('Your Enquiry has been sent to admin, we will contact you soon!'));
-                    return $this->redirect('/');
+                    if(empty($flag)){
+                        $this->Message->setSuccess(__('Your Enquiry has been sent to admin, we will contact you soon!'));
+                        return $this->redirect('/');
+                    }else{
+                        $this->Message->setSuccess(__('The Enquiry has been save successfully.'));
+                        return $this->redirect(array('action' => 'index'));
+                    }
                 }
                 else {
                     $this->Message->setWarning(__('The Enquiry could not be saved. Please, try again.'));

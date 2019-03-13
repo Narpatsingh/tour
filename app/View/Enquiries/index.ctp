@@ -3,8 +3,8 @@ $formParamter = '';
 $this->assign('pagetitle', __('Manage Enquiry'));
 $this->Custom->addCrumb(__('Manage Enquiry'));
 $this->start('top_links');
-// echo $this->Html->link(__('Add Enquiry'), array('controller' => $this->params['controller'], 'action' => 'add'),
-//     array('icon' => 'add', 'title' => __('Add Enquiry'), 'class' => 'btn btn-primary', 'escape' => false));
+echo $this->Html->link(__('Add Enquiry'), '#',
+    array('icon' => 'add', 'title' => __('Add Enquiry'), 'class' => 'btn btn-primary','data-toggle'=>'modal','data-target'=>"#commonModel",'escape' => false));
 
 
 $this->end();
@@ -204,8 +204,72 @@ $searchPanelArray = array(
         </div>
     </div>
 </div>
+<div class="modal fade commonModel" id="commonModel" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" style="padding: 10px;">&times;</button>
+            <div class="modal-header Enquiry_header">
+                <h3 class="modal-title">Add Enquiry</h3>
+            </div>
+            <div class="modal-body audit-scroll">
+                <?php echo $this->Form->create('Enquiry',array('controller'=>'enquiries','action'=>'add/popup')); ?>
+            
+                <div class="holiday_Guest mt-3 mb-3 px-3 py-3">
+                    <input type="text" data-role="none" name="travel_date"  id="travel_date" placeholder="Travel Date" class="mr-3 mb-3">
+                    <input type="text" data-role="none" name="number_of_guest" placeholder="Number of guest " class="mb-3">
+                    <input type="text" data-role="none" name="travel_duration" placeholder="Travel Duration" class="mr-3 mb-3">
+                    <!-- <input type="text" data-role="none" name="time_of_travel" id="time_of_travel" placeholder="Time Of Travel" class="mb-3"> -->
+                    <?php echo $this->Form->input('city_id',array('label' => false,'data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select City'), 'div' => false)); ?>
+                    <?php echo $this->Form->input('destination',array('label' => false,'type'=>'select','data-role'=>"none",'class' => 'mr-3 mb-3','style'=>'width: 100%;','empty' => __('Select Package'), 'div' => false)); ?>
+                    <textarea data-role="none" name="special_requirements" class=" textarea mt-3" placeholder="Special Requirements"></textarea>
+                </div>
+                <div class="contact_detail mt-3 mb-3 px-3 py-3">
+                    <p class="font-bold">Your Contact Detail</p>
+                    <input type="text" data-role="none" name="firstname" placeholder="First Name" class="mr-3 mb-3" required>
+                    <input type="text" data-role="none" name="lastname" placeholder="Last name" class="mb-3" required>
+                    <input type="number" data-role="none" name="mobile" placeholder="Mobile Number" class="mr-3 mb-3" required>
+                    <input type="email" data-role="none" name="email" placeholder="Email" class=" mb-3" required>
+                </div>  
+                
+            </div>     
+            <div class="modal-footer">
+                 <div class="send_enquiry">
+                    <?php echo $this->Form->submit(__('Save'), array('class' => 'btn btn-primary', 'div' => false)); ?>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 </div>                
+            </div>
+        </div>       
+        <?php echo $this->Form->end(); ?> 
+    </div>
+</div>
+<style type="text/css">
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+        font-size: 15px;
+        line-height: 3;
+    }
+</style>
 <script type="text/javascript">
     jQuery(document).ready(function () {
+        var BaseUrl = '<?php echo $this->Html->url('/', true) ?>';
+        $("#EnquiryCityId").on('change',function() {
+            var id = $(this).val();
+            jQuery.ajax({
+                url: BaseUrl + 'citys/get_tours/' + id,
+                type: 'post',
+                dataType: 'json',
+                success: function (html) {
+                    $("#EnquiryDestination option").remove();
+                    $('#EnquiryDestination').append($("<option></option>").attr("value","").text("Select Package"));
+                    $.each(html, function(key, value) {
+                        $('<option>').val('').text('select');
+                        $('<option>').val(key).text(value).appendTo($("#EnquiryDestination"));
+                    });
+                },
+                error: function (e) {
 
+                }
+            });
+        });
     });
 </script>
