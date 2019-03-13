@@ -38,6 +38,7 @@ $this->end();
                     <th><?php echo $this->Paginator->sort('flight_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('price'); ?></th>
+                    <th><?php echo $this->Paginator->sort('payment_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('source'); ?></th>
                     <th><?php echo $this->Paginator->sort('destination'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -58,6 +59,7 @@ $this->end();
                         <td><?php echo h($flightDetail['FlightDetail']['flight_no']); ?>&nbsp;</td>
                         <td><?php echo h($flightDetail['FlightDetail']['pnr_no']); ?>&nbsp;</td>
                         <td><?php echo h($flightDetail['FlightDetail']['price']); ?>&nbsp;</td>
+                        <td><?php echo h(Inflector::humanize($flightDetail['FlightDetail']['payment_type'])); ?>&nbsp;</td>
                         <td><?php echo h($flightDetail['FlightDetail']['source']); ?>&nbsp;</td>
                         <td><?php echo h($flightDetail['FlightDetail']['destination']); ?>&nbsp;</td>
                         <td><?php echo h($flightDetail['FlightDetail']['created']); ?>&nbsp;</td>

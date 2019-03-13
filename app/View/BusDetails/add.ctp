@@ -33,6 +33,7 @@ $this->end();
 				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control required', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -49,11 +50,12 @@ $this->end();
 				'customer_id' => array('required' => 1),
 				'company_name' => array('required' => 1,'alphabates'=> true),
 				'booking_type' => array('required' => 1),
-				'bus_no' => array('required' => 1),
-				'seat_no' => array('required' => 1),
+				//'bus_no' => array('required' => 1),
+				//'seat_no' => array('required' => 1),
+				'payment_type' => array('required' => 1),
 				'city_name' => array('required' => 1,'alphabates'=> true),
 				'price' => array('required' => 1),
-				'pnr_no' => array('required' => 1),
+				//'pnr_no' => array('required' => 1),
 				'source' => array('required' => 1,'alphabates'=> true),
 				'destination' => array('required' => 1,'alphabates'=> true),
 				'payment_received' => array('required' => 1),
@@ -62,15 +64,17 @@ $this->end();
 			'Messages' => array(
 				'customer_id' => array('required' => __('Please select Customer.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),
-				'bus_no' => array('required' => __('Please enter Bus No.')),
-				'seat_no' => array('required' => __('Please enter Seat No.')),
+				//'bus_no' => array('required' => __('Please enter Bus No.')),
+				//'seat_no' => array('required' => __('Please enter Seat No.')),
 				'booking_type' => array('required' => __('Please select Booking Type.')),
 				'city_name' => array('required' => __('Please enter City Name.')),
 				'price' => array('required' => __('Please enter Price.')),
 				'source' => array('required' => __('Please enter Source.')),
 				'destination' => array('required' => __('Please enter Destination.')),
 				'payment_received' => array('required' => __('Please enter Payment Received.')),
-				'pnr_no' => array('required' => __('Please enter Pnr No.')),));
+				'payment_type' => array('required' => __('Please select Payment Type.')),
+				//'pnr_no' => array('required' => __('Please enter Pnr No.')),
+			));
 
 				echo $this->Form->setValidation($arrValidation); ?>
 

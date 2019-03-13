@@ -37,9 +37,11 @@ $this->end();
                 <tr>
                     <th><?php echo $this->Paginator->sort('customer_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('company_name'); ?></th>
+                    <th><?php echo $this->Paginator->sort('car_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('car_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('price'); ?></th>
+                    <th><?php echo $this->Paginator->sort('payment_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('source'); ?></th>
                     <th><?php echo $this->Paginator->sort('destination'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -57,9 +59,11 @@ $this->end();
                     <tr>
                       <td><?php echo h($carDetail['Customer']['name']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['company_name']); ?>&nbsp;</td>
+                      <td><?php echo h($carDetail['CarDetail']['car_type']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['car_no']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['pnr_no']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['price']); ?>&nbsp;</td>
+                      <td><?php echo h(Inflector::humanize($carDetail['CarDetail']['payment_type'])); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['source']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['destination']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['created']); ?>&nbsp;</td>

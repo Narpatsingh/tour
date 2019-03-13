@@ -162,3 +162,33 @@ id
 name
 created
 updated
+
+send reciept for tour
+customer name
+
+-add seat no. in bus,train,flight receipt.
+-add meal type and room type in hotelbooking receipt.
+-add price with gst in all the travel management and tour booking
+-send receipt again and generate receipt for tour in account.
+
+
+mineshpisolkar00@gmail.com
+Silshine@dmin#8733
+
+
+- Save button disabled.
+- Apply validation for images.
+- Sensitive Id encryption on client panel.
+- Apply UTF-8 from database side , for support multilangauge searching.
+
+Tour
+- Apply validation on discount max 100
+- Undefined variable: Tour_data.
+
+Hotel
+- display select Customer in dropdown.
+
+- Display Tour icon on Gst Parameter.
+
+- booking on edit form ask for select a proof file, even is already selected on add form.
+- Allow to filter Vouchers.

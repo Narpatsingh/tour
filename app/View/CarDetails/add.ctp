@@ -15,18 +15,22 @@ $this->end();
                 <div class="col-md-6">
 				<?php
 				echo $this->Form->input('id',array('type'=>'hidden'));
-				echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('customer_id',array('class' => 'form-control','empty' => 'Select Customer', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('company_name',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('total_members',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-				echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
-				echo $this->Form->input('car_no',array('class' => 'form-control','div' => array('class' => 'form-group required'))); ?>
+				echo $this->Form->input('car_type',array('class' => 'form-control','div' => array('class' => 'form-group required'))); 
+				echo $this->Form->input('car_no',array('class' => 'form-control','div' => array('class' => 'form-group'))); 
+				?>
 				</div>
 				<div class="col-md-6">
 				<?php
 
-				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
+				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('destination',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
+				echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -42,9 +46,12 @@ $this->end();
 			'Rules' => array(
 				'customer_id' => array('required' => 1),
 				'company_name' => array('required' => 1,'alphabates'=> true),
-				'car_no' => array('required' => 1),
-				'pnr_no' => array('required' => 1),
+				//'car_no' => array('required' => 1),
+				'car_type' => array('required' => 1),
+				//'pnr_no' => array('required' => 1),
+				'total_members' => array('required' => 1),
 				'price' => array('required' => 1),
+				'payment_type' => array('required' => 1),
 				'source' => array('required' => 1,'alphabates'=> true),
 				'destination' => array('required' => 1,'alphabates'=> true),
 				'payment_received' => array('required' => 1),
@@ -52,9 +59,12 @@ $this->end();
 			),
 			'Messages' => array(
 				'customer_id' => array('required' => __('Please select Customer')),
+				'payment_type' => array('required' => __('Please select Payment Type')),
 				'company_name' => array('required' => __('Please enter Company Name')),
-				'car_no' => array('required' => __('Please enter Car No')),
-				'pnr_no' => array('required' => __('Please enter Pnr No')),
+				//'car_no' => array('required' => __('Please enter Car No')),
+				'car_type' => array('required' => __('Please enter Car Type')),
+				//'pnr_no' => array('required' => __('Please enter Pnr No')),
+				'total_members' => array('required' => __('Please enter Total Members')),
 				'price' => array('required' => __('Please enter Price')),
 				'source' => array('required' => __('Please enter Source')),
 				'payment_received' => array('required' => __('Please enter Payment Received.')),

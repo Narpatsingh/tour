@@ -27,6 +27,7 @@ $this->end();
 				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -41,6 +42,7 @@ $this->end();
 		<?php $arrValidation = array(
 			'Rules' => array(
 				'customer_id' => array('required' => 1),
+				'payment_type' => array('required' => 1),
 				'company_name' => array('required' => 1,'alphabates'=> true),
 				'flight_no' => array('required' => 1),
 				'seat_no' => array('required' => 1),
@@ -53,6 +55,7 @@ $this->end();
 			),
 			'Messages' => array(
 				'customer_id' => array('required' => __('Please select Customer.')),
+				'payment_type' => array('required' => __('Please select Payment Type.')),
 				'company_name' => array('required' => __('Please enter Company Name.')),
 				'flight_no' => array('required' => __('Please enter Flight No.')),
 				'seat_no' => array('required' => __('Please enter Seat No.')),

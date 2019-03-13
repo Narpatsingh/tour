@@ -27,6 +27,7 @@
 				echo $this->Form->input('pnr_no',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
+				echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
 				?>
 				</div>
@@ -44,6 +45,7 @@
 				'train_no' => array('required' => 1),
 				'seat_no' => array('required' => 1),
 				'pnr_no' => array('required' => 1),
+				'payment_type' => array('required' => 1),
 				'price' => array('required' => 1),
 				'source' => array('required' => 1,'alphabates'=> true),
 				'destination' => array('required' => 1,'alphabates'=> true),
@@ -53,6 +55,7 @@
 			),
 			'Messages' => array(
 				'customer_id' => array('required' => __('Please select Customer.')),
+				'payment_type' => array('required' => __('Please select Payment Type.')),
 				'train_no' => array('required' => __('Please enter Train No.')),
 				'seat_no' => array('required' => __('Please enter Seat No.')),
 				'source' => array('required' => __('Please enter Source.')),

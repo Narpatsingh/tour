@@ -100,7 +100,7 @@ $this->end();
                       <td><?php echo cropDetail($booking['Booking']['all_t_and_c'],10); ?>&nbsp;</td>
                       <td class="actions text-center">
                          <?php echo $this->Html->link(__(''), array('action' => 'view', $booking['Booking']['id']), array('icon'=>'view','title' => __('Click here to view this Booking'))); ?>
-                         <?php //echo $this->Html->link(__(''), array('action' => 'edit', $booking['Booking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Booking'))); ?>
+                         <?php echo $this->Html->link(__(''), array('action' => 'edit', $booking['Booking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Booking'))); ?>
                          <?php echo $this->Html->link(__(''), array('action' => 'delete', $booking['Booking']['id']), array('icon'=>'delete','title' => __('Click here to delete this Booking')), __('Are you sure you want to delete Booking?')); ?>
                          <?php 
                         if(!empty($booking['Booking']['enquiry_id']) && empty($booking['Booking']['is_approved'])):

@@ -39,6 +39,7 @@ $this->end();
                     <th><?php echo $this->Paginator->sort('bus_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('city_name'); ?></th>
                     <th><?php echo $this->Paginator->sort('price'); ?></th>
+                    <th><?php echo $this->Paginator->sort('payment_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('Source'); ?></th>
                     <th><?php echo $this->Paginator->sort('Destination'); ?></th>
@@ -60,6 +61,7 @@ $this->end();
                     <td><?php echo h($busDetail['BusDetail']['bus_no']); ?>&nbsp;</td>
                     <td><?php echo h($busDetail['BusDetail']['city_name']); ?>&nbsp;</td>
                     <td><?php echo h($busDetail['BusDetail']['price']); ?>&nbsp;</td>
+                    <td><?php echo h(Inflector::humanize($busDetail['BusDetail']['payment_type'])); ?>&nbsp;</td>
                     <td><?php echo h($busDetail['BusDetail']['pnr_no']); ?>&nbsp;</td>
                     <td><?php echo h($busDetail['BusDetail']['source']); ?>&nbsp;</td>
                     <td><?php echo h($busDetail['BusDetail']['destination']); ?>&nbsp;</td>

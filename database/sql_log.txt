@@ -6,6 +6,17 @@ d-- phpMyAdmin SQL Dump
 -- Database: `silshlrp_tour`
 --
 --------------------------------------------------------
+13-03-2019 ~ Ajay
+ALTER TABLE `bus_details` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `booking_type`;
+
+ALTER TABLE `car_details` ADD `car_type` VARCHAR(250) NULL AFTER `company_name`, ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `car_type`;
+
+ALTER TABLE `train_details` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `price`;
+
+ALTER TABLE `flight_details` ADD `payment_type` ENUM('cash','cheque','net_banking') NULL DEFAULT NULL AFTER `price`;
+
+ALTER TABLE `car_details` ADD `total_members` INT NULL DEFAULT '0' AFTER `pnr_no`;
+
 12-03-2019 ~ Ajay
 ALTER TABLE `hotels` ADD `room_type` VARCHAR(100) NULL AFTER `type`;
 

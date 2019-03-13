@@ -120,7 +120,7 @@ public function add() {
         $voucher['customer_tour_type'] = $tour_types[$package['Tour']['type']];
         $voucher['customer_tour_name'] = $package['Tour']['name'];
         $voucher['customer_contact_no'] = $customer_data['Customer']['mobile'];
-        $voucher['payment_type'] = 'cash';
+        $voucher['payment_type'] = Inflector::humanize($this->request->data['CarDetail']['payment_type']);
         $voucher['redirect'] = 'train_details';
         $voucher['invoice_no'] = $invoice_no;
         $voucher['car_no'] = $this->request->data['CarDetail']['car_no'];

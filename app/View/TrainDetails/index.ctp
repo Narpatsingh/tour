@@ -36,6 +36,7 @@ $this->end();
                     <th><?php echo $this->Paginator->sort('customer_id'); ?></th>
                     <th><?php echo $this->Paginator->sort('train_no'); ?></th>
                     <th><?php echo $this->Paginator->sort('pnr_no'); ?></th>
+                    <th><?php echo $this->Paginator->sort('payment_type'); ?></th>
                     <th><?php echo $this->Paginator->sort('source'); ?></th>
                     <th><?php echo $this->Paginator->sort('destination'); ?></th>
                     <th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -54,6 +55,7 @@ $this->end();
                       <td><?php echo h($trainDetail['Customer']['name']); ?>&nbsp;</td>
                       <td><?php echo h($trainDetail['TrainDetail']['train_no']); ?>&nbsp;</td>
                       <td><?php echo h($trainDetail['TrainDetail']['pnr_no']); ?>&nbsp;</td>
+                      <td><?php echo h(Inflector::humanize($trainDetail['TrainDetail']['payment_type'])); ?>&nbsp;</td>
                       <td><?php echo h($trainDetail['TrainDetail']['source']); ?>&nbsp;</td>
                       <td><?php echo h($trainDetail['TrainDetail']['destination']); ?>&nbsp;</td>
                       <td><?php echo h($trainDetail['TrainDetail']['created']); ?>&nbsp;</td>
