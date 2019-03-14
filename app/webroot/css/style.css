@@ -2041,7 +2041,7 @@ textarea::-webkit-input-placeholder {
 	z-index: 999;
 }
 .detail_inner_nav .nav-item{
-	display: inline;	
+	display: inline-block;	
 }
 
 .send_enquiry .btn{
@@ -3202,4 +3202,12 @@ h3.visible-title{
      text-transform: uppercase;
      padding: 15px;
      margin-bottom: 0px;
+}
+
+
+@media(max-width: 500px){
+	ul.nav.navbar-nav{
+		display: flex;
+    	overflow: scroll;
+	}
 }

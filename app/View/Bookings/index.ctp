@@ -2,7 +2,7 @@
 $this->assign('pagetitle', __('Bookings'));
 $this->Custom->addCrumb(__('Bookings'));
 $this->start('top_links');
-echo $this->Html->link(__('Add Booking'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Booking'),'class'=>'btn btn-primary','escape'=>false));
+//echo $this->Html->link(__('Add Booking'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Booking'),'class'=>'btn btn-primary','escape'=>false));
 $this->end();
 ?>
 <div class="row">
