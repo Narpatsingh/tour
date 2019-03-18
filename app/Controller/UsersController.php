@@ -12,7 +12,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('getCaptcha','activateUser','dashboard','login','maintainace','forgot_password');
+        $this->Auth->allow('getCaptcha','activateUser','dashboard','login','maintainace','forgot_password','reset_password');
         $this->_checkLogin();
     }
 
@@ -319,14 +319,15 @@ class UsersController extends AppController {
                 $user['User']['password'] = $this->request->data ['User']['password'];
                 $user['User'] ['confirm_password'] = $this->request->data ['User'] ['confirm_password'];
                 if ($this->User->save($user)) {
-                    $this->Message->setSuccess(__('Password changed successfully.'), array('controller' => 'users', 'action' => 'change_password'));
+                    $this->Message->setSuccess(__('Password changed successfully.'));
                 } else {
-                    $this->Message->setWarning(__('Unable to reset password, Please try again.'), '/');
+                    $this->Message->setWarning(__('Unable to reset password, Please try again.'));
                 }
             } else {
 
-                $this->Message->setWarning(__('Invalid reset password token.'), '/');
+                $this->Message->setWarning(__('Invalid reset password token.'));
             }
+            return $this->redirect(array('action' => 'login'));
         }
     }
 
@@ -337,13 +338,13 @@ class UsersController extends AppController {
             $user = $this->User->find('first', array(
                 'conditions' => array('email' => $this->request->data['User']['email']),
                 'fields' => array('id', 'email', 'first_name', 'last_name', 'status', 'reset_key')
-            ));
+            )); 
             if (!empty($user)) {
                 if ($user['User']['status'] == 'active') {
 					//send mail to the User
                     $user['User']['reset_key'] = $this->Common->getActivationCode($user['User']['id'], time());
                     $this->User->save($user);
-                    $this->SendEmail->sendForgotPasswordEmail($user['User']);
+                    $this->sendForgotPasswordEmail($user['User'],'Forget Password');
                     $this->Session->setFlash(__('Please check your email for Password.'), 'default', array(), 'auth');
                 } elseif ($user['User']['status'] == 'pending') {
                     $this->Session->setFlash(__('Your account is not varified Yet, Please verify your account.'), 'default', array(), 'auth');
