@@ -164,4 +164,45 @@ class AppController extends Controller
         return  $invoiceNumbers;
     }
 
+    public function sendForgotPasswordEmail($arrData, $subject) {
+        $cc = array();
+        $to = $arrData['email'];
+        $year = date('Y');
+        $arrData['name'] = $arrData['first_name']." ".$arrData['last_name'];
+        $reset_url = Router::url(array('controller' => 'users', 'action' => 'reset_password', $arrData['reset_key']), true);
+        $body = '<html> <head> <title>SilShine Trip</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width"> <style type="text/css"> /* CLIENT-SPECIFIC STYLES */ /* Force Outlook to provide a "view in browser" message */ #outlook a{padding:0;} /* Force Hotmail to display emails at full width */ .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display normal line spacing */ .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */ body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Remove spacing between tables in Outlook 2007 and up */ table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Allow smoother rendering of resized image in Internet Explorer */ img{-ms-interpolation-mode:bicubic;} /* RESET STYLES */ body{margin:0; padding:0;} img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;} table{border-collapse:collapse !important;} body{height:100% !important; margin:0; padding:0; width:100% !important;} /* iOS BLUE LINKS */ .appleBody a {color:#50a1ff; text-decoration: none;} .appleFooter a {color:#999999; text-decoration: none;} div.preheader { display: none !important; } /* MOBILE STYLES */ @media screen and (max-width: 480px) {.table_shrink  {width:95% !important;} .hero {width: 100% !important;} .appleBody a {color:#333333; text-decoration: none;} } </style> </head> <body> <div class="preheader" style="font-size: 1px; display: none !important;">Quick Enquiry</div> <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink" style="border-radius: 10px; "  align="center"> <tr> <td> <table width="750" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink" > <tr> <td> <table width="750" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table_shrink" > <tr> <td valign="top" style="padding-top: 10px; font-family:Helvetica neue, Helvetica, Arial, Verdana, sans-serif;  line-height: 40px; text-align:left;font-size: 14px; line-height: 16px;"> <h1>Reset Password Request</h1><table border="0" style="width:100%"><tbody><tr><td colspan="2">Hello '.$arrData["name"].',<br /><br />You have requested to reset password for your account with SilShine Trip using this email address.<br />To reset your password, follow the link below:<br /><br /><a href='.$reset_url.'>Reset Your Password Here!</a></td></tr><tr><td>&nbsp;</td></tr></tbody></table> </td> </tr> <tr> <td valign="top" style="padding-top: 10px; font-family:Helvetica neue, Helvetica, Arial, Verdana, sans-serif;  line-height: 40px; text-align:left; font-weight:bold;font-size: 12px; line-height: 16px;"> <p>--<br /> Thanks and Regards,<br /> Team SilShine <br /> http://silshinetrip.com </p> </td> </tr> <tr> <td style="color:#cccccc;" valign="top"> <hr color="cccccc" size="1"> </td> </tr> <tr> <td valign="top" style=" font-family: Helvetica, Helvetica neue, Arial, Verdana, sans-serif; font-size: 12px; line-height: 18px; text-align:center; font-weight:none;" align="center"> Copyright © '.$year.' SilShine Trip. All Rights Reserved </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </body> </html>';
+        if (is_array($to)) {
+            $to = array_unique(array_map('trim', $to));
+        }
+        if (is_array($cc)) {
+            $cc = array_unique(array_map('trim', $cc));
+        }
+        try {
+            $Email = new CakeEmail();
+            $Email->config(array(
+                'host' => 'ssl://smtp.gmail.com',
+                'port' => 465,
+                'username' => 'Silshinetripbooking@gmail.com',
+                'password' => 'minpis12',
+                'transport' => 'Smtp'
+            ));
+            
+            if (!empty($attachment)) {
+                $Email->attachments($attachment);
+            }
+
+            $Email->from(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
+                ->sender(array('Silshinetripbooking@gmail.com' => 'SilShine Trip'))
+                ->to($to)
+                ->cc($cc)
+                ->emailFormat('both')
+                ->subject($subject)
+                ->send($body);
+           
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
 }
