@@ -86,6 +86,12 @@ public function add($id=null) {
         $this->request->data['Booking']['enquiry_id'] = decrypt($id);
         $this->request->data['Booking']['invoice_no'] = $invoice_no = $this->get_invoice_no();
         if ($this->Booking->save($this->request->data)) {
+
+            $this->loadModel("Enquiry");
+            //ToDo update enquiry status.
+            $this->Enquiry->id = $id;
+            $this->Enquiry->saveField('is_approved','Yes');
+
             //ToDo : Generate Receipt.
             $config_gst = Configure::read('Site.gst_percent');
             $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;
@@ -224,7 +230,7 @@ public function delete($id = null) {
         if (!$this->Booking->exists()) {
         $this->Message->setWarning(__('Invalid Booking'),array('action'=>'index/all'));
         }
-        if ($this->Booking->saveField('is_approved','Yes')) {
+        //if ($this->Booking->saveField('is_approved','Yes')) {
         $this->loadModel('Tour');$this->loadModel('Enquiry');
         $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $eid));
         $booking =  $this->Enquiry->find('first', $options);
@@ -238,9 +244,9 @@ public function delete($id = null) {
         $pdfpath = ROOT_DIR.PDF_PATH.$eid.PDF_FILE;
         $this->sendMail($booking,'Quick Booking For Travel',$pdfpath);*/
             $this->Message->setSuccess(__('The Booking has been approved.'));
-        } else {
+        /*} else {
             $this->Message->setWarning(__('The Booking could not be approved. Please, try again.'));
-        }        
+        }*/        
         return $this->redirect(array('controller' => 'vouchers','action' => 'add',encrypt($bid)));
     }
 

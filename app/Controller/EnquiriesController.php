@@ -148,7 +148,7 @@ class EnquiriesController extends AppController {
         if (!$this->Enquiry->exists()) {
         $this->Message->setWarning(__('Invalid Enquiry'),array('action'=>'index/all'));
         }
-        if ($this->Enquiry->saveField('is_approved','Yes')) {
+        //if ($this->Enquiry->saveField('is_approved','Yes')) {
         $this->loadModel('Tour');
         $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $id));
         $enquiry =  $this->Enquiry->find('first', $options);
@@ -161,9 +161,9 @@ class EnquiriesController extends AppController {
         $pdfpath = ROOT_DIR.PDF_PATH.$id.PDF_FILE;
             $this->Message->setSuccess(__('The Enquiry has been approved.'));
             //$this->sendMail($enquiry,'Quick Enquiry For Travel',$pdfpath);
-        } else {
+        /*} else {
             $this->Message->setWarning(__('The Enquiry could not be approved. Please, try again.'));
-        }        
+        }*/        
         $enquiry_id = encrypt($id);
         return $this->redirect(array('controller'=>'bookings','action' => 'add',$enquiry_id));
     }

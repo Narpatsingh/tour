@@ -93,6 +93,7 @@ public function view($id = null) {
 */
 public function add($id=null) {
     $id = $booking_id = ( ! filter_var($id, FILTER_VALIDATE_INT) )? (string) decrypt($id) : (string) $id;
+    $this->loadModel("Booking");
     if ($this->request->is('post')) {
 
         ini_set('max_execution_time', 6000);ini_set('memory_limit', '-1');
@@ -112,8 +113,10 @@ public function add($id=null) {
 
         if ($this->Voucher->save($this->request->data)) {
 
-            
-            $this->loadModel("Account");$this->loadModel("Booking");
+
+            $this->Booking->id = $id;
+            $this->Booking->saveField('is_approved','Yes');
+            $this->loadModel("Account");
             $account_data['voucher_id'] = $this->Voucher->getLastInsertID();
             $account_data['payment_amount'] = $total_payment_sum;
             $account_data['ac_type'] = 'tour';
@@ -175,7 +178,6 @@ public function add($id=null) {
         }
     }else{
         if(!empty($id)){
-            $this->loadModel("Booking");
             $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $id));
             $bookings = $this->Booking->find('first', $options);        
             $this->request->data['Voucher'] = $bookings['Booking'];
