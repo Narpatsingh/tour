@@ -2155,7 +2155,7 @@ body {
 }
 
 .remove_add .navbar-nav{
-	margin-top: 20px !important;
+	margin-top: 5px !important;
 	margin-bottom: 2px !important;
 }
 
@@ -3206,8 +3206,11 @@ h3.visible-title{
 
 
 @media(max-width: 500px){
-	ul.nav.navbar-nav{
+	#navbarResponsive ul.nav.navbar-nav{
 		display: flex;
     	overflow: scroll;
 	}
+}
+#navbarResponsive ul li.nav-item{
+	padding-top: 7px; 
 }

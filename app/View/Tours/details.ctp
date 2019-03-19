@@ -114,7 +114,7 @@
    </div>
    <!-- /.container -->
 </nav>
-<section id="page-title" class="detail_page_image"  style="background-image: url(<?php echo $this->webroot.$tour['Tour']['img']; ?>);">
+<section id="page-title" class="detail_page_image" style="background-image: url(<?php echo $this->webroot.$tour['Tour']['img']; ?>);">
    <div class="title-info">
       <div class="container">
          <div class="row">
@@ -148,10 +148,10 @@
                   <a class="single-page-scroll" href="#Itinerary">Itinerary</a>
                </li>
                <li class="nav-item">
-                  <a class="single-page-scroll" href="#special_package">Hotel Information</a>
+                  <a class="single-page-scroll" style="width: 150px;" href="#special_package">Hotel Information</a>
                </li>
                <li class="nav-item">
-                  <a class="single-page-scroll" href="#DatePrice">Date Price</a>
+                  <a class="single-page-scroll" style="width: 100px;" href="#DatePrice">Date Price</a>
                </li>
             </ul>
          </div>
