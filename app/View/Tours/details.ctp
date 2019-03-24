@@ -374,6 +374,13 @@
 </section>
 
 <style type="text/css" media="screen">
+
+<?php if (count($hotels)) { if(count($hotels)==1){?>
+  @media only screen and (max-width:500px) { 
+    .single_package {margin-bottom:40px;width:306px;}
+  }
+<?php }}?>
+
 .owl-stage-outer{
   height: 260px;
 }  
