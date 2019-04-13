@@ -120,12 +120,16 @@ class ToursController extends AppController {
             $options = array('conditions' => array('Tour.city_id LIKE' => '%'.$id.'%'));
             $tour = $this->getTourDetails($this->Tour->find('all', $options));
             $this->loadModel('City');
+            $this->loadModel('State');
             $cities = $this->City->find('list');
+            $state_name = $this->City->find('first', array('conditions' => array('City.id' => $id)));
+            $state_name = $state_name['State']['name'];
             $destination = $this->Tour->find('list',array('fields' => array('name','name')));
             if(!empty($tour)){
                 $this->set('destination', $destination);
                 $this->set('cities', $cities);
                 $this->set('tour', $tour);
+                $this->set('state_name', $state_name);
             }else{
                 return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
             }
@@ -140,12 +144,16 @@ class ToursController extends AppController {
             $options = array('conditions' => array('Tour.state_id LIKE' => '%'.$id.'%'));
             $tour = $this->getTourDetails($this->Tour->find('all', $options));
             $this->loadModel('City');
+            $this->loadModel('State');
             $cities = $this->City->find('list');
+            $state_name = $this->State->find('first', array('conditions' => array('State.id' => $id)));
+            $state_name = $state_name['State']['name'];
             $destination = $this->Tour->find('list',array('fields' => array('name','name')));
             if(!empty($tour)){
                 $this->set('destination', $destination);
                 $this->set('cities', $cities);
                 $this->set('tour', $tour);
+                $this->set('state_name', $state_name);
             }else{
                 return $this->redirect(array('controller'=>'users','action'=>'dashboard'));
             }

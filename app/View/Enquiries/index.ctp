@@ -271,5 +271,8 @@ $searchPanelArray = array(
                 }
             });
         });
+        $("#travel_date").datepicker( {
+            format: "yyyy-M-dd",
+        });
     });
 </script>

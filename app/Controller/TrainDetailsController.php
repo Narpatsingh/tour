@@ -109,7 +109,7 @@ public function add() {
         $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
         $voucher['company_signature'] = Configure::read('Site.Name');
         $tour_types = Configure::read('tour_types');
-        $gst_percent = $voucher['gst_percent'] = empty($config_gst)?10:$config_gst;    
+        $gst_percent = $voucher['gst_percent'] = $config_gst;    
         $this->loadModel("Customer");$this->loadModel("Tour");$this->loadModel("Account");
         $options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $this->request->data['TrainDetail']['customer_id']));
         $customer_data = $this->Customer->find('first', $options);

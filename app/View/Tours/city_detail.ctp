@@ -108,13 +108,15 @@
    </div>
    <!-- /.container -->
 </nav>
-<section id="page-title" class="parallax" data-stellar-background-ratio="0.5" style="background-image: url(img/blog/1.jpg);">
+<section id="page-title" class="detail_page_image" style="background-image: url(<?php echo $this->webroot.$tour[0]['Tour']['img']; ?>);">
   <div class="title-info">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div class="page-title text-center" id="Overview">
-            <h1>Details Single Page</h1>
+            <h1 class=""><?php echo "State: ".$this->Text->truncate($state_name,'50',array(
+                                                                                      'ending' => '...', 
+                                                                                      'exact' => true));?></h1>
           </div>
         </div>
       </div>
@@ -131,7 +133,7 @@
     <div class="row">
       <div class="col-xs-12">
        <div class="section-title text-center">
-          <h1 class="visible-title">India</h1>
+          <h1 class="visible-title" style="margin-top: 15px;">India</h1>
       </div>
     </div>
   </div>
@@ -152,7 +154,7 @@
                             <span class="sale-price">&#x20b9;<?php echo $value['Tour']['price']; ?></span>
                         </div>
                         <h3><?php echo $value['City']['name']; ?></h3>
-                        <p><?php echo $value['Tour']['description']; ?></p>
+                        <p><?php echo $value['Tour']['name']; ?></p>
                        <?php echo $this->Html->link(__('View Details'.'<i class="fa fa-long-arrow-right"></i>'), array('controller' => 'tours', 'action' => 'details',$value['Tour']['id']),array('escape' => false)); ?>
                     </div>
                 </div>
