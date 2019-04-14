@@ -93,6 +93,10 @@ public function view($id = null) {
 */
 public function add() {
     $this->loadModel('GstParameter');
+    $this->loadModel("State");
+    $this->loadModel("City");
+    $states = $this->State->find('list');    
+    $cities = $this->City->find('list');    
     $gst_value = $this->GstParameter->findByName('bus');
     $config_gst = $gst_value['GstParameter']['value'];
     if ($this->request->is('post')) {
@@ -125,6 +129,11 @@ public function add() {
         $voucher['invoice_no'] = $invoice_no;
         $voucher['car_no'] = $this->request->data['CarDetail']['car_no'];
         $voucher['source'] = $this->request->data['CarDetail']['source'];
+        $voucher['pick_up_date'] = $this->request->data['CarDetail']['pick_up_date'];
+        $voucher['drop_date'] = $this->request->data['CarDetail']['drop_date'];
+        $voucher['nights'] = $this->request->data['CarDetail']['nights'];
+        $voucher['state_id'] = $this->request->data['CarDetail']['state_id'];
+        $voucher['city_id'] = $this->request->data['CarDetail']['city_id'];
         $voucher['destination'] = $this->request->data['CarDetail']['destination'];
         $voucher['pnr_no'] = $this->request->data['CarDetail']['pnr_no'];
         $voucher['company_name'] = $this->request->data['CarDetail']['company_name']; 
@@ -141,10 +150,11 @@ public function add() {
         $this->CarDetail->id = $this->CarDetail->getLastInsertID();
         $this->CarDetail->saveField('ac_id',$ac_id);    
         $this->Message->setSuccess(__('The car detail has been saved.'));
-        $this->set(compact('voucher'));
+        $this->set(compact('voucher','states','cities'));
         $this->layout = 'pdf';
         $this->render('/Pdf/car_receipt');
-        $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
+        $this->render('/Pdf/generate_car_voucher');
+        $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf',ROOT_DIR.CAR_VOUCHER_PATH.$ac_id.PDF_FILE);
         $arrData['Customer']['text'] = 'Car '. $this->request->data['CarDetail']['pnr_no'];
         $arrData['Customer']['email'] = $customer_data['Customer']['email'];
         $arrData['Customer']['name'] = $customer_data['Customer']['name'];
@@ -156,9 +166,11 @@ public function add() {
             $this->Message->setWarning(__('The car detail could not be saved. Please, try again.'));
         }
     }
+
     $this->loadModel("Customer");
     $this->set('customers',$this->Customer->find('list'));
     $this->set('config_gst',$config_gst);
+    $this->set(compact('states'));
 }
 
 /**
@@ -188,9 +200,14 @@ public function edit($id = null) {
     $this->loadModel('GstParameter');
     $gst_value = $this->GstParameter->findByName('bus');
     $config_gst = $gst_value['GstParameter']['value'];
+    $this->loadModel("State");
+    $this->loadModel("City");
+    $states = $this->State->find('list');
+    $cities = $this->City->find('list');   
     $this->set('config_gst',$config_gst);
     $this->set('edit',1);
     $this->render('add');
+    $this->set(compact('states','cities'));
 }
 
 /**

@@ -77,7 +77,16 @@ $this->end();
                                     'target'=>'_blank',
                                     'class' => 'no-hover-text-decoration',
                                     'title' => __('View Receipt')
-                                )); ?>                         
+                                )); ?>  
+                        <?php
+                            echo $this->Html->link(__(''), array('controller'=>'files','action' => 'car_voucher', $carDetail['CarDetail']['ac_id'],'voucher.pdf'),
+                                array(
+                                    'icon' => 'fa-file-text-o',
+                                    'target'=>'_blank',
+                                    'class' => 'no-hover-text-decoration',
+                                    'title' => __('View Voucher')
+                            ));                        
+                        ?>
                      </td>
                      </tr>
                 <?php endforeach; ?>
