@@ -104,6 +104,7 @@ public function add() {
         }
         $this->HotelBooking->create();
         $this->request->data['HotelBooking']['invoice_no'] = $invoice_no = $this->get_invoice_no();
+        
         if ($this->HotelBooking->save($this->request->data)) {
 
             $voucher['all_t_and_c'] = $voucher['booking_id'] = '';
@@ -135,6 +136,11 @@ public function add() {
             $account_data['cus_id'] = $customer_data['Customer']['id'];
             $account_data['ac_type_id'] = $this->HotelBooking->getLastInsertID();
             $account_data['invoice_no'] = $invoice_no;
+            $voucher['check_in_date'] = $this->request->data['HotelBooking']['check_in_date'];
+            $voucher['check_out_date'] = $this->request->data['HotelBooking']['check_out_date'];
+            $voucher['city_id'] = $this->request->data['HotelBooking']['city_id'];
+            $voucher['state_id'] = $this->request->data['HotelBooking']['state_id'];
+            $voucher['nights'] = $this->request->data['HotelBooking']['nights'];            
             $account_data['payment_recieved'] = $voucher['payment_recieved'];
             $account_data['payment_receivable'] = $account_data['total_payment_with_gst'] - $account_data['payment_recieved'];
             $this->Account->save($account_data);
@@ -142,14 +148,17 @@ public function add() {
             $this->HotelBooking->id = $this->HotelBooking->getLastInsertID();
             $this->HotelBooking->saveField('ac_id',$ac_id);    
             $this->Message->setSuccess(__('The Hotel detail has been saved.'));
-            $this->set(compact('voucher'));
+            $states = $this->HotelBooking->State->find('list');
+            $cities = $this->HotelBooking->City->find('list');
+            $this->set(compact('voucher','states','cities'));
             $this->layout = 'pdf';
-            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf');
             $this->render('/Pdf/hotel_receipt');
+            $this->render('/Pdf/generate_hotel_voucher');
             $arrData['Customer']['text'] = 'Hotel '. $invoice_no;
             $arrData['Customer']['email'] = $customer_data['Customer']['email'];
             $arrData['Customer']['name'] = $customer_data['Customer']['name'];
             $arrData['Customer']['booking_type'] = 'hotel';
+            $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf',ROOT_DIR.HOTEL_VOUCHER_PATH.$ac_id.PDF_FILE);
             $this->sendNewFormateMail($arrData,'Hotel Booking',$pdfpath);            
 
             $this->Message->setSuccess(__('The hotel booking has been saved.'));

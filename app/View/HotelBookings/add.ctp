@@ -19,7 +19,8 @@ $this->end();
                 echo $this->Form->input('city_id',array('class' => 'form-control','empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
     			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
     			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
-                echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); ?>
+                echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
+                echo $this->Form->input('nights',array('class' => 'form-control','div' => array('class' => 'form-group required'))); ?>
                 </div>
                 <div class="col-md-6">
                 <?php
@@ -27,7 +28,9 @@ $this->end();
     			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-    			?>
+                echo $this->Form->input('check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));    			
+                ?>
                 </div>
             </div>
 		</div>
@@ -47,6 +50,9 @@ $this->end();
                 'room_type' => array('required' => 1),
                 'meal_type' => array('required' => 1),
                 'payment_received' => array('required' => 1),
+                'nights' => array('required' => 1,'number' => 1),
+                'check_in_date' => array('required' => 1),
+                'check_out_date' => array('required' => 1),
 
 			),
 			'Messages' => array(
@@ -57,8 +63,10 @@ $this->end();
                 'payment_received' => array('required' => __('Please enter Payment Received.')),
 				'price' => array('required' => __('Please enter Price.')),
                 'meal_type' => array('required' => __('Please enter Meal Type.')),
+                'nights' => array('required' => __('Please enter nights count.')),
+                'check_in_date' => array('required' => __('Please enter Check In Date')),
+                'check_out_date' => array('required' => __('Please enter Check Out Date')),                
                 'room_type' => array('required' => __('Please enter Room Type.')),));
-
 			echo $this->Form->setValidation($arrValidation); ?>
 
 		<?php echo $this->Form->end(); ?>
@@ -113,6 +121,15 @@ $this->end();
             var total_payment = (amount + payment_with_gst);
             $('#HotelBookingPaymentWithGst').val(total_payment);
         });
+
+        $('#HotelBookingCheckInDate').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+        $('#HotelBookingCheckOutDate').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });        
     });
     
 </script>

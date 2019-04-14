@@ -96,6 +96,7 @@ include_once 'function.php';
 define('PDF_PATH', '/files/pdf/');
 define('RECEIPT_PATH', '/files/receipt/');
 define('VOUCHER_PATH', '/files/voucher/');
+define('HOTEL_VOUCHER_PATH', '/files/hotel_voucher/');
 define('TNCPATH', '/files/terms_and_conditions/');
 define('PDF_FILE', '/voucher.pdf');
 define('TNC_FILE', '/terms_and_conditions.pdf');

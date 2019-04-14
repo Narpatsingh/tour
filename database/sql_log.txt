@@ -189,46 +189,10 @@ ALTER TABLE `enquiries` ADD `time_of_travel` VARCHAR(150) NOT NULL AFTER `number
 'password' => '6+lL2*4dT3jR2?1e',
 'database' => 'silshlrp_tour',
 
+13-04-2019~Ajay
 
+ALTER TABLE `hotel_booking` ADD `nights` INT NULL AFTER `ac_id`, ADD `check_in_date` DATETIME NULL AFTER `nights`, ADD `check_out_date` DATETIME NULL AFTER `check_in_date`;
 
-ToDo List:
-
-- do not send mail on approval.
-- on approval open booking form.
-- auto feel form data.
-- create new fields on booking form.
-- is booking form editable ?
-- create voucher form after booking approval.
-- allow multiple tour.
-- is price updatable after members are add?
-
-
-customer_full_name
-customer_contact_no
-customer_tour_type
-customer_tour_name
-customer_hotel_name
-customer_tour_date
-customer_hotel_places_name
-customer_hotel_check_in_date
-customer_hotel_check_out_date
-customer_room_type
-customer_travel_type
-meal_plan
-tour_manager_name
-tour_manager_contact_no
-hotel_contact_no
-emergency_contact_no
-company_signature
-customer_signature
-
-
-
-app/Config/bootstrap.php app/Config/database.php app/Controller/EnquiriesController.php app/View/Elements/backend/admin_left.ctp database/sql_log.txt app/Controller/BookingsController.php app/Model/Booking.php app/View/Bookings/ app/webroot/files/booking/
-
-
-
-mamange_accounts
 
 enquiry_id = 1
 total_payable = 1500x4
