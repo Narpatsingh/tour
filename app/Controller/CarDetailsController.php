@@ -160,7 +160,6 @@ public function add() {
         $arrData['Customer']['name'] = $customer_data['Customer']['name'];
         $arrData['Customer']['booking_type'] = 'Car Ticket';
         $this->sendNewFormateMail($arrData,'Car Booking',$pdfpath);
-
         return $this->redirect(array('action' => 'index'));
         } else {
             $this->Message->setWarning(__('The car detail could not be saved. Please, try again.'));

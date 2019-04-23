@@ -193,6 +193,11 @@ ALTER TABLE `enquiries` ADD `time_of_travel` VARCHAR(150) NOT NULL AFTER `number
 
 ALTER TABLE `hotel_booking` ADD `nights` INT NULL AFTER `ac_id`, ADD `check_in_date` DATETIME NULL AFTER `nights`, ADD `check_out_date` DATETIME NULL AFTER `check_in_date`;
 
+14-04-2019~Ajay
+
+ALTER TABLE `car_details` ADD `nights` INT NOT NULL AFTER `invoice_no`, ADD `state_id` INT NOT NULL AFTER `nights`, ADD `city_id` INT NOT NULL AFTER `state_id`;
+
+ALTER TABLE `car_details` ADD `pick_up_date` DATETIME NULL AFTER `city_id`, ADD `drop_date` DATETIME NULL AFTER `pick_up_date`;
 
 enquiry_id = 1
 total_payable = 1500x4
