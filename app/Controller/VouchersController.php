@@ -110,19 +110,21 @@ public function add($id=null) {
         $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = $this->get_invoice_no();
-        $hotels = array();
+        $hotels = $hotels_data = array();
         if ($this->Voucher->save($this->request->data)) {   
 
             if(!empty($this->request->data['Hotel'])){
                 $hotels = $this->request->data['Hotel'];
                 $this->loadModel("VoucherHotel");
+                $this->loadModel("Hotel");
                 foreach ($hotels as $key => $hotel) {
                     $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
                     $this->VoucherHotel->create();
                     $this->VoucherHotel->save($hotel);
+                    $hotels_data[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data[$key]['HotelData'] = $hotel;
                 }
             }
-        
             $this->Booking->id = $id;
             $this->Booking->saveField('is_approved','Yes');
             $this->loadModel("Account");
@@ -142,13 +144,14 @@ public function add($id=null) {
             $voucher['redirect'] = 'bookings';
             $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
-            $this->set(compact('voucher','hotels'));
+            $this->set(compact('voucher','hotels_data'));
             $pcount = 1;
             if($pcount==1){
             $this->render('/Pdf/generate_voucher');
             }else{
             $this->render('/Pdf/generate_voucher'.$pcount);
             }
+            echo "<pre>"; print_r($this->request->data); exit;
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->loadModel("Booking");
