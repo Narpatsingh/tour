@@ -60,6 +60,7 @@ $pdf->AddPage();
  */
 
 // define some HTML content with style
+
 $date = date("d-M-Y");
 $customer_signature = $voucher['customer_signature'];
 $company_signature = $voucher['company_signature'];

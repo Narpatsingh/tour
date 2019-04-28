@@ -223,3 +223,23 @@ TRUNCATE `guest_members`;
 TRUNCATE `hotel_booking`;
 TRUNCATE `train_details`;
 TRUNCATE `vouchers`;
+
+25-04-2019~Ajay
+
+ALTER TABLE `vouchers` ADD `hotels` VARCHAR(150) NULL AFTER `tour_photo3`;
+
+ALTER TABLE `bookings` ADD `multi_hotel` VARCHAR(100) NULL AFTER `customer_hotel_type3`;
+
+27-04-2019~Ajay
+
+CREATE TABLE `silshlrp_tour`.`voucher_hotels` ( `id` INT NOT NULL AUTO_INCREMENT , `voucher_id` INT NULL , `hotel_id` INT NULL , `hotel_check_in_date` DATE NULL , `hotel_check_out_date` DATE NULL , `created` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `hotels` ADD `contact_no` INT(15) NULL AFTER `meal_plan`;
+
+ALTER TABLE `voucher_hotels` ADD `customer_hotel_name` VARCHAR(250) NULL AFTER `hotel_id`, ADD `hotel_contact_no` INT(15) NULL AFTER `customer_hotel_name`;
+
+ALTER TABLE `voucher_hotels` CHANGE `customer_hotel_name` `name` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `voucher_hotels` CHANGE `hotel_contact_no` `contact_no` INT(15) NULL DEFAULT NULL;
+
+ALTER TABLE `bookings` ADD `multi_hotel2` VARCHAR(150) NULL AFTER `multi_hotel`, ADD `multi_hotel3` VARCHAR(150) NULL AFTER `multi_hotel2`;

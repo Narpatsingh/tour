@@ -163,6 +163,7 @@ public function add($id=null) {
             $this->request->data['Booking']['tour_photo'.$apn] =  $package['Tour']['img'];
             $this->request->data['Booking']['total_payment'.$apn] =  $package['Tour']['price'];
             $this->request->data['Booking']['customer_tour_name'.$apn] = $package['Tour']['name'];
+            $this->request->data['Booking']['multi_hotel'.$apn] = $package['Tour']['multi_hotel'];
             }
             $this->request->data['Booking']['customer_id'] = $enquiries['Customer']['id'];
             $this->request->data['Booking']['customer_full_name'] = $enquiries['Customer']['name'];

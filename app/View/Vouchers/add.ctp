@@ -42,31 +42,56 @@
                 echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('generate_receipt',array('type'=>'checkbox'));                
+
+                if (!empty($hotels)) {
+                    foreach ($hotels as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+
+                echo $this->Form->input('Voucher.generate_receipt',array('type'=>'checkbox'));                
        ?>
                 </div>
                 <div class="col-md-6">
        <?php         
-                echo $this->Form->input('customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
        /*Middle end*/ 
        ?>
        <?php
        /*Bottom start*/ 
-                echo $this->Form->input('customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('tour_manager_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));                
-                echo $this->Form->input('tour_manager_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.tour_manager_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));                
+                echo $this->Form->input('Voucher.tour_manager_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.emergency_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.payment_type',array('options'=>array('cash'=>'Cash', 'cheque'=> 'Cheque', 'net_banking' => 'Net Banking' ), 'empty'=>'Select Payment Type', 'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.payment_recieved',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.company_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_signature',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
        /*Bottom end*/ 
        ?>
                 </div>
@@ -181,15 +206,40 @@
                 echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+
+                if (!empty($hotels)) {
+                    foreach ($hotels as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+                echo $this->Form->input('Voucher.customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
         ?>
                        </div>
                       </div>
@@ -206,15 +256,40 @@
                 echo $this->Form->input('total_payment2',array('class' => 'form-control','label' => 'Total Payment', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Tour Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name2',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check In Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check Out Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type2',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_travel_type2',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan2',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no2',array('class' => 'form-control','label' => 'Hotel Contact No', 'div' => array('class' => 'form-group')));
+
+                if (!empty($hotels2)) {
+                    foreach ($hotels2 as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+                echo $this->Form->input('Voucher.customer_hotel_place_name2',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type2',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type2',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan2',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
         ?>
                        </div>
                       </div>
@@ -374,15 +449,40 @@
                 echo $this->Form->input('total_payment',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+
+                if (!empty($hotels)) {
+                    foreach ($hotels as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+                echo $this->Form->input('Voucher.customer_hotel_place_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
         ?>
                        </div>
                       </div>
@@ -399,15 +499,40 @@
                 echo $this->Form->input('total_payment2',array('class' => 'form-control','label' => 'Total Payment', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type2',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name2',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name2',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Tour Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name2',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check In Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date2',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check Out Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type2',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_travel_type2',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan2',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no2',array('class' => 'form-control','label' => 'Hotel Contact No', 'div' => array('class' => 'form-group')));
+
+                if (!empty($hotels2)) {
+                    foreach ($hotels2 as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+                echo $this->Form->input('Voucher.customer_hotel_place_name2',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type2',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type2',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan2',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
         ?>
                        </div>
                       </div>
@@ -424,15 +549,40 @@
                 echo $this->Form->input('total_payment2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_type3',array('class' => 'form-control','label' => 'Customer Tour Type', 'div' => array('class' => 'form-group')));       
                 echo $this->Form->input('customer_tour_name3',array('class' => 'form-control','label' => 'Customer Tour Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_name3',array('class' => 'form-control','label' => 'Customer Hotel Name', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('customer_tour_date3',array('type'=>'text','class' => 'form-control','label' => 'Customer Tour Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_place_name3',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_in_date3',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check In Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_hotel_check_out_date3',array('type'=>'text','class' => 'form-control','label' => 'Customer Hotel Check Out Date', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_room_type3',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('customer_travel_type3',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('meal_plan3',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('hotel_contact_no3',array('class' => 'form-control','label' => 'Hotel Contact No', 'div' => array('class' => 'form-group')));
+
+                if (!empty($hotels3)) {
+                    foreach ($hotels3 as $key => $hotel) {
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_id',array('type' => 'hidden','value' => $hotel['id']));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.customer_hotel_name',array('label' => 'Customer Hotel Name','class' => 'form-control','readonly' => true,'value' => $hotel['name'], 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_in_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_inHotel', 'label' =>  $hotel['name'].' Check In Date','value' => empty($hotel['hotel_check_in_date'])?'':$hotel['hotel_check_in_date'],'class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_check_out_date',array('type'=>'text','id'=>'CustomIdFor'.$hotel['id'].'check_outHotel', 'label' =>  $hotel['name'].' Check Out Date','value' => empty($hotel['hotel_check_out_date'])?'':$hotel['hotel_check_out_date'],'type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.hotel_contact_no',array('label' => $hotel['name'].' Contact Number','class' => 'form-control','readonly' => true,'value' => $hotel['contact_no'], 'div' => array('class' => 'form-group')));
+                      if(!empty($edit)){
+                      echo $this->Form->input('Hotel.'.$hotel['id'].'.id',array('type' => 'hidden','value' => $hotel['id']));  
+                      }
+                      ?>
+                      <script type="text/javascript">
+                      jQuery(document).ready(function () {
+                              $('#CustomIdFor<?=$hotel['id']?>check_inHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                              $('#CustomIdFor<?=$hotel['id']?>check_outHotel').datepicker({
+                                  format: "yyyy-mm-dd",
+                                  autoclose: true
+                              });                        
+                      });                        
+                      </script>
+                      <?php
+
+                    }
+                }
+
+                echo $this->Form->input('Voucher.customer_hotel_place_name3',array('class' => 'form-control','label' => 'Customer Hotel Place Name', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_room_type3',array('class' => 'form-control','label' => 'Customer Room Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.customer_travel_type3',array('class' => 'form-control','label' => 'Customer Travel Type', 'div' => array('class' => 'form-group')));
+                echo $this->Form->input('Voucher.meal_plan3',array('class' => 'form-control','label' => 'Meal Plan', 'div' => array('class' => 'form-group')));
         ?>
                        </div>
                       </div>

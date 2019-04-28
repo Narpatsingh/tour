@@ -110,10 +110,19 @@ public function add($id=null) {
         $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = $this->get_invoice_no();
+        $hotels = array();
+        if ($this->Voucher->save($this->request->data)) {   
 
-        if ($this->Voucher->save($this->request->data)) {
-
-
+            if(!empty($this->request->data['Hotel'])){
+                $hotels = $this->request->data['Hotel'];
+                $this->loadModel("VoucherHotel");
+                foreach ($hotels as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                }
+            }
+        
             $this->Booking->id = $id;
             $this->Booking->saveField('is_approved','Yes');
             $this->loadModel("Account");
@@ -133,13 +142,13 @@ public function add($id=null) {
             $voucher['redirect'] = 'bookings';
             $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
-            $this->set(compact('voucher'));
+            $this->set(compact('voucher','hotels'));
+            $pcount = 1;
             if($pcount==1){
-            $this->render('/Pdf/generate_voucher');     
+            $this->render('/Pdf/generate_voucher');
             }else{
-            $this->render('/Pdf/generate_voucher'.$pcount);         
+            $this->render('/Pdf/generate_voucher'.$pcount);
             }
-
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->loadModel("Booking");
@@ -157,7 +166,7 @@ public function add($id=null) {
             $this->set(compact('voucher'));
             $this->render('/Pdf/generate_terms_and_conditions');    
             $pdfpath = array(ROOT_DIR.RECEIPT_PATH.$ac_id.DS.$invoice_no.'.pdf', ROOT_DIR.VOUCHER_PATH.$booking_id.PDF_FILE , ROOT_DIR.TNCPATH.$booking_id.TNC_FILE );
-            }            
+            }
             }
             $this->loadModel('Enquiry');
             $options = array('conditions' => array('Enquiry.' . $this->Enquiry->primaryKey => $voucher['enc_id']));
@@ -167,7 +176,7 @@ public function add($id=null) {
             $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
             $arrData['Customer']['name'] = $this->request->data['Voucher']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour';
-
+            echo "<pre>"; print_r($voucher); exit;
             $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
             
 
@@ -179,7 +188,22 @@ public function add($id=null) {
     }else{
         if(!empty($id)){
             $options = array('conditions' => array('Booking.' . $this->Booking->primaryKey => $id));
-            $bookings = $this->Booking->find('first', $options);        
+            $bookings = $this->Booking->find('first', $options);
+
+            $this->loadModel("Hotel");
+            $hoptions = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $bookings['Booking']['multi_hotel'])));
+            $result = $this->Hotel->find('all', $hoptions);
+            $hotels = Hash::extract($result,'{n}.Hotel');
+
+            $hoptions2 = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $bookings['Booking']['multi_hotel2'])));
+            $result2 = $this->Hotel->find('all', $hoptions2);
+            $hotels2 = Hash::extract($result2,'{n}.Hotel');
+
+            $hoptions3 = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $bookings['Booking']['multi_hotel3'])));
+            $result3 = $this->Hotel->find('all', $hoptions3);
+            $hotels3 = Hash::extract($result3,'{n}.Hotel');
+
+            $this->set(compact('hotels','hotels2','hotels3'));
             $this->request->data['Voucher'] = $bookings['Booking'];
             $this->request->data['Voucher']['booking_id'] = $bookings['Booking']['id']; unset($this->request->data['Voucher']['id']);
             $this->request->data['Voucher']['enc_id'] = $bookings['Booking']['enquiry_id'];
@@ -189,11 +213,13 @@ public function add($id=null) {
             $this->request->data['Voucher']['customer_tour_date'] = $bookings['Booking']['travel_date'];
             $this->request->data['Voucher']['customer_tour_name'] = $bookings['Booking']['customer_tour_name'];
             $this->request->data['Voucher']['customer_hotel_place_name'] = $bookings['Booking']['place_name'];
+            $this->request->data['Voucher']['hotels'] = $bookings['Booking']['multi_hotel'];
             for ($i=2; $i <= $bookings['Booking']['package_count']; $i++) { 
             $this->request->data['Voucher']['customer_tour_type'.$i] = $bookings['Booking']['tour_type'.$i];
             $this->request->data['Voucher']['customer_tour_date'.$i] = $bookings['Booking']['travel_date'.$i];
             $this->request->data['Voucher']['customer_tour_name'.$i] = $bookings['Booking']['customer_tour_name'.$i];
             $this->request->data['Voucher']['customer_hotel_place_name'.$i] = $bookings['Booking']['place_name'.$i];
+
             }
         }
     }
@@ -211,7 +237,19 @@ public function edit($id = null) {
         $this->Message->setWarning(__('Invalid voucher'),array('action'=>'index'));
     }
     if ($this->request->is(array('post', 'put'))) {
+        
         if ($this->Voucher->save($this->request->data)) {
+
+            if(!empty($this->request->data['Hotel'])){
+
+                $this->loadModel("VoucherHotel");
+                foreach ($this->request->data['Hotel'] as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                }
+            }
+
             $config_gst = Configure::read('Site.gst_percent');
             $this->loadModel('GstParameter');
             $gst_value = $this->GstParameter->findByName('tour');
@@ -287,6 +325,9 @@ public function edit($id = null) {
     } else {
         $options = array('conditions' => array('Voucher.' . $this->Voucher->primaryKey => $id));
         $this->request->data = $this->Voucher->find('first', $options);
+        if(!empty($this->request->data['Hotel'])){
+            $this->set('hotels',$this->request->data['Hotel']);
+        }
     }
     $this->set('edit',1);
     $this->render('add');

@@ -28,6 +28,7 @@ echo $this->fetch('script');
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
 					echo $this->Form->input('customer_id',array('type'=>'hidden'));
+					echo $this->Form->input('multi_hotel',array('type'=>'hidden'));
 					echo $this->Form->input('package_count',array('type'=>'hidden','value'=>$pcount));
 					echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -179,6 +180,7 @@ echo $this->fetch('script');
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
 					echo $this->Form->input('customer_id',array('type'=>'hidden'));
+					echo $this->Form->input('multi_hotel',array('type'=>'hidden'));
 					echo $this->Form->input('package_count',array('type'=>'hidden','value'=>$pcount));
 					echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
@@ -406,6 +408,7 @@ echo $this->fetch('script');
 	        		/*Upper start*/
 					echo $this->Form->input('id',array('type'=>'hidden'));
 					echo $this->Form->input('customer_id',array('type'=>'hidden'));
+					echo $this->Form->input('multi_hotel',array('type'=>'hidden'));
 					echo $this->Form->input('package_count',array('type'=>'hidden','value'=>$pcount));
 					echo $this->Form->input('customer_full_name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 					echo $this->Form->input('customer_date_of_birth',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));

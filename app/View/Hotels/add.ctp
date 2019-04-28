@@ -22,6 +22,14 @@
         			echo $this->Form->input('state_id',array('label' => __('State'), 'class' => 'form-control','options'=>$states,'empty' => __('Select State'), 'div' => array('class' => 'form-group required')));
                     echo $this->Form->input('city_id',array('label' => __('City'), 'class' => 'form-control','options'=>$city,'empty' => __('Select City'), 'div' => array('class' => 'form-group required')));
         			echo $this->Form->input('name',array('class' => 'form-control', 'div' => array('class' => 'form-group')));?>
+<?php 
+                    echo $this->Form->input('contact_no', array(
+                        'placeholder' => 'Contact Number',
+                        'class' => 'form-control',
+                        'label' => __('Contact Number'),
+                        'type' => 'text',
+                        'div' => array('class' => 'required form-group')));
+?>                    
                     <label class="form-group" style="margin-bottom: 10px">Hotel Photo</label>
                         <div class="form-group row">
                             <div id='photoId' class='col-md-6'>
@@ -61,6 +69,7 @@
                     'state_id' => array('required' => 1),
                     'city_id' => array('required' => 1),
     				'address' => array('required' => 1),
+                    'contact_no' => array('required' => 1),
     				'type' => array('required' => 1),
     				'meal_plan' => array('required' => 1),
                     'room_type' => array('required' => 1),
@@ -75,6 +84,7 @@
                     'state_id' => array('required' => __('Please select State')),
                     'city_id' => array('required' => __('Please select City')),
     				'address' => array('required' => __('Please enter Address')),
+                    'contact_no' => array('required' => __('Please Contact No')),
     				'type' => array('required' => __('Please enter Type')),
                     'room_type' => array('required' => __('Please enter Room Type.')),
                     'photo' => array(
