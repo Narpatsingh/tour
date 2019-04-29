@@ -86,6 +86,7 @@ $id = $voucher['booking_id'];
 $hotel_data = '';$hsr = 1;
 if (!empty($hotels_data)) {
 		sort($hotels_data);
+		$hotel_data .= '<br><br><br><br><br><br>';
 		$hotel_data .= '<h4>Hotel Details:</h4>';
 		$hotel_data .= '<table border="1" style="width:100%;padding:5px;" nobr="true">';
 		$hotel_data .= '<thead>';
@@ -184,10 +185,13 @@ $hotel_data
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 <table style="line-height:10px;width: 120%;">
 	<tr>
 	<td style="float:left;">	
-	Special remarks :  <b><i><u></u></i></b> 
+	Special remarks :  this is test remark.<b><i><u></u></i></b> 
 	</td>
 	</tr>
 </table>

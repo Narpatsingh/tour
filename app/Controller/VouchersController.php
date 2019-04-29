@@ -151,7 +151,6 @@ public function add($id=null) {
             }else{
             $this->render('/Pdf/generate_voucher'.$pcount);
             }
-            echo "<pre>"; print_r($this->request->data); exit;
             $pdfpath = ROOT_DIR.VOUCHER_PATH.$id.PDF_FILE;
             if(!empty($voucher['generate_receipt'])){
             $this->loadModel("Booking");
@@ -179,7 +178,7 @@ public function add($id=null) {
             $arrData['Customer']['email'] = $this->request->data['Voucher']['customer_email_id'];
             $arrData['Customer']['name'] = $this->request->data['Voucher']['customer_full_name'];
             $arrData['Customer']['booking_type'] = 'Tour';
-            echo "<pre>"; print_r($voucher); exit;
+
             $this->sendNewFormateMail($arrData,'Tour Booking For Travel',$pdfpath);
             
 
