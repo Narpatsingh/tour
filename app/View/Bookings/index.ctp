@@ -125,7 +125,7 @@ $this->end();
                                             'class' => 'no-hover-text-decoration',
                                             'title' => __('View Receipt')
                                         ));
-                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'voucher', $booking['Booking']['id'],'file.pdf'),
+                                    echo $this->Html->link(__(''), array('controller'=>'files','action' => 'voucher', $booking['Booking']['id'],'voucher.pdf'),
                                         array(
                                             'icon' => 'fa-file-text-o',
                                             'target'=>'_blank',

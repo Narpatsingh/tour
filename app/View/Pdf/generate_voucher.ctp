@@ -79,6 +79,7 @@ $customer_hotel_name = $voucher['customer_hotel_name'];
 $customer_hotel_place_name = $voucher['customer_hotel_place_name'];
 $hotel_contact_no = $voucher['hotel_contact_no'];
 $customer_room_type = $voucher['customer_room_type'];
+$special_remarks = "Special remarks : ".$voucher['special_remarks'];
 // $customer_hotel_check_in_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date']));
 // $customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date']));
 $id = $voucher['booking_id'];
@@ -165,6 +166,8 @@ $html = <<<EOF
   <th align="center"> <b>Tour Date</b></th>
   <th align="center"><b>Meal Plan</b></th>
   <th align="center"><b>Travel Type</b></th>
+  <th><b>Place Name</b></th>  
+  <th align="center"><b>Room Type</b></th>  
  </tr>
  </thead>
  <tbody>
@@ -175,6 +178,8 @@ $html = <<<EOF
   <td>$customer_tour_date</td>
   <td>$meal_plan</td>
   <td align="center">$customer_travel_type</td>
+  <td>$customer_hotel_place_name</td>  
+  <td align="center">$customer_room_type</td>  
  </tr>
  </tbody>
  <tr style="border:none"></tr><tr style="border:none"></tr>
@@ -191,7 +196,7 @@ $hotel_data
 <table style="line-height:10px;width: 120%;">
 	<tr>
 	<td style="float:left;">	
-	Special remarks :  this is test remark.<b><i><u></u></i></b> 
+	$special_remarks 
 	</td>
 	</tr>
 </table>

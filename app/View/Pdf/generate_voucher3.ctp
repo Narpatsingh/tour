@@ -81,8 +81,9 @@ $customer_hotel_name = $voucher['customer_hotel_name'];
 $customer_hotel_place_name = $voucher['customer_hotel_place_name'];
 $hotel_contact_no = $voucher['hotel_contact_no'];
 $customer_room_type = $voucher['customer_room_type'];
-$customer_hotel_check_in_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date']));
-$customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date']));
+$special_remarks = "Special remarks : ".$voucher['special_remarks'];$special_remarks = "Special remarks : ".$voucher['special_remarks'];
+// $customer_hotel_check_in_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date']));
+// $customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date']));
 
 $package_photo2 = APP.'webroot/'.$voucher['tour_photo2'];
 $customer_contact_no2 = $voucher['customer_contact_no2'];
@@ -95,8 +96,8 @@ $customer_hotel_name2 = $voucher['customer_hotel_name2'];
 $customer_hotel_place_name2 = $voucher['customer_hotel_place_name2'];
 $hotel_contact_no2 = $voucher['hotel_contact_no2'];
 $customer_room_type2 = $voucher['customer_room_type2'];
-$customer_hotel_check_in_date2 = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date2']));
-$customer_hotel_check_out_date2 = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date2']));
+// $customer_hotel_check_in_date2 = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date2']));
+// $customer_hotel_check_out_date2 = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date2']));
 
 $package_photo3 = APP.'webroot/'.$voucher['tour_photo3'];
 $customer_contact_no3 = $voucher['customer_contact_no3'];
@@ -109,10 +110,79 @@ $customer_hotel_name3 = $voucher['customer_hotel_name3'];
 $customer_hotel_place_name3 = $voucher['customer_hotel_place_name3'];
 $hotel_contact_no3 = $voucher['hotel_contact_no3'];
 $customer_room_type3 = $voucher['customer_room_type3'];
-$customer_hotel_check_in_date3 = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date3']));
-$customer_hotel_check_out_date3 = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date3']));
+// $customer_hotel_check_in_date3 = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date3']));
+// $customer_hotel_check_out_date3 = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date3']));
 
 $id = $voucher['booking_id'];
+
+//ToDo Display available hotels.
+$hotel_data = '';$hsr = 1;
+if (!empty($hotels_data)) {
+		sort($hotels_data);
+		$hotel_data .= '<br><br><br><br><br><br>';
+		$hotel_data .= '<h4>Hotel Details:</h4>';
+		$hotel_data .= '<table border="1" style="width:100%;padding:5px;" nobr="true">';
+		$hotel_data .= '<thead>';
+		$hotel_data .= '<tr>';
+		$hotel_data .= '<th><b>No.</b></th>';
+		$hotel_data .= '<th><b>Country</b></th>';
+		$hotel_data .= '<th><b>State</b></th>';
+		$hotel_data .= '<th><b>City</b></th>';
+		$hotel_data .= '<th><b>Hotel Name</b></th>';
+		$hotel_data .= '<th><b>Contact No</b></th>';
+		$hotel_data .= '<th><b>Check In</b></th>';
+		$hotel_data .= '<th><b>Check Out</b></th>';
+		$hotel_data .= '<th><b>Meal Plan</b></th>';
+		$hotel_data .= '</tr>';
+		$hotel_data .= '</thead>';
+		$hotel_data .= '<tbody>';
+
+	foreach ($hotels_data as $key => $hotel) {
+
+		$hotel_data .= '<tr>';
+		$hotel_data .= '<td>'.$hsr++.'</td>';
+		$hotel_data .= '<td>India</td>';
+		$hotel_data .= '<td>'.$hotel['State']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['City']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['HotelData']['hotel_contact_no'].'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_in_date'])).'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_out_date'])).'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['meal_plan'].'</td>';
+		$hotel_data .= '</tr>';
+	}
+	foreach ($hotels_data2 as $key => $hotel) {
+
+		$hotel_data .= '<tr>';
+		$hotel_data .= '<td>'.$hsr++.'</td>';
+		$hotel_data .= '<td>India</td>';
+		$hotel_data .= '<td>'.$hotel['State']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['City']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['HotelData']['hotel_contact_no'].'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_in_date'])).'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_out_date'])).'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['meal_plan'].'</td>';
+		$hotel_data .= '</tr>';
+	}
+	foreach ($hotels_data3 as $key => $hotel) {
+
+		$hotel_data .= '<tr>';
+		$hotel_data .= '<td>'.$hsr++.'</td>';
+		$hotel_data .= '<td>India</td>';
+		$hotel_data .= '<td>'.$hotel['State']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['City']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['HotelData']['hotel_contact_no'].'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_in_date'])).'</td>';
+		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_out_date'])).'</td>';
+		$hotel_data .= '<td>'.$hotel['Hotel']['meal_plan'].'</td>';
+		$hotel_data .= '</tr>';
+	}	
+		$hotel_data .= '</tbody>';
+		$hotel_data .= '</table>';
+}
+
 $html = <<<EOF
 <!-- EXAMPLE OF CSS STYLE -->
 
@@ -166,12 +236,8 @@ $html = <<<EOF
   <th width="85" align="center"> <b>Tour Date</b></th>
   <th width="50" align="center"><b>Meal Plan</b></th>
   <th width="60" align="center"><b>Travel Type</b></th>
-  <th width="90" align="center"><b>Hotel Name</b></th>
   <th width="115"><b>Place Name</b></th>
-  <th width="80"><b>Hotel Contact</b></th>
   <th width="75" align="center"><b>Room Type</b></th>
-  <th width="90"><b>Check in Date</b></th>
-  <th width="90"><b>Check Out Date</b></th>
  </tr>
  </thead>
  <tbody>
@@ -182,12 +248,8 @@ $html = <<<EOF
   <td width="85">$customer_tour_date</td>
   <td width="50">$meal_plan</td>
   <td align="center" width="60">$customer_travel_type</td>
-  <td width="90" align="center">$customer_hotel_name</td>
   <td width="115">$customer_hotel_place_name</td>
-  <td width="80">$hotel_contact_no</td>
   <td align="center" width="75">$customer_room_type</td>
-  <td width="90">$customer_hotel_check_in_date</td>
-  <td width="90">$customer_hotel_check_out_date</td>
  </tr>
 
  <tr>
@@ -223,9 +285,19 @@ $html = <<<EOF
  </tbody>
  <tr style="border:none"></tr><tr style="border:none"></tr>
 </table>
-	<br>
-	<br>
+<br>
+<br>
+<br>
 <table style="line-height:10px;width: 120%;">
+	<tr>
+	<td style="float:left;">	
+	$special_remarks
+	</td>
+	</tr>
+</table>
+<br>
+<br>
+<table style="line-height:10px;width: 167%;">
 	<tr>
 	<td style="float:left;">	
 	Customer  Signature :  <b><i><u>$customer_signature</u>.</i></b> 
@@ -235,9 +307,10 @@ $html = <<<EOF
 	</td>
 	</tr>
 </table>
-	<br>
+<br>
 <hr>
-<p>This form is auto generated by system.</p>
+<p>This voucher is auto generated by system.</p>
+
 EOF;
 
 // output the HTML content

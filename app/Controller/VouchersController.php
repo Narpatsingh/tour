@@ -110,7 +110,7 @@ public function add($id=null) {
         $this->request->data['Voucher']['id'] = '';
         $this->Voucher->create();
         $this->request->data['Voucher']['invoice_no'] = $invoice_no = $this->get_invoice_no();
-        $hotels = $hotels_data = array();
+        $hotels = $hotels_data = $hotels_data2 = $hotels_data3 = array();
         if ($this->Voucher->save($this->request->data)) {   
 
             if(!empty($this->request->data['Hotel'])){
@@ -125,6 +125,30 @@ public function add($id=null) {
                     $hotels_data[$key]['HotelData'] = $hotel;
                 }
             }
+            if(!empty($this->request->data['Hotel2'])){
+                $hotels2 = $this->request->data['Hotel2'];
+                $this->loadModel("VoucherHotel");
+                $this->loadModel("Hotel");
+                foreach ($hotels2 as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                    $hotels_data2[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data2[$key]['HotelData'] = $hotel;
+                }
+            }
+            if(!empty($this->request->data['Hotel3'])){
+                $hotels2 = $this->request->data['Hotel3'];
+                $this->loadModel("VoucherHotel");
+                $this->loadModel("Hotel");
+                foreach ($hotels2 as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                    $hotels_data3[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data3[$key]['HotelData'] = $hotel;
+                }
+            }            
             $this->Booking->id = $id;
             $this->Booking->saveField('is_approved','Yes');
             $this->loadModel("Account");
@@ -144,8 +168,8 @@ public function add($id=null) {
             $voucher['redirect'] = 'bookings';
             $pcount = $voucher['package_count'];
             $this->layout = 'pdf';
-            $this->set(compact('voucher','hotels_data'));
-            $pcount = 1;
+            $this->set(compact('voucher','hotels_data','hotels_data2','hotels_data3'));
+
             if($pcount==1){
             $this->render('/Pdf/generate_voucher');
             }else{

@@ -232,6 +232,7 @@ echo $this->fetch('script');
 					   <div class="box-body box-content">			       		
 					<?php 
 					echo "<center><b> Tour Title :  ". $this->request->data['Booking']['customer_tour_name2']."</b></center><br>";
+					echo $this->Form->input('multi_hotel2',array('type'=>'hidden'));
 					echo $this->Form->input('tour_type2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));	        		
 					echo $this->Form->input('meal_type2',array('class' => 'form-control','label'=>'Meal Type',  'div' => array('class' => 'form-group')));
 					echo $this->Form->input('place_name2',array('class' => 'form-control','label'=>'Place Name',  'div' => array('class' => 'form-group')));
@@ -460,6 +461,7 @@ echo $this->fetch('script');
 					   <div class="box-body box-content">			       					       		
 					<?php 
 					echo "<center><b> Tour Title :  ". $this->request->data['Booking']['customer_tour_name2']."</b></center><br>";
+					echo $this->Form->input('multi_hotel2',array('type'=>'hidden'));
 					echo $this->Form->input('tour_type2',array('class' => 'form-control', 'div' => array('class' => 'form-group')));	        		
 					echo $this->Form->input('meal_type2',array('class' => 'form-control','label'=>'Meal Type',  'div' => array('class' => 'form-group')));
 					echo $this->Form->input('place_name2',array('class' => 'form-control','label'=>'Place Name',  'div' => array('class' => 'form-group')));
@@ -486,6 +488,7 @@ echo $this->fetch('script');
 					   <div class="box-body box-content">			       		
 					<?php 
 					echo "<center><b> Tour Title :  ". $this->request->data['Booking']['customer_tour_name3']."</b></center><br>";
+					echo $this->Form->input('multi_hotel3',array('type'=>'hidden'));
 					echo $this->Form->input('tour_type3',array('class' => 'form-control', 'div' => array('class' => 'form-group')));	        		
 					echo $this->Form->input('meal_type3',array('class' => 'form-control','label'=>'Meal Type',  'div' => array('class' => 'form-group')));
 					echo $this->Form->input('place_name3',array('class' => 'form-control','label'=>'Place Name',  'div' => array('class' => 'form-group')));
