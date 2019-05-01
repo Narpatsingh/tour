@@ -46,9 +46,9 @@ class CustomHelper extends HtmlHelper
             if (in_array($this->action, $tmpAction) && empty($this->request->params['pass'])) {
                 return 'active';
             }
-            if (in_array($this->action, $tmpAction) && isset($this->request->params['pass'][1])) {
-                return 'active';
-            }
+            // if (in_array($this->action, $tmpAction) && isset($this->request->params['pass'][1])) {
+            //     return 'active';
+            // }
         }
     }
 

@@ -1,8 +1,15 @@
 <?php
-$this->assign('pagetitle', __('Hotel Bookings'));
-$this->Custom->addCrumb(__('Hotel Bookings'));
+if(empty($voucher)){
+    $title =  __('Hotel Bookings');
+}else{
+    $title =  __('Hotel Bookings Voucher');
+}
+$this->assign('pagetitle', $title);
+$this->Custom->addCrumb($title);
 $this->start('top_links');
-echo $this->Html->link(__('Add Hotel Booking'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Hotel Booking'),'class'=>'btn btn-primary','escape'=>false));
+if(empty($voucher)){
+    echo $this->Html->link(__('Add Hotel Booking'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Hotel Booking'),'class'=>'btn btn-primary','escape'=>false));
+}
 $this->end();
 ?>
 <!-- <div class="row">
@@ -68,17 +75,24 @@ $this->end();
                      <td><?php echo h($hotelBooking['HotelBooking']['created']); ?>&nbsp;</td>
                      <td><?php echo h($hotelBooking['HotelBooking']['updated']); ?>&nbsp;</td>
                      <td class="actions text-center"> 
-                         <?php echo $this->Html->link(__(''), array('action' => 'view', $hotelBooking['HotelBooking']['id']), array('icon'=>'view','title' => __('Click here to view this Hotel Booking'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'edit', $hotelBooking['HotelBooking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Hotel Booking'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'delete', $hotelBooking['HotelBooking']['id']), array('icon'=>'delete','title' => __('Click here to delete this Hotel Booking')), __('Are you sure you want to delete Hotel Booking?')); ?>
-                        <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $hotelBooking['HotelBooking']['ac_id'],$hotelBooking['HotelBooking']['invoice_no'].'.pdf'),
-                            array(
-                                'icon' => 'fa-file',
-                                'target'=>'_blank',
-                                'class' => 'no-hover-text-decoration',
-                                'title' => __('View Receipt')
-                            )); ?>
-                        <?php
+                        <?php 
+                            if(empty($voucher)){
+                                echo $this->Html->link(__(''), array('action' => 'view', $hotelBooking['HotelBooking']['id']), array('icon'=>'view','title' => __('Click here to view this Hotel Booking'))); 
+                                echo $this->Html->link(__(''), array('action' => 'delete', $hotelBooking['HotelBooking']['id']), array('icon'=>'delete','title' => __('Click here to delete this Hotel Booking')), __('Are you sure you want to delete Hotel Booking?')); 
+                                echo $this->Html->link(__(''), array('action' => 'edit', $hotelBooking['HotelBooking']['id']), array('icon'=>'edit','title' => __('Click here to edit this Hotel Booking'))); 
+                                echo $this->Html->link(__(''), array('action' => 'sendVoucher',$hotelBooking['HotelBooking']['id'] ), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send mail.')));
+                            }else{
+                                echo $this->Html->link(__(''), array('action' => 'edit', $hotelBooking['HotelBooking']['id'],'voucher'), array('icon'=>'edit','title' => __('Click here to edit this Hotel Booking'))); 
+                                echo $this->Html->link(__(''), array('action' => 'sendVoucher',$hotelBooking['HotelBooking']['id'],'voucher' ), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send mail.')));
+                            }
+                            
+                            echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $hotelBooking['HotelBooking']['ac_id'],$hotelBooking['HotelBooking']['invoice_no'].'.pdf'),
+                                array(
+                                    'icon' => 'fa-file',
+                                    'target'=>'_blank',
+                                    'class' => 'no-hover-text-decoration',
+                                    'title' => __('View Receipt')
+                                )); 
                             echo $this->Html->link(__(''), array('controller'=>'files','action' => 'hotel_voucher', $hotelBooking['HotelBooking']['ac_id'],'voucher.pdf'),
                                 array(
                                     'icon' => 'fa-file-text-o',

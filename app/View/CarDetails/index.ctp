@@ -1,8 +1,15 @@
 <?php
-$this->assign('pagetitle', __('Car Details'));
-$this->Custom->addCrumb(__('Car Details'));
+if(empty($voucher)){
+    $title =  __('Car Details');
+}else{
+    $title =  __('Car Details Voucher');
+}
+$this->assign('pagetitle', __( $title));
+$this->Custom->addCrumb(__( $title));
 $this->start('top_links');
-echo $this->Html->link(__('Add Car Detail'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Car Detail'),'class'=>'btn btn-primary','escape'=>false));
+if(empty($voucher)){
+  echo $this->Html->link(__('Add Car Detail'),array('action'=>'add'),array('icon'=>'fa-plus','title'=>__('Add Car Detail'),'class'=>'btn btn-primary','escape'=>false));
+}
 $this->end();
 ?>
 <!-- <div class="row">
@@ -68,25 +75,32 @@ $this->end();
                       <td><?php echo h($carDetail['CarDetail']['destination']); ?>&nbsp;</td>
                       <td><?php echo h($carDetail['CarDetail']['created']); ?>&nbsp;</td>
                       <td class="actions text-center">
-                         <?php echo $this->Html->link(__(''), array('action' => 'view', $carDetail['CarDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Car Detail'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'edit', $carDetail['CarDetail']['id']), array('icon'=>'edit','title' => __('Click here to edit this Car Detail'))); ?>
-                         <?php echo $this->Html->link(__(''), array('action' => 'delete', $carDetail['CarDetail']['id']), array('icon'=>'delete','title' => __('Click here to delete this Car Detail')), __('Are you sure you want to delete Car Detail?')); ?>
-                         <?php echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $carDetail['CarDetail']['ac_id'],$carDetail['CarDetail']['invoice_no'].'.pdf'),
-                                array(
-                                    'icon' => 'fa-file',
-                                    'target'=>'_blank',
-                                    'class' => 'no-hover-text-decoration',
-                                    'title' => __('View Receipt')
-                                )); ?>  
-                        <?php
-                            echo $this->Html->link(__(''), array('controller'=>'files','action' => 'car_voucher', $carDetail['CarDetail']['ac_id'],'voucher.pdf'),
-                                array(
-                                    'icon' => 'fa-file-text-o',
-                                    'target'=>'_blank',
-                                    'class' => 'no-hover-text-decoration',
-                                    'title' => __('View Voucher')
+                        <?php  
+                          if(empty($voucher)){
+                              echo $this->Html->link(__(''), array('action' => 'view', $carDetail['CarDetail']['id']), array('icon'=>'view','title' => __('Click here to view this Car Detail'))); 
+                              echo $this->Html->link(__(''), array('action' => 'delete', $carDetail['CarDetail']['id']), array('icon'=>'delete','title' => __('Click here to delete this Car Detail')), __('Are you sure you want to delete Car Detail?')); 
+                              echo $this->Html->link(__(''), array('action' => 'edit', $carDetail['CarDetail']['id']), array('icon'=>'edit','title' => __('Click here to edit this Car Detail'))); 
+                              echo $this->Html->link(__(''), array('action' => 'sendVoucher',$carDetail['CarDetail']['id'] ), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send mail.')));
+                          }else{
+                              echo $this->Html->link(__(''), array('action' => 'edit', $carDetail['CarDetail']['id'],'voucher'), array('icon'=>'edit','title' => __('Click here to edit this Car Detail'))); 
+                              echo $this->Html->link(__(''), array('action' => 'sendVoucher',$carDetail['CarDetail']['id'] ,'voucher'), array('icon'=>'fa fa-arrow-right','title' => __('Click here to send mail.')));
+                          }
+
+                          echo $this->Html->link(__(''), array('controller'=>'files','action' => 'receipt', $carDetail['CarDetail']['ac_id'],$carDetail['CarDetail']['invoice_no'].'.pdf'),
+                            array(
+                                'icon' => 'fa-file',
+                                'target'=>'_blank',
+                                'class' => 'no-hover-text-decoration',
+                                'title' => __('View Receipt')
+                            ));
+                          echo $this->Html->link(__(''), array('controller'=>'files','action' => 'car_voucher', $carDetail['CarDetail']['ac_id'],'voucher.pdf'),
+                            array(
+                                'icon' => 'fa-file-text-o',
+                                'target'=>'_blank',
+                                'class' => 'no-hover-text-decoration',
+                                'title' => __('View Voucher')
                             ));                        
-                        ?>
+                          ?>
                      </td>
                      </tr>
                 <?php endforeach; ?>

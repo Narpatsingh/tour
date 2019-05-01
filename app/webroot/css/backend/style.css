@@ -246,6 +246,11 @@
     color: #340034;
 }
 
+.overflow-hide-break{
+	margin-bottom: 50px;
+}
+
+
 /* Style the video: 100% width and height to cover the entire window */
 #myVideo {
   position: fixed;

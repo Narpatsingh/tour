@@ -3214,3 +3214,7 @@ h3.visible-title{
 #navbarResponsive ul li.nav-item{
 	padding-top: 7px; 
 }
+
+.detail_visible{
+	color: #340034;
+}
