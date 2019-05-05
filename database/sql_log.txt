@@ -245,3 +245,12 @@ ALTER TABLE `voucher_hotels` CHANGE `hotel_contact_no` `contact_no` INT(15) NULL
 ALTER TABLE `bookings` ADD `multi_hotel2` VARCHAR(150) NULL AFTER `multi_hotel`, ADD `multi_hotel3` VARCHAR(150) NULL AFTER `multi_hotel2`;
 
 ALTER TABLE `vouchers` ADD `special_remarks` VARCHAR(250) NULL AFTER `all_t_and_c`;
+
+ALTER TABLE `vouchers` ADD `car_type` VARCHAR(150) NULL AFTER `special_remarks`, ADD `pick_up_date` DATE NULL AFTER `car_type`, ADD `drop_date` DATE NULL AFTER `pick_up_date`, ADD `nights_days` INT NULL AFTER `drop_date`;
+
+ALTER TABLE `vouchers` ADD `car_type3` VARCHAR(150) NULL AFTER `nights_days2`, ADD `pick_up_date3` DATE NULL AFTER `car_type3`, ADD `drop_date3` DATE NULL AFTER `pick_up_date3`, ADD `nights_days3` INT NULL AFTER `drop_date3`;
+
+05-05-2019~Ajay
+
+ALTER TABLE `vouchers` ADD `multi_hotel` VARCHAR(150) NULL AFTER `nights_days3`, ADD `multi_hotel2` VARCHAR(150) NULL AFTER `multi_hotel`, ADD `multi_hotel3` VARCHAR(150) NULL AFTER `multi_hotel2`;
+

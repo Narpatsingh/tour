@@ -79,6 +79,14 @@ $customer_hotel_name = $voucher['customer_hotel_name'];
 $customer_hotel_place_name = $voucher['customer_hotel_place_name'];
 $hotel_contact_no = $voucher['hotel_contact_no'];
 $customer_room_type = $voucher['customer_room_type'];
+$car_type = $voucher['car_type'];
+$pick_up_date = $voucher['pick_up_date'];
+$drop_date = $voucher['drop_date'];
+$nights_days = $voucher['nights_days'];
+$car_type2 = $voucher['car_type2'];
+$pick_up_date2 = $voucher['pick_up_date2'];
+$drop_date2 = $voucher['drop_date2'];
+$nights_days2 = $voucher['nights_days2'];
 $special_remarks = "Special remarks : ".$voucher['special_remarks'];$special_remarks = "Special remarks : ".$voucher['special_remarks'];
 // $customer_hotel_check_in_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_in_date']));
 // $customer_hotel_check_out_date = date('d-M-Y',strtotime($voucher['customer_hotel_check_out_date']));
@@ -110,6 +118,7 @@ if (!empty($hotels_data)) {
 		$hotel_data .= '<th><b>Country</b></th>';
 		$hotel_data .= '<th><b>State</b></th>';
 		$hotel_data .= '<th><b>City</b></th>';
+		$hotel_data .= '<th><b>Tour Name</b></th>';
 		$hotel_data .= '<th><b>Hotel Name</b></th>';
 		$hotel_data .= '<th><b>Contact No</b></th>';
 		$hotel_data .= '<th><b>Check In</b></th>';
@@ -126,6 +135,7 @@ if (!empty($hotels_data)) {
 		$hotel_data .= '<td>India</td>';
 		$hotel_data .= '<td>'.$hotel['State']['name'].'</td>';
 		$hotel_data .= '<td>'.$hotel['City']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['HotelData']['customer_tour_name'].'</td>';
 		$hotel_data .= '<td>'.$hotel['Hotel']['name'].'</td>';
 		$hotel_data .= '<td>'.$hotel['HotelData']['hotel_contact_no'].'</td>';
 		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_in_date'])).'</td>';
@@ -140,6 +150,7 @@ if (!empty($hotels_data)) {
 		$hotel_data .= '<td>India</td>';
 		$hotel_data .= '<td>'.$hotel['State']['name'].'</td>';
 		$hotel_data .= '<td>'.$hotel['City']['name'].'</td>';
+		$hotel_data .= '<td>'.$hotel['HotelData']['customer_tour_name'].'</td>';		
 		$hotel_data .= '<td>'.$hotel['Hotel']['name'].'</td>';
 		$hotel_data .= '<td>'.$hotel['HotelData']['hotel_contact_no'].'</td>';
 		$hotel_data .= '<td>'.date('d-M-Y',strtotime($hotel['HotelData']['hotel_check_in_date'])).'</td>';
@@ -224,6 +235,44 @@ $html = <<<EOF
   <td align="center">$customer_room_type2</td>
  </tr>
 
+ </tbody>
+ <tr style="border:none"></tr><tr style="border:none"></tr>
+</table>
+<br>
+<br>
+$hotel_data
+<br>
+<br>
+<br>
+<h4>Car Details:</h4>
+<table class="first" border="1" style="padding:5px;" nobr="true">
+ <thead>
+ <tr>
+  <th align="center"><b>No.</b></th>
+  <th align="center"><b>Car Type</b></th>
+  <th align="center"><b>Places Name</b></th>
+  <th align="center"> <b>Pick up Date</b></th>
+  <th align="center"><b>Drop date</b></th>
+  <th align="center"><b>Nights/days</b></th>  
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+  <td align="center">1</td>
+  <td>$car_type</td>
+  <td>$customer_hotel_place_name</td>
+  <td>$pick_up_date</td>
+  <td>$drop_date</td>
+  <td align="center">$nights_days</td>
+ </tr>
+ <tr>
+  <td align="center">2</td>
+  <td>$car_type2</td>
+  <td>$customer_hotel_place_name2</td>
+  <td>$pick_up_date2</td>
+  <td>$drop_date2</td>
+  <td align="center">$nights_days2</td>
+ </tr>
  </tbody>
  <tr style="border:none"></tr><tr style="border:none"></tr>
 </table>

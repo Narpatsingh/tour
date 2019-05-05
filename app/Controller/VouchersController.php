@@ -138,10 +138,10 @@ public function add($id=null) {
                 }
             }
             if(!empty($this->request->data['Hotel3'])){
-                $hotels2 = $this->request->data['Hotel3'];
+                $hotels3 = $this->request->data['Hotel3'];
                 $this->loadModel("VoucherHotel");
                 $this->loadModel("Hotel");
-                foreach ($hotels2 as $key => $hotel) {
+                foreach ($hotels3 as $key => $hotel) {
                     $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
                     $this->VoucherHotel->create();
                     $this->VoucherHotel->save($hotel);
@@ -267,12 +267,39 @@ public function edit($id = null) {
         if ($this->Voucher->save($this->request->data)) {
 
             if(!empty($this->request->data['Hotel'])){
-
+                $hotels = $this->request->data['Hotel'];
                 $this->loadModel("VoucherHotel");
-                foreach ($this->request->data['Hotel'] as $key => $hotel) {
+                $this->loadModel("Hotel");
+                foreach ($hotels as $key => $hotel) {
                     $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
                     $this->VoucherHotel->create();
                     $this->VoucherHotel->save($hotel);
+                    $hotels_data[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data[$key]['HotelData'] = $hotel;
+                }
+            }
+            if(!empty($this->request->data['Hotel2'])){
+                $hotels2 = $this->request->data['Hotel2'];
+                $this->loadModel("VoucherHotel");
+                $this->loadModel("Hotel");
+                foreach ($hotels2 as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                    $hotels_data2[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data2[$key]['HotelData'] = $hotel;
+                }
+            }
+            if(!empty($this->request->data['Hotel3'])){
+                $hotels3 = $this->request->data['Hotel3'];
+                $this->loadModel("VoucherHotel");
+                $this->loadModel("Hotel");
+                foreach ($hotels3 as $key => $hotel) {
+                    $hotel["voucher_id"] = $this->Voucher->getLastInsertID();
+                    $this->VoucherHotel->create();
+                    $this->VoucherHotel->save($hotel);
+                    $hotels_data3[$key] = $this->Hotel->find('first', array('conditions' => array('Hotel.' . $this->Hotel->primaryKey => $hotel['hotel_id'])));
+                    $hotels_data3[$key]['HotelData'] = $hotel;
                 }
             }
 
@@ -354,6 +381,21 @@ public function edit($id = null) {
         if(!empty($this->request->data['Hotel'])){
             $this->set('hotels',$this->request->data['Hotel']);
         }
+            $this->loadModel("Hotel");
+            $hoptions = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $this->request->data['Voucher']['multi_hotel'])));
+            $result = $this->Hotel->find('all', $hoptions);
+            $hotels = Hash::extract($result,'{n}.Hotel');
+
+            $hoptions2 = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $this->request->data['Voucher']['multi_hotel2'])));
+            $result2 = $this->Hotel->find('all', $hoptions2);
+            $hotels2 = Hash::extract($result2,'{n}.Hotel');
+
+            $hoptions3 = array('fields'=>array('Hotel.id','Hotel.name','Hotel.contact_no'),'conditions' => array('Hotel.' . $this->Hotel->primaryKey => explode(',', $this->request->data['Voucher']['multi_hotel3'])));
+            $result3 = $this->Hotel->find('all', $hoptions3);
+            $hotels3 = Hash::extract($result3,'{n}.Hotel');
+
+            $this->set(compact('hotels','hotels2','hotels3'));
+        
     }
     $this->set('edit',1);
     $this->render('add');

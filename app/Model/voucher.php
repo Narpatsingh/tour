@@ -7,12 +7,12 @@ App::uses('AppModel', 'Model');
 class voucher extends AppModel {
 
 
-	public $hasMany = array(
-		'Hotel' => array(
-			'className' => 'VoucherHotel',
-			'foreignKey' => 'voucher_id',
-		)
-	);
+	// public $hasMany = array(
+	// 	'Hotel' => array(
+	// 		'className' => 'VoucherHotel',
+	// 		'foreignKey' => 'voucher_id',
+	// 	)
+	// );
 
 /**
  * Validation rules
