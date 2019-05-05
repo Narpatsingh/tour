@@ -82,6 +82,7 @@ $ac_id = $voucher['ac_id'];
 $pick_up_date = date("d-M-Y",strtotime($voucher['pick_up_date']));
 $drop_date = date("d-M-Y",strtotime($voucher['drop_date']));
 $nights = $voucher['nights'];
+$special_remark = $voucher['special_remark'];
 $city = $cities[$voucher['city_id']];
 $state = $states[$voucher['state_id']];
 // $gst_amount = $final_total_payment-$total_payment;
@@ -158,7 +159,7 @@ $html = <<<EOF
 <table style="line-height:10px;width: 120%;">
 	<tr>
 	<td style="float:left;">	
-	Special remarks :  <b><i><u></u></i></b> 
+	Special remarks :  <b><i><u>$special_remark</u></i></b> 
 	</td>
 	</tr>
 </table>

@@ -90,6 +90,7 @@ $redirect = $voucher['redirect'];
 $city = $cities[$voucher['city_id']];
 $state = $states[$voucher['state_id']];
 $nights = $voucher['nights'];
+$special_remark = $voucher['special_remark'];
 // $gst_amount = $final_total_payment-$total_payment;
 // $grand_total = $final_total_payment-$payment_recieved;
 $source =  $voucher['source']; 
@@ -152,6 +153,15 @@ $html = <<<EOF
 	</tbody>
 </table>
 <br>
+<br>
+<br>
+<table style="line-height:10px;width: 120%;">
+	<tr>
+	<td style="float:left;">	
+	Special remarks :  <b><i><u>$special_remark</u></i></b> 
+	</td>
+	</tr>
+</table>
 <br>
 <br>
 <table style="line-height:10px;width: 167%;">

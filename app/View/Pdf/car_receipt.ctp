@@ -202,5 +202,4 @@ $pdf->lastPage();
 $pdf_path = APP . 'webroot/files/receipt' . DS . $ac_id;
 createFolder($pdf_path); 
 $pdf->Output($pdf_path . DS .''.$invoice_no.'.pdf', 'F');
-echo $html; exit;
 ?>

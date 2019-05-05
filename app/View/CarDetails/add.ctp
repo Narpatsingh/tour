@@ -1,10 +1,20 @@
 <?php
 $type = empty($edit) ? 'Add' : 'Edit';
-$this->assign('pagetitle', __('%s Car Detail',$type));
-$this->Custom->addCrumb(__('Car Details'),array('action'=>'index'));
-$this->Custom->addCrumb(__('%s Car Detail',$type));
+if(empty($voucher)){
+    $title =  __(' Car Detail');
+    $this->Custom->addCrumb(__($title),array('action'=>'index'));
+}else{
+    $title =  __(' Car Detail Voucher');
+    $this->Custom->addCrumb(__($title),array('action'=>'index','voucher'));    
+}
+$this->assign('pagetitle', __($type.$title));
+$this->Custom->addCrumb(__($type.$title));
 $this->start('top_links');
-echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
+if(empty($voucher)){
+    echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
+}else{
+    echo $this->Html->link(__('Back'),array('action'=>'index','voucher'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));    
+}
 $this->end();
 ?>
 <div class="box box-primary">
@@ -23,6 +33,7 @@ $this->end();
 				echo $this->Form->input('source',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
                 echo $this->Form->input('pick_up_date',array('class' => 'form-control','type' => 'text','div' => array('class' => 'form-group required')));
 				echo $this->Form->input('car_type',array('class' => 'form-control','div' => array('class' => 'form-group required'))); 
+				echo $this->Form->input('special_remark',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
 				?>
 				</div>
 				<div class="col-md-6">

@@ -58,13 +58,46 @@ $sideBarCheck = isset($_COOKIE['sidebar']) ? $_COOKIE['sidebar'] : 0;
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('bookings')) ?>">
                     <?php echo $this->Html->link(__('Booking Management'),array('controller' => 'bookings', 'action' => 'index'), array('icon' => 'fa-file ')) ?>
                 </li>
-                <li class="<?php echo $this->Html->getActiveOpenClass(array('vouchers')) ?>">
+                <!-- <li class="<?php echo $this->Html->getActiveOpenClass(array('vouchers')) ?>">
                     <?php echo $this->Html->link(__('Vouchers Management'),array('controller' => 'vouchers', 'action' => 'index'), array('icon' => 'fa-file-text ')) ?>
+                </li> -->
+                <?php
+                $car_active = '';
+                $tour_active = '';
+                $hotel_active = '';
+                if(isset($this->request->params['pass'][0]) || isset($this->request->params['pass'][1])){
+                    if ($this->request->params['pass'][0] == 'voucher' && $this->request->params['controller'] == 'car_details') {
+                        $car_active = 'active';
+                    }elseif (isset($this->request->params['pass'][1]) && $this->request->params['pass'][1] == 'voucher' && $this->request->params['controller'] == 'car_details') {
+                        $car_active = 'active';
+                    }elseif ($this->request->params['pass'][0] == 'voucher' && $this->request->params['controller'] == 'hotelBookings') {
+                        $hotel_active = 'active';
+                    }elseif (isset($this->request->params['pass'][1]) && $this->request->params['pass'][1] == 'voucher' && $this->request->params['controller'] == 'hotelBookings') {
+                        $hotel_active = 'active';
+                    }
+                } 
+                if($this->request->params['controller'] == 'vouchers'){
+                    $tour_active = 'active';
+                }
+                 ?>
+                <li class="treeview <?php echo $tour_active.$car_active.$hotel_active ?>">
+                    <?php echo $this->Html->link('Vouchers Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa-file-text')); ?>
+                    <ul class="treeview-menu">
+                        <li class="<?php echo $tour_active ?>">
+                            <?php echo $this->Html->link(__('Tour Voucher'),array('controller' => 'vouchers', 'action' => 'index'),array('icon' => 'fa-file-text')); ?>
+                        </li>
+                        <li class="<?php echo $car_active ?>">
+                            <?php echo $this->Html->link(__('Car Voucher'),array('controller' => 'car_details', 'action' => 'index','voucher'),array('icon' => 'fa-file-text')); ?>
+                        </li>
+                        <li class="<?php echo $hotel_active ?>">
+                            <?php echo $this->Html->link(__('Hotel Booking Voucher'),array('controller' => 'hotelBookings', 'action' => 'index','voucher'),array('icon' => 'fa-file-text')); ?>
+                        </li>                                                
+                    </ul>
                 </li> 
                 <li class="<?php echo $this->Html->getActiveOpenClass(array('accounts')) ?>">
                     <?php echo $this->Html->link(__('Finance Management'),array('controller' => 'accounts', 'action' => 'index'), array('icon' => 'fa-tachometer ')) ?>
                 </li>                
-                 <li class="treeview <?php echo $this->Html->getActiveClass(array('galleries'),array('index','add','edit','view','types','editTypes'), 'all') ?>">
+                <li class="treeview <?php echo $this->Html->getActiveClass(array('galleries'),array('index','add','edit','view','types','editTypes'), 'all') ?>">
                     <?php echo $this->Html->link('Gallery Management', 'javascript:void(0)',array('hasSubMenu' => true, 'span' => true, 'icon' => 'fa-file-text')); ?>
                     <ul class="treeview-menu">
                         <li class="<?php echo $this->Html->getActiveClass(array('galleries'), array('types','add','edit','view')) ?>">

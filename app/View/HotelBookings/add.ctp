@@ -1,10 +1,20 @@
 <?php
 $type = empty($edit) ? 'Add' : 'Edit';
-$this->assign('pagetitle', __('%s Hotel Booking',$type));
-$this->Custom->addCrumb(__('Hotel Bookings'),array('action'=>'index'));
-$this->Custom->addCrumb(__('%s Hotel Booking',$type));
+if(empty($voucher)){
+    $title =  __(' Hotel Bookings');
+    $this->Custom->addCrumb(__($title),array('action'=>'index'));
+}else{
+    $title =  __(' Hotel Bookings Voucher');
+    $this->Custom->addCrumb(__($title),array('action'=>'index','voucher'));    
+}
+$this->assign('pagetitle', __($type.$title));
+$this->Custom->addCrumb(__($type.$title));
 $this->start('top_links');
-echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
+if(empty($voucher)){
+    echo $this->Html->link(__('Back'),array('action'=>'index'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));
+}else{
+    echo $this->Html->link(__('Back'),array('action'=>'index','voucher'),array('icon'=>'fa-angle-double-left','class'=>'btn btn-default','escape'=>false));    
+}
 $this->end();
 ?>
 <div class="box box-primary">
@@ -20,7 +30,8 @@ $this->end();
     			echo $this->Form->input('hotel_id',array('class' => 'form-control', 'empty' => __('Select Hotel'),'div' => array('class' => 'form-group')));
     			echo $this->Form->input('customer_id',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
                 echo $this->Form->input('room_type',array('class' => 'form-control', 'div' => array('class' => 'form-group required'))); 
-                echo $this->Form->input('nights',array('class' => 'form-control','div' => array('class' => 'form-group required'))); ?>
+                echo $this->Form->input('nights',array('class' => 'form-control','div' => array('class' => 'form-group required'))); 
+                echo $this->Form->input('special_remark',array('class' => 'form-control', 'div' => array('class' => 'form-group'))); ?>
                 </div>
                 <div class="col-md-6">
                 <?php
@@ -28,8 +39,8 @@ $this->end();
     			echo $this->Form->input('price',array('class' => 'form-control', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_with_gst',array('class' => 'form-control','disabled', 'div' => array('class' => 'form-group')));
                 echo $this->Form->input('payment_received',array('class' => 'form-control', 'div' => array('class' => 'form-group required')));
-                echo $this->Form->input('check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));
-                echo $this->Form->input('check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group')));    			
+                echo $this->Form->input('check_in_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group required')));
+                echo $this->Form->input('check_out_date',array('type'=>'text','class' => 'form-control', 'div' => array('class' => 'form-group required')));    			
                 ?>
                 </div>
             </div>
@@ -121,6 +132,7 @@ $this->end();
             var total_payment = (amount + payment_with_gst);
             $('#HotelBookingPaymentWithGst').val(total_payment);
         });
+        $('#HotelBookingPrice').keyup();
 
         $('#HotelBookingCheckInDate').datepicker({
             format: "yyyy-mm-dd",
